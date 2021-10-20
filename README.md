@@ -1,1 +1,1 @@
-Ender Woods Client.
+Ender Woods Client
