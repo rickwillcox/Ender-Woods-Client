@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CapsuleShape2D" id=40]
+radius = 11.5705
+height = 26.8064
+
+[sub_resource type="CircleShape2D" id=41]
+radius = 43.6739
+
+[node name="Hitboxes" type="Position2D"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 1, 0, 0, 0 )
+position = Vector2( 15.969, 0 )
+scale = Vector2( 1, 1.721 )
+shape = SubResource( 40 )
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.937255, 0.0313726, 0.0313726, 0 )
+shape = SubResource( 41 )
+disabled = true

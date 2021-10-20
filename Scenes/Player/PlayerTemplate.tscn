@@ -1,0 +1,535 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://Scenes/Player/PlayerTemplate.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Player/COMISSION_Final-Sheet.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.06179
+
+[sub_resource type="Animation" id=2]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 33, 34, 35, 36 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 30, 31, 32 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1.07177, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27, 28 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 37, 38, 39, 40 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Melee_Down"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 200.0, 158.0, 116.0, 95.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -4.65318, 4.40811 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Weapon:show_behind_parent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Melee_Left"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -63.0, -89.6, -116.0, -142.8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.82761, 3.30567 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Weapon:show_behind_parent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Melee_Right"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -17.0, 9.6, 36.2, 62.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2.84204, 3.22693 ), Vector2( -2.84204, 3.22693 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Weapon:show_behind_parent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Melee_Up"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 22.4, -10.3, -43.0, -142.8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4.24502, 3.30567 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Weapon:show_behind_parent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Idle_Down"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Idle_Right"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Idle_Up"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Idle_Left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=18]
+blend_point_0/node = SubResource( 14 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 15 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 16 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 17 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Melee_Down"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Melee_Right"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Melee_Up"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Melee_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Melee_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "Melee_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Melee_Right"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "Melee_Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=27]
+blend_point_0/node = SubResource( 19 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 20 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 21 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 22 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 23 )
+blend_point_4/pos = Vector2( -0.8, 0.6 )
+blend_point_5/node = SubResource( 24 )
+blend_point_5/pos = Vector2( -0.8, -0.6 )
+blend_point_6/node = SubResource( 25 )
+blend_point_6/pos = Vector2( 0.8, -0.6 )
+blend_point_7/node = SubResource( 26 )
+blend_point_7/pos = Vector2( 0.8, 0.6 )
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Walk_Down"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Walk_Right"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Walk_Up"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "Walk_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "Walk_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "Walk_Left"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "Walk_Right"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Walk_Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=36]
+blend_point_0/node = SubResource( 28 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 29 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 30 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 31 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 32 )
+blend_point_4/pos = Vector2( -0.8, 0.6 )
+blend_point_5/node = SubResource( 33 )
+blend_point_5/pos = Vector2( -0.8, -0.6 )
+blend_point_6/node = SubResource( 34 )
+blend_point_6/pos = Vector2( 0.8, 0.6 )
+blend_point_7/node = SubResource( 35 )
+blend_point_7/pos = Vector2( 0.8, -0.6 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachine" id=42]
+states/Idle/node = SubResource( 18 )
+states/Idle/position = Vector2( 346, 117 )
+states/Melee_Attack/node = SubResource( 27 )
+states/Melee_Attack/position = Vector2( 512, 227 )
+states/Walk/node = SubResource( 36 )
+states/Walk/position = Vector2( 616, 105 )
+transitions = [ "Idle", "Walk", SubResource( 37 ), "Walk", "Idle", SubResource( 38 ), "Walk", "Melee_Attack", SubResource( 39 ), "Melee_Attack", "Idle", SubResource( 40 ), "Idle", "Melee_Attack", SubResource( 41 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -33, 54 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=43]
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, -20.5 )
+scale = Vector2( 2, 2 )
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.05112, 3.04675 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 12
+frame = 36
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle_Down = SubResource( 2 )
+anims/Idle_Left = SubResource( 3 )
+anims/Idle_Right = SubResource( 4 )
+anims/Idle_Up = SubResource( 5 )
+anims/Melee_Down = SubResource( 6 )
+anims/Melee_Left = SubResource( 7 )
+anims/Melee_Right = SubResource( 8 )
+anims/Melee_Up = SubResource( 9 )
+anims/Walk_Down = SubResource( 10 )
+anims/Walk_Left = SubResource( 11 )
+anims/Walk_Right = SubResource( 12 )
+anims/Walk_Up = SubResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 42 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 43 )
+parameters/Idle/blend_position = Vector2( 2.04137, 4.67953 )
+parameters/Melee_Attack/blend_position = Vector2( 0, 0.984127 )
+parameters/Walk/blend_position = Vector2( 0, 0.836207 )
+
+[node name="Weapon" type="Sprite" parent="."]
+position = Vector2( -4.65318, 4.40811 )
+rotation = 3.49066
+texture = ExtResource( 2 )
+offset = Vector2( 3, -4 )
+hframes = 4
+vframes = 12
+frame = 47

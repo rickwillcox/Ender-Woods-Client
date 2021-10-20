@@ -1,0 +1,236 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Textures/button_normal.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/button_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/LoginScreen.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/LoginFailedMessageScreen.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 67
+outline_size = 2
+outline_color = Color( 0.6, 0.0745098, 0.839216, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+extra_spacing_char = 4
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+outline_size = 2
+outline_color = Color( 0.196078, 0.188235, 0.188235, 1 )
+extra_spacing_char = 3
+font_data = ExtResource( 5 )
+
+[node name="LoginScreen" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.707
+margin_top = -360.0
+margin_right = 639.293
+margin_bottom = 360.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -198.811
+margin_top = -209.243
+margin_right = 203.189
+margin_bottom = 193.757
+rect_min_size = Vector2( 300, 300 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -151.689
+margin_top = -175.783
+margin_right = 149.311
+margin_bottom = 216.217
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Background/VBoxContainer"]
+margin_right = 301.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "RPG game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer4" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 75.0
+margin_right = 301.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="UsernameTitle" type="Label" parent="Background/VBoxContainer"]
+margin_top = 84.0
+margin_right = 301.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 2 )
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="Background/VBoxContainer"]
+margin_top = 110.0
+margin_right = 301.0
+margin_bottom = 134.0
+text = "shaka"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 138.0
+margin_right = 301.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="PasswordTitle" type="Label" parent="Background/VBoxContainer"]
+margin_top = 162.0
+margin_right = 301.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 2 )
+text = "Password"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Password" type="LineEdit" parent="Background/VBoxContainer"]
+margin_top = 188.0
+margin_right = 301.0
+margin_bottom = 212.0
+text = "1"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 216.0
+margin_right = 301.0
+margin_bottom = 221.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="Loginbutton" type="TextureButton" parent="Background/VBoxContainer"]
+margin_left = 40.0
+margin_top = 225.0
+margin_right = 260.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 220, 35 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+expand = true
+
+[node name="Login" type="Label" parent="Background/VBoxContainer/Loginbutton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -33.0
+margin_top = -13.5
+margin_right = 33.0
+margin_bottom = 13.5
+custom_fonts/font = SubResource( 3 )
+text = "Login"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer3" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 264.0
+margin_right = 301.0
+margin_bottom = 269.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="CreateAccount" type="TextureButton" parent="Background/VBoxContainer"]
+margin_left = 40.0
+margin_top = 273.0
+margin_right = 260.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 220, 35 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+expand = true
+
+[node name="CreateAccount" type="Label" parent="Background/VBoxContainer/CreateAccount"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -13.5
+margin_right = 92.0
+margin_bottom = 13.5
+custom_fonts/font = SubResource( 3 )
+text = "Create Account"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer5" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 312.0
+margin_right = 301.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 0, 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IPButton" type="TextureButton" parent="Background/VBoxContainer"]
+margin_left = 40.0
+margin_top = 321.0
+margin_right = 260.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 220, 35 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+expand = true
+
+[node name="IPText" type="Label" parent="Background/VBoxContainer/IPButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -13.5
+margin_right = 75.0
+margin_bottom = 13.5
+custom_fonts/font = SubResource( 3 )
+text = "Local"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="Sprite" parent="."]
+position = Vector2( 640.846, 354.342 )
+scale = Vector2( 0.248, 0.232162 )
+texture = ExtResource( 4 )
+
+[node name="LoginFailedMessageScreen" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[connection signal="pressed" from="Background/VBoxContainer/Loginbutton" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/CreateAccount" to="." method="_on_CreateAccount_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/IPButton" to="." method="_on_IPButton_pressed"]

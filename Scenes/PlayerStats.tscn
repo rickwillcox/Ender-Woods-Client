@@ -1,0 +1,309 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/30.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/PlayerStats.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 59
+outline_size = 2
+outline_color = Color( 0.737255, 0.00392157, 1, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 4 )
+
+[node name="PlayerStats" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -426.0
+margin_top = -240.0
+margin_right = 426.0
+margin_bottom = 240.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 700.0
+margin_top = 100.0
+margin_right = 324.0
+margin_bottom = 151.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 35.0
+margin_top = 35.0
+margin_right = -35.0
+margin_bottom = -35.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="NinePatchRect/VBoxContainer"]
+margin_right = 406.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 1 )
+text = "Stats"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 67.0
+margin_right = 406.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 0, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Strength" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 111.0
+margin_right = 406.0
+margin_bottom = 144.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Strength"]
+margin_right = 100.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatName" type="Label" parent="NinePatchRect/VBoxContainer/Strength"]
+margin_left = 104.0
+margin_right = 254.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 150, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "Strength"
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Strength"]
+margin_left = 258.0
+margin_right = 258.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatValue" type="Label" parent="NinePatchRect/VBoxContainer/Strength"]
+margin_left = 262.0
+margin_right = 277.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+
+[node name="MarginContainer6" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 148.0
+margin_right = 406.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 0, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vitality" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 177.0
+margin_right = 406.0
+margin_bottom = 210.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Vitality"]
+margin_right = 100.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatName" type="Label" parent="NinePatchRect/VBoxContainer/Vitality"]
+margin_left = 104.0
+margin_right = 254.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 150, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "Vitality"
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Vitality"]
+margin_left = 258.0
+margin_right = 258.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatValue" type="Label" parent="NinePatchRect/VBoxContainer/Vitality"]
+margin_left = 262.0
+margin_right = 277.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 214.0
+margin_right = 406.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 0, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dexterity" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 243.0
+margin_right = 406.0
+margin_bottom = 276.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Dexterity"]
+margin_right = 100.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatName" type="Label" parent="NinePatchRect/VBoxContainer/Dexterity"]
+margin_left = 104.0
+margin_right = 254.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 150, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "Dexterity"
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Dexterity"]
+margin_left = 258.0
+margin_right = 258.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatValue" type="Label" parent="NinePatchRect/VBoxContainer/Dexterity"]
+margin_left = 262.0
+margin_right = 277.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 280.0
+margin_right = 406.0
+margin_bottom = 305.0
+rect_min_size = Vector2( 0, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Intelligence" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 309.0
+margin_right = 406.0
+margin_bottom = 342.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Intelligence"]
+margin_right = 100.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatName" type="Label" parent="NinePatchRect/VBoxContainer/Intelligence"]
+margin_left = 104.0
+margin_right = 254.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 150, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "Intelligence"
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Intelligence"]
+margin_left = 258.0
+margin_right = 258.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatValue" type="Label" parent="NinePatchRect/VBoxContainer/Intelligence"]
+margin_left = 262.0
+margin_right = 277.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 346.0
+margin_right = 406.0
+margin_bottom = 371.0
+rect_min_size = Vector2( 0, 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wisdom" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
+margin_top = 375.0
+margin_right = 406.0
+margin_bottom = 408.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Wisdom"]
+margin_right = 100.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatName" type="Label" parent="NinePatchRect/VBoxContainer/Wisdom"]
+margin_left = 104.0
+margin_right = 254.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 150, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "Wisdom"
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/VBoxContainer/Wisdom"]
+margin_left = 258.0
+margin_right = 258.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatValue" type="Label" parent="NinePatchRect/VBoxContainer/Wisdom"]
+margin_left = 262.0
+margin_right = 277.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 30 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+
+[node name="Sprite" type="Sprite" parent="NinePatchRect"]
+position = Vector2( 237.5, 255.5 )
+scale = Vector2( 0.2945, 0.3245 )
+texture = ExtResource( 2 )
