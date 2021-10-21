@@ -49,7 +49,7 @@ func _OnConnectionSucceeded():
 	timer.connect("timeout", self, "DetermineLatency")
 	self.add_child(timer)
 
-remote func ReceivePlayerToken(session_token):
+remote func ReceivePlayerSessionToken(session_token):
 	print("Session Token: ", session_token)
 	
 remote func ReturnServerTime(server_time, client_time):
