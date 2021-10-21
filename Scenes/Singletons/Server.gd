@@ -42,17 +42,19 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Successfully connected to World server")
 	rpc_id(1, "FetchServerTime", OS.get_system_time_msecs()) #current client time
+	rpc_id(1, "AskForSessionToken")
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.autostart = true
 	timer.connect("timeout", self, "DetermineLatency")
 	self.add_child(timer)
 
+remote func ReceivePlayerToken(session_token):
+	print("Session Token: ", session_token)
 	
 remote func ReturnServerTime(server_time, client_time):
 	latency = (OS.get_system_time_msecs() - client_time) / 2
 	client_clock = server_time + latency
-
 	
 func DetermineLatency():
 	rpc_id(1, "DetermineLatency", OS.get_system_time_msecs())
@@ -72,12 +74,10 @@ remote func ReturnLatency(client_time):
 		latency = total_latency / latency_array.size()
 		latency_array.clear()
 	
-
 remote func FetchToken():
 	rpc_id(1, "ReturnToken", token)
 	print("FetchToken done")
 	
-
 remote func ReturnTokenVerificationResults(result):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
@@ -91,7 +91,6 @@ remote func ReturnTokenVerificationResults(result):
 		
 func SendPlayerState(player_state):
 	rpc_unreliable_id(1, "ReceivePlayerState", player_state)
-
 	
 remote func ReceiveWorldState(world_state):
 	get_node("../SceneHandler/Map").UpdateWorldState(world_state)
@@ -108,7 +107,6 @@ remote func SpawnNewPlayer(player_id, spawn_position):
 remote func DespawnPlayer(player_id):
 	get_node("../SceneHandler/Map").DespawnPlayer(player_id)
 
-#Player Attacking
 func cw_MeleeAttack(blend_position):
 	rpc_id(1, "cw_MeleeAttack", blend_position)
 

@@ -8,9 +8,7 @@ var local_ip = "127.0.0.1"
 var ip = "127.0.0.1"
 var connected = false
 
-
 var cert = load("res://Assets/Certificate/X509_Certificate.crt")
-
 
 var username
 var password
