@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/player_mining_stone_3-1db.ogg-98bbf07569e258c9ceaea140857a8712.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Mining/player_mining_stone_3-1db.ogg"
+dest_files=[ "res://.import/player_mining_stone_3-1db.ogg-98bbf07569e258c9ceaea140857a8712.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
