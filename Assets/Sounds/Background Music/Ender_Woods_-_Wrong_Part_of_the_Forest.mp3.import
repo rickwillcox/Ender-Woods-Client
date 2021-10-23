@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ender_Woods_-_Wrong_Part_of_the_Forest.mp3-2aa84cb3703c13f24c834092453678db.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Background Music/Ender_Woods_-_Wrong_Part_of_the_Forest.mp3"
+dest_files=[ "res://.import/Ender_Woods_-_Wrong_Part_of_the_Forest.mp3-2aa84cb3703c13f24c834092453678db.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
