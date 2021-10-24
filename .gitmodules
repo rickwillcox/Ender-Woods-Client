@@ -1,0 +1,3 @@
+[submodule "Ender-Woods-Common"]
+	path = Ender-Woods-Common
+	url = https://github.com/RickWillcox/Ender-Woods-Common.git

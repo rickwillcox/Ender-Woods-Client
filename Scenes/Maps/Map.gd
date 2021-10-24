@@ -7,7 +7,7 @@ var dir = Directory.new()
 
 
 
-var g = Globals
+var g = ServerInterface
 var enemy_spawn
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
