@@ -97,6 +97,7 @@ func RequestLogin():
 remote func ReturnLoginRequest(results, token):
 	print("results received: " + str(results))
 	if results == true:
+		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
 		Server.token = token
 		Server.ConnectToServer()
 		#Server.FetchPlayerStats()
@@ -104,6 +105,7 @@ remote func ReturnLoginRequest(results, token):
 	else:
 		print("Login Failed -- Please provide a valid username and password")
 		get_node("../SceneHandler/Map/GUI/LoginScreen").login_button.disabled = false
+		get_node("../SceneHandler/Map/MenuSounds/MenuFailedSound").play()
 		
 	network.disconnect("connection_failed", self, "_OnConnectionFailed")
 	network.disconnect("connection_succeeded", self, "_OnConnectionSucceeded")
@@ -112,6 +114,7 @@ remote func ReturnLoginRequest(results, token):
 remote func ReturnCreateAccountRequest(valid_request, message):
 	#1 = failed to create, 2 = username already in use, 3 = account created successfully
 	if valid_request == true:
+		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").account_created_message_screen.visible = true
 		yield(get_tree().create_timer(1), "timeout")
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").visible = false

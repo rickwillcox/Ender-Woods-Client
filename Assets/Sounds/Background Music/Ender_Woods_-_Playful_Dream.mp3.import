@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ender_Woods_-_Playful_Dream.mp3-cfaf6d8300b56c994eaf5b149740479a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Background Music/Ender_Woods_-_Playful_Dream.mp3"
+dest_files=[ "res://.import/Ender_Woods_-_Playful_Dream.mp3-cfaf6d8300b56c994eaf5b149740479a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

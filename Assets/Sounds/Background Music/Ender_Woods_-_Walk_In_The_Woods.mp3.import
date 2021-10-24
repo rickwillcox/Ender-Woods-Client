@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ender_Woods_-_Walk_In_The_Woods.mp3-332d0aa22c2935c658f7aab982e7854e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Background Music/Ender_Woods_-_Walk_In_The_Woods.mp3"
+dest_files=[ "res://.import/Ender_Woods_-_Walk_In_The_Woods.mp3-332d0aa22c2935c658f7aab982e7854e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

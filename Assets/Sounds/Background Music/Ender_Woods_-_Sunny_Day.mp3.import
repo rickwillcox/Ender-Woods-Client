@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ender_Woods_-_Sunny_Day.mp3-9bc12f1251c895d4ec43a8d4fa39bc41.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Background Music/Ender_Woods_-_Sunny_Day.mp3"
+dest_files=[ "res://.import/Ender_Woods_-_Sunny_Day.mp3-9bc12f1251c895d4ec43a8d4fa39bc41.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

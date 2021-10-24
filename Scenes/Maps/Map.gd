@@ -1,5 +1,12 @@
 extends Node2D
 
+onready var background_music = get_node("BackgroundMusic")
+var tracks = []
+var track_playing = 0
+var dir = Directory.new()
+
+
+
 var g = Globals
 var enemy_spawn
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
@@ -11,7 +18,47 @@ var world_state_buffer = []
 const interpolation_offset = 100
 var printed_world_state = false
 
+
+func _ready():
+	#get a list of the background tracks
+	dir.open("res://Assets/Sounds/Background Music/")
+	dir.list_dir_begin(true, true)
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif file.ends_with(".mp3"):
+			tracks.append(file)	
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.is_action_pressed("NextBackgroundMusic"):
+			next_background_music_track()
+		if event.pressed and event.is_action_pressed("PreviousBackgroundMusic"):
+			previous_background_music_track()
+
+func play_background_music():
+	background_music.stream = load("res://Assets/Sounds/Background Music/" + tracks[track_playing])
+	background_music.play()
+	print("Track name: ", tracks[track_playing], "   Track Number: ", track_playing)
+
+func previous_background_music_track():
+	if track_playing == 0:
+		track_playing = tracks.size() - 1
+	else:
+		track_playing -= 1
+	play_background_music()
+	
+func next_background_music_track():
+	if track_playing == tracks.size() - 1:
+		track_playing = 0
+	else:
+		track_playing += 1
+	play_background_music()
+
 func SpawnSelf():
+	#start background music
+	play_background_music()
 	var client_player_instance = client_player.instance()
 	client_player_instance.position = Vector2(250,250)
 	get_node("YSort").add_child(client_player_instance)

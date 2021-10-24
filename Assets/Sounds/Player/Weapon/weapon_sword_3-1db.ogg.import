@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/weapon_sword_3-1db.ogg-9dc4b304120126722e91be93557095fb.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Player/Weapon/weapon_sword_3-1db.ogg"
+dest_files=[ "res://.import/weapon_sword_3-1db.ogg-9dc4b304120126722e91be93557095fb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
