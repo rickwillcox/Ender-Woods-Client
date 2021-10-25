@@ -48,9 +48,6 @@ func _OnConnectionSucceeded():
 	timer.autostart = true
 	timer.connect("timeout", self, "DetermineLatency")
 	self.add_child(timer)
-
-remote func ReceivePlayerSessionToken(session_token):
-	print("Session Token: ", session_token)
 	
 remote func ReturnServerTime(server_time, client_time):
 	latency = (OS.get_system_time_msecs() - client_time) / 2
@@ -113,3 +110,8 @@ func cw_MeleeAttack(blend_position):
 remote func ReceiveEnemyAttack(enemy_id, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
 		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).EnemyAttack(attack_type)	
+
+#This function will be how the player access the database, will be updated once we have a database on Auth Server		
+func TestAuthUsingPlayerID():
+	var test_data = "Test Data Would Go Here"
+	rpc_id(1, "TestAuthUsingPlayerID", test_data)
