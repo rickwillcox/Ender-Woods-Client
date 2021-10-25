@@ -8,7 +8,7 @@ onready var player_stats_panel = get_node("../../GUI/PlayerStats")
 onready var login_screen_panel = get_node("../../GUI/LoginScreen")
 
 
-var g = Globals
+var g = ServerInterface
 var max_speed = 200
 var speed = 180
 var destination = Vector2()

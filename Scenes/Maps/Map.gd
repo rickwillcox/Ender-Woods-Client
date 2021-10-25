@@ -95,8 +95,8 @@ func DespawnPlayer(player_id):
 	get_node("YSort/OtherPlayers/" + str(player_id)).queue_free()
 
 func UpdateWorldState(world_state):
-	if world_state[g.WORLD_STATE_TIMESTAMP] > last_world_state:
-		last_world_state = world_state[g.WORLD_STATE_TIMESTAMP]
+	if world_state[g.TIMESTAMP] > last_world_state:
+		last_world_state = world_state[g.TIMESTAMP]
 		world_state_buffer.append(world_state)
 		
 func _physics_process(_delta):
@@ -106,13 +106,13 @@ func _physics_process(_delta):
 			world_state_buffer.remove(0)
 			
 		if world_state_buffer.size() > 2:
-			var inperpolation_factor = float(render_time - world_state_buffer[1][g.WORLD_STATE_TIMESTAMP]) / float(world_state_buffer[2][g.WORLD_STATE_TIMESTAMP] - world_state_buffer[0][g.WORLD_STATE_TIMESTAMP])
+			var inperpolation_factor = float(render_time - world_state_buffer[1][g.TIMESTAMP]) / float(world_state_buffer[2][g.TIMESTAMP] - world_state_buffer[0][g.TIMESTAMP])
 			for player in world_state_buffer[2].keys():
-				if str(player) == g.WORLD_STATE_TIMESTAMP:
+				if str(player) == g.TIMESTAMP:
 					continue
-				if str(player) == g.WORLD_STATE_ENEMIES:
+				if str(player) == g.ENEMIES:
 					continue
-				if str(player) == g.WORLD_STATE_ORES:
+				if str(player) == g.ORES:
 					continue
 				if player == get_tree().get_network_unique_id():
 					continue
@@ -125,30 +125,30 @@ func _physics_process(_delta):
 				else:
 					print("spawning other player")
 					SpawnNewPlayer(player, world_state_buffer[2][player][g.PLAYER_POSITION])
-			for enemy in world_state_buffer[2][g.WORLD_STATE_ENEMIES].keys(): 
-				if not world_state_buffer[1][g.WORLD_STATE_ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
+			for enemy in world_state_buffer[2][g.ENEMIES].keys(): 
+				if not world_state_buffer[1][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue
 				if get_node("YSort/Enemies").has_node(str(enemy)): #does enemy exist
-					var new_position = lerp(world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_LOCATION], world_state_buffer[2][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_LOCATION], inperpolation_factor)
+					var new_position = lerp(world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION], world_state_buffer[2][g.ENEMIES][enemy][g.ENEMY_LOCATION], inperpolation_factor)
 					get_node("YSort/Enemies/" + str(enemy)).MoveEnemy(new_position)
-					get_node("YSort/Enemies/" + str(enemy)).Health(world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_CURRENT_HEALTH])
+					get_node("YSort/Enemies/" + str(enemy)).Health(world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_CURRENT_HEALTH])
 				else:
-					SpawnNewEnemy(enemy, world_state_buffer[2][g.WORLD_STATE_ENEMIES][enemy])
+					SpawnNewEnemy(enemy, world_state_buffer[2][g.ENEMIES][enemy])
 					
-			for ore in world_state_buffer[2][g.WORLD_STATE_ORES].keys():
-				if world_state_buffer[2][g.WORLD_STATE_ORES][ore][g.PLAYER_ANIMATION_VECTOR] == 0:
+			for ore in world_state_buffer[2][g.ORES].keys():
+				if world_state_buffer[2][g.ORES][ore][g.PLAYER_ANIMATION_VECTOR] == 0:
 					get_node("YSort/Ores/" + str(ore) + "/Sprite").frame = 0
 				else:
 					get_node("YSort/Ores/" + str(ore) + "/Sprite").frame = 1 
 								
 		elif render_time > world_state_buffer[1].T: #we have no future world state
-			var extrapolation_factor = float(render_time - world_state_buffer[0][g.WORLD_STATE_TIMESTAMP]) / float(world_state_buffer[1][g.WORLD_STATE_TIMESTAMP] - world_state_buffer[0][g.WORLD_STATE_TIMESTAMP]) - 1.00
+			var extrapolation_factor = float(render_time - world_state_buffer[0][g.TIMESTAMP]) / float(world_state_buffer[1][g.TIMESTAMP] - world_state_buffer[0][g.TIMESTAMP]) - 1.00
 			for player in world_state_buffer[1].keys():		
-				if str(player) == g.WORLD_STATE_TIMESTAMP:
+				if str(player) == g.TIMESTAMP:
 					continue
-				if str(player) == g.WORLD_STATE_ENEMIES:
+				if str(player) == g.ENEMIES:
 					continue
-				if str(player) == g.WORLD_STATE_ORES:
+				if str(player) == g.ORES:
 					continue
 				if player == get_tree().get_network_unique_id():
 					continue
@@ -159,15 +159,15 @@ func _physics_process(_delta):
 					var new_position = world_state_buffer[1][player][g.PLAYER_POSITION] + (position_delta * extrapolation_factor)
 					var animation_vector = world_state_buffer[1][player][g.PLAYER_ANIMATION_VECTOR]
 					get_node("YSort/OtherPlayers/" + str(player)).MovePlayer(new_position, animation_vector)
-			for enemy in world_state_buffer[1][g.WORLD_STATE_ENEMIES].keys(): 
-				if not world_state_buffer[1][g.WORLD_STATE_ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
+			for enemy in world_state_buffer[1][g.ENEMIES].keys(): 
+				if not world_state_buffer[1][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue
 				if get_node("YSort/Enemies").has_node(str(enemy)): #does enemy exist
-					var position_delta = ((world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_LOCATION] - world_state_buffer[0][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_LOCATION]))
-					var new_position = world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_LOCATION] + (position_delta * extrapolation_factor)
-					var state = world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_STATE]
+					var position_delta = ((world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION] - world_state_buffer[0][g.ENEMIES][enemy][g.ENEMY_LOCATION]))
+					var new_position = world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION] + (position_delta * extrapolation_factor)
+					var state = world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_STATE]
 					get_node("YSort/Enemies/" + str(enemy)).MoveEnemy(new_position)
-					get_node("YSort/Enemies/" + str(enemy)).Health(world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy][g.ENEMY_CURRENT_HEALTH])
+					get_node("YSort/Enemies/" + str(enemy)).Health(world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_CURRENT_HEALTH])
 				else:
-					SpawnNewEnemy(enemy, world_state_buffer[1][g.WORLD_STATE_ENEMIES][enemy])
+					SpawnNewEnemy(enemy, world_state_buffer[1][g.ENEMIES][enemy])
 
