@@ -105,6 +105,7 @@ remote func DespawnPlayer(player_id):
 	get_node("../SceneHandler/Map").DespawnPlayer(player_id)
 
 func cw_MeleeAttack(blend_position):
+	TestAuthUsingPlayerID()
 	rpc_id(1, "cw_MeleeAttack", blend_position)
 
 remote func ReceiveEnemyAttack(enemy_id, attack_type):
