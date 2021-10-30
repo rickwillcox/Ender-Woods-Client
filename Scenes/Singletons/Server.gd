@@ -105,14 +105,11 @@ remote func DespawnPlayer(player_id):
 	get_node("../SceneHandler/Map").DespawnPlayer(player_id)
 
 func cw_MeleeAttack(blend_position):
-	TestAuthUsingPlayerID()
 	rpc_id(1, "cw_MeleeAttack", blend_position)
 
 remote func ReceiveEnemyAttack(enemy_id, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
 		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).EnemyAttack(attack_type)	
 
-#This function will be how the player access the database, will be updated once we have a database on Auth Server		
-func TestAuthUsingPlayerID():
-	var test_data = "Test Data Would Go Here"
-	rpc_id(1, "TestAuthUsingPlayerID", test_data)
+remote func ReceivePlayerInventory(inventory_data):
+	print(inventory_data)
