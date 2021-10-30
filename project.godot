@@ -21,6 +21,7 @@ Server="*res://Scenes/Singletons/Server.gd"
 Gateway="*res://Scenes/Singletons/Gateway.gd"
 Globals="*res://Scenes/Singletons/Globals.gd"
 ServerInterface="*res://Ender-Woods-Common/ServerInterface.gd"
+ItemDatabase="*res://Scenes/Singletons/ItemDatabase.gd"
 
 [display]
 

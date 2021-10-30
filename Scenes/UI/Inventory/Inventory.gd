@@ -45,10 +45,12 @@ func RefreshInventory(inventory_data):
 				if i > 24 and inventory_data[i][1].to_int() != 0:
 					item_slots_node_list[i].texture = item_list[j][1]
 					item_slots_node_list[i].modulate.a = 1
-					get_node("Background/HBoxContainer/Equipment/InventoryCharacter").ChangeCharacterEquips(i)
+#					get_node("Background/HBoxContainer/Equipment/InventoryCharacter").ChangeCharacterEquips(i)
 				elif i <= 24:
 					item_slots_node_list[i].texture = item_list[j][1]
 				
 		#item_slot[1] = item_id
 #		for texture_node in item_slots_node_list:
 			
+func GetAllItems(item_database):
+	print(item_database)

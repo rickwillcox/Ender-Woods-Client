@@ -74,10 +74,11 @@ remote func FetchToken():
 	rpc_id(1, "ReturnToken", token)
 	print("FetchToken done")
 	
-remote func ReturnTokenVerificationResults(result):
+remote func ReturnTokenVerificationResults(result, all_item_data):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
+		ItemDatabase.all_item_data = all_item_data
 #		get_node("../SceneHandler/Map/YSort/Player").set_physics_process(true)
 		#print("Successful Token Verification")
 	else:
@@ -105,6 +106,7 @@ remote func DespawnPlayer(player_id):
 
 func cw_MeleeAttack(blend_position):
 	rpc_id(1, "cw_MeleeAttack", blend_position)
+	print(ItemDatabase.all_item_data)
 
 remote func ReceiveEnemyAttack(enemy_id, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
