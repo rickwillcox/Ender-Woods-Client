@@ -42,7 +42,6 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Successfully connected to World server")
 	rpc_id(1, "FetchServerTime", OS.get_system_time_msecs()) #current client time
-	rpc_id(1, "AskForSessionToken")
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.autostart = true
