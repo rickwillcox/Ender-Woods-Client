@@ -111,4 +111,6 @@ remote func ReceiveEnemyAttack(enemy_id, attack_type):
 		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).EnemyAttack(attack_type)	
 
 remote func ReceivePlayerInventory(inventory_data):
-	print(inventory_data)
+	var PlayerInventory = get_node("/root/SceneHandler/Map/GUI/Inventory")
+	PlayerInventory.RefreshInventory(inventory_data[0])
+
