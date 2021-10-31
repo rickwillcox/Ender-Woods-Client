@@ -4,7 +4,8 @@ onready var background_music = get_node("BackgroundMusic")
 var tracks = []
 var track_playing = 0
 var dir = Directory.new()
-
+#true = turn on music / false = no music
+var turn_on_background_music = false
 
 
 var g = ServerInterface
@@ -39,7 +40,8 @@ func _unhandled_input(event):
 
 func play_background_music():
 	background_music.stream = load("res://Assets/Sounds/Background Music/" + tracks[track_playing])
-	background_music.play()
+	if turn_on_background_music:
+		background_music.play()
 	print("Track name: ", tracks[track_playing], "   Track Number: ", track_playing)
 
 func previous_background_music_track():

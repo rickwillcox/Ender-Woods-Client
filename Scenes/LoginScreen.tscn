@@ -39,6 +39,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+auto_login = false
 
 [node name="Background" type="NinePatchRect" parent="."]
 anchor_left = 0.5

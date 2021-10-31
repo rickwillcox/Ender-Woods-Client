@@ -1116,6 +1116,7 @@ visible = false
 visible = false
 
 [node name="LoginScreen" parent="GUI" instance=ExtResource( 6 )]
+auto_login = true
 
 [node name="MenuSounds" parent="." instance=ExtResource( 2 )]
 

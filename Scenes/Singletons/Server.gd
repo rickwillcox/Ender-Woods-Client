@@ -106,7 +106,7 @@ remote func DespawnPlayer(player_id):
 
 func cw_MeleeAttack(blend_position):
 	rpc_id(1, "cw_MeleeAttack", blend_position)
-	print(ItemDatabase.all_item_data)
+	print(ItemDatabase.all_item_data[0])
 
 remote func ReceiveEnemyAttack(enemy_id, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
