@@ -820,7 +820,7 @@ rect_min_size = Vector2( 52, 52 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Head" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot26" groups=[
+[node name="head" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot26" groups=[
 "Equipment_Slot",
 ]]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -894,7 +894,7 @@ rect_min_size = Vector2( 52, 52 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Chest" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot27" groups=[
+[node name="chest" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot27" groups=[
 "Equipment_Slot",
 ]]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -996,7 +996,7 @@ rect_min_size = Vector2( 52, 52 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Amulet" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot28" groups=[
+[node name="amulet" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot28" groups=[
 "Equipment_Slot",
 ]]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -1022,7 +1022,7 @@ rect_min_size = Vector2( 52, 52 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="MainHand" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot29" groups=[
+[node name="main_hand" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot29" groups=[
 "Equipment_Slot",
 ]]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -1124,7 +1124,7 @@ rect_min_size = Vector2( 52, 52 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="OffHand" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot30" groups=[
+[node name="off_hand" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot30" groups=[
 "Equipment_Slot",
 ]]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -1150,7 +1150,7 @@ rect_min_size = Vector2( 52, 52 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="Gloves" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot31" groups=[
+[node name="gloves" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/slot31" groups=[
 "Equipment_Slot",
 ]]
 modulate = Color( 1, 1, 1, 0.588235 )
