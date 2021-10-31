@@ -1040,6 +1040,7 @@ script = ExtResource( 9 )
 [node name="MapElements" type="Node2D" parent="."]
 
 [node name="Island" type="TileMap" parent="MapElements"]
+visible = false
 mode = 2
 tile_set = SubResource( 65 )
 cell_size = Vector2( 32, 32 )
