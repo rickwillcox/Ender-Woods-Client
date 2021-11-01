@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_silo.png-09290e1e6fed212e6bb9dcd3f7fa783c.stex"
+path="res://.import/amulet_silo.png-defe438e3de74f873fe4e8ba403396ce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/silo/chest_silo.png"
-dest_files=[ "res://.import/chest_silo.png-09290e1e6fed212e6bb9dcd3f7fa783c.stex" ]
+source_file="res://Assets/inventory/Items/amulet_silo.png"
+dest_files=[ "res://.import/amulet_silo.png-defe438e3de74f873fe4e8ba403396ce.stex" ]
 
 [params]
 

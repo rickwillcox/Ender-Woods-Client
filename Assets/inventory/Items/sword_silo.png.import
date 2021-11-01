@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shield_silo.png-1c8e8f7f0a5296e694c5fb732a1ff845.stex"
+path="res://.import/sword_silo.png-3df3f69bb33db04e58227095617a3cf3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/silo/shield_silo.png"
-dest_files=[ "res://.import/shield_silo.png-1c8e8f7f0a5296e694c5fb732a1ff845.stex" ]
+source_file="res://Assets/inventory/Items/sword_silo.png"
+dest_files=[ "res://.import/sword_silo.png-3df3f69bb33db04e58227095617a3cf3.stex" ]
 
 [params]
 

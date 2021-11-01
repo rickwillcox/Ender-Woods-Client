@@ -99,7 +99,6 @@ tracks/6/keys = {
 }
 
 [node name="InventoryCharacter" type="Node2D"]
-position = Vector2( 122.499, 85.081 )
 scale = Vector2( 4, 4 )
 script = ExtResource( 8 )
 __meta__ = {

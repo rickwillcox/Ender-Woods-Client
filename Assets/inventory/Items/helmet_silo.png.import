@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/legs_silo.png-37c23d17d59c39e6cfcd687ad31c8af5.stex"
+path="res://.import/helmet_silo.png-d1955346a8d3ee5de3d1e18e0cf501d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/silo/legs_silo.png"
-dest_files=[ "res://.import/legs_silo.png-37c23d17d59c39e6cfcd687ad31c8af5.stex" ]
+source_file="res://Assets/inventory/Items/helmet_silo.png"
+dest_files=[ "res://.import/helmet_silo.png-d1955346a8d3ee5de3d1e18e0cf501d6.stex" ]
 
 [params]
 
