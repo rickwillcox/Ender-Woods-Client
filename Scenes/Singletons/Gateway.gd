@@ -7,6 +7,9 @@ var online_ip = "192.99.247.42"
 var local_ip = "127.0.0.1"
 var ip = "127.0.0.1"
 var connected = false
+var world_list =[0,1,2,3,4,5,6,7,8,9]
+#default
+var world_to_connect_to = world_list[0]
 
 var cert = load("res://Assets/Certificate/X509_Certificate.crt")
 
@@ -90,7 +93,7 @@ func RequestCreateAccount():
 	
 func RequestLogin():
 	print("Connecting to gateway to request login")
-	rpc_id(1, "LoginRequest", username, password.sha256_text())
+	rpc_id(1, "LoginRequest", username, password.sha256_text(), world_to_connect_to)
 	username = ""
 	password = ""
 
@@ -134,3 +137,6 @@ remote func ReturnCreateAccountRequest(valid_request, message):
 	network.disconnect("connection_succeeded", self, "_OnConnectionSucceeded")
 
 		
+remote func GetWorldServerList(world_server_list):
+	WorldServerList.world_server_list = world_server_list
+	print(world_server_list)
