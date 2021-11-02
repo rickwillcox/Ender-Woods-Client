@@ -10,11 +10,6 @@ onready var menu_failed_sound = get_node("../../MenuSounds/MenuFailedSound")
 onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSucceededSound")
 
 var local = true
-export var auto_login = false
-
-func _ready():
-	if auto_login:
-		_on_Login_pressed()
 	
 func _on_Login_pressed():
 	if username_input.text == "" or userpassword_input.text == "":

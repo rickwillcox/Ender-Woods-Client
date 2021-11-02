@@ -42,7 +42,6 @@ func _OnConnectionFailed():
 func _OnConnectionSucceeded():
 	print("Successfully connected to World server")
 	rpc_id(1, "FetchServerTime", OS.get_system_time_msecs()) #current client time
-	rpc_id(1, "AskForSessionToken")
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.autostart = true
@@ -75,10 +74,11 @@ remote func FetchToken():
 	rpc_id(1, "ReturnToken", token)
 	print("FetchToken done")
 	
-remote func ReturnTokenVerificationResults(result):
+remote func ReturnTokenVerificationResults(result, all_item_data, item_categories_data, equip_slots_data):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
+		ItemDatabase.all_item_data = all_item_data
 #		get_node("../SceneHandler/Map/YSort/Player").set_physics_process(true)
 		#print("Successful Token Verification")
 	else:
@@ -105,14 +105,14 @@ remote func DespawnPlayer(player_id):
 	get_node("../SceneHandler/Map").DespawnPlayer(player_id)
 
 func cw_MeleeAttack(blend_position):
-	TestAuthUsingPlayerID()
 	rpc_id(1, "cw_MeleeAttack", blend_position)
+	print(ItemDatabase.all_item_data[0])
 
 remote func ReceiveEnemyAttack(enemy_id, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
 		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).EnemyAttack(attack_type)	
 
-#This function will be how the player access the database, will be updated once we have a database on Auth Server		
-func TestAuthUsingPlayerID():
-	var test_data = "Test Data Would Go Here"
-	rpc_id(1, "TestAuthUsingPlayerID", test_data)
+remote func ReceivePlayerInventory(inventory_data):
+	var PlayerInventory = get_node("/root/SceneHandler/Map/GUI/Inventory")
+	PlayerInventory.RefreshInventory(inventory_data[0])
+
