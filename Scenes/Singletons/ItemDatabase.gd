@@ -1,6 +1,6 @@
 extends Node
 
-var all_item_data : Array = []
+var all_item_data : Dictionary
 
 # Item categories
 enum {NOT_EQUIPPABLE = 0, HEAD, CHEST, HANDS, LEGS, FEET, MAIN_HAND, OFF_HAND, RING, AMULET}
@@ -15,19 +15,14 @@ var item_category_to_slot_mapping = \
 		MAIN_HAND: [Slots.MAIN_HAND_SLOT],
 		OFF_HAND: [Slots.OFF_HAND_SLOT],
 		RING: [Slots.RING_SLOT_1, Slots.RING_SLOT_2],
-		AMULET: [Slots.AMULET_SLOT],}
+		AMULET: [Slots.AMULET_SLOT]}
 
 func item_fits_slot(item_category : int, slot : int) -> bool:
 	if slot >= Slots.MAX_EQUIP_SLOTS:
 		return true
 	return slot in item_category_to_slot_mapping[item_category]
 
-func GetItemID(file_name):
-	for item in all_item_data:
-		if item["file_name"] == file_name:
-			return int(item["item_id"])
-			
-func GetItemCategory(file_name):
-	for item in all_item_data:
-		if item["file_name"] == file_name:
-			return int(item["item_category"])
+func item_category(item_id : int):
+	if item_id == -1:
+		return null
+	return int(all_item_data[item_id]["item_category"])

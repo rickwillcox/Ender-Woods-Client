@@ -74,7 +74,7 @@ remote func FetchToken():
 	rpc_id(1, "ReturnToken", token)
 	print("FetchToken done")
 	
-remote func ReturnTokenVerificationResults(result, all_item_data, item_categories_data, equip_slots_data):
+remote func ReturnTokenVerificationResults(result, all_item_data):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
