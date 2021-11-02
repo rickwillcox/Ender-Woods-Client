@@ -17,8 +17,7 @@ func get_drag_data(position: Vector2):
 	data["origin_item_id"] = item_id
 	data["origin_slot_number"] = item_slot
 	data["origin_parent"] = get_parent().get_name()
-	data["origin_item_category_id"] = ItemDatabase.GetItemCategory(data["origin_texture_file_name"])
-
+	data["origin_item_category_id"] = ItemDatabase.item_category(item_id)
 	
 	var drag_texture = TextureRect.new()
 	drag_texture.expand = true
@@ -39,7 +38,7 @@ func can_drop_data(position: Vector2, data) -> bool:
 	data["destination_item_id"] = item_id
 	data["destination_slot_number"] = item_slot
 	data["destination_parent"] = get_parent().get_name()
-	data["destination_category_id"] = ItemDatabase.GetItemCategory(data["destination_texture_file_name"])
+	data["destination_category_id"] = ItemDatabase.item_category(item_id)
 
 	if AllowSwitch(data["origin_slot_number"], data["origin_item_category_id"], data["destination_slot_number"], data["destination_category_id"]):
 		return true
