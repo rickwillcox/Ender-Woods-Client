@@ -3,17 +3,12 @@ extends KinematicBody2D
 
 var max_hp	= 9000
 var current_hp = 9000
-var state
 var type
 var dead = false
 func _ready():
 	$AnimationPlayer.play("slimeAnimation")
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = current_hp
-	if state == "Idle":
-		pass
-	elif state == "Dead":
-		OnDeath()
 	$FloatAroundAnimation.play("Float")
 		#hide health bar and hitboes here later
 

@@ -3,17 +3,12 @@ extends KinematicBody2D
 
 var max_hp	
 var current_hp
-var state
 var type
 
 func _ready():
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = current_hp
 	$Rekt.visible = false
-	if state == "Idle":
-		pass
-	elif state == "Dead":
-		OnDeath()
 		#hide health bar and hitboes here later
 
 func _physics_process(delta):
