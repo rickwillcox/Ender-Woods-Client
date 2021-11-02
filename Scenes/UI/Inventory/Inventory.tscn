@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="ItemSlots" type="VBoxContainer" parent="Background/HBoxContainer"]
 margin_right = 296.0
-margin_bottom = 354.0
+margin_bottom = 417.0
 rect_min_size = Vector2( 275, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
@@ -110,6 +110,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 10
 
 [node name="slot2" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 61.0
@@ -135,6 +136,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 11
 
 [node name="slot3" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 122.0
@@ -160,6 +162,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 12
 
 [node name="slot4" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 183.0
@@ -185,6 +188,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 13
 
 [node name="slot5" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 244.0
@@ -210,6 +214,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 14
 
 [node name="slot6" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_top = 62.0
@@ -235,6 +240,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 15
 
 [node name="slot7" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 61.0
@@ -261,6 +267,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 16
 
 [node name="slot8" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 122.0
@@ -287,6 +294,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 17
 
 [node name="slot9" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 183.0
@@ -313,6 +321,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 18
 
 [node name="slot10" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 244.0
@@ -339,6 +348,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 19
 
 [node name="slot11" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_top = 124.0
@@ -364,6 +374,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 20
 
 [node name="slot12" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 61.0
@@ -390,6 +401,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 21
 
 [node name="slot13" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 122.0
@@ -416,6 +428,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 22
 
 [node name="slot14" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 183.0
@@ -442,6 +455,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 23
 
 [node name="slot15" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 244.0
@@ -468,6 +482,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 24
 
 [node name="slot16" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_top = 186.0
@@ -493,6 +508,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 25
 
 [node name="slot17" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 61.0
@@ -519,6 +535,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 26
 
 [node name="slot18" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 122.0
@@ -545,6 +562,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 27
 
 [node name="slot19" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 183.0
@@ -571,6 +589,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 28
 
 [node name="slot20" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 244.0
@@ -597,6 +616,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 29
 
 [node name="slot21" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_top = 248.0
@@ -622,6 +642,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 30
 
 [node name="slot22" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 61.0
@@ -648,6 +669,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 31
 
 [node name="slot23" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 122.0
@@ -674,6 +696,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 32
 
 [node name="slot24" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 183.0
@@ -700,6 +723,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 33
 
 [node name="slot25" type="TextureRect" parent="Background/HBoxContainer/ItemSlots/GridContainer"]
 margin_left = 244.0
@@ -726,17 +750,18 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 34
 
 [node name="mc_middle" type="MarginContainer" parent="Background/HBoxContainer"]
 margin_left = 300.0
 margin_right = 325.0
-margin_bottom = 354.0
+margin_bottom = 417.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="Equipment" type="VBoxContainer" parent="Background/HBoxContainer"]
 margin_left = 329.0
 margin_right = 644.0
-margin_bottom = 354.0
+margin_bottom = 417.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
@@ -765,52 +790,17 @@ custom_constants/vseparation = 11
 custom_constants/hseparation = 11
 columns = 5
 
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control2" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_right = 52.0
 margin_bottom = 52.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank2" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 63.0
 margin_right = 115.0
 margin_bottom = 52.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank2" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="slot26" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 126.0
@@ -838,53 +828,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank3" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control4" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 189.0
 margin_right = 241.0
 margin_bottom = 52.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank3" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank4" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control3" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 252.0
 margin_right = 304.0
 margin_bottom = 52.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank4" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="slot27" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_top = 63.0
@@ -911,78 +866,31 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 1
 
-[node name="blank5" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control7" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 63.0
 margin_top = 63.0
 margin_right = 115.0
 margin_bottom = 115.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank5" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank6" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control6" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 126.0
 margin_top = 63.0
 margin_right = 178.0
 margin_bottom = 115.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank6" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank7" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control5" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 189.0
 margin_top = 63.0
 margin_right = 241.0
 margin_bottom = 115.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank7" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1013,6 +921,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 9
 
 [node name="slot29" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_top = 126.0
@@ -1039,78 +948,31 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 5
 
-[node name="blank10" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control10" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 63.0
 margin_top = 126.0
 margin_right = 115.0
 margin_bottom = 178.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank10" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank11" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control9" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 126.0
 margin_top = 126.0
 margin_right = 178.0
 margin_bottom = 178.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank11" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank12" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control8" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 189.0
 margin_top = 126.0
 margin_right = 241.0
 margin_bottom = 178.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank12" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1141,6 +1003,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 6
 
 [node name="slot31" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_top = 189.0
@@ -1167,6 +1030,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 2
 
 [node name="slot32" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 63.0
@@ -1194,28 +1058,13 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 7
 
-[node name="blank8" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control11" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 126.0
 margin_top = 189.0
 margin_right = 178.0
 margin_bottom = 241.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank8" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1246,6 +1095,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 8
 
 [node name="slot34" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 252.0
@@ -1273,52 +1123,21 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_slot = 3
 
-[node name="blank9" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control12" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_top = 252.0
 margin_right = 52.0
 margin_bottom = 304.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank9" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="blank13" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
+[node name="Control13" type="Control" parent="Background/HBoxContainer/Equipment/GridContainer"]
 margin_left = 63.0
 margin_top = 252.0
 margin_right = 115.0
 margin_bottom = 304.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank13" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1349,56 +1168,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="blank14" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
-margin_left = 189.0
-margin_top = 252.0
-margin_right = 241.0
-margin_bottom = 304.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank14" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="blank15" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer"]
-margin_left = 252.0
-margin_top = 252.0
-margin_right = 304.0
-margin_bottom = 304.0
-rect_min_size = Vector2( 52, 52 )
-expand = true
-
-[node name="blank" type="TextureRect" parent="Background/HBoxContainer/Equipment/GridContainer/blank15" groups=[
-"Equipment_Slot",
-]]
-modulate = Color( 1, 1, 1, 0.25098 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+item_slot = 4
 
 [node name="Border" type="Sprite" parent="."]
 position = Vector2( 431.755, 225.031 )

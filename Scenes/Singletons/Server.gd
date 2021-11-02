@@ -79,8 +79,6 @@ remote func ReturnTokenVerificationResults(result, all_item_data, item_categorie
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
 		ItemDatabase.all_item_data = all_item_data
-		ItemDatabase.CreateItemCategoriesList(item_categories_data)	
-		ItemDatabase.CreateEquipSlots(equip_slots_data)
 #		get_node("../SceneHandler/Map/YSort/Player").set_physics_process(true)
 		#print("Successful Token Verification")
 	else:
