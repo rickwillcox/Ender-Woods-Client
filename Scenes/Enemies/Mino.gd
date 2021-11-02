@@ -1,13 +1,5 @@
 extends KinematicBody2D
 
-enum STATES{
-	IDLE, 
-	WANDER, 
-	CHASE, 
-	ATTACK, 
-	DEAD
-}
-
 enum ATTACK_TYPES {
 	ATTACKSWING,
 	ATTACKSPIN,
@@ -24,7 +16,6 @@ var velocity = Vector2.ZERO
 var blend_position = Vector2.ZERO
 var facing_blend_position = Vector2.ZERO
 var rng
-var state = STATES.IDLE
 var attacking = false
 var current_position
 var attack_type = ""
@@ -45,17 +36,6 @@ func _physics_process(delta):
 		queue_free()
 	
 	blend_position()
-	match state:
-		STATES.IDLE:
-			pass
-		STATES.WANDER:
-			pass
-		STATES.CHASE:
-			pass
-		STATES.ATTACK:
-			pass
-		STATES.DEAD:
-			queue_free()
 	
 func MoveEnemy(new_position):
 	if attack_timer.is_stopped():
