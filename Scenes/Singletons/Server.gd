@@ -4,6 +4,9 @@
 ###############################################
 
 extends Node
+signal item_swap_ok
+signal item_swap_nok
+signal item_swap_blocked
 
 var network = NetworkedMultiplayerENet.new()
 #var ip = "192.99.247.42"
@@ -113,5 +116,14 @@ remote func ReceiveEnemyAttack(enemy_id, attack_type):
 
 remote func ReceivePlayerInventory(inventory_data):
 	var PlayerInventory = get_node("/root/SceneHandler/Map/GUI/Inventory")
-	PlayerInventory.RefreshInventory(inventory_data[0])
+	PlayerInventory.RefreshInventory(inventory_data)
 
+func swap_items(from, to):
+	emit_signal("item_swap_blocked")
+	rpc_id(1, "swap_items", from, to)
+	
+remote func item_swap_ok():
+	emit_signal("item_swap_ok")
+
+remote func item_swap_nok():
+	emit_signal("item_swap_nok")

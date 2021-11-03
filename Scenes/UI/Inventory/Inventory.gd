@@ -41,8 +41,7 @@ func _ready():
 
 func RefreshInventory(inventory_data):
 	print(["Inventory data: ", inventory_data])
-	for item in inventory_data:
-		var item_slot = int(item[0])
-		var item_id = int(item[1])
-		item_slots[item_slot].texture = item_textures[item_id]
-		item_slots[item_slot].item_id = item_id
+	for slot in inventory_data.keys():
+		var item_id = inventory_data[slot]["item_id"]
+		item_slots[slot].texture = item_textures[item_id]
+		item_slots[slot].item_id = item_id
