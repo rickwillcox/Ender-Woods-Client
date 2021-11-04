@@ -164,7 +164,7 @@ func _physics_process(_delta):
 					var animation_vector = world_state_buffer[1][player][g.PLAYER_ANIMATION_VECTOR]
 					get_node("YSort/OtherPlayers/" + str(player)).MovePlayer(new_position, animation_vector)
 			for enemy in world_state_buffer[1][g.ENEMIES].keys(): 
-				if not world_state_buffer[1][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
+				if not world_state_buffer[0][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue
 				if get_node("YSort/Enemies").has_node(str(enemy)): #does enemy exist
 					var position_delta = ((world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION] - world_state_buffer[0][g.ENEMIES][enemy][g.ENEMY_LOCATION]))
