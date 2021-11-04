@@ -9,6 +9,7 @@ onready var menu_pressed_sound = get_node("../../MenuSounds/MenuPressSound")
 onready var menu_failed_sound = get_node("../../MenuSounds/MenuFailedSound")
 onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSucceededSound")
 
+
 var local = true
 	
 func _on_Login_pressed():
@@ -17,6 +18,7 @@ func _on_Login_pressed():
 		#popup and stop
 		print("Please provide valid userID and password")
 	else:
+		_save_user_login()
 		Globals.player_name = username_input.text
 		login_button.disabled = true
 		var username = username_input.get_text()
@@ -42,3 +44,41 @@ func _on_IPButton_pressed():
 		local = true
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Local"
 	Gateway.SetIP(local)
+
+
+func _on_UsernameCheckBox_toggled(button_pressed):
+	_save_user_login()
+
+func _on_PasswordCheckBox_toggled(button_pressed):
+	_save_user_login()
+
+func _save_user_login():
+	var username_lineedit = $Background/VBoxContainer/Username
+	var password_lineedit = $Background/VBoxContainer/Password
+	var user_check = $UsernameCheckBox.pressed
+	var pass_check = $PasswordCheckBox.pressed
+	var login_data = {}
+	if user_check:
+		login_data["username"] = username_lineedit.text
+	else:
+		login_data["username"] = null
+	if pass_check:
+		login_data["password"] = password_lineedit.text
+	else:
+		login_data["password"] = null
+	$SettingSaver.save_login_settings(login_data)
+
+func _set_login_from_settings(login_data):
+	var username_lineedit = $Background/VBoxContainer/Username
+	var password_lineedit = $Background/VBoxContainer/Password
+	if login_data.username != null:
+		username_lineedit.text = login_data["username"]
+		$UsernameCheckBox.pressed = true
+	if login_data.password != null:
+		password_lineedit.text = login_data["password"]
+		$PasswordCheckBox.pressed = true
+	if login_data.password != null and login_data.username != null:
+		_auto_login()
+
+func _auto_login():
+	_on_Login_pressed()
