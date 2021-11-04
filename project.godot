@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "GameSettings",
+"language": "GDScript",
+"path": "res://Scenes/UI/GameSettings/GameSettingsFile.gd"
+} ]
+_global_script_class_icons={
+"GameSettings": ""
+}
+
 [application]
 
 config/name="Client"
@@ -49,6 +59,7 @@ physics=false
 input=false
 rcred=false
 multi=false
+version=""
 
 [input]
 
