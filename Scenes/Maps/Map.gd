@@ -107,11 +107,12 @@ func UpdateWorldState(world_state):
 		last_world_state = world_state[g.TIMESTAMP]
 		world_state_buffer.append(world_state)
 
-func DropItem(item_id, item_name, item_position):
+func DropItem(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
 	var new_item_drop = item_drop.instance()
 	new_item_drop.name = item_name
 	new_item_drop.item_id = item_id
 	new_item_drop.position = item_position
+	new_item_drop.tagged_by_player = tagged_by_player
 	new_item_drop.item_texture = item_textures[int(item_id)]
 	get_node("YSort/Items").add_child(new_item_drop)
 
