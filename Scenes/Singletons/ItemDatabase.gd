@@ -26,3 +26,4 @@ func item_category(item_id : int):
 	if item_id == -1:
 		return null
 	return int(all_item_data[item_id]["item_category"])
+
