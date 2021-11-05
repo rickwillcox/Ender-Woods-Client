@@ -131,4 +131,4 @@ remote func item_swap_nok():
 	
 remote func AddItemDropToClient(item_id, item_name, item_position):
 	print("DROP ITEM")
-	get_node("../SceneHandler/Map").DropItem(randi() % 12 + 1, item_name, item_position)
+	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position)
