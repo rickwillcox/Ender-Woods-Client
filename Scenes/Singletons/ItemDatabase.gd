@@ -78,3 +78,15 @@ func move_items(from : int, to : int, inventory : Dictionary) -> bool:
 		inventory[from]["amount"] = leftover
 		
 	return true
+
+func is_move_to_slot_allowed(from : int, to : int, inventory : Dictionary):
+	# error, item from  doesnt exist
+	if not inventory.has(from):
+		return false
+	
+	# to empty slot
+	if not inventory.has(to):
+		return item_fits_slot(item_category(inventory[from]["item_id"]), to)
+		
+	return item_fits_slot(item_category(inventory[from]["item_id"]), to) and \
+		item_fits_slot(item_category(inventory[to]["item_id"]), from)

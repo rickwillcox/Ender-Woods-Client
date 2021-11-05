@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Inventory",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/Inventory.gd"
+}, {
+"base": "TextureRect",
+"class": "ItemSlot",
+"language": "GDScript",
+"path": "res://Scenes/UI/Inventory/ItemSlot.gd"
 } ]
 _global_script_class_icons={
 "GameSettings": "",
-"Inventory": ""
+"Inventory": "",
+"ItemSlot": ""
 }
 
 [application]
