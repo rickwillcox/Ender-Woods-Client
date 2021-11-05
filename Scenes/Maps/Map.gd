@@ -113,7 +113,7 @@ func DropItem(item_id, item_name, item_position):
 	new_item_drop.item_id = item_id
 	new_item_drop.position = item_position
 	new_item_drop.item_texture = item_textures[int(item_id)]
-	add_child(new_item_drop)
+	get_node("YSort/Items").add_child(new_item_drop)
 
 func LoadItemTextures():
 	dir.open("res://Assets/inventory/Items/")

@@ -132,3 +132,12 @@ remote func item_swap_nok():
 remote func AddItemDropToClient(item_id, item_name, item_position):
 	print("DROP ITEM")
 	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position)
+
+remote func GetItemsOnGround(items_on_ground : Array):
+	print("Current items on ground before login: ", items_on_ground)
+	for item in items_on_ground:
+		get_node("../SceneHandler/Map").DropItem(item[0], item[1], item[2])
+		
+remote func RemoveItemDropFromClient(item_name : String):
+	get_node("../SceneHandler/Map/YSort/Items/" + item_name).RemoveFromWorld()
+

@@ -30,8 +30,3 @@ texture = ExtResource( 1 )
 root_node = NodePath("../Sprite")
 autoplay = "bounce"
 anims/bounce = SubResource( 1 )
-
-[node name="RemoveTimer" type="Timer" parent="."]
-wait_time = 5.0
-
-[connection signal="timeout" from="RemoveTimer" to="." method="_on_RemoveTimer_timeout"]
