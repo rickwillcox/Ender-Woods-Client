@@ -1102,6 +1102,8 @@ position = Vector2( 686.832, 488.088 )
 [node name="O3" parent="YSort/Ores" instance=ExtResource( 5 )]
 position = Vector2( 779.727, 488.088 )
 
+[node name="Items" type="YSort" parent="YSort"]
+
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="Joystick" parent="GUI" instance=ExtResource( 3 )]
