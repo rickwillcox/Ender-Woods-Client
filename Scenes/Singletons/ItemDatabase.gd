@@ -83,6 +83,9 @@ func is_move_to_slot_allowed(from : int, to : int, inventory : Dictionary):
 	# error, item from  doesnt exist
 	if not inventory.has(from):
 		return false
+		
+	if from == to:
+		return false
 	
 	# to empty slot
 	if not inventory.has(to):
