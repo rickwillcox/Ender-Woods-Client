@@ -17,6 +17,7 @@ var moving = false
 var player_state
 var player_action = IDLE
 var blend_position = Vector2.ZERO
+var player_id : int
 
 
 
