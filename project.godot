@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "GameSettings",
 "language": "GDScript",
 "path": "res://Scenes/UI/GameSettings/GameSettingsFile.gd"
+}, {
+"base": "Control",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Scenes/UI/Inventory/Inventory.gd"
 } ]
 _global_script_class_icons={
-"GameSettings": ""
+"GameSettings": "",
+"Inventory": ""
 }
 
 [application]

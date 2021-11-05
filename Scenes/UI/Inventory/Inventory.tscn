@@ -60,7 +60,7 @@ __meta__ = {
 
 [node name="ItemSlots" type="VBoxContainer" parent="Background/HBoxContainer"]
 margin_right = 296.0
-margin_bottom = 417.0
+margin_bottom = 354.0
 rect_min_size = Vector2( 275, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
@@ -755,13 +755,13 @@ item_slot = 34
 [node name="mc_middle" type="MarginContainer" parent="Background/HBoxContainer"]
 margin_left = 300.0
 margin_right = 325.0
-margin_bottom = 417.0
+margin_bottom = 354.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="Equipment" type="VBoxContainer" parent="Background/HBoxContainer"]
 margin_left = 329.0
 margin_right = 644.0
-margin_bottom = 417.0
+margin_bottom = 354.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
