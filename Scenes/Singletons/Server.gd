@@ -132,7 +132,18 @@ remote func item_swap_nok():
 func move_items(from, to):
 	emit_signal("item_swap_blocked")
 	rpc_id(1, "move_items", from, to)
-	
-remote func AddItemDropToClient(item_id, item_name, item_position):
+
+remote func AddItemDropToClient(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
 	print("DROP ITEM")
-	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position)
+	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position, tagged_by_player)
+
+remote func GetItemsOnGround(items_on_ground : Array):
+	print("Current items on ground before login: ", items_on_ground)
+	for item in items_on_ground:
+		get_node("../SceneHandler/Map").DropItem(item[0], item[1], item[2])
+		
+remote func RemoveItemDropFromClient(item_name : String):
+	get_node("../SceneHandler/Map/YSort/Items/" + item_name).RemoveFromWorld()
+
+remote func StorePlayerID(player_id : int):
+	get_node("../SceneHandler/Map/YSort/Player").player_id = player_id

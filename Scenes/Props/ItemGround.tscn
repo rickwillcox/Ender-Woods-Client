@@ -31,7 +31,8 @@ root_node = NodePath("../Sprite")
 autoplay = "bounce"
 anims/bounce = SubResource( 1 )
 
-[node name="RemoveTimer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="PickupTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 
-[connection signal="timeout" from="RemoveTimer" to="." method="_on_RemoveTimer_timeout"]
+[connection signal="timeout" from="PickupTimer" to="." method="_on_PickupTimer_timeout"]
