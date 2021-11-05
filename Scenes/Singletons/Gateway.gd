@@ -5,6 +5,7 @@ var gateway_api = MultiplayerAPI.new()
 var port = 1910
 var online_ip = "192.99.247.42"
 var local_ip = "127.0.0.1"
+#var ip = "45.58.43.202"
 var ip = "127.0.0.1"
 var connected = false
 

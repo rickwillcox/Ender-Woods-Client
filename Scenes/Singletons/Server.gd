@@ -10,6 +10,7 @@ signal item_swap_blocked
 
 var network = NetworkedMultiplayerENet.new()
 #var ip = "192.99.247.42"
+#var ip = "45.58.43.202"
 var ip = "127.0.0.1"
 var port = 1909
 
@@ -127,3 +128,7 @@ remote func item_swap_ok():
 
 remote func item_swap_nok():
 	emit_signal("item_swap_nok")
+	
+remote func AddItemDropToClient(item_id, item_name, item_position):
+	print("DROP ITEM")
+	get_node("../SceneHandler/Map").DropItem(randi() % 12 + 1, item_name, item_position)

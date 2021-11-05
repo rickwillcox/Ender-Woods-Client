@@ -14,10 +14,12 @@ var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
 var player_spawn = preload("res://Scenes/Player/PlayerTemplate.tscn")
 var client_player = preload("res://Scenes/Player/Player.tscn")
+var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 var last_world_state = 0
 var world_state_buffer = []
 const interpolation_offset = 100
 var printed_world_state = false
+var item_textures : Dictionary = {}
 
 
 func _ready():
@@ -30,6 +32,8 @@ func _ready():
 			break
 		elif file.ends_with(".mp3"):
 			tracks.append(file)	
+	
+	LoadItemTextures()
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -102,6 +106,28 @@ func UpdateWorldState(world_state):
 	if world_state[g.TIMESTAMP] > last_world_state:
 		last_world_state = world_state[g.TIMESTAMP]
 		world_state_buffer.append(world_state)
+
+func DropItem(item_id, item_name, item_position):
+	var new_item_drop = item_drop.instance()
+	new_item_drop.name = item_name
+	new_item_drop.item_id = item_id
+	new_item_drop.position = item_position
+	new_item_drop.item_texture = item_textures[int(item_id)]
+	add_child(new_item_drop)
+
+func LoadItemTextures():
+	dir.open("res://Assets/inventory/Items/")
+	dir.list_dir_begin(true, true)
+	#get all files that end in .png from the directory above
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif file.ends_with(".png") and file[0].to_int() != 0:
+			var id = file.to_int()
+			item_textures[id] =  load("res://Assets/inventory/Items/" + file)
+	
+
 		
 func _physics_process(_delta):
 	var render_time = Server.client_clock - interpolation_offset
