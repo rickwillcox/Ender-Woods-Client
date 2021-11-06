@@ -140,7 +140,7 @@ remote func AddItemDropToClient(item_id : int, item_name : String, item_position
 remote func GetItemsOnGround(items_on_ground : Array):
 	print("Current items on ground before login: ", items_on_ground)
 	for item in items_on_ground:
-		get_node("../SceneHandler/Map").DropItem(item[0], item[1], item[2])
+		get_node("../SceneHandler/Map").DropItem(item[0], item[1], item[2], item[3])
 		
 remote func RemoveItemDropFromClient(item_name : String):
 	get_node("../SceneHandler/Map/YSort/Items/" + item_name).RemoveFromWorld()
