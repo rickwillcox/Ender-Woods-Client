@@ -20,8 +20,10 @@ var dir = Directory.new()
 
 func _ready():
 	Server.connect("item_swap_ok", self, "handle_item_swap_ok")
-	Server.connect("item_swap_blocked", self, "handle_item_swap_blocked")
 	Server.connect("item_swap_nok", self, "handle_item_swap_nok")
+	
+	Server.connect("item_add_ok", self, "handle_item_add_ok")
+	Server.connect("item_add_nok", self, "handle_item_add_nok")
 	
 	dir.open("res://Assets/inventory/Items/")
 	dir.list_dir_begin(true, true)
@@ -51,9 +53,6 @@ func handle_item_swap_ok():
 	inventory_cache = {}
 	awaiting_response = false
 
-func handle_item_swap_blocked():
-	awaiting_response = true
-
 func handle_item_swap_nok():
 	# operation nok, restore inventory from cache
 	for slot in inventory_cache:
@@ -82,7 +81,8 @@ func is_move_to_slot_allowed(from_item_slot, to_item_slot):
 		return false
 	return ItemDatabase.is_move_to_slot_allowed(from_item_slot, to_item_slot, inventory)
 
-func move_items(from_item_slot, to_item_slot):	
+func move_items(from_item_slot, to_item_slot):
+	awaiting_response = true
 	# copy the slot contents in case server rejects the operation
 	inventory_cache[from_item_slot] = (inventory[from_item_slot] as Dictionary).duplicate(true)
 	if inventory.has(to_item_slot):
@@ -95,3 +95,38 @@ func move_items(from_item_slot, to_item_slot):
 	# update world server
 	Server.move_items(from_item_slot, to_item_slot)
 
+var empty_slot_cache = null
+func add_item(action_id : String, item_id : int, amount : int = 1) -> bool:
+	awaiting_response = true
+	var slot = find_empty_slot()
+	if slot == -1:
+		# inventory full
+		return false
+		awaiting_response = true
+	empty_slot_cache = slot
+	
+	inventory[slot] = { "item_id" : item_id, "amount" : amount }
+	update_slot_display(slot)
+	
+	Server.add_item(action_id, slot)
+	return true
+	
+func find_empty_slot() -> int:
+	# TODO: better way to find an empty slot. empty slot array?
+	for slot in range(10, 35):
+		if not slot in inventory.keys():
+			return slot
+	return -1
+
+func handle_item_add_ok():
+	awaiting_response = false
+	empty_slot_cache = null
+	
+func handle_item_add_nok():
+	inventory.erase(empty_slot_cache)
+	update_slot_display(empty_slot_cache)
+	empty_slot_cache = null
+	awaiting_response = false
+
+func on_pickup(item_id, item_name):
+	add_item(item_name, item_id)
