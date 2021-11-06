@@ -114,6 +114,7 @@ func DropItem(item_id : int, item_name : String, item_position : Vector2, tagged
 	new_item_drop.position = item_position
 	new_item_drop.tagged_by_player = tagged_by_player
 	new_item_drop.item_texture = item_textures[int(item_id)]
+	new_item_drop.connect("pickup", $GUI/Inventory, "on_pickup")
 	get_node("YSort/Items").add_child(new_item_drop)
 
 func LoadItemTextures():

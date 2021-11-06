@@ -6,7 +6,8 @@
 extends Node
 signal item_swap_ok
 signal item_swap_nok
-signal item_swap_blocked
+signal item_add_ok
+signal item_add_nok
 
 var network = NetworkedMultiplayerENet.new()
 #var ip = "192.99.247.42"
@@ -130,7 +131,6 @@ remote func item_swap_nok():
 	emit_signal("item_swap_nok")
 	
 func move_items(from, to):
-	emit_signal("item_swap_blocked")
 	rpc_id(1, "move_items", from, to)
 
 remote func AddItemDropToClient(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
@@ -147,3 +147,12 @@ remote func RemoveItemDropFromClient(item_name : String):
 
 remote func StorePlayerID(player_id : int):
 	get_node("../SceneHandler/Map/YSort/Player").player_id = player_id
+	
+func add_item(action_id : String, item_slot : int):
+	rpc_id(1, "add_item", action_id, item_slot)
+
+remote func add_item_ok():
+	emit_signal("item_add_ok")
+	
+remote func add_item_nok():
+	emit_signal("item_add_nok")
