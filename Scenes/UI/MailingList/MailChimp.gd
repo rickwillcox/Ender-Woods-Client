@@ -2,8 +2,8 @@ extends Control
 
 onready var endpoint = "https://us10.api.mailchimp.com/3.0/lists"
 onready var requester = $HTTPRequest
-onready var api_key = "9bba7a59ef9684e9849749aeb2e36e40-us10"
-onready var audience_id = "94b0fb7a3c"
+onready var api_key = "48ddd2e36ee50890c2ea87fb5402a585-us20"
+onready var audience_id = "f3f516b103"
 onready var textbox = $Panel/LineEdit
 export var game_name_tag : Array = ["", ""]
 onready var response_body_dict : Dictionary = {}
@@ -17,7 +17,7 @@ func _ready():
 
 func _input(event):
 	if mouse_on_background == true:
-		if event.is_action_pressed("left_click"):
+		if event.is_action_pressed("Click"):
 			self.visible = false
 			emit_signal("menu_closed")
 	if event.is_action_pressed("ui_cancel"):
