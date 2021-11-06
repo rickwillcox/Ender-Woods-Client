@@ -1,6 +1,6 @@
 extends Control
 
-onready var endpoint = "https://us10.api.mailchimp.com/3.0/lists"
+onready var endpoint = "https://us20.api.mailchimp.com/3.0/lists"
 onready var requester = $HTTPRequest
 onready var api_key = "48ddd2e36ee50890c2ea87fb5402a585-us20"
 onready var audience_id = "f3f516b103"
