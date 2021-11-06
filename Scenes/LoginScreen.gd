@@ -81,4 +81,5 @@ func _set_login_from_settings(login_data):
 		_auto_login()
 
 func _auto_login():
+	yield(get_tree(), "idle_frame")
 	_on_Login_pressed()
