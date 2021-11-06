@@ -129,6 +129,10 @@ remote func item_swap_ok():
 remote func item_swap_nok():
 	emit_signal("item_swap_nok")
 	
+func move_items(from, to):
+	emit_signal("item_swap_blocked")
+	rpc_id(1, "move_items", from, to)
+
 remote func AddItemDropToClient(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
 	print("DROP ITEM")
 	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position, tagged_by_player)
