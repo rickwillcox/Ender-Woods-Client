@@ -13,7 +13,7 @@ func _ready():
 		login_data["password"] = null
 		save_login_settings(login_data)
 	else:
-		print("Loaded settings")
+		Logger.info("Loaded settings")
 		load_login_settings()
 
 
@@ -21,7 +21,7 @@ func check_settings_file():
 	var setting_file_path : String = SAVE_FOLDER.plus_file(Settings_name)
 	var file : File = File.new()
 	if not file.file_exists(setting_file_path):
-		print("Save file %s doesn't exist" % setting_file_path)
+		Logger.info("Save file %s doesn't exist" % setting_file_path)
 		return
 	var settings : Resource = load(setting_file_path)
 	if check_compatibility(settings):
@@ -39,7 +39,7 @@ func check_compatibility(settings):
 #		return false
 
 func save_login_settings(login_data):
-	print("saving")
+	Logger.info("saving")
 	var login_settings := GameSettings.new()
 #	login_settings.game_version = ProjectSettings.get_setting("application/config/version")
 	login_settings.savefilename = "settings"
@@ -51,7 +51,7 @@ func save_login_settings(login_data):
 	var save_path = SAVE_FOLDER.plus_file(Settings_name)
 	var error : int = ResourceSaver.save(save_path, login_settings)
 	if error != OK:
-		print('There was an issue writing the settings to %s' % Settings_name)
+		Logger.error('There was an issue writing the settings to %s' % Settings_name, Logger.default_module_name, error)
 
 func load_login_settings():
 	var settings = check_settings_file()

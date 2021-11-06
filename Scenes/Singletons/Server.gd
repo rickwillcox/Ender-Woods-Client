@@ -42,10 +42,10 @@ func ConnectToServer():
 	network.connect("connection_succeeded", self, "_OnConnectionSucceeded")
 		
 func _OnConnectionFailed():
-	print("Failed to connected to server")
+	Logger.error("Failed to connected to server")
 
 func _OnConnectionSucceeded():
-	print("Successfully connected to World server")
+	Logger.info("Successfully connected to World server")
 	rpc_id(1, "FetchServerTime", OS.get_system_time_msecs()) #current client time
 	var timer = Timer.new()
 	timer.wait_time = 0.5
@@ -77,7 +77,7 @@ remote func ReturnLatency(client_time):
 	
 remote func FetchToken():
 	rpc_id(1, "ReturnToken", token)
-	print("FetchToken done")
+	Logger.verobse("FetchToken done")
 	
 remote func ReturnTokenVerificationResults(result, all_item_data):
 	if result == true:
@@ -85,11 +85,10 @@ remote func ReturnTokenVerificationResults(result, all_item_data):
 		get_node("../SceneHandler/Map").SpawnSelf()
 		ItemDatabase.all_item_data = all_item_data
 #		get_node("../SceneHandler/Map/YSort/Player").set_physics_process(true)
-		#print("Successful Token Verification")
 	else:
-		#print("Login Failed please try again")
+		Logger.error("Login unsuccessful")
 		get_node("../SceneHandler/Map/GUI/LoginScreen").login_button.disabled = false
-	print("ReturnTokenVerificationResults done")
+	Logger.verbose("ReturnTokenVerificationResults done")
 		
 func SendPlayerState(player_state):
 	rpc_unreliable_id(1, "ReceivePlayerState", player_state)
@@ -118,6 +117,7 @@ remote func ReceiveEnemyAttack(enemy_id, attack_type):
 
 remote func ReceivePlayerInventory(inventory_data):
 	var PlayerInventory = get_node("/root/SceneHandler/Map/GUI/Inventory")
+	Logger.info("Received inventory " + str(inventory_data))
 	PlayerInventory.RefreshInventory(inventory_data)
 
 func swap_items(from, to):
@@ -134,11 +134,10 @@ func move_items(from, to):
 	rpc_id(1, "move_items", from, to)
 
 remote func AddItemDropToClient(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
-	print("DROP ITEM")
 	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position, tagged_by_player)
 
 remote func GetItemsOnGround(items_on_ground : Array):
-	print("Current items on ground before login: ", items_on_ground)
+	Logger.info("Current items on ground before login: " + str(items_on_ground))
 	for item in items_on_ground:
 		get_node("../SceneHandler/Map").DropItem(item[0], item[1], item[2], item[3])
 		

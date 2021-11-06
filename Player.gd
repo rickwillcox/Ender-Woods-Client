@@ -40,9 +40,6 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	MovementLoop(delta)
 	DefinePlayerState()
-	print("test")
-
-	
 	
 func DefinePlayerState():
 	player_state = {"T": Server.client_clock, "P": get_global_position(), "A": animation_vector}

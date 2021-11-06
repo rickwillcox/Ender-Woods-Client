@@ -11,19 +11,19 @@ onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSuc
 
 
 var local = true
-	
+
 func _on_Login_pressed():
 	if username_input.text == "" or userpassword_input.text == "":
 		menu_failed_sound.play()
 		#popup and stop
-		print("Please provide valid userID and password")
+		Logger.warn("Please provide valid userID and password")
 	else:
 		_save_user_login()
 		Globals.player_name = username_input.text
 		login_button.disabled = true
 		var username = username_input.get_text()
 		var password = userpassword_input.get_text()
-		print("Attempting to login")
+		Logger.info("Attempting to login")
 		Gateway.ConnectToServer(username, password, false)
 		menu_pressed_sound.play()
 
@@ -32,7 +32,7 @@ func _on_CreateAccount_pressed():
 	self.visible = false
 	create_account_screen.visible = true
 	menu_pressed_sound.play()
-	
+
 
 
 func _on_IPButton_pressed():

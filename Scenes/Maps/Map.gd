@@ -18,7 +18,6 @@ var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 var last_world_state = 0
 var world_state_buffer = []
 const interpolation_offset = 100
-var printed_world_state = false
 var item_textures : Dictionary = {}
 
 
@@ -48,7 +47,7 @@ func play_background_music():
 	background_music.stream = load("res://Assets/Sounds/Background Music/" + tracks[track_playing])
 	if turn_on_background_music:
 		background_music.play()
-	print("Track name: ", tracks[track_playing], "   Track Number: ", track_playing)
+	Logger.info("Track name: " + str(tracks[track_playing]) + "   Track Number: " + str(track_playing))
 
 func previous_background_music_track():
 	if track_playing == 0:
@@ -99,7 +98,7 @@ func SpawnNewEnemy(enemy_id, enemy_dict):
 
 func DespawnPlayer(player_id):
 	yield(get_tree().create_timer(0.3), "timeout")
-	print("despawning", " ", player_id)
+	Logger.info("despawning", " ", player_id)
 	get_node("YSort/OtherPlayers/" + str(player_id)).queue_free()
 
 func UpdateWorldState(world_state):
@@ -155,7 +154,7 @@ func _physics_process(_delta):
 					var animation_vector = world_state_buffer[2][player][g.PLAYER_ANIMATION_VECTOR]
 					get_node("YSort/OtherPlayers/" + str (player)).MovePlayer(new_position, animation_vector)
 				else:
-					print("spawning other player")
+					Logger.info("spawning other player")
 					SpawnNewPlayer(player, world_state_buffer[2][player][g.PLAYER_POSITION])
 			for enemy in world_state_buffer[2][g.ENEMIES].keys(): 
 				if not world_state_buffer[1][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00

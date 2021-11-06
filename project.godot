@@ -39,6 +39,8 @@ config/windows_native_icon="res://Assets/C.ico"
 
 [autoload]
 
+Logger="*res://common/logger/logger.gd"
+LoggerConfig="*res://Scenes/Singletons/LoggerConfig.gd"
 Server="*res://Scenes/Singletons/Server.gd"
 Gateway="*res://Scenes/Singletons/Gateway.gd"
 Globals="*res://Scenes/Singletons/Globals.gd"
