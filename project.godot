@@ -42,7 +42,7 @@ config/windows_native_icon="res://Assets/C.ico"
 Server="*res://Scenes/Singletons/Server.gd"
 Gateway="*res://Scenes/Singletons/Gateway.gd"
 Globals="*res://Scenes/Singletons/Globals.gd"
-ServerInterface="*res://Ender-Woods-Common/ServerInterface.gd"
+ServerInterface="*res://common/ServerInterface.gd"
 ItemDatabase="*res://Scenes/Singletons/ItemDatabase.gd"
 
 [debug]
