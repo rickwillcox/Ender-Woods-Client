@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/UI/MailingList/MailChimp.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/MailingList/checkmark.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.321569 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.272727 ), 0.0, 0.0, 0, 0, Vector2( 0.164557, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 65.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.45
+angular_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_curve = SubResource( 3 )
+color = Color( 1, 0, 0, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="MailChimp" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.05176e-05
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+game_name_tag = [ "In-Client Signup", "Ender Woods" ]
+
+[node name="background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -280.0
+margin_top = -106.0
+margin_right = 280.0
+margin_bottom = 106.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="Label" parent="Panel"]
+margin_left = 3.41422
+margin_top = 2.77817
+margin_right = 375.414
+margin_bottom = 40.7782
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Join our Mailing List!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 11.0
+margin_top = -41.0
+margin_right = -12.0
+margin_bottom = 15.0
+hint_tooltip = "Please join our community!"
+align = 1
+placeholder_text = "Your Email"
+placeholder_alpha = 0.75
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = -87.0
+margin_right = -12.0
+margin_bottom = -34.0
+text = "Subscribe to our Newsletter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="checkmark" type="Sprite" parent="Panel"]
+visible = false
+position = Vector2( 530, 60 )
+texture = ExtResource( 2 )
+
+[node name="Fireworks" type="Particles2D" parent="Panel"]
+position = Vector2( 200, 0 )
+emitting = false
+amount = 80
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource( 4 )
+
+[node name="Fireworks2" type="Particles2D" parent="Panel"]
+position = Vector2( 360, 0 )
+emitting = false
+amount = 80
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="Panel"]
+
+[node name="exitbtn" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -7.59943
+margin_top = -42.0
+margin_right = 40.4006
+margin_bottom = 6.0
+rect_min_size = Vector2( 48, 48 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="subbedSE" type="AudioStreamPlayer" parent="."]
+
+[connection signal="mouse_entered" from="background" to="." method="_on_background_mouse_entered"]
+[connection signal="mouse_exited" from="background" to="." method="_on_background_mouse_exited"]
+[connection signal="text_entered" from="Panel/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Panel/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Panel/exitbtn" to="." method="_on_exitbtn_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
