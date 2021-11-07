@@ -77,7 +77,7 @@ remote func ReturnLatency(client_time):
 	
 remote func FetchToken():
 	rpc_id(1, "ReturnToken", token)
-	Logger.verobse("FetchToken done")
+	Logger.verbose("FetchToken done")
 	
 remote func ReturnTokenVerificationResults(result, all_item_data):
 	if result == true:

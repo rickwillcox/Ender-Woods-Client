@@ -14,8 +14,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/UI/GameSettings/GameSettingsFile.gd"
 }, {
-"base": "Control",
+"base": "Node",
 "class": "Inventory",
+"language": "GDScript",
+"path": "res://common/Inventory.gd"
+}, {
+"base": "Control",
+"class": "InventoryScreen",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/Inventory.gd"
 }, {
@@ -27,6 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "GameSettings": "",
 "Inventory": "",
+"InventoryScreen": "",
 "ItemSlot": ""
 }
 
@@ -41,11 +47,11 @@ config/windows_native_icon="res://Assets/C.ico"
 
 Logger="*res://common/logger/logger.gd"
 LoggerConfig="*res://Scenes/Singletons/LoggerConfig.gd"
-Server="*res://Scenes/Singletons/Server.gd"
-Gateway="*res://Scenes/Singletons/Gateway.gd"
-Globals="*res://Scenes/Singletons/Globals.gd"
 ServerInterface="*res://common/ServerInterface.gd"
-ItemDatabase="*res://Scenes/Singletons/ItemDatabase.gd"
+ItemDatabase="*res://common/ItemDatabase.gd"
+Server="*res://Scenes/Singletons/Server.gd"
+Globals="*res://Scenes/Singletons/Globals.gd"
+Gateway="*res://Scenes/Singletons/Gateway.gd"
 
 [debug]
 
@@ -84,27 +90,27 @@ Click={
 }
 PlayerStatsPanel={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
  ]
 }
 melee_attack={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
 NextBackgroundMusic={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"unicode":0,"echo":false,"script":null)
  ]
 }
 PreviousBackgroundMusic={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
  ]
 }
 Inventory={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
  ]
 }
 
