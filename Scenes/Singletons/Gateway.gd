@@ -68,35 +68,35 @@ func ResetButtons():
 		
 
 func _OnConnectionFailed():	
-	print("Failed to connect to the login server")
-	print("Pop-up server offline.... or something")
+	Logger.error("Failed to connect to the login server")
+	# TODO: Pop-up server offline.... or something
 	ResetButtons()
 	
 	
 func _OnConnectionSucceeded():
 	connected = true
-	print("Successfully connected to login server")
+	Logger.info("Successfully connected to login server")
 	if not new_account:
 		RequestLogin()
-		print("request login done")
+		Logger.verbose("request login done")
 	else:
 		RequestCreateAccount()
 
 
 func RequestCreateAccount():
-	print("Requesting to make new account")
+	Logger.info("Requesting to make new account")
 	rpc_id(1, "CreateAccountRequest", username, password.sha256_text())
 	username = ""
 	password = ""
 	
 func RequestLogin():
-	print("Connecting to gateway to request login")
+	Logger.info("Connecting to gateway to request login")
 	rpc_id(1, "LoginRequest", username, password.sha256_text())
 	username = ""
 	password = ""
 
 remote func ReturnLoginRequest(results, token):
-	print("results received: " + str(results))
+	Logger.info("results received: " + str(results))
 	if results == true:
 		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
 		Server.token = token
@@ -104,7 +104,7 @@ remote func ReturnLoginRequest(results, token):
 		#Server.FetchPlayerStats()
 		
 	else:
-		print("Login Failed -- Please provide a valid username and password")
+		Logger.warn("Login Failed -- Please provide a valid username and password")
 		get_node("../SceneHandler/Map/GUI/LoginScreen").login_button.disabled = false
 		get_node("../SceneHandler/Map/MenuSounds/MenuFailedSound").play()
 		
@@ -123,11 +123,11 @@ remote func ReturnCreateAccountRequest(valid_request, message):
 		get_node("../SceneHandler/Map/GUI/LoginScreen").visible = true
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").create_account_button.disabled = false
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").back_button.disabled = false
-		print("Account Created")
+		Logger.info("Account Created")
 	elif message == 1:
-		print("Couldnt Create Account, please try again")
+		Logger.warn("Couldnt Create Account, please try again")
 	elif message == 2:
-		print("Username already exists")
+		Logger.warn("Username already exists")
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").create_account_button.disabled = false
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").back_button.disabled = false
 	

@@ -39,7 +39,6 @@ func _ready():
 
 func RefreshInventory(inventory_data):
 	inventory = inventory_data
-	print(["Inventory data: ", inventory_data])
 	for slot in inventory_data.keys():
 		update_slot_display(slot)
 
