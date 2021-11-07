@@ -5,9 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.7495
 
-[node name="Ore" type="StaticBody2D" groups=[
-"Ores",
-]]
+[node name="Ore" type="StaticBody2D" groups=["Ores"]]
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Sprite" type="Sprite" parent="."]

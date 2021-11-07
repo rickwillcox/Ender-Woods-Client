@@ -262,7 +262,7 @@ __meta__ = {
 script = ExtResource( 8 )
 
 [connection signal="pressed" from="Background/VBoxContainer/Loginbutton" to="." method="_on_Login_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/CreateAccount" to="." method="_on_CreateAccount_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/CreateAccount" to="." method="_on_create_account_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/IPButton" to="." method="_on_IPButton_pressed"]
 [connection signal="toggled" from="UsernameCheckBox" to="." method="_on_UsernameCheckBox_toggled"]
 [connection signal="toggled" from="PasswordCheckBox" to="." method="_on_PasswordCheckBox_toggled"]

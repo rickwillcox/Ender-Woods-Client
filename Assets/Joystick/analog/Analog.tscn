@@ -88,9 +88,7 @@ texture = ExtResource( 3 )
 modulate = Color( 1, 1, 1, 0.509804 )
 texture = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=[
-"JoyStick",
-]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["JoyStick"]]
 anims/alpha_in = SubResource( 1 )
 anims/alpha_out = SubResource( 2 )
 anims/ball_center = SubResource( 3 )
