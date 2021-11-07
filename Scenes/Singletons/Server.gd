@@ -4,27 +4,22 @@
 ###############################################
 
 extends Node
+
 signal item_swap_ok
 signal item_swap_nok
 signal item_add_ok
 signal item_add_nok
 
 var network = NetworkedMultiplayerENet.new()
-#var ip = "192.99.247.42"
-#var ip = "45.58.43.202"
-var ip = "127.0.0.1"
-var port = 1909
-
-var client_clock = 0
+#var ip : String = "45.58.43.202"
+var ip : String = "127.0.0.1"
+var port : int = 1909
+var client_clock : int = 0
 var decimal_collector : float = 0
-var latency_array = []
-var latency = 0
-var delta_latency = 0
-
-var token
-
-func _ready():
-	pass
+var latency_array : Array = []
+var latency : int = 0
+var delta_latency : int = 0
+var token : String
 
 func _physics_process(delta):
 	client_clock += int(delta*1000) + delta_latency
@@ -34,33 +29,33 @@ func _physics_process(delta):
 		client_clock += 1
 		decimal_collector -= 1.0
 
-func ConnectToServer():
+func connect_to_server():
 	network.create_client(ip, port)
 	get_tree().set_network_peer(network)
 	
-	network.connect("connection_failed", self, "_OnConnectionFailed")
-	network.connect("connection_succeeded", self, "_OnConnectionSucceeded")
+	network.connect("connection_failed", self, "_on_connection_failed")
+	network.connect("connection_succeeded", self, "_on_connection_succeeded")
 		
-func _OnConnectionFailed():
+func _on_connection_failed():
 	Logger.error("Failed to connected to server")
 
-func _OnConnectionSucceeded():
+func _on_connection_succeeded():
 	Logger.info("Successfully connected to World server")
-	rpc_id(1, "FetchServerTime", OS.get_system_time_msecs()) #current client time
+	rpc_id(1, "fetch_server_time", OS.get_system_time_msecs()) #current client time
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.autostart = true
-	timer.connect("timeout", self, "DetermineLatency")
+	timer.connect("timeout", self, "determine_latency")
 	self.add_child(timer)
 	
-remote func ReturnServerTime(server_time, client_time):
+remote func return_server_time(server_time : int, client_time : int):
 	latency = (OS.get_system_time_msecs() - client_time) / 2
 	client_clock = server_time + latency
 	
-func DetermineLatency():
-	rpc_id(1, "DetermineLatency", OS.get_system_time_msecs())
+func determine_latency():
+	rpc_id(1, "determine_latency", OS.get_system_time_msecs())
 	
-remote func ReturnLatency(client_time):
+remote func return_latency(client_time):
 	latency_array.append((OS.get_system_time_msecs() - client_time) / 2)
 	if latency_array.size() == 9:
 		var total_latency = 0
@@ -75,11 +70,11 @@ remote func ReturnLatency(client_time):
 		latency = total_latency / latency_array.size()
 		latency_array.clear()
 	
-remote func FetchToken():
-	rpc_id(1, "ReturnToken", token)
+remote func fetch_token():
+	rpc_id(1, "return_token", token)
 	Logger.verbose("FetchToken done")
 	
-remote func ReturnTokenVerificationResults(result, all_item_data):
+remote func return_token_verification_results(result, all_item_data):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
@@ -88,34 +83,34 @@ remote func ReturnTokenVerificationResults(result, all_item_data):
 	else:
 		Logger.error("Login unsuccessful")
 		get_node("../SceneHandler/Map/GUI/LoginScreen").login_button.disabled = false
-	Logger.verbose("ReturnTokenVerificationResults done")
+	Logger.verbose("return_token_verification_results done")
 		
-func SendPlayerState(player_state):
-	rpc_unreliable_id(1, "ReceivePlayerState", player_state)
+func send_player_state(player_state : Dictionary):
+	rpc_unreliable_id(1, "receive_player_state", player_state)
 	
-remote func ReceiveWorldState(world_state):
-	get_node("../SceneHandler/Map").UpdateWorldState(world_state)
+remote func receive_world_state(world_state : Dictionary):
+	get_node("../SceneHandler/Map").update_world_state(world_state)
 
-func FetchPlayerStats():
-	rpc_id(1, "FetchPlayerStats")
+func fetch_player_stats():
+	rpc_id(1, "fetch_player_stats")
 
-remote func ReturnPlayerStats(stats):
-	get_node("../SceneHandler/Map/GUI/PlayerStats").LoadPlayerStats(stats)
+remote func return_player_stats(stats):
+	get_node("../SceneHandler/Map/GUI/PlayerStats").load_player_stats(stats)
 	
-remote func SpawnNewPlayer(player_id, spawn_position):
-	get_node("../SceneHandler/Map").SpawnNewPlayer(player_id, spawn_position)
+remote func spawn_new_player(player_id : int, spawn_position : Vector2):
+	get_node("../SceneHandler/Map").spawn_new_player(player_id, spawn_position)
 
-remote func DespawnPlayer(player_id):
-	get_node("../SceneHandler/Map").DespawnPlayer(player_id)
+remote func despawn_player(player_id : int):
+	get_node("../SceneHandler/Map").despawn_player(player_id)
 
-func cw_MeleeAttack(blend_position):
-	rpc_id(1, "cw_MeleeAttack", blend_position)
+func melee_attack(blend_position : Vector2):
+	rpc_id(1, "melee_attack", blend_position)
 
-remote func ReceiveEnemyAttack(enemy_id, attack_type):
+remote func receive_enemy_attack(enemy_id : int, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
-		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).EnemyAttack(attack_type)	
+		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).enemy_attack(attack_type)	
 
-remote func ReceivePlayerInventory(inventory_data):
+remote func receive_player_inventory(inventory_data):
 	var PlayerInventory = get_node("/root/SceneHandler/Map/GUI/Inventory")
 	Logger.info("Received inventory " + str(inventory_data))
 	PlayerInventory.RefreshInventory(inventory_data)
@@ -133,18 +128,18 @@ remote func item_swap_nok():
 func move_items(from, to):
 	rpc_id(1, "move_items", from, to)
 
-remote func AddItemDropToClient(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
-	get_node("../SceneHandler/Map").DropItem(item_id, item_name, item_position, tagged_by_player)
+remote func add_item_drop_to_client(item_id : int, item_name : String, item_position : Vector2, tagged_by_player : int):
+	get_node("../SceneHandler/Map").drop_item(item_id, item_name, item_position, tagged_by_player)
 
-remote func GetItemsOnGround(items_on_ground : Array):
+remote func get_items_on_ground(items_on_ground : Array):
 	Logger.info("Current items on ground before login: " + str(items_on_ground))
 	for item in items_on_ground:
-		get_node("../SceneHandler/Map").DropItem(item[0], item[1], item[2], item[3])
+		get_node("../SceneHandler/Map").drop_item(item[0], item[1], item[2], item[3])
 		
-remote func RemoveItemDropFromClient(item_name : String):
-	get_node("../SceneHandler/Map/YSort/Items/" + item_name).RemoveFromWorld()
+remote func remove_item_drop_from_client(item_name : String):
+	get_node("../SceneHandler/Map/YSort/Items/" + item_name).remove_from_world()
 
-remote func StorePlayerID(player_id : int):
+remote func store_player_id(player_id : int):
 	get_node("../SceneHandler/Map/YSort/Player").player_id = player_id
 	
 func add_item(action_id : String, item_slot : int):

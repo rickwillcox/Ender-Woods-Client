@@ -15,7 +15,7 @@ func _ready():
 		$PickupTimer.start(time_left_for_nonkiller_pickup)
 		$Sprite.modulate.a = 0.5
 	
-func RemoveFromWorld():
+func remove_from_world():
 	queue_free()
 
 func _on_PickupTimer_timeout() -> void:

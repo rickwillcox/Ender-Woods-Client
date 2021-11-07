@@ -1,5 +1,7 @@
 extends Control
 
+var local : bool = true
+
 onready var username_input = get_node("Background/VBoxContainer/Username")
 onready var userpassword_input = get_node("Background/VBoxContainer/Password")
 onready var login_button = get_node("Background/VBoxContainer/Loginbutton")
@@ -8,9 +10,6 @@ onready var login_failed_message_screen = get_node("LoginFailedMessageScreen")
 onready var menu_pressed_sound = get_node("../../MenuSounds/MenuPressSound")
 onready var menu_failed_sound = get_node("../../MenuSounds/MenuFailedSound")
 onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSucceededSound")
-
-
-var local = true
 
 func _on_Login_pressed():
 	if username_input.text == "" or userpassword_input.text == "":
@@ -21,14 +20,13 @@ func _on_Login_pressed():
 		_save_user_login()
 		Globals.player_name = username_input.text
 		login_button.disabled = true
-		var username = username_input.get_text()
-		var password = userpassword_input.get_text()
+		var username : String = username_input.get_text()
+		var password : String = userpassword_input.get_text()
 		Logger.info("Attempting to login")
-		Gateway.ConnectToServer(username, password, false)
+		Gateway.connect_to_server(username, password, false)
 		menu_pressed_sound.play()
 
-
-func _on_CreateAccount_pressed():
+func _on_create_account_pressed():
 	self.visible = false
 	create_account_screen.visible = true
 	menu_pressed_sound.play()

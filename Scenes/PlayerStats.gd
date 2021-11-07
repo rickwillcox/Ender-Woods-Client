@@ -6,10 +6,8 @@ onready var dexterity = get_node("NinePatchRect/VBoxContainer/Dexterity/StatValu
 onready var intelligence = get_node("NinePatchRect/VBoxContainer/Intelligence/StatValue")
 onready var wisdom = get_node("NinePatchRect/VBoxContainer/Wisdom/StatValue")
 
-func ready():
-	pass
 
-func LoadPlayerStats(stats):
+func load_player_stats(stats):
 	strength.set_text(str(stats.Strength))
 	vitality.set_text(str(stats.Vitality))
 	dexterity.set_text(str(stats.Dexterity))
