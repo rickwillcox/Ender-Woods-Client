@@ -7,7 +7,7 @@ export var base_texture : Texture setget set_base_texture
 
 onready var item_texture_rect : TextureRect = $ItemTextureRect
 
-var inventory : Inventory 
+var inventory : InventoryScreen
 func _ready() -> void:	
 	if Engine.is_editor_hint():
 		return
