@@ -71,7 +71,7 @@ func request_login():
 	password = ""
 
 remote func return_login_request(results : bool, token : String):
-	Logger.info("Login results received: Result: %s | Token: %d" % [results, token])
+	Logger.info("Login results received: Result: %s | Token: %s" % [results, token])
 	if results == true:
 		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
 		Server.token = token

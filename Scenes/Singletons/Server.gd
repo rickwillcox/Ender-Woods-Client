@@ -106,7 +106,7 @@ remote func despawn_player(player_id : int):
 func melee_attack(blend_position : Vector2):
 	rpc_id(1, "melee_attack", blend_position)
 
-remote func receive_enemy_attack(enemy_id : int, attack_type):
+remote func receive_enemy_attack(enemy_id : String, attack_type):
 	if get_node("../SceneHandler/Map/YSort/Enemies/").has_node(str(enemy_id)):
 		get_node("../SceneHandler/Map/YSort/Enemies/" + str(enemy_id)).enemy_attack(attack_type)	
 
@@ -137,7 +137,8 @@ remote func get_items_on_ground(items_on_ground : Array):
 		get_node("../SceneHandler/Map").drop_item(item[0], item[1], item[2], item[3])
 		
 remote func remove_item_drop_from_client(item_name : String):
-	get_node("../SceneHandler/Map/YSort/Items/" + item_name).remove_from_world()
+	if get_node("../SceneHandler/Map/YSort/Items/").has_node(item_name):
+		get_node("../SceneHandler/Map/YSort/Items/" + item_name).remove_from_world()
 
 remote func store_player_id(player_id : int):
 	get_node("../SceneHandler/Map/YSort/Player").player_id = player_id
@@ -150,3 +151,4 @@ remote func add_item_ok():
 	
 remote func add_item_nok():
 	emit_signal("item_add_nok")
+	
