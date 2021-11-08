@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/UI/GameSettings/GameSettingsFile.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Inventory",
 "language": "GDScript",
 "path": "res://common/Inventory.gd"
@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "ItemSlot",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/ItemSlot.gd"
+}, {
+"base": "Node",
+"class": "Serializer",
+"language": "GDScript",
+"path": "res://common/PacketSerializer.gd"
 } ]
 _global_script_class_icons={
 "GameSettings": "",
 "Inventory": "",
 "InventoryScreen": "",
-"ItemSlot": ""
+"ItemSlot": "",
+"Serializer": ""
 }
 
 [application]
