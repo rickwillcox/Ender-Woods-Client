@@ -16,11 +16,8 @@ var awaiting_response : bool = false
 var dir = Directory.new()
 
 func _ready():
-	Server.connect("item_swap_ok", self, "handle_item_swap_ok")
-	Server.connect("item_swap_nok", self, "handle_item_swap_nok")
-
-	Server.connect("item_add_ok", self, "handle_item_add_ok")
-	Server.connect("item_add_nok", self, "handle_item_add_nok")
+	PacketHandler.connect("inventory_nok", self, "handle_inventory_nok")
+	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
 
 	dir.open("res://Assets/inventory/Items/")
 	dir.list_dir_begin(true, true)
@@ -43,15 +40,6 @@ func register_slot(node, item_slot):
 	# only one node per slot
 	assert(not item_slots.has(item_slot))
 	item_slots[item_slot] = node
-
-func handle_item_swap_ok():
-	inventory.confirm_last_operation()
-	awaiting_response = false
-
-func handle_item_swap_nok():
-	for slot in inventory.reverse_last_operation():
-		update_slot_display(slot)
-	awaiting_response = false
 
 func update_slot_display(item_slot):
 	if inventory.slots.has(item_slot):
@@ -94,11 +82,11 @@ func add_item(action_id : String, item_id : int, amount : int = 1) -> bool:
 	Server.add_item(action_id, slot)
 	return true
 
-func handle_item_add_ok():
+func handle_inventory_ok():
 	inventory.confirm_last_operation()
 	awaiting_response = false
 
-func handle_item_add_nok():
+func handle_inventory_nok():
 	for slot in inventory.reverse_last_operation():
 		update_slot_display(slot)
 	awaiting_response = false
