@@ -1037,6 +1037,10 @@ points = PoolVector2Array( 0, 32, 32, 0, 64, 0, 96, 32, 96, 96, 64, 128, 32, 128
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 244.0 ],
+"_edit_vertical_guides_": [ 416.0, 792.0 ]
+}
 
 [node name="Island" type="TileMap" parent="."]
 mode = 2
