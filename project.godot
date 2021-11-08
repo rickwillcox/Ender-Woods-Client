@@ -52,6 +52,7 @@ ItemDatabase="*res://common/ItemDatabase.gd"
 Server="*res://Scenes/Singletons/Server.gd"
 Globals="*res://Scenes/Singletons/Globals.gd"
 Gateway="*res://Scenes/Singletons/Gateway.gd"
+PacketHandler="*res://Scenes/Singletons/PacketHandler.gd"
 
 [debug]
 

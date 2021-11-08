@@ -5,11 +5,6 @@
 
 extends Node
 
-signal item_swap_ok
-signal item_swap_nok
-signal item_add_ok
-signal item_add_nok
-
 var network = NetworkedMultiplayerENet.new()
 #var ip : String = "45.58.43.202"
 var ip : String = "127.0.0.1"
@@ -35,6 +30,7 @@ func connect_to_server():
 	
 	network.connect("connection_failed", self, "_on_connection_failed")
 	network.connect("connection_succeeded", self, "_on_connection_succeeded")
+	PacketHandler.connect("remove_item", self, "remove_item_drop")
 		
 func _on_connection_failed():
 	Logger.error("Failed to connected to server")
@@ -114,16 +110,6 @@ remote func receive_player_inventory(inventory_data):
 	var PlayerInventory = get_node("/root/SceneHandler/Map/GUI/Inventory")
 	Logger.info("Received inventory " + str(inventory_data))
 	PlayerInventory.RefreshInventory(inventory_data)
-
-func swap_items(from, to):
-	emit_signal("item_swap_blocked")
-	rpc_id(1, "swap_items", from, to)
-	
-remote func item_swap_ok():
-	emit_signal("item_swap_ok")
-
-remote func item_swap_nok():
-	emit_signal("item_swap_nok")
 	
 func move_items(from, to):
 	rpc_id(1, "move_items", from, to)
@@ -136,7 +122,7 @@ remote func get_items_on_ground(items_on_ground : Array):
 	for item in items_on_ground:
 		get_node("../SceneHandler/Map").drop_item(item[0], item[1], item[2], item[3])
 		
-remote func remove_item_drop_from_client(item_name : String):
+func remove_item_drop(item_name : String):
 	if get_node("../SceneHandler/Map/YSort/Items/").has_node(item_name):
 		get_node("../SceneHandler/Map/YSort/Items/" + item_name).remove_from_world()
 
@@ -145,10 +131,6 @@ remote func store_player_id(player_id : int):
 	
 func add_item(action_id : String, item_slot : int):
 	rpc_id(1, "add_item", action_id, item_slot)
-
-remote func add_item_ok():
-	emit_signal("item_add_ok")
 	
-remote func add_item_nok():
-	emit_signal("item_add_nok")
-	
+remote func handle_input_packets(packets):
+	PacketHandler.handle_many(packets)
