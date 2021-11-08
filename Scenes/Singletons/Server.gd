@@ -134,3 +134,15 @@ func add_item(action_id : String, item_slot : int):
 	
 remote func handle_input_packets(packets):
 	PacketHandler.handle_many(packets)
+
+remote func handle_uncompressed_input_packets(bytes : PoolByteArray):
+	var packet_bundle = Serializer.PacketBundle.new()
+	packet_bundle.buffer = bytes
+	var packets = packet_bundle.deserialize_packets()
+	PacketHandler.handle_many(packets)
+	
+remote func handle_compressed_input_packets(bytes: PoolByteArray, size : int):
+	var packet_bundle = Serializer.PacketBundle.new()
+	packet_bundle.buffer = bytes
+	var packets = packet_bundle.decompress(size)
+	PacketHandler.handle_many(packets)
