@@ -122,9 +122,9 @@ remote func get_items_on_ground(items_on_ground : Array):
 	for item in items_on_ground:
 		get_node("../SceneHandler/Map").drop_item(item[0], item[1], item[2], item[3])
 		
-func remove_item_drop(item_name : String):
-	if get_node("../SceneHandler/Map/YSort/Items/").has_node(item_name):
-		get_node("../SceneHandler/Map/YSort/Items/" + item_name).remove_from_world()
+func remove_item_drop(item_name : int):
+	if get_node("../SceneHandler/Map/YSort/Items/").has_node(str(item_name)):
+		get_node("../SceneHandler/Map/YSort/Items/" + str(item_name)).remove_from_world()
 
 remote func store_player_id(player_id : int):
 	get_node("../SceneHandler/Map/YSort/Player").player_id = player_id
