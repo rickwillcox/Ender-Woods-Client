@@ -11,6 +11,7 @@ var password : String
 var new_account : bool
 var cert : Resource = load("res://Assets/Certificate/X509_Certificate.crt")
 
+
 func _ready():
 	pass
 	
@@ -71,8 +72,15 @@ func request_login():
 	password = ""
 
 remote func return_login_request(results : bool, token : String):
-	Logger.info("Login results received: Result: %s | Token: %s" % [results, token])
-	if results == true:
+	Logger.info("Login results received: Result: %s | Token: %s | TimeStamp: %s | Unix Time: %s" 
+	% [results, token, token.right(64), str(OS.get_unix_time())])
+	if TestGlobals.is_test:
+		TestGlobals.test_login_request_result = results
+		TestGlobals.test_auth_token = token
+		print("test _ auth token: ", TestGlobals.test_auth_token)
+		print("test _ auth token: ", token)
+		return
+	elif results == true:
 		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
 		Server.token = token
 		Server.connect_to_server()
@@ -87,7 +95,11 @@ remote func return_login_request(results : bool, token : String):
 # warning-ignore:unused_argument
 remote func return_create_account_request(valid_request : bool, message : int):
 	#1 = failed to create, 2 = username already in use, 3 = account created successfully
-	if valid_request == true:
+	if TestGlobals.is_test:
+		TestGlobals.test_create_account_result = valid_request
+		TestGlobals.test_message = message
+		return
+	elif valid_request == true:
 		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
 		get_node("../SceneHandler/Map/GUI/CreateAccountScreen").account_created_message_screen.visible = true
 		yield(get_tree().create_timer(1), "timeout")

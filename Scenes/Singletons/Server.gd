@@ -16,6 +16,7 @@ var latency : int = 0
 var delta_latency : int = 0
 var token : String
 
+
 func _physics_process(delta):
 	client_clock += int(delta*1000) + delta_latency
 	delta_latency -= delta_latency
@@ -69,8 +70,14 @@ remote func return_latency(client_time):
 remote func fetch_token():
 	rpc_id(1, "return_token", token)
 	Logger.verbose("FetchToken done")
+	# Testing
+	TestGlobals.connected_to_world_server = true
 	
 remote func return_token_verification_results(result, all_item_data):
+	if TestGlobals.is_test:
+		TestGlobals.world_server_verification_results = result
+		ItemDatabase.all_item_data = all_item_data
+		return
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
@@ -146,3 +153,5 @@ remote func handle_compressed_input_packets(bytes: PoolByteArray, size : int):
 	packet_bundle.buffer = bytes
 	var packets = packet_bundle.decompress(size)
 	PacketHandler.handle_many(packets)
+	
+

@@ -59,6 +59,7 @@ Server="*res://Scenes/Singletons/Server.gd"
 Globals="*res://Scenes/Singletons/Globals.gd"
 Gateway="*res://Scenes/Singletons/Gateway.gd"
 PacketHandler="*res://Scenes/Singletons/PacketHandler.gd"
+TestGlobals="*res://Scenes/Singletons/TestGlobals.gd"
 
 [debug]
 
@@ -79,7 +80,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/multirun/plugin.cfg", "res://addons/port/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg", "res://addons/multirun/plugin.cfg", "res://addons/port/plugin.cfg" )
 
 [global]
 
