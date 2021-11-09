@@ -1,8 +1,9 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/COMISSION_Final-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Player/PlayerStats.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.06179
@@ -609,7 +610,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 12
-frame = 35
+frame = 34
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle_Down = SubResource( 2 )
@@ -658,8 +659,8 @@ margin_left = -33.5749
 margin_top = -27.1575
 margin_right = 34.4251
 margin_bottom = -13.1575
-custom_fonts/font = SubResource( 45 )
 custom_colors/font_color = Color( 0.87451, 1, 0, 1 )
+custom_fonts/font = SubResource( 45 )
 align = 1
 valign = 1
 __meta__ = {
@@ -668,3 +669,6 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource( 4 )
