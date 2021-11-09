@@ -1,0 +1,41 @@
+[gd_scene format=2]
+
+[node name="MenuSelector" type="VBoxContainer"]
+margin_left = -57.5
+margin_top = -1.0
+margin_right = 32.5
+margin_bottom = 445.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_top = 57.0
+margin_right = 90.0
+margin_bottom = 137.0
+rect_min_size = Vector2( 0, 80 )
+toggle_mode = true
+pressed = true
+text = "Inventory"
+
+[node name="Button2" type="Button" parent="."]
+margin_top = 141.0
+margin_right = 90.0
+margin_bottom = 221.0
+rect_min_size = Vector2( 0, 80 )
+text = "Status"
+
+[node name="Button3" type="Button" parent="."]
+margin_top = 225.0
+margin_right = 90.0
+margin_bottom = 305.0
+rect_min_size = Vector2( 0, 80 )
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="."]
+margin_top = 309.0
+margin_right = 90.0
+margin_bottom = 389.0
+rect_min_size = Vector2( 0, 80 )
+text = "Option 4"

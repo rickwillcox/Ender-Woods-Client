@@ -13,7 +13,7 @@ func _ready():
 		login_data["password"] = null
 		save_login_settings(login_data)
 	else:
-		Logger.info("Loaded settings")
+		Logger.info("Loading Login Settings")
 		load_login_settings()
 
 
@@ -39,7 +39,7 @@ func check_compatibility(settings):
 #		return false
 
 func save_login_settings(login_data):
-	Logger.info("saving")
+	Logger.info("Saving Login Settings")
 	var login_settings := GameSettings.new()
 #	login_settings.game_version = ProjectSettings.get_setting("application/config/version")
 	login_settings.savefilename = "settings"

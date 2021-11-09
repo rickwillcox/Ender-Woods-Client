@@ -1,0 +1,637 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/UI/Status/StatContainer.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/30.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/UI/Status/StatusTheme.tres" type="Theme" id=3]
+
+[node name="StatContainer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 0.749146
+margin_top = 0.518616
+margin_right = 304.749
+margin_bottom = 482.519
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AttributesTitle" type="Label" parent="VBoxContainer"]
+margin_right = 304.0
+margin_bottom = 33.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Attributes"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Teir1" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 37.0
+margin_right = 304.0
+margin_bottom = 231.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attributes" type="VBoxContainer" parent="VBoxContainer/Teir1"]
+margin_right = 150.0
+margin_bottom = 194.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_right = 150.0
+margin_bottom = 18.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/HP"]
+margin_bottom = 18.0
+
+[node name="HP_text" type="Label" parent="VBoxContainer/Teir1/Attributes/HP"]
+margin_left = 4.0
+margin_right = 47.0
+margin_bottom = 18.0
+text = "Health"
+
+[node name="MP" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/MP"]
+margin_bottom = 18.0
+
+[node name="MP_text" type="Label" parent="VBoxContainer/Teir1/Attributes/MP"]
+margin_left = 4.0
+margin_right = 38.0
+margin_bottom = 18.0
+text = "Mana"
+
+[node name="STR" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 62.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/STR"]
+margin_bottom = 18.0
+
+[node name="STR_text" type="Label" parent="VBoxContainer/Teir1/Attributes/STR"]
+margin_left = 4.0
+margin_right = 59.0
+margin_bottom = 18.0
+text = "Strength"
+
+[node name="VIT" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 66.0
+margin_right = 150.0
+margin_bottom = 84.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/VIT"]
+margin_bottom = 18.0
+
+[node name="VIT_test" type="Label" parent="VBoxContainer/Teir1/Attributes/VIT"]
+margin_left = 4.0
+margin_right = 56.0
+margin_bottom = 18.0
+text = "Vitality"
+
+[node name="WIS" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 106.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/WIS"]
+margin_bottom = 18.0
+
+[node name="WIS_test" type="Label" parent="VBoxContainer/Teir1/Attributes/WIS"]
+margin_left = 4.0
+margin_right = 52.0
+margin_bottom = 18.0
+text = "Wisdom"
+
+[node name="WIL" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 110.0
+margin_right = 150.0
+margin_bottom = 128.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/WIL"]
+margin_bottom = 18.0
+
+[node name="WIL_test" type="Label" parent="VBoxContainer/Teir1/Attributes/WIL"]
+margin_left = 4.0
+margin_right = 71.0
+margin_bottom = 18.0
+text = "Willpower"
+
+[node name="DEX" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 132.0
+margin_right = 150.0
+margin_bottom = 150.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/DEX"]
+margin_bottom = 18.0
+
+[node name="DEX_test" type="Label" parent="VBoxContainer/Teir1/Attributes/DEX"]
+margin_left = 4.0
+margin_right = 65.0
+margin_bottom = 18.0
+text = "Dexterity"
+
+[node name="AGI" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 172.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/AGI"]
+margin_bottom = 18.0
+
+[node name="AGI_test" type="Label" parent="VBoxContainer/Teir1/Attributes/AGI"]
+margin_left = 4.0
+margin_right = 49.0
+margin_bottom = 18.0
+text = "Agility"
+
+[node name="LUK" type="HBoxContainer" parent="VBoxContainer/Teir1/Attributes"]
+margin_top = 176.0
+margin_right = 150.0
+margin_bottom = 194.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir1/Attributes/LUK"]
+margin_bottom = 18.0
+
+[node name="LUK_test" type="Label" parent="VBoxContainer/Teir1/Attributes/LUK"]
+margin_left = 4.0
+margin_right = 31.0
+margin_bottom = 18.0
+text = "Luck"
+
+[node name="Values" type="VBoxContainer" parent="VBoxContainer/Teir1"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 194.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_right = 150.0
+margin_bottom = 18.0
+text = "1"
+align = 2
+
+[node name="MP_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 40.0
+text = "1"
+align = 2
+
+[node name="STR_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 62.0
+text = "1"
+align = 2
+
+[node name="VIT_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 66.0
+margin_right = 150.0
+margin_bottom = 84.0
+text = "1"
+align = 2
+
+[node name="WIS_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 106.0
+text = "1"
+align = 2
+
+[node name="WIL_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 110.0
+margin_right = 150.0
+margin_bottom = 128.0
+text = "1"
+align = 2
+
+[node name="DEX_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 132.0
+margin_right = 150.0
+margin_bottom = 150.0
+text = "1"
+align = 2
+
+[node name="AGI_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 172.0
+text = "1"
+align = 2
+
+[node name="LUK_value" type="Label" parent="VBoxContainer/Teir1/Values"]
+margin_top = 176.0
+margin_right = 150.0
+margin_bottom = 194.0
+text = "1"
+align = 2
+
+[node name="CombatSkillsTitle" type="Label" parent="VBoxContainer"]
+margin_top = 235.0
+margin_right = 304.0
+margin_bottom = 268.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Combat Skills"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Teir2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 272.0
+margin_right = 304.0
+margin_bottom = 378.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CombatSkills" type="VBoxContainer" parent="VBoxContainer/Teir2"]
+margin_right = 150.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATK" type="HBoxContainer" parent="VBoxContainer/Teir2/CombatSkills"]
+margin_right = 150.0
+margin_bottom = 18.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir2/CombatSkills/ATK"]
+margin_bottom = 18.0
+
+[node name="ATK_text" type="Label" parent="VBoxContainer/Teir2/CombatSkills/ATK"]
+margin_left = 4.0
+margin_right = 45.0
+margin_bottom = 18.0
+text = "Attack"
+
+[node name="DEF" type="HBoxContainer" parent="VBoxContainer/Teir2/CombatSkills"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir2/CombatSkills/DEF"]
+margin_bottom = 18.0
+
+[node name="DEF_text" type="Label" parent="VBoxContainer/Teir2/CombatSkills/DEF"]
+margin_left = 4.0
+margin_right = 52.0
+margin_bottom = 18.0
+text = "Defense"
+
+[node name="MAT" type="HBoxContainer" parent="VBoxContainer/Teir2/CombatSkills"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 62.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir2/CombatSkills/MAT"]
+margin_bottom = 18.0
+
+[node name="MAT_text" type="Label" parent="VBoxContainer/Teir2/CombatSkills/MAT"]
+margin_left = 4.0
+margin_right = 86.0
+margin_bottom = 18.0
+text = "Magic Attack"
+
+[node name="MDF" type="HBoxContainer" parent="VBoxContainer/Teir2/CombatSkills"]
+margin_top = 66.0
+margin_right = 150.0
+margin_bottom = 84.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir2/CombatSkills/MDF"]
+margin_bottom = 18.0
+
+[node name="MDF_text" type="Label" parent="VBoxContainer/Teir2/CombatSkills/MDF"]
+margin_left = 4.0
+margin_right = 93.0
+margin_bottom = 18.0
+text = "Magic Defense"
+
+[node name="APS" type="HBoxContainer" parent="VBoxContainer/Teir2/CombatSkills"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 106.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir2/CombatSkills/APS"]
+margin_bottom = 18.0
+
+[node name="APS_text" type="Label" parent="VBoxContainer/Teir2/CombatSkills/APS"]
+margin_left = 4.0
+margin_right = 84.0
+margin_bottom = 18.0
+text = "Attack Speed"
+
+[node name="Values" type="VBoxContainer" parent="VBoxContainer/Teir2"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATK_value" type="Label" parent="VBoxContainer/Teir2/Values"]
+margin_right = 150.0
+margin_bottom = 18.0
+text = "1"
+align = 2
+
+[node name="DEF_value" type="Label" parent="VBoxContainer/Teir2/Values"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 40.0
+text = "1"
+align = 2
+
+[node name="MAT_value" type="Label" parent="VBoxContainer/Teir2/Values"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 62.0
+text = "1"
+align = 2
+
+[node name="MDF_value" type="Label" parent="VBoxContainer/Teir2/Values"]
+margin_top = 66.0
+margin_right = 150.0
+margin_bottom = 84.0
+text = "1"
+align = 2
+
+[node name="APS_value" type="Label" parent="VBoxContainer/Teir2/Values"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 106.0
+text = "1"
+align = 2
+
+[node name="SecondarySkillsTitle" type="Label" parent="VBoxContainer"]
+margin_top = 382.0
+margin_right = 304.0
+margin_bottom = 415.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Secondary Skills"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Teir3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 419.0
+margin_right = 304.0
+margin_bottom = 635.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondarySkills" type="VBoxContainer" parent="VBoxContainer/Teir3"]
+margin_right = 150.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HIT" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_right = 150.0
+margin_bottom = 18.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/HIT"]
+margin_bottom = 18.0
+
+[node name="HIT_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/HIT"]
+margin_left = 4.0
+margin_right = 69.0
+margin_bottom = 18.0
+text = "Hit Chance"
+
+[node name="EVA" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/EVA"]
+margin_bottom = 18.0
+
+[node name="EVA_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/EVA"]
+margin_left = 4.0
+margin_right = 53.0
+margin_bottom = 18.0
+text = "Evasion"
+
+[node name="CRT" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 62.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/CRT"]
+margin_bottom = 18.0
+
+[node name="CRT_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/CRT"]
+margin_left = 4.0
+margin_right = 99.0
+margin_bottom = 18.0
+text = "Critical Chance"
+
+[node name="CRM" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 66.0
+margin_right = 150.0
+margin_bottom = 84.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/CRM"]
+margin_bottom = 18.0
+
+[node name="CRM_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/CRM"]
+margin_left = 4.0
+margin_right = 125.0
+margin_bottom = 18.0
+text = "Critical Multiplier"
+
+[node name="CRE" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 106.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/CRE"]
+margin_bottom = 18.0
+
+[node name="CRE_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/CRE"]
+margin_left = 4.0
+margin_right = 94.0
+margin_bottom = 18.0
+text = "Critical Evade"
+
+[node name="MEV" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 110.0
+margin_right = 150.0
+margin_bottom = 128.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/MEV"]
+margin_bottom = 18.0
+
+[node name="MEV_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/MEV"]
+margin_left = 4.0
+margin_right = 82.0
+margin_bottom = 18.0
+text = "Magic Evade"
+
+[node name="MGR" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 132.0
+margin_right = 150.0
+margin_bottom = 150.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/MGR"]
+margin_bottom = 18.0
+
+[node name="MGR_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/MGR"]
+margin_left = 4.0
+margin_right = 90.0
+margin_bottom = 18.0
+text = "Magic Reflect"
+
+[node name="CTR" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 172.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/CTR"]
+margin_bottom = 18.0
+
+[node name="CTR_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/CTR"]
+margin_left = 4.0
+margin_right = 52.0
+margin_bottom = 18.0
+text = "Counter"
+
+[node name="HPR" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 176.0
+margin_right = 150.0
+margin_bottom = 194.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/HPR"]
+margin_bottom = 18.0
+
+[node name="HPR_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/HPR"]
+margin_left = 4.0
+margin_right = 133.0
+margin_bottom = 18.0
+text = "Health Regeneration"
+
+[node name="MPR" type="HBoxContainer" parent="VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 198.0
+margin_right = 150.0
+margin_bottom = 216.0
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Teir3/SecondarySkills/MPR"]
+margin_bottom = 18.0
+
+[node name="MPR_text" type="Label" parent="VBoxContainer/Teir3/SecondarySkills/MPR"]
+margin_left = 4.0
+margin_right = 124.0
+margin_bottom = 18.0
+text = "Mana Regeneration"
+
+[node name="Values" type="VBoxContainer" parent="VBoxContainer/Teir3"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 150, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HIT_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_right = 150.0
+margin_bottom = 18.0
+text = "1"
+align = 2
+
+[node name="EVA_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 40.0
+text = "1"
+align = 2
+
+[node name="CRT_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 62.0
+text = "1"
+align = 2
+
+[node name="CRM_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 66.0
+margin_right = 150.0
+margin_bottom = 84.0
+text = "1"
+align = 2
+
+[node name="CRE_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 106.0
+text = "1"
+align = 2
+
+[node name="MEV_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 110.0
+margin_right = 150.0
+margin_bottom = 128.0
+text = "1"
+align = 2
+
+[node name="MGR_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 132.0
+margin_right = 150.0
+margin_bottom = 150.0
+text = "1"
+align = 2
+
+[node name="CTR_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 172.0
+text = "1"
+align = 2
+
+[node name="HPR_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 176.0
+margin_right = 150.0
+margin_bottom = 194.0
+text = "1"
+align = 2
+
+[node name="MPR_value" type="Label" parent="VBoxContainer/Teir3/Values"]
+margin_top = 198.0
+margin_right = 150.0
+margin_bottom = 216.0
+text = "1"
+align = 2
+
+[connection signal="gui_input" from="VBoxContainer/AttributesTitle" to="." method="_on_AttributesTitle_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/CombatSkillsTitle" to="." method="_on_CombatSkillsTitle_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/SecondarySkillsTitle" to="." method="_on_SecondarySkillsTitle_gui_input"]
