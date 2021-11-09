@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://Assets/inventory/Items/boots_silo.png" type="Texture" id=13]
 [ext_resource path="res://Assets/inventory/Items/legs_silo.png" type="Texture" id=14]
 [ext_resource path="res://Assets/inventory/Items/ring_silo.png" type="Texture" id=15]
-[ext_resource path="res://Scenes/UI/MenuSelector/MenuSelector.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/UI/Inventory/Inventory.gd" type="Script" id=17]
 
 [sub_resource type="DynamicFont" id=1]
@@ -38,8 +37,6 @@ script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MenuSelector" parent="." instance=ExtResource( 16 )]
 
 [node name="Background" type="NinePatchRect" parent="."]
 anchor_left = 0.5

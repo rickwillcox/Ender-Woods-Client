@@ -94,9 +94,22 @@ text = "Username"
 
 [node name="Username" type="LineEdit" parent="Background/VBoxContainer"]
 margin_top = 110.0
-margin_right = 275.0
+margin_right = 301.0
 margin_bottom = 134.0
 text = "shaka"
+
+[node name="UsernameCheckBox" type="CheckBox" parent="Background/VBoxContainer/Username"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.707
+margin_top = -11.474
+margin_right = 147.707
+margin_bottom = 12.526
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer2" type="MarginContainer" parent="Background/VBoxContainer"]
 margin_top = 138.0
@@ -116,9 +129,22 @@ __meta__ = {
 
 [node name="Password" type="LineEdit" parent="Background/VBoxContainer"]
 margin_top = 188.0
-margin_right = 275.0
+margin_right = 301.0
 margin_bottom = 212.0
 text = "1"
+
+[node name="PasswordCheckBox" type="CheckBox" parent="Background/VBoxContainer/Password"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.707
+margin_top = -11.474
+margin_right = 147.707
+margin_bottom = 12.526
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
 margin_top = 216.0
@@ -232,37 +258,11 @@ texture = ExtResource( 4 )
 [node name="LoginFailedMessageScreen" parent="." instance=ExtResource( 7 )]
 visible = false
 
-[node name="UsernameCheckBox" type="CheckBox" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 124.707
-margin_top = -73.0
-margin_right = 148.707
-margin_bottom = -49.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PasswordCheckBox" type="CheckBox" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 124.707
-margin_top = 5.0
-margin_right = 148.707
-margin_bottom = 29.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="SettingSaver" type="Node" parent="."]
 script = ExtResource( 8 )
 
+[connection signal="toggled" from="Background/VBoxContainer/Username/UsernameCheckBox" to="." method="_on_UsernameCheckBox_toggled"]
+[connection signal="toggled" from="Background/VBoxContainer/Password/PasswordCheckBox" to="." method="_on_PasswordCheckBox_toggled"]
 [connection signal="pressed" from="Background/VBoxContainer/Loginbutton" to="." method="_on_Login_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/CreateAccount" to="." method="_on_create_account_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/IPButton" to="." method="_on_IPButton_pressed"]
-[connection signal="toggled" from="UsernameCheckBox" to="." method="_on_UsernameCheckBox_toggled"]
-[connection signal="toggled" from="PasswordCheckBox" to="." method="_on_PasswordCheckBox_toggled"]

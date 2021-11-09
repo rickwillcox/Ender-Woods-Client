@@ -24,6 +24,7 @@ export var Critical_Chance : int setget Critical_Chance_set, Critical_Chance_get
 export var Critical_Multiplier : int setget Critical_Multiplier_set, Critical_Multiplier_get
 export var Critical_Evade : int setget Critical_Evade_set, Critical_Evade_get
 export var Magic_Evade : int setget Magic_Evade_set, Magic_Evade_get
+export var Magic_Reflect : int setget Magic_Reflect_set, Magic_Reflect_get
 export var Counter : int setget Counter_set, Counter_get
 export var Health_Regeneration : int setget Health_Regeneration_set, Health_Regeneration_get
 export var Mana_Regeneration : int setget Mana_Regeneration_set, Mana_Regeneration_get
@@ -169,6 +170,12 @@ func Magic_Evade_set(value):
 	emit_signal("Stat_value_changed", "Magic_Evade", value)
 func Magic_Evade_get():
 	return Magic_Evade
+
+func Magic_Reflect_set(value):
+	Magic_Reflect = value
+	emit_signal("Stat_value_changed", "Magic_Reflect", value)
+func Magic_Reflect_get():
+	return Magic_Reflect
 
 func Counter_set(value):
 	Counter = value
