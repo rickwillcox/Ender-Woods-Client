@@ -15,12 +15,10 @@ var player_action : int = IDLE
 var blend_position = Vector2.ZERO
 var player_id : int
 
-onready var animation_tree = get_node("AnimationTree")
-onready var animation_mode = animation_tree.get("parameters/playback")
-onready var animation_player = get_node("AnimationPlayer")
 onready var joystick = get_node("../../GUI/Joystick")
 onready var player_stats_panel = get_node("../../GUI/PlayerStats")
 onready var login_screen_panel = get_node("../../GUI/LoginScreen")
+onready var character_base = $CharacterBase
 
 func _ready():
 	get_node("PlayerName").text = Globals.player_name
@@ -38,20 +36,20 @@ func _physics_process(delta):
 			
 func idle_action(_delta):
 	check_if_attack()
-	animation_mode.travel("Idle")
+	character_base.travel("idle")
 	if joystick.currentForce != Vector2(0,0) and player_action != ATTACKING:
 		player_action = MOVING
 	
 func moving_action(_delta):
 	check_if_attack()
-	animation_mode.travel("Walk")
+	character_base.travel("walk")
 	movement = position.direction_to(position + (joystick.currentForce * 1000)) * speed
 	if joystick.currentForce == Vector2.ZERO:
 		player_action = IDLE
 	movement = move_and_slide(movement)
 	
 func attacking_action(_delta):
-	animation_mode.travel("Melee_Attack") 
+	character_base.travel("chop") 
 	player_action = IDLE
 	yield(get_tree().create_timer(0.2), "timeout")
 	Server.melee_attack(blend_position)
@@ -60,9 +58,7 @@ func attacking_action(_delta):
 func blend_position():
 	if joystick.currentForce != Vector2.ZERO:
 		blend_position = joystick.currentForce
-		animation_tree.set("parameters/Melee_Attack/blend_position", blend_position)
-		animation_tree.set("parameters/Walk/blend_position", blend_position)
-		animation_tree.set("parameters/Idle/blend_position", blend_position)
+		character_base.blend_position = blend_position
 	
 func check_if_attack():
 	if Input.is_action_just_pressed("melee_attack"):

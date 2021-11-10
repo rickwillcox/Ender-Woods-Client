@@ -2,6 +2,7 @@ extends Control
 class_name InventoryScreen
 
 var inventory : Inventory = Inventory.new()
+onready var inventory_character = $Background/HBoxContainer/Equipment/GridContainer/CharacterBase
 #### Naming convention for items will always be item_id + "_name"
 #### with underscores used in palce of spaces
 #### eg : 1_silver_sword      983_gold_leaf
@@ -16,11 +17,9 @@ var awaiting_response : bool = false
 var dir = Directory.new()
 
 func _ready():
-	Server.connect("item_swap_ok", self, "handle_item_swap_ok")
-	Server.connect("item_swap_nok", self, "handle_item_swap_nok")
-
-	Server.connect("item_add_ok", self, "handle_item_add_ok")
-	Server.connect("item_add_nok", self, "handle_item_add_nok")
+	inventory_character.travel("idle_down")
+	PacketHandler.connect("inventory_nok", self, "handle_inventory_nok")
+	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
 
 	dir.open("res://Assets/inventory/Items/")
 	dir.list_dir_begin(true, true)
@@ -44,21 +43,14 @@ func register_slot(node, item_slot):
 	assert(not item_slots.has(item_slot))
 	item_slots[item_slot] = node
 
-func handle_item_swap_ok():
-	inventory.confirm_last_operation()
-	awaiting_response = false
-
-func handle_item_swap_nok():
-	for slot in inventory.reverse_last_operation():
-		update_slot_display(slot)
-	awaiting_response = false
-
 func update_slot_display(item_slot):
 	if inventory.slots.has(item_slot):
 		var item_id = inventory.slots[item_slot]["item_id"]
 		var amount = inventory.slots[item_slot]["amount"]
 		item_slots[item_slot].set_display(item_textures[item_id], amount)
+		inventory_character.equip_item(item_id, item_slot)
 	else:
+		inventory_character.unequip_slot(item_slot)
 		item_slots[item_slot].set_display()
 
 func can_move(item_slot):
@@ -94,11 +86,11 @@ func add_item(action_id : String, item_id : int, amount : int = 1) -> bool:
 	Server.add_item(action_id, slot)
 	return true
 
-func handle_item_add_ok():
+func handle_inventory_ok():
 	inventory.confirm_last_operation()
 	awaiting_response = false
 
-func handle_item_add_nok():
+func handle_inventory_nok():
 	for slot in inventory.reverse_last_operation():
 		update_slot_display(slot)
 	awaiting_response = false
