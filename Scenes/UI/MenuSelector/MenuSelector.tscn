@@ -18,7 +18,6 @@ margin_top = 57.0
 margin_right = 90.0
 margin_bottom = 137.0
 rect_min_size = Vector2( 0, 80 )
-disabled = true
 toggle_mode = true
 pressed = true
 text = "Inventory"

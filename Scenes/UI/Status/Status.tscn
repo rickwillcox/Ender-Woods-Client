@@ -21,6 +21,7 @@ __meta__ = {
 }
 
 [node name="MenuSelector" parent="." instance=ExtResource( 13 )]
+current_menu = 1
 
 [node name="Background" type="NinePatchRect" parent="."]
 anchor_left = 0.5
