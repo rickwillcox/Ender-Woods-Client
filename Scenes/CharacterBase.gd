@@ -1,7 +1,7 @@
 tool
 extends Node2D
 
-export var frame : int setget set_frame
+var frame : int setget set_frame
 export var blend_position : Vector2 setget set_blend_position
 export var bake_animations = false setget bake_animations
 

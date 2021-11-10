@@ -359,7 +359,7 @@ script = ExtResource( 4 )
 texture = ExtResource( 3 )
 hframes = 6
 vframes = 22
-frame = 6
+frame = 20
 
 [node name="outfit" type="Node2D" parent="Sprites"]
 
@@ -367,31 +367,31 @@ frame = 6
 texture = ExtResource( 2 )
 hframes = 6
 vframes = 22
-frame = 6
+frame = 20
 
 [node name="pants" type="Sprite" parent="Sprites/outfit"]
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 22
-frame = 6
+frame = 20
 
 [node name="gloves" type="Sprite" parent="Sprites/outfit"]
 texture = ExtResource( 6 )
 hframes = 6
 vframes = 22
-frame = 6
+frame = 20
 
 [node name="breastplate" type="Sprite" parent="Sprites/outfit"]
 texture = ExtResource( 5 )
 hframes = 6
 vframes = 22
-frame = 6
+frame = 20
 
 [node name="helmet" type="Sprite" parent="Sprites/outfit"]
 texture = ExtResource( 7 )
 hframes = 6
 vframes = 22
-frame = 6
+frame = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/chop_down = SubResource( 1 )
