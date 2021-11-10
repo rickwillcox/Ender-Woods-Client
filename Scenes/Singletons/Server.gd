@@ -95,7 +95,8 @@ func fetch_player_stats():
 	rpc_id(1, "fetch_player_stats")
 
 remote func return_player_stats(stats):
-	get_node("../SceneHandler/Map/GUI/PlayerStats").load_player_stats(stats)
+	pass
+#	get_node("../SceneHandler/Map/GUI/PlayerStats").load_player_stats(stats)
 	
 remote func spawn_new_player(player_id : int, spawn_position : Vector2):
 	get_node("../SceneHandler/Map").spawn_new_player(player_id, spawn_position)

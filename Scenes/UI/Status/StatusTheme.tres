@@ -4,7 +4,7 @@
 font_path = "res://Assets/Fonts/EvilEmpire-4BBVK.ttf"
 
 [sub_resource type="DynamicFont" id=4]
-size = 18
+size = 32
 outline_size = 2
 outline_color = Color( 0, 0, 0, 0.529412 )
 font_data = SubResource( 2 )

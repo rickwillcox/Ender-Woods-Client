@@ -6,13 +6,15 @@ var Player_Stats_node
 func _ready():
 	Player_Stats_node = get_player_stats()
 	refresh_stats()
-	Player_Stats_node.connect("Stat_value_changed", self, "_Stat_value_changed")
-	Player_Stats_node.connect("Health_changed", self, "_HPMP_value_changed")
-	Player_Stats_node.connect("Mana_changed", self, "_HPMP_value_changed")
+	if Player_Stats_node != null:
+		Player_Stats_node.connect("Stat_value_changed", self, "_Stat_value_changed")
+		Player_Stats_node.connect("Health_changed", self, "_HPMP_value_changed")
+		Player_Stats_node.connect("Mana_changed", self, "_HPMP_value_changed")
 
 
 func get_player_stats():
 	#Needs to be updated
+	return null
 	return get_parent().get_parent().get_parent().get_node_or_null("Stats")
 
 func _Stat_value_changed(_stat, _value):
