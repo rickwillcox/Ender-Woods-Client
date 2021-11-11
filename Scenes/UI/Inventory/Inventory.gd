@@ -18,7 +18,8 @@ var awaiting_response : bool = false
 var dir = Directory.new()
 
 func _ready():
-	inventory_character.travel("idle_down")
+	inventory_character.blend_position = Vector2(0, 1)
+	inventory_character.travel("idle", true)
 	PacketHandler.connect("inventory_nok", self, "handle_inventory_nok")
 	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
 
