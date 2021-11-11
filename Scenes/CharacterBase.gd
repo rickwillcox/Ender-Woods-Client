@@ -1,6 +1,8 @@
 tool
 extends Node2D
 
+signal animation_finished(animation_name)
+
 var frame : int setget set_frame
 export var blend_position : Vector2 setget set_blend_position
 export var bake_animations = false setget bake_animations
@@ -73,6 +75,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if "chop" in anim_name:
 		switch_blocked = false
 		travel("idle")
+	emit_signal("animation_finished", anim_name)
 
 func bake_animations(_x):
 	for anim in $AnimationPlayer.get_animation_list():

@@ -354,40 +354,48 @@ tracks/0/keys = {
 script = ExtResource( 4 )
 
 [node name="Sprites" type="Node2D" parent="."]
+use_parent_material = true
 
 [node name="base" type="Sprite" parent="Sprites"]
+use_parent_material = true
 texture = ExtResource( 3 )
 hframes = 6
 vframes = 22
 frame = 20
 
 [node name="outfit" type="Node2D" parent="Sprites"]
+use_parent_material = true
 
 [node name="boots" type="Sprite" parent="Sprites/outfit"]
+use_parent_material = true
 texture = ExtResource( 2 )
 hframes = 6
 vframes = 22
 frame = 20
 
 [node name="pants" type="Sprite" parent="Sprites/outfit"]
+use_parent_material = true
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 22
 frame = 20
 
 [node name="gloves" type="Sprite" parent="Sprites/outfit"]
+use_parent_material = true
 texture = ExtResource( 6 )
 hframes = 6
 vframes = 22
 frame = 20
 
 [node name="breastplate" type="Sprite" parent="Sprites/outfit"]
+use_parent_material = true
 texture = ExtResource( 5 )
 hframes = 6
 vframes = 22
 frame = 20
 
 [node name="helmet" type="Sprite" parent="Sprites/outfit"]
+use_parent_material = true
 texture = ExtResource( 7 )
 hframes = 6
 vframes = 22
