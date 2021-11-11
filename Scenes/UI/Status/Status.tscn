@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Player/Stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/UI/MenuSelector/MenuSelector.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/UI/Status/StatContainer.tscn" type="PackedScene" id=17]
+
+[node name="Status" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -353.0
+margin_top = -184.0
+margin_right = 499.0
+margin_bottom = 296.0
+rect_scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuSelector" parent="." instance=ExtResource( 13 )]
+current_menu = 1
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -345.0
+margin_top = -209.0
+margin_right = 361.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 400, 300 )
+rect_pivot_offset = Vector2( 148.904, 114.039 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+margin_left = 28.0
+margin_top = 21.0
+margin_right = 675.0
+margin_bottom = 370.0
+rect_min_size = Vector2( 50, 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatContainer" parent="Background/HBoxContainer" instance=ExtResource( 17 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 300.0
+margin_bottom = 349.0
+
+[node name="Border" type="Sprite" parent="."]
+position = Vector2( 431.755, 225.031 )
+scale = Vector2( 0.426102, 0.232 )
+texture = ExtResource( 7 )
+
+[node name="Stats" parent="." instance=ExtResource( 1 )]
+Level = 5
+Max_Health = 5
+Current_Health = 5
+Max_Mana = 5
+Current_Mana = 5
+Strength = 5
+Vitality = 5
+Wisdom = 5
+Willpower = 5
+Dexterity = 5
+Agility = 5
+Luck = 5
+Attack = 5
+Defense = 5
+Magic_Attack = 5
+Magic_Defense = 5
+Attack_Speed = 5
+Hit_Chance = 5
+Evasion = 5
+Critical_Chance = 5
+Critical_Multiplier = 5
+Critical_Evade = 5
+Magic_Evade = 5
+Magic_Reflect = 5
+Counter = 5
+Health_Regeneration = 5
+Mana_Regeneration = 5

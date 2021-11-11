@@ -53,8 +53,8 @@ func _on_PasswordCheckBox_toggled(button_pressed):
 func _save_user_login():
 	var username_lineedit = $Background/VBoxContainer/Username
 	var password_lineedit = $Background/VBoxContainer/Password
-	var user_check = $UsernameCheckBox.pressed
-	var pass_check = $PasswordCheckBox.pressed
+	var user_check = $Background/VBoxContainer/Username/UsernameCheckBox.pressed
+	var pass_check = $Background/VBoxContainer/Password/PasswordCheckBox.pressed
 	var login_data = {}
 	if user_check:
 		login_data["username"] = username_lineedit.text
@@ -71,13 +71,14 @@ func _set_login_from_settings(login_data):
 	var password_lineedit = $Background/VBoxContainer/Password
 	if login_data.username != null:
 		username_lineedit.text = login_data["username"]
-		$UsernameCheckBox.pressed = true
+		$Background/VBoxContainer/Username/UsernameCheckBox.pressed = true
 	if login_data.password != null:
 		password_lineedit.text = login_data["password"]
-		$PasswordCheckBox.pressed = true
+		$Background/VBoxContainer/Password/PasswordCheckBox.pressed = true
 	if login_data.password != null and login_data.username != null:
 		_auto_login()
 
 func _auto_login():
 	yield(get_tree(), "idle_frame")
+	Logger.info("Auto Login")
 	_on_Login_pressed()

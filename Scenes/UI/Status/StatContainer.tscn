@@ -1,0 +1,748 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/UI/Status/StatContainer.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/30.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/UI/Status/StatusTheme.tres" type="Theme" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.0823529 )
+
+[sub_resource type="StyleBoxLine" id=2]
+color = Color( 0, 0, 0, 0.623529 )
+thickness = 3
+
+[node name="StatContainer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 49.0
+margin_top = 83.0
+margin_right = -486.0
+margin_bottom = 760.0
+rect_min_size = Vector2( 300, 0 )
+rect_clip_content = true
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 399.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 284, 300 )
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 290.0
+margin_bottom = 1126.0
+rect_min_size = Vector2( 250, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AttributesTitle" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_right = 290.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 280, 0 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Attributes"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 290.0
+margin_bottom = 41.0
+custom_styles/separator = SubResource( 2 )
+
+[node name="Teir1" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 290.0
+margin_bottom = 383.0
+rect_min_size = Vector2( 280, 0 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attributes" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1"]
+margin_right = 140.0
+margin_bottom = 338.0
+rect_min_size = Vector2( 140, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_right = 140.0
+margin_bottom = 34.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/HP"]
+margin_bottom = 34.0
+
+[node name="HP_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/HP"]
+margin_left = 4.0
+margin_right = 87.0
+margin_bottom = 34.0
+text = "Health"
+
+[node name="MP" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 38.0
+margin_right = 140.0
+margin_bottom = 72.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/MP"]
+margin_bottom = 34.0
+
+[node name="MP_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/MP"]
+margin_left = 4.0
+margin_right = 71.0
+margin_bottom = 34.0
+text = "Mana"
+
+[node name="STR" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 76.0
+margin_right = 140.0
+margin_bottom = 110.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/STR"]
+margin_bottom = 34.0
+
+[node name="STR_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/STR"]
+margin_left = 4.0
+margin_right = 114.0
+margin_bottom = 34.0
+text = "Strength"
+
+[node name="VIT" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 114.0
+margin_right = 140.0
+margin_bottom = 148.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/VIT"]
+margin_bottom = 34.0
+
+[node name="VIT_test" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/VIT"]
+margin_left = 4.0
+margin_right = 105.0
+margin_bottom = 34.0
+text = "Vitality"
+
+[node name="WIS" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 152.0
+margin_right = 140.0
+margin_bottom = 186.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/WIS"]
+margin_bottom = 34.0
+
+[node name="WIS_test" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/WIS"]
+margin_left = 4.0
+margin_right = 101.0
+margin_bottom = 34.0
+text = "Wisdom"
+
+[node name="WIL" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 190.0
+margin_right = 140.0
+margin_bottom = 224.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/WIL"]
+margin_bottom = 34.0
+
+[node name="WIL_test" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/WIL"]
+margin_left = 4.0
+margin_right = 138.0
+margin_bottom = 34.0
+text = "Willpower"
+
+[node name="DEX" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 228.0
+margin_right = 140.0
+margin_bottom = 262.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/DEX"]
+margin_bottom = 34.0
+
+[node name="DEX_test" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/DEX"]
+margin_left = 4.0
+margin_right = 125.0
+margin_bottom = 34.0
+text = "Dexterity"
+
+[node name="AGI" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 266.0
+margin_right = 140.0
+margin_bottom = 300.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/AGI"]
+margin_bottom = 34.0
+
+[node name="AGI_test" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/AGI"]
+margin_left = 4.0
+margin_right = 92.0
+margin_bottom = 34.0
+text = "Agility"
+
+[node name="LUK" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1/Attributes"]
+margin_top = 304.0
+margin_right = 140.0
+margin_bottom = 338.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/LUK"]
+margin_bottom = 34.0
+
+[node name="LUK_test" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Attributes/LUK"]
+margin_left = 4.0
+margin_right = 58.0
+margin_bottom = 34.0
+text = "Luck"
+
+[node name="Values" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir1"]
+margin_left = 140.0
+margin_right = 280.0
+margin_bottom = 338.0
+rect_min_size = Vector2( 140, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_right = 140.0
+margin_bottom = 34.0
+text = "1"
+align = 2
+
+[node name="MP_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 38.0
+margin_right = 140.0
+margin_bottom = 72.0
+text = "1"
+align = 2
+
+[node name="STR_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 76.0
+margin_right = 140.0
+margin_bottom = 110.0
+text = "1"
+align = 2
+
+[node name="VIT_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 114.0
+margin_right = 140.0
+margin_bottom = 148.0
+text = "1"
+align = 2
+
+[node name="WIS_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 152.0
+margin_right = 140.0
+margin_bottom = 186.0
+text = "1"
+align = 2
+
+[node name="WIL_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 190.0
+margin_right = 140.0
+margin_bottom = 224.0
+text = "1"
+align = 2
+
+[node name="DEX_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 228.0
+margin_right = 140.0
+margin_bottom = 262.0
+text = "1"
+align = 2
+
+[node name="AGI_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 266.0
+margin_right = 140.0
+margin_bottom = 300.0
+text = "1"
+align = 2
+
+[node name="LUK_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir1/Values"]
+margin_top = 304.0
+margin_right = 140.0
+margin_bottom = 338.0
+text = "1"
+align = 2
+
+[node name="CombatSkillsTitle" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 387.0
+margin_right = 290.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 280, 0 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Combat Skills"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 424.0
+margin_right = 290.0
+margin_bottom = 428.0
+custom_styles/separator = SubResource( 2 )
+
+[node name="Teir2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 290.0
+margin_bottom = 618.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CombatSkills" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2"]
+margin_right = 235.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 235, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATK" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills"]
+margin_right = 235.0
+margin_bottom = 34.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/ATK"]
+margin_bottom = 34.0
+
+[node name="ATK_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/ATK"]
+margin_left = 4.0
+margin_right = 85.0
+margin_bottom = 34.0
+text = "Attack"
+
+[node name="DEF" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills"]
+margin_top = 38.0
+margin_right = 235.0
+margin_bottom = 72.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/DEF"]
+margin_bottom = 34.0
+
+[node name="DEF_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/DEF"]
+margin_left = 4.0
+margin_right = 102.0
+margin_bottom = 34.0
+text = "Defense"
+
+[node name="MAT" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills"]
+margin_top = 76.0
+margin_right = 235.0
+margin_bottom = 110.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/MAT"]
+margin_bottom = 34.0
+
+[node name="MAT_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/MAT"]
+margin_left = 4.0
+margin_right = 165.0
+margin_bottom = 34.0
+text = "Magic Attack"
+
+[node name="MDF" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills"]
+margin_top = 114.0
+margin_right = 235.0
+margin_bottom = 148.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/MDF"]
+margin_bottom = 34.0
+
+[node name="MDF_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/MDF"]
+margin_left = 4.0
+margin_right = 182.0
+margin_bottom = 34.0
+text = "Magic Defense"
+
+[node name="APS" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills"]
+margin_top = 152.0
+margin_right = 235.0
+margin_bottom = 186.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/APS"]
+margin_bottom = 34.0
+
+[node name="APS_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/CombatSkills/APS"]
+margin_left = 4.0
+margin_right = 163.0
+margin_bottom = 34.0
+text = "Attack Speed"
+
+[node name="Values" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir2"]
+margin_left = 235.0
+margin_right = 280.0
+margin_bottom = 186.0
+rect_min_size = Vector2( 45, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ATK_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/Values"]
+margin_right = 45.0
+margin_bottom = 34.0
+text = "1"
+align = 2
+
+[node name="DEF_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/Values"]
+margin_top = 38.0
+margin_right = 45.0
+margin_bottom = 72.0
+text = "1"
+align = 2
+
+[node name="MAT_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/Values"]
+margin_top = 76.0
+margin_right = 45.0
+margin_bottom = 110.0
+text = "1"
+align = 2
+
+[node name="MDF_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/Values"]
+margin_top = 114.0
+margin_right = 45.0
+margin_bottom = 148.0
+text = "1"
+align = 2
+
+[node name="APS_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir2/Values"]
+margin_top = 152.0
+margin_right = 45.0
+margin_bottom = 186.0
+text = "1"
+align = 2
+
+[node name="SecondarySkillsTitle" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 622.0
+margin_right = 290.0
+margin_bottom = 655.0
+rect_min_size = Vector2( 280, 0 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Secondary Skills"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 659.0
+margin_right = 290.0
+margin_bottom = 663.0
+custom_styles/separator = SubResource( 2 )
+
+[node name="Teir3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 667.0
+margin_right = 290.0
+margin_bottom = 1043.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondarySkills" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3"]
+margin_right = 260.0
+margin_bottom = 376.0
+rect_min_size = Vector2( 260, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HIT" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_right = 260.0
+margin_bottom = 34.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/HIT"]
+margin_bottom = 34.0
+
+[node name="HIT_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/HIT"]
+margin_left = 4.0
+margin_right = 131.0
+margin_bottom = 34.0
+text = "Hit Chance"
+
+[node name="EVA" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 38.0
+margin_right = 260.0
+margin_bottom = 72.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/EVA"]
+margin_bottom = 34.0
+
+[node name="EVA_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/EVA"]
+margin_left = 4.0
+margin_right = 101.0
+margin_bottom = 34.0
+text = "Evasion"
+
+[node name="CRT" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 76.0
+margin_right = 260.0
+margin_bottom = 110.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CRT"]
+margin_bottom = 34.0
+
+[node name="CRT_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CRT"]
+margin_left = 4.0
+margin_right = 191.0
+margin_bottom = 34.0
+text = "Critical Chance"
+
+[node name="CRM" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 114.0
+margin_right = 260.0
+margin_bottom = 148.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CRM"]
+margin_bottom = 34.0
+
+[node name="CRM_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CRM"]
+margin_left = 4.0
+margin_right = 243.0
+margin_bottom = 34.0
+text = "Critical Multiplier"
+
+[node name="CRE" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 152.0
+margin_right = 260.0
+margin_bottom = 186.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CRE"]
+margin_bottom = 34.0
+
+[node name="CRE_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CRE"]
+margin_left = 4.0
+margin_right = 181.0
+margin_bottom = 34.0
+text = "Critical Evade"
+
+[node name="MEV" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 190.0
+margin_right = 260.0
+margin_bottom = 224.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/MEV"]
+margin_bottom = 34.0
+
+[node name="MEV_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/MEV"]
+margin_left = 4.0
+margin_right = 157.0
+margin_bottom = 34.0
+text = "Magic Evade"
+
+[node name="MGR" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 228.0
+margin_right = 260.0
+margin_bottom = 262.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/MGR"]
+margin_bottom = 34.0
+
+[node name="MGR_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/MGR"]
+margin_left = 4.0
+margin_right = 174.0
+margin_bottom = 34.0
+text = "Magic Reflect"
+
+[node name="CTR" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 266.0
+margin_right = 260.0
+margin_bottom = 300.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CTR"]
+margin_bottom = 34.0
+
+[node name="CTR_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/CTR"]
+margin_left = 4.0
+margin_right = 100.0
+margin_bottom = 34.0
+text = "Counter"
+
+[node name="HPR" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 304.0
+margin_right = 260.0
+margin_bottom = 338.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/HPR"]
+margin_bottom = 34.0
+
+[node name="HPR_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/HPR"]
+margin_left = 4.0
+margin_right = 259.0
+margin_bottom = 34.0
+text = "Health Regeneration"
+
+[node name="MPR" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills"]
+margin_top = 342.0
+margin_right = 260.0
+margin_bottom = 376.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/MPR"]
+margin_bottom = 34.0
+
+[node name="MPR_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/SecondarySkills/MPR"]
+margin_left = 4.0
+margin_right = 243.0
+margin_bottom = 34.0
+text = "Mana Regeneration"
+
+[node name="Values" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir3"]
+margin_left = 260.0
+margin_right = 280.0
+margin_bottom = 376.0
+rect_min_size = Vector2( 20, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HIT_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_right = 20.0
+margin_bottom = 34.0
+text = "1"
+align = 2
+
+[node name="EVA_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 38.0
+margin_right = 20.0
+margin_bottom = 72.0
+text = "1"
+align = 2
+
+[node name="CRT_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 76.0
+margin_right = 20.0
+margin_bottom = 110.0
+text = "1"
+align = 2
+
+[node name="CRM_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 114.0
+margin_right = 20.0
+margin_bottom = 148.0
+text = "1"
+align = 2
+
+[node name="CRE_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 152.0
+margin_right = 20.0
+margin_bottom = 186.0
+text = "1"
+align = 2
+
+[node name="MEV_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 190.0
+margin_right = 20.0
+margin_bottom = 224.0
+text = "1"
+align = 2
+
+[node name="MGR_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 228.0
+margin_right = 20.0
+margin_bottom = 262.0
+text = "1"
+align = 2
+
+[node name="CTR_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 266.0
+margin_right = 20.0
+margin_bottom = 300.0
+text = "1"
+align = 2
+
+[node name="HPR_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 304.0
+margin_right = 20.0
+margin_bottom = 338.0
+text = "1"
+align = 2
+
+[node name="MPR_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir3/Values"]
+margin_top = 342.0
+margin_right = 20.0
+margin_bottom = 376.0
+text = "1"
+align = 2
+
+[node name="StatusTitle" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1047.0
+margin_right = 290.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 280, 0 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Statuses"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator4" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1084.0
+margin_right = 290.0
+margin_bottom = 1088.0
+custom_styles/separator = SubResource( 2 )
+
+[node name="Teir4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1092.0
+margin_right = 290.0
+margin_bottom = 1126.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Statuses" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir4"]
+margin_right = 150.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 140, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Teir4/Statuses"]
+margin_right = 150.0
+margin_bottom = 34.0
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Teir4/Statuses/Status"]
+margin_bottom = 34.0
+
+[node name="Status_text" type="Label" parent="ScrollContainer/VBoxContainer/Teir4/Statuses/Status"]
+margin_left = 4.0
+margin_right = 150.0
+margin_bottom = 34.0
+text = "No Statuses"
+
+[node name="Values" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/Teir4"]
+margin_left = 150.0
+margin_right = 290.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 140, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status_value" type="Label" parent="ScrollContainer/VBoxContainer/Teir4/Values"]
+margin_right = 140.0
+margin_bottom = 34.0
+align = 2
+
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/AttributesTitle" to="." method="_on_AttributesTitle_gui_input"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/CombatSkillsTitle" to="." method="_on_CombatSkillsTitle_gui_input"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/SecondarySkillsTitle" to="." method="_on_SecondarySkillsTitle_gui_input"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/StatusTitle" to="." method="_on_StatusTitle_gui_input"]
