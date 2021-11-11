@@ -5,6 +5,7 @@ signal attack_swing(attacker, victim)
 signal inventory_ok
 signal inventory_nok
 signal remove_item(item_name)
+signal update_inventory(player_id, slot, item_id)
 
 var si = ServerInterface
 
@@ -33,6 +34,8 @@ func handle(packet):
 		si.Opcodes.ATTACK_SWING:
 			Logger.info("Entity %d swings weapon at entity %d" % [packet["attacker"], packet["victim"]])
 			emit_signal("attack_swing", packet["attacker"], packet["victim"])
+		si.Opcodes.PLAYER_INVENTORY_UPDATE:
+			emit_signal("update_inventory", packet["player_id"], packet["slot"], packet["item_id"])
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
 			assert(false)

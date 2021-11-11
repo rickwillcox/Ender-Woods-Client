@@ -25,3 +25,6 @@ func perform_attack():
 func _on_CharacterBase_animation_finished(animation_name):
 	if "chop" in animation_name:
 		state = "Idle"
+
+func get_character_base():
+	return $CharacterBase

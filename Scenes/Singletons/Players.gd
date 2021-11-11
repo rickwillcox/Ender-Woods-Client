@@ -4,7 +4,7 @@ var storage : Dictionary = {}
 
 func _ready():
 	PacketHandler.connect("attack_swing", self, "handle_attack_swing")
-
+	PacketHandler.connect("update_inventory", self, "handle_update_inventory")
 
 func get_player_node(player_id):
 	if player_id in storage:
@@ -26,3 +26,11 @@ func has(player_id):
 func handle_attack_swing(attacker, victim):
 	if storage.has(attacker):
 		storage[attacker].perform_attack()
+
+func handle_update_inventory(player_id : int, slot : int, item_id : int):
+	if storage.has(player_id):
+		var player_character_base = storage[player_id].get_character_base()
+		if item_id == 0:
+			player_character_base.unequip_slot(slot)
+		else:
+			player_character_base.equip_item(item_id, slot)
