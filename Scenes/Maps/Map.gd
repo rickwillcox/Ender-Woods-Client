@@ -73,12 +73,15 @@ func spawn_new_player(player_id : int, spawn_position : Vector2):
 	if get_tree().get_network_unique_id() == player_id:
 		pass
 	else:
-		if not get_node("YSort/OtherPlayers").has_node(str(player_id)):
-			var new_player = player_spawn.instance()
-			new_player.position = spawn_position
-			new_player.name = str(player_id)
-			get_node("YSort/OtherPlayers").add_child(new_player)
-#
+		if Players.has(player_id):
+			return
+		
+		var new_player = player_spawn.instance()
+		new_player.position = spawn_position
+		new_player.name = str(player_id)
+		Players.add_player_node(player_id, new_player)
+		get_node("YSort/OtherPlayers").add_child(new_player)
+
 func SpawnNewEnemy(enemy_id : int, enemy_dict : Dictionary):
 	var enemy_type : String = enemy_dict[g.ENEMY_TYPE]
 	if enemy_type == "Slime":
@@ -98,7 +101,7 @@ func SpawnNewEnemy(enemy_id : int, enemy_dict : Dictionary):
 func despawn_player(player_id : int):
 	yield(get_tree().create_timer(0.3), "timeout")
 	Logger.info("despawning", " ", player_id)
-	get_node("YSort/OtherPlayers/" + str(player_id)).queue_free()
+	Players.erase(player_id)
 
 func update_world_state(world_state : Dictionary):
 	if world_state[g.TIMESTAMP] > last_world_state:
@@ -146,10 +149,10 @@ func _physics_process(_delta):
 					continue
 				if not world_state_buffer[1].has(player):
 					continue
-				if get_node("YSort/OtherPlayers").has_node(str(player)):
+				if Players.has(player):
 					var new_position : Vector2 = lerp(world_state_buffer[1][player][g.PLAYER_POSITION], world_state_buffer[2][player][g.PLAYER_POSITION], inperpolation_factor)
 					var animation_vector : Vector2 = world_state_buffer[2][player][g.PLAYER_ANIMATION_VECTOR]
-					get_node("YSort/OtherPlayers/" + str (player)).MovePlayer(new_position, animation_vector)
+					Players.get_player_node(player).move_player(new_position, animation_vector)
 				else:
 					Logger.info("spawning other player")
 					spawn_new_player(player, world_state_buffer[2][player][g.PLAYER_POSITION])
@@ -182,11 +185,11 @@ func _physics_process(_delta):
 					continue
 				if not world_state_buffer[0].has(player):
 					continue
-				if get_node("YSort/OtherPlayers").has_node(str(player)):		
+				if Players.has(player):		
 					var position_delta : Vector2 = (world_state_buffer[1][player][g.PLAYER_POSITION] - world_state_buffer[0][player][g.PLAYER_POSITION])
 					var new_position : Vector2 = world_state_buffer[1][player][g.PLAYER_POSITION] + (position_delta * extrapolation_factor)
 					var animation_vector : Vector2 = world_state_buffer[1][player][g.PLAYER_ANIMATION_VECTOR]
-					get_node("YSort/OtherPlayers/" + str(player)).MovePlayer(new_position, animation_vector)
+					Players.get_player_node(player).move_player(new_position, animation_vector)
 			for enemy in world_state_buffer[1][g.ENEMIES].keys(): 
 				if not world_state_buffer[0][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue
