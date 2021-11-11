@@ -28,3 +28,12 @@ func _on_CharacterBase_animation_finished(animation_name):
 
 func get_character_base():
 	return $CharacterBase
+
+
+# Periodically request players inventory until it is initialized
+var inventory_updated = false
+func _on_InventoryRequestTimer_timeout():
+	if inventory_updated:
+		$InventoryRequestTimer.queue_free()
+		return
+	Server.request_player_inventory(int(name))

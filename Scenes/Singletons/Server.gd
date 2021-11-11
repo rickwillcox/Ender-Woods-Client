@@ -147,3 +147,6 @@ remote func handle_compressed_input_packets(bytes: PoolByteArray, size : int):
 	packet_bundle.buffer = bytes
 	var packets = packet_bundle.decompress(size)
 	PacketHandler.handle_many(packets)
+
+func request_player_inventory(player_id):
+	rpc_id(1, "request_player_inventory", player_id)
