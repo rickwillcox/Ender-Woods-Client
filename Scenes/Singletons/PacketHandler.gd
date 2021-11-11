@@ -6,6 +6,7 @@ signal inventory_ok
 signal inventory_nok
 signal remove_item(item_name)
 signal update_inventory(player_id, slot, item_id)
+signal initialize_inventory(player_id, item_slot_array)
 
 var si = ServerInterface
 
@@ -36,6 +37,14 @@ func handle(packet):
 			emit_signal("attack_swing", packet["attacker"], packet["victim"])
 		si.Opcodes.PLAYER_INVENTORY_UPDATE:
 			emit_signal("update_inventory", packet["player_id"], packet["slot"], packet["item_id"])
+		si.Opcodes.PLAYER_INITIAL_INVENTORY:
+			var new_items_data = [
+				[ItemDatabase.Slots.HEAD_SLOT, packet["head"]],
+				[ItemDatabase.Slots.CHEST_SLOT, packet["chest"]],
+				[ItemDatabase.Slots.LEGS_SLOT, packet["legs"]],
+				[ItemDatabase.Slots.FEET_SLOT, packet["feet"]],
+				[ItemDatabase.Slots.HANDS_SLOT, packet["hands"]]]
+			emit_signal("initialize_inventory", packet["player_id"], new_items_data)
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
 			assert(false)
