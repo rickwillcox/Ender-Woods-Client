@@ -58,9 +58,10 @@ func set_blend_position(new_position : Vector2):
 		else:
 			update_animaton()
 	
-func travel(new_animation_state):
-	if current_animation_state == new_animation_state or switch_blocked:
-		return
+func travel(new_animation_state, force = false):
+	if not force:
+		if current_animation_state == new_animation_state or switch_blocked:
+			return
 	current_animation_state = new_animation_state
 	update_animaton()
 
