@@ -2,6 +2,8 @@ extends Control
 class_name InventoryScreen
 
 var inventory : Inventory = Inventory.new()
+onready var inventory_character = $Background/HBoxContainer/Equipment/GridContainer/CharacterBase
+var player_character
 #### Naming convention for items will always be item_id + "_name"
 #### with underscores used in palce of spaces
 #### eg : 1_silver_sword      983_gold_leaf
@@ -16,6 +18,7 @@ var awaiting_response : bool = false
 var dir = Directory.new()
 
 func _ready():
+	inventory_character.travel("idle_down")
 	PacketHandler.connect("inventory_nok", self, "handle_inventory_nok")
 	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
 
@@ -35,6 +38,13 @@ func RefreshInventory(inventory_data):
 	inventory.update(inventory_data)
 	for slot in inventory.slots:
 		update_slot_display(slot)
+	var character_display_slots = [ItemDatabase.Slots.CHEST_SLOT,
+									ItemDatabase.Slots.HEAD_SLOT,
+									ItemDatabase.Slots.FEET_SLOT,
+									ItemDatabase.Slots.LEGS_SLOT,
+									ItemDatabase.Slots.HANDS_SLOT]
+	for slot in character_display_slots:
+		update_slot_display(slot)
 
 func register_slot(node, item_slot):
 	# only one node per slot
@@ -46,8 +56,12 @@ func update_slot_display(item_slot):
 		var item_id = inventory.slots[item_slot]["item_id"]
 		var amount = inventory.slots[item_slot]["amount"]
 		item_slots[item_slot].set_display(item_textures[item_id], amount)
+		inventory_character.equip_item(item_id, item_slot)
+		player_character.equip_item(item_id, item_slot)
 	else:
 		item_slots[item_slot].set_display()
+		inventory_character.unequip_slot(item_slot)
+		player_character.unequip_slot(item_slot)
 
 func can_move(item_slot):
 	if awaiting_response:
@@ -93,3 +107,6 @@ func handle_inventory_nok():
 
 func on_pickup(item_id, item_name):
 	add_item(item_name, item_id)
+
+func set_player_character(player_character_node):
+	player_character = player_character_node

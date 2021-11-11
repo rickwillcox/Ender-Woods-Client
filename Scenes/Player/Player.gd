@@ -68,7 +68,8 @@ func define_player_state():
 	player_state = {g.PLAYER_TIMESTAMP: Server.client_clock, g.PLAYER_POSITION: get_global_position(), g.PLAYER_ANIMATION_VECTOR: blend_position}
 	Server.send_player_state(player_state)
 
-
+func get_character_base():
+	return $CharacterBase
 
 
 
