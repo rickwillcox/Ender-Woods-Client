@@ -52,10 +52,8 @@ func handle(packet):
 			emit_signal("enemy_spawn", packet["enemy_id"], packet["enemy_state"], packet["enemy_type"],
 						packet["health"], packet["position"])
 		si.Opcodes.ENEMY_DIED:
-			Logger.info(str(packet["enemy_id"]))
 			emit_signal("enemy_died", packet["enemy_id"])
 		si.Opcodes.ENEMY_DESPAWN:
-			Logger.info(str(packet["enemy_id"]))
 			emit_signal("enemy_despawn", packet["enemy_id"])
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
