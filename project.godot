@@ -66,7 +66,7 @@ Players="*res://Scenes/Singletons/Players.gd"
 
 gdscript/warnings/shadowed_variable=false
 gdscript/warnings/function_used_as_property=false
-multirun/number_of_windows=2
+multirun/number_of_windows=3
 multirun/window_distance=1270
 multirun/add_custom_args=true
 multirun/first_window_args="listen"
