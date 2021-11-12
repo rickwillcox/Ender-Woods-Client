@@ -5,6 +5,8 @@
 
 extends Node
 
+signal received_player_chat(player_id, username, text)
+
 var network = NetworkedMultiplayerENet.new()
 #var ip : String = "45.58.43.202"
 var ip : String = "127.0.0.1"
@@ -148,5 +150,12 @@ remote func handle_compressed_input_packets(bytes: PoolByteArray, size : int):
 	var packets = packet_bundle.decompress(size)
 	PacketHandler.handle_many(packets)
 
-func request_player_inventory(player_id):
+func request_player_inventory(player_id : int):
 	rpc_id(1, "request_player_inventory", player_id)
+
+func send_player_chat(text : String):
+	rpc_id(1, "receive_player_chat", text)
+
+remote func receive_player_chat(player_id : int, username : String, text : String):
+	emit_signal("received_player_chat", player_id, username, text)
+	print("%s: %s" % [username, text])

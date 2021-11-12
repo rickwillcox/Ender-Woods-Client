@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/UI/ChatBox/ChatBox.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/button_pressed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/30.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Textures/button_normal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 5 )
+
+[node name="ChatBox" type="Control"]
+margin_right = 567.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatLog" type="RichTextLabel" parent="VBoxContainer"]
+margin_right = 567.0
+margin_bottom = 113.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+scroll_following = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 117.0
+margin_right = 567.0
+margin_bottom = 150.0
+
+[node name="Global" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_right = 97.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 3 )
+text = "Global"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_left = 101.0
+margin_right = 435.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+
+[node name="SendButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 439.0
+margin_right = 567.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 100, 0 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SendButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -16.5
+margin_right = 31.0
+margin_bottom = 16.5
+custom_fonts/font = ExtResource( 3 )
+text = "Send"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SendButton" to="." method="_on_SendButton_pressed"]
