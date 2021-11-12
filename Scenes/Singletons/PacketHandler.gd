@@ -7,7 +7,9 @@ signal inventory_nok
 signal remove_item(item_name)
 signal update_inventory(player_id, slot, item_id)
 signal initialize_inventory(player_id, item_slot_array)
-signal enemy_state(enemy_id, enemy_state)
+signal enemy_spawn(enemy_id, enemy_state, enemy_type, health, position)
+signal enemy_died(enemy_id)
+signal enemy_despawn(enemy_id)
 
 var si = ServerInterface
 
@@ -46,8 +48,15 @@ func handle(packet):
 				[ItemDatabase.Slots.FEET_SLOT, packet["feet"]],
 				[ItemDatabase.Slots.HANDS_SLOT, packet["hands"]]]
 			emit_signal("initialize_inventory", packet["player_id"], new_items_data)
-		si.Opcodes.ENEMY_STATE:
-			emit_signal("enemy_state", packet["enemy_id"], packet["enemy_state"])
+		si.Opcodes.ENEMY_SPAWN:
+			emit_signal("enemy_spawn", packet["enemy_id"], packet["enemy_state"], packet["enemy_type"],
+						packet["health"], packet["position"])
+		si.Opcodes.ENEMY_DIED:
+			Logger.info(str(packet["enemy_id"]))
+			emit_signal("enemy_died", packet["enemy_id"])
+		si.Opcodes.ENEMY_DESPAWN:
+			Logger.info(str(packet["enemy_id"]))
+			emit_signal("enemy_despawn", packet["enemy_id"])
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
 			assert(false)
