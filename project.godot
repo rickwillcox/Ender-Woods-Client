@@ -61,6 +61,7 @@ Gateway="*res://Scenes/Singletons/Gateway.gd"
 PacketHandler="*res://Scenes/Singletons/PacketHandler.gd"
 CharacterTextureLoader="*res://Scenes/Singletons/CharacterTextureLoader.gd"
 Players="*res://Scenes/Singletons/Players.gd"
+Enemies="*res://Scenes/Singletons/Enemies.gd"
 
 [debug]
 
