@@ -15,9 +15,9 @@ var player_action : int = IDLE
 var blend_position = Vector2.ZERO
 var player_id : int
 
-onready var joystick = get_node("../../GUI/Joystick")
-onready var player_stats_panel = get_node("../../GUI/PlayerStats")
-onready var login_screen_panel = get_node("../../GUI/LoginScreen")
+onready var joystick = get_node_or_null("../../GUI/Joystick")
+onready var player_stats_panel = get_node_or_null("../../GUI/PlayerStats")
+onready var login_screen_panel = get_node_or_null("../../GUI/LoginScreen")
 onready var character_base = $CharacterBase
 
 func _ready():
@@ -28,7 +28,7 @@ func _ready():
 
 func _physics_process(delta):
 	if joystick != null:
-		blend_position()
+		get_blend_position()
 		match player_action:
 			IDLE:
 				idle_action(delta)
@@ -63,7 +63,7 @@ func attacking_action(_delta):
 	Server.melee_attack(blend_position)
 	
 
-func blend_position():
+func get_blend_position():
 	if joystick.currentForce != Vector2.ZERO:
 		blend_position = joystick.currentForce
 		character_base.blend_position = blend_position
