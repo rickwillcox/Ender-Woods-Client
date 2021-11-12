@@ -7,6 +7,7 @@ signal inventory_nok
 signal remove_item(item_name)
 signal update_inventory(player_id, slot, item_id)
 signal initialize_inventory(player_id, item_slot_array)
+signal enemy_state(enemy_id, enemy_state)
 
 var si = ServerInterface
 
@@ -45,6 +46,8 @@ func handle(packet):
 				[ItemDatabase.Slots.FEET_SLOT, packet["feet"]],
 				[ItemDatabase.Slots.HANDS_SLOT, packet["hands"]]]
 			emit_signal("initialize_inventory", packet["player_id"], new_items_data)
+		si.Opcodes.ENEMY_STATE:
+			emit_signal("enemy_state", packet["enemy_id"], packet["enemy_state"])
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
 			assert(false)
