@@ -1,6 +1,6 @@
 extends Node
 
-
+export var Experience : int setget Experience_set, Experience_get
 export var Level : int setget Level_set, Level_get
 export var Max_Health : int setget Max_Health_set, Max_Health_get
 export var Current_Health : int setget Current_Health_set, Current_Health_get
@@ -29,9 +29,21 @@ export var Counter : int setget Counter_set, Counter_get
 export var Health_Regeneration : int setget Health_Regeneration_set, Health_Regeneration_get
 export var Mana_Regeneration : int setget Mana_Regeneration_set, Mana_Regeneration_get
 
+var Max_Health_formula = "50*level + 25"
+
 signal Stat_value_changed(stat, value)
 signal Health_changed(value)
 signal Mana_changed(value)
+
+func _ready():
+	Max_Health_calc(5)
+
+func Experience_set(value):
+	Experience = value
+	emit_signal("Stat_value_changed", "Experience", value)
+
+func Experience_get():
+	return Experience
 
 func Level_set(value):
 	Level = value
@@ -44,6 +56,11 @@ func Max_Health_set(value):
 	emit_signal("Stat_value_changed", "Max_Health", value)
 func Max_Health_get():
 	return Max_Health
+func Max_Health_calc(level = Level):
+	var expression_string = Max_Health_formula
+	expression_string.replace("level", str(level))
+	var expression = Expression.new()
+	return expression.parse(expression_string)
 
 func Current_Health_set(value):
 	Current_Health = clamp(value, 0, Max_Health)
