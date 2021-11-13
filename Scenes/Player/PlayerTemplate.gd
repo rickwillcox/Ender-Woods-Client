@@ -1,40 +1,39 @@
 extends KinematicBody2D
 
-var attack_dict = {} #{"Position": position, "AnimationVector": animation_vector}
 var state = "Idle"
-
-onready var animation_tree = get_node("AnimationTree")
-onready var animation_mode = animation_tree.get("parameters/playback")
-
-func _physics_process(_delta):
-	if not attack_dict == {}:
-		Attack()
 
 func _ready():
 	randomize()
-	var random_color = Color(randf(), randf(), randf())
-	get_node("Sprite").modulate = random_color
+	var random_color : Vector3 = Vector3(randf(), randf(), randf())
+	$CharacterBase.material.set_shader_param("color", random_color)
 
-func MovePlayer(new_position, animation_vector):
+func move_player(new_position, animation_vector):
 	if state != "Attack":
-		animation_tree.set('parameters/Walk/blend_position', animation_vector)
-		animation_tree.set('parameters/Idle/blend_position', animation_vector)
+		$CharacterBase.blend_position = animation_vector
 		if new_position == position:
+			$CharacterBase.travel("idle")
 			state = "Idle"
-			animation_mode.travel("Idle")
 		else:
 			state = "Walk"
-			animation_mode.travel("Walk")
-			set_position(new_position)
+			$CharacterBase.travel("walk")
+			position = new_position
 
-func Attack():
-	for attack in attack_dict.keys():
-		if attack <= Server.client_clock:
-			state = "Attack"
-			animation_tree.set('parameters/Melee_Attack/blend_position', attack_dict[attack]["AnimationVector"])
-			animation_mode.travel("Melee_Attack")
-			set_position(attack_dict[attack]["Position"])
-			
-			#attack code here later
-			
-			state = "Idle"
+func perform_attack():
+	state = "Attack"
+	$CharacterBase.travel("chop")
+
+func _on_CharacterBase_animation_finished(animation_name):
+	if "chop" in animation_name:
+		state = "Idle"
+
+func get_character_base():
+	return $CharacterBase
+
+
+# Periodically request players inventory until it is initialized
+var inventory_updated = false
+func _on_InventoryRequestTimer_timeout():
+	if inventory_updated:
+		$InventoryRequestTimer.queue_free()
+		return
+	Server.request_player_inventory(int(name))

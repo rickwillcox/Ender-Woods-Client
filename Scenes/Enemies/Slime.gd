@@ -1,29 +1,24 @@
 extends KinematicBody2D
 
-
-var max_hp	= 9000
-var current_hp = 9000
-var state
+var max_hp : int = 9000
+var current_hp : int = 9000
 var type
-var dead = false
+var dead : bool = false
+
 func _ready():
 	$AnimationPlayer.play("slimeAnimation")
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = current_hp
-	if state == "Idle":
-		pass
-	elif state == "Dead":
-		OnDeath()
 	$FloatAroundAnimation.play("Float")
-		#hide health bar and hitboes here later
+		
 
 func _physics_process(_delta):
 	pass
 	
-func MoveEnemy(new_position):
+func MoveEnemy(new_position : Vector2):
 	set_position(new_position)
 	
-func Health(health):
+func Health(health : int):
 	if health != current_hp:
 		if dead == false:
 			$SlimeBlinkAnimation.play()
@@ -33,7 +28,7 @@ func Health(health):
 			dead = true
 			OnDeath()
 			
-func HealthBarUpdate(): #15 25min
+func HealthBarUpdate(): 
 	$HealthBar.value = current_hp
 
 		

@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/MenuSelector/MenuSelector.gd" type="Script" id=1]
+
+[node name="MenuSelector" type="VBoxContainer"]
+margin_left = -57.5
+margin_top = -1.0
+margin_right = 32.5
+margin_bottom = 445.0
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryBtn" type="Button" parent="."]
+margin_top = 57.0
+margin_right = 90.0
+margin_bottom = 137.0
+rect_min_size = Vector2( 0, 80 )
+toggle_mode = true
+pressed = true
+text = "Inventory"
+
+[node name="StatusBtn" type="Button" parent="."]
+margin_top = 141.0
+margin_right = 90.0
+margin_bottom = 221.0
+rect_min_size = Vector2( 0, 80 )
+toggle_mode = true
+text = "Status"
+
+[node name="Button3" type="Button" parent="."]
+margin_top = 225.0
+margin_right = 90.0
+margin_bottom = 305.0
+rect_min_size = Vector2( 0, 80 )
+toggle_mode = true
+text = "Option 3"
+
+[node name="Button4" type="Button" parent="."]
+margin_top = 309.0
+margin_right = 90.0
+margin_bottom = 389.0
+rect_min_size = Vector2( 0, 80 )
+toggle_mode = true
+text = "Option 4"
+
+[connection signal="toggled" from="InventoryBtn" to="." method="_on_InventoryBtn_toggled"]
+[connection signal="toggled" from="StatusBtn" to="." method="_on_StatusBtn_toggled"]

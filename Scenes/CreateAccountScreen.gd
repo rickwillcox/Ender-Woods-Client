@@ -18,19 +18,18 @@ func _ready():
 func _on_CreateAccountButton_pressed():
 	if username_input.text == "" or userpassword_input.text == "" or userpasswordrepeat_input.text == "":
 		menu_failed_sound.play()		
-		print("Please provide valid userID and password")
+		Logger.warn("Please provide valid userID and password")
 	elif userpassword_input.text != userpasswordrepeat_input.text:
 		menu_failed_sound.play()	
-		print("Passwords do not match")
+		Logger.warn("Passwords do not match")
 	else:
 		menu_pressed_sound.play()
 		back_button.disabled = true
 		create_account_button.disabled = true
 		var username = username_input.get_text()
 		var password = userpassword_input.get_text()
-		print("Attempting to Create Account")	
-		Gateway.ConnectToServer(username, password, true)
-		
+		Logger.info("Attempting to Create Account")	
+		Gateway.connect_to_server(username, password, true)
 
 func _on_Back_Button_pressed():
 	menu_pressed_sound.play()

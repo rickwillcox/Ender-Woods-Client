@@ -1,39 +1,30 @@
 extends KinematicBody2D
 
 
-var max_hp	
-var current_hp
-var state
-var type
+var max_hp : int
+var current_hp : int
+var type 
 
 func _ready():
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = current_hp
 	$Rekt.visible = false
-	if state == "Idle":
-		pass
-	elif state == "Dead":
-		OnDeath()
 		#hide health bar and hitboes here later
 
 func _physics_process(delta):
 	pass
 	
-func MoveEnemy(new_position):
+func MoveEnemy(new_position : Vector2):
 	set_position(new_position)
-	
-#func on_hit(damage):
-#	Server.NPCHit(int(get_name()), damage)
-
-			
-func Health(health):
+				
+func Health(health : int):
 	if health != current_hp:
 		current_hp = health
 		HealthBarUpdate()
 		if current_hp <= 0:
 			OnDeath()
 			
-func HealthBarUpdate(): #15 25min
+func HealthBarUpdate(): 
 	var percentage_hp = int((float(current_hp) / max_hp) * 100)
 	$HealthBar.value = current_hp
 

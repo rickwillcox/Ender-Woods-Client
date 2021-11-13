@@ -1,18 +1,18 @@
 extends KinematicBody2D
 
-enum STATES{
-	IDLE, 
-	WANDER, 
-	CHASE, 
-	ATTACK, 
-	DEAD
-}
-
 enum ATTACK_TYPES {
 	ATTACKSWING,
 	ATTACKSPIN,
 	NOTATTACKING		
 }
+
+var velocity : Vector2 = Vector2.ZERO
+var blend_position : Vector2 = Vector2.ZERO
+var facing_blend_position : Vector2 = Vector2.ZERO
+var max_hp : int = 9000
+var current_hp : int = 9000
+var dead : bool = false
+var type
 
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
@@ -20,44 +20,16 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = $AnimationTree.get("parameters/playback")
 onready var attack_timer = $AttackTimer
 
-var velocity = Vector2.ZERO
-var blend_position = Vector2.ZERO
-var facing_blend_position = Vector2.ZERO
-var rng
-var state = STATES.IDLE
-var attacking = false
-var current_position
-var attack_type = ""
-var max_hp	= 9000
-var current_hp = 9000
-var type
-var dead = false
-var update_position = Vector2(0,0)
-
 func ready():
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = current_hp
-#	animation_tree.active = true
-	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if current_hp <= 0:
 		queue_free()
-	
 	blend_position()
-	match state:
-		STATES.IDLE:
-			pass
-		STATES.WANDER:
-			pass
-		STATES.CHASE:
-			pass
-		STATES.ATTACK:
-			pass
-		STATES.DEAD:
-			queue_free()
 	
-func MoveEnemy(new_position):
+func MoveEnemy(new_position : Vector2):
 	if attack_timer.is_stopped():
 		if position.x > new_position.x:
 			facing_blend_position = Vector2(-2,0)
@@ -74,7 +46,7 @@ func MoveEnemy(new_position):
 				animation_player.play("Idle Right")
 
 
-func EnemyAttack(attack_type):
+func enemy_attack(attack_type):
 	if ATTACK_TYPES.keys()[attack_type] == "ATTACKSWING":
 		attack_timer.wait_time = 1.9
 		if facing_blend_position.x > 0:
@@ -89,7 +61,7 @@ func EnemyAttack(attack_type):
 			animation_player.play("Attack Spin Left")
 	attack_timer.start()
 	
-func Health(health):
+func Health(health : int):
 	if health != current_hp:
 		if dead == false:
 			#hit animation
@@ -100,7 +72,7 @@ func Health(health):
 			dead = true
 			OnDeath()
 			
-func HealthBarUpdate(): #15 25min
+func HealthBarUpdate(): 
 	$HealthBar.value = current_hp
 	
 func OnDeath():
