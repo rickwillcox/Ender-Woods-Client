@@ -4,6 +4,7 @@ var si = ServerInterface
 
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
+var batsquito = preload("res://Scenes/Enemies/Batsquito.tscn")
 var map
 
 func _ready():
@@ -40,6 +41,8 @@ func instance_enemy(enemy_type):
 			result = mino.instance()
 		si.EnemyType.SLIME:
 			result = slime.instance()
+		si.EnemyType.BATSQUITO:
+			result = batsquito.instance()
 		_:
 			# not implemented enemy type
 			assert(false)
