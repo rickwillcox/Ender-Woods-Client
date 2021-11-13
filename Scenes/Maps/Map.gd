@@ -31,6 +31,7 @@ func _ready():
 		elif file.ends_with(".mp3"):
 			tracks.append(file)	
 	load_item_textures()
+	Enemies.register_map(self)
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -82,21 +83,8 @@ func spawn_new_player(player_id : int, spawn_position : Vector2):
 		Players.add_player_node(player_id, new_player)
 		get_node("YSort/OtherPlayers").add_child(new_player)
 
-func SpawnNewEnemy(enemy_id : int, enemy_dict : Dictionary):
-	var enemy_type : String = enemy_dict[g.ENEMY_TYPE]
-	if enemy_type == "Slime":
-		 enemy_spawn = slime
-	elif enemy_type == "Mino":
-		enemy_spawn = mino
-	var new_enemy = enemy_spawn.instance()
-	new_enemy.position = enemy_dict[g.ENEMY_LOCATION]
-	new_enemy.max_hp = enemy_dict[g.ENEMY_MAX_HEALTH]
-	new_enemy.current_hp = enemy_dict[g.ENEMY_CURRENT_HEALTH]
-	new_enemy.type = enemy_dict[g.ENEMY_TYPE]
-	#new_enemy.state = enemy_dict[g.ENEMY_STATE]
-	new_enemy.name = str(enemy_id)
-	if new_enemy.current_hp > 0:
-		get_node("YSort/Enemies/").add_child(new_enemy, true)
+func spawn_enemy(new_enemy):
+	get_node("YSort/Enemies/").add_child(new_enemy, true)
 
 func despawn_player(player_id : int):
 	yield(get_tree().create_timer(0.3), "timeout")
@@ -156,16 +144,15 @@ func _physics_process(_delta):
 				else:
 					Logger.info("spawning other player")
 					spawn_new_player(player, world_state_buffer[2][player][g.PLAYER_POSITION])
-			for enemy in world_state_buffer[2][g.ENEMIES].keys(): 
-				if not world_state_buffer[1][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
+			for enemy_id in world_state_buffer[2][g.ENEMIES].keys(): 
+				if not world_state_buffer[1][g.ENEMIES].has(enemy_id): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue
-				if get_node("YSort/Enemies").has_node(str(enemy)): #does enemy exist
-					var new_position : Vector2 = lerp(world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION], world_state_buffer[2][g.ENEMIES][enemy][g.ENEMY_LOCATION], inperpolation_factor)
-					get_node("YSort/Enemies/" + str(enemy)).MoveEnemy(new_position)
-					get_node("YSort/Enemies/" + str(enemy)).Health(world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_CURRENT_HEALTH])
-				else:
-					SpawnNewEnemy(enemy, world_state_buffer[2][g.ENEMIES][enemy])
-					
+				var enemy = Enemies.get_enemy(enemy_id)
+				if enemy:
+					var new_position : Vector2 = lerp(world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_LOCATION], world_state_buffer[2][g.ENEMIES][enemy_id][g.ENEMY_LOCATION], inperpolation_factor)
+					enemy.MoveEnemy(new_position)
+					enemy.Health(world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_CURRENT_HEALTH])
+			
 			for ore in world_state_buffer[2][g.ORES].keys():
 				if world_state_buffer[2][g.ORES][ore][g.PLAYER_ANIMATION_VECTOR] == 0:
 					get_node("YSort/Ores/" + str(ore) + "/Sprite").frame = 0
@@ -190,15 +177,12 @@ func _physics_process(_delta):
 					var new_position : Vector2 = world_state_buffer[1][player][g.PLAYER_POSITION] + (position_delta * extrapolation_factor)
 					var animation_vector : Vector2 = world_state_buffer[1][player][g.PLAYER_ANIMATION_VECTOR]
 					Players.get_player_node(player).move_player(new_position, animation_vector)
-			for enemy in world_state_buffer[1][g.ENEMIES].keys(): 
-				if not world_state_buffer[0][g.ENEMIES].has(enemy): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
+			for enemy_id in world_state_buffer[1][g.ENEMIES].keys(): 
+				if not world_state_buffer[0][g.ENEMIES].has(enemy_id): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue
-				if get_node("YSort/Enemies").has_node(str(enemy)): #does enemy exist
-					var position_delta : Vector2 = ((world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION] - world_state_buffer[0][g.ENEMIES][enemy][g.ENEMY_LOCATION]))
-					var new_position : Vector2 = world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_LOCATION] + (position_delta * extrapolation_factor)
-					var state = world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_STATE]
-					get_node("YSort/Enemies/" + str(enemy)).MoveEnemy(new_position)
-					get_node("YSort/Enemies/" + str(enemy)).Health(world_state_buffer[1][g.ENEMIES][enemy][g.ENEMY_CURRENT_HEALTH])
-				else:
-					SpawnNewEnemy(enemy, world_state_buffer[1][g.ENEMIES][enemy])
-
+				var enemy = Enemies.get_enemy(enemy_id)
+				if enemy:
+					var position_delta : Vector2 = ((world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_LOCATION] - world_state_buffer[0][g.ENEMIES][enemy_id][g.ENEMY_LOCATION]))
+					var new_position : Vector2 = world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_LOCATION] + (position_delta * extrapolation_factor)
+					enemy.MoveEnemy(new_position)
+					enemy.Health(world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_CURRENT_HEALTH])

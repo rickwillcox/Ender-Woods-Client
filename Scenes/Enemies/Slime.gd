@@ -26,18 +26,17 @@ func Health(health : int):
 		HealthBarUpdate()
 		if current_hp <= 0 and dead == false:
 			dead = true
-			OnDeath()
 			
 func HealthBarUpdate(): 
 	$HealthBar.value = current_hp
 
 		
+func swing_at(victim_id):
+	pass #do nothing
 func OnDeath():
 	$HealthBar.visible = false
 	$AnimationPlayer.stop()
 	$Death.play("Die")
-	yield(get_tree().create_timer(0.4), "timeout")
-	queue_free()
 	
 
 	

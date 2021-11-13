@@ -10,6 +10,7 @@ signal initialize_inventory(player_id, item_slot_array)
 signal enemy_spawn(enemy_id, enemy_state, enemy_type, health, position)
 signal enemy_died(enemy_id)
 signal enemy_despawn(enemy_id)
+signal enemy_swing(enemy_id, player_id)
 
 var si = ServerInterface
 
@@ -37,7 +38,11 @@ func handle(packet):
 			emit_signal("remove_item", packet["item_id"])
 		si.Opcodes.ATTACK_SWING:
 			Logger.info("Entity %d swings weapon at entity %d" % [packet["attacker"], packet["victim"]])
-			emit_signal("attack_swing", packet["attacker"], packet["victim"])
+			if packet["attacker"] < 0:
+				# its enemy swinging at player:
+				emit_signal("enemy_swing", -packet["attacker"], packet["victim"])
+			else:
+				emit_signal("attack_swing", packet["attacker"], packet["victim"])
 		si.Opcodes.PLAYER_INVENTORY_UPDATE:
 			emit_signal("update_inventory", packet["player_id"], packet["slot"], packet["item_id"])
 		si.Opcodes.PLAYER_INITIAL_INVENTORY:
