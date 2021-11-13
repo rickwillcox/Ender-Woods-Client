@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Assets/Enemy/Minotaur_-_Sprite_Sheet_cropped.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemies/Mino.gd" type="Script" id=4]
@@ -132,106 +132,119 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 12, 13, 14, 15, 16 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "Attack Spin Left"
+[sub_resource type="Animation" id=9]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 171, 172, 173, 174, 175 ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=10]
-animation = "Attack Spin Right"
+animation = "Attack Spin Left"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Attack Spin Right"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Attack Spin Right"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Attack Spin Left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=13]
-blend_point_0/node = SubResource( 9 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=14]
+blend_point_0/node = SubResource( 10 )
 blend_point_0/pos = Vector2( -0.1, 0.9 )
-blend_point_1/node = SubResource( 10 )
+blend_point_1/node = SubResource( 11 )
 blend_point_1/pos = Vector2( 0.1, 0.9 )
-blend_point_2/node = SubResource( 11 )
+blend_point_2/node = SubResource( 12 )
 blend_point_2/pos = Vector2( 0.1, -0.9 )
-blend_point_3/node = SubResource( 12 )
+blend_point_3/node = SubResource( 13 )
 blend_point_3/pos = Vector2( -0.1, -0.9 )
 
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "Attack Swing Left"
-
 [sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Attack Swing Right"
+animation = "Attack Swing Left"
 
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Attack Swing Right"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Attack Swing Right"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Attack Swing Left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=18]
-blend_point_0/node = SubResource( 14 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=19]
+blend_point_0/node = SubResource( 15 )
 blend_point_0/pos = Vector2( -0.1, 0.9 )
-blend_point_1/node = SubResource( 15 )
+blend_point_1/node = SubResource( 16 )
 blend_point_1/pos = Vector2( 0.1, 0.9 )
-blend_point_2/node = SubResource( 16 )
+blend_point_2/node = SubResource( 17 )
 blend_point_2/pos = Vector2( 0.1, -0.9 )
-blend_point_3/node = SubResource( 17 )
+blend_point_3/node = SubResource( 18 )
 blend_point_3/pos = Vector2( -0.1, -0.9 )
 
-[sub_resource type="AnimationNodeAnimation" id=19]
-animation = "Idle Left"
-
 [sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Idle Right"
+animation = "Idle Left"
 
 [sub_resource type="AnimationNodeAnimation" id=21]
 animation = "Idle Right"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Idle Right"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "Idle Left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=23]
-blend_point_0/node = SubResource( 19 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=24]
+blend_point_0/node = SubResource( 20 )
 blend_point_0/pos = Vector2( -0.1, 0.9 )
-blend_point_1/node = SubResource( 20 )
+blend_point_1/node = SubResource( 21 )
 blend_point_1/pos = Vector2( 0.1, 0.9 )
-blend_point_2/node = SubResource( 21 )
+blend_point_2/node = SubResource( 22 )
 blend_point_2/pos = Vector2( 0.1, -0.9 )
-blend_point_3/node = SubResource( 22 )
+blend_point_3/node = SubResource( 23 )
 blend_point_3/pos = Vector2( -0.1, -0.9 )
 blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=24]
-animation = "Run Left"
 
 [sub_resource type="AnimationNodeAnimation" id=25]
 animation = "Run Left"
 
 [sub_resource type="AnimationNodeAnimation" id=26]
-animation = "Run Right"
+animation = "Run Left"
 
 [sub_resource type="AnimationNodeAnimation" id=27]
 animation = "Run Right"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=28]
-blend_point_0/node = SubResource( 24 )
-blend_point_0/pos = Vector2( -0.1, 0.9 )
-blend_point_1/node = SubResource( 25 )
-blend_point_1/pos = Vector2( -0.1, -0.9 )
-blend_point_2/node = SubResource( 26 )
-blend_point_2/pos = Vector2( 0.1, -0.9 )
-blend_point_3/node = SubResource( 27 )
-blend_point_3/pos = Vector2( 0.1, 0.9 )
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Run Right"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+[sub_resource type="AnimationNodeBlendSpace2D" id=29]
+blend_point_0/node = SubResource( 25 )
+blend_point_0/pos = Vector2( -0.1, 0.9 )
+blend_point_1/node = SubResource( 26 )
+blend_point_1/pos = Vector2( -0.1, -0.9 )
+blend_point_2/node = SubResource( 27 )
+blend_point_2/pos = Vector2( 0.1, -0.9 )
+blend_point_3/node = SubResource( 28 )
+blend_point_3/pos = Vector2( 0.1, 0.9 )
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
 
@@ -239,19 +252,22 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=36]
 
-[sub_resource type="AnimationNodeStateMachine" id=37]
-states/AttackSpin/node = SubResource( 13 )
-states/AttackSpin/position = Vector2( 672, 201 )
-states/AttackSwing/node = SubResource( 18 )
-states/AttackSwing/position = Vector2( 533, 41 )
-states/Idle/node = SubResource( 23 )
-states/Idle/position = Vector2( 433, 132 )
-states/Run/node = SubResource( 28 )
-states/Run/position = Vector2( 691, 96 )
-transitions = [ "Idle", "AttackSwing", SubResource( 29 ), "Idle", "AttackSpin", SubResource( 30 ), "AttackSpin", "Idle", SubResource( 31 ), "AttackSwing", "Idle", SubResource( 32 ), "Idle", "Run", SubResource( 33 ), "Run", "Idle", SubResource( 34 ), "Run", "AttackSpin", SubResource( 35 ), "Run", "AttackSwing", SubResource( 36 ) ]
-start_node = "Idle"
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=38]
+[sub_resource type="AnimationNodeStateMachine" id=38]
+states/AttackSpin/node = SubResource( 14 )
+states/AttackSpin/position = Vector2( 672, 201 )
+states/AttackSwing/node = SubResource( 19 )
+states/AttackSwing/position = Vector2( 533, 41 )
+states/Idle/node = SubResource( 24 )
+states/Idle/position = Vector2( 433, 132 )
+states/Run/node = SubResource( 29 )
+states/Run/position = Vector2( 691, 96 )
+transitions = [ "Idle", "AttackSwing", SubResource( 30 ), "Idle", "AttackSpin", SubResource( 31 ), "AttackSpin", "Idle", SubResource( 32 ), "AttackSwing", "Idle", SubResource( 33 ), "Idle", "Run", SubResource( 34 ), "Run", "Idle", SubResource( 35 ), "Run", "AttackSpin", SubResource( 36 ), "Run", "AttackSwing", SubResource( 37 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 0, 46.178 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=39]
 
 [node name="Mino" type="KinematicBody2D"]
 position = Vector2( 0, -30 )
@@ -264,7 +280,7 @@ position = Vector2( 0, -5 )
 texture = ExtResource( 1 )
 hframes = 9
 vframes = 20
-frame = 3
+frame = 175
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Attack Spin Left" = SubResource( 1 )
@@ -275,11 +291,12 @@ frame = 3
 "anims/Idle Right" = SubResource( 6 )
 "anims/Run Left" = SubResource( 7 )
 "anims/Run Right" = SubResource( 8 )
+anims/death = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 37 )
+tree_root = SubResource( 38 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 38 )
+parameters/playback = SubResource( 39 )
 parameters/AttackSpin/blend_position = Vector2( 0, 0 )
 parameters/AttackSwing/blend_position = Vector2( -0.0983093, 0.903615 )
 parameters/Idle/blend_position = Vector2( 0.00814021, 0.410811 )

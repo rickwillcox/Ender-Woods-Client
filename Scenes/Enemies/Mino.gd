@@ -25,11 +25,11 @@ func ready():
 	$HealthBar.value = current_hp
 
 func _physics_process(_delta):
-	if current_hp <= 0:
-		queue_free()
 	blend_position()
 	
 func MoveEnemy(new_position : Vector2):
+	if dead == true:
+		return
 	if attack_timer.is_stopped():
 		if position.x > new_position.x:
 			facing_blend_position = Vector2(-2,0)
@@ -63,20 +63,17 @@ func enemy_attack(attack_type):
 	
 func Health(health : int):
 	if health != current_hp:
-		if dead == false:
-			#hit animation
-			pass
 		current_hp = health
 		HealthBarUpdate()
-		if current_hp <= 0 and dead == false:
-			dead = true
-			OnDeath()
 			
 func HealthBarUpdate(): 
 	$HealthBar.value = current_hp
 	
 func OnDeath():
-	queue_free()
+	dead = true
+	$HealthBar.visible = false
+	animation_tree.active = false
+	animation_player.play("death")
 	
 func blend_position():
 	animation_tree.set("parameters/Idle/blend_position", facing_blend_position)
@@ -86,3 +83,14 @@ func blend_position():
 
 
 
+func swing_at(victim_id : int):
+	var player = Players.get_player_node(victim_id)
+	if player:
+		facing_blend_position = player.position - position
+	
+	attack_timer.wait_time = 1.9
+	if facing_blend_position.x > 0:
+		animation_player.play("Attack Swing Right")
+	else:
+		animation_player.play("Attack Swing Left")
+	attack_timer.start()
