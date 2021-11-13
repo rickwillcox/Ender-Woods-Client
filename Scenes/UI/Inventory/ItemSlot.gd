@@ -1,5 +1,5 @@
 tool
-extends TextureRect
+extends Control
 class_name ItemSlot
 
 export var item_slot : int
@@ -34,6 +34,7 @@ func get_drag_data(_position: Vector2):
 	return data
 	
 func can_drop_data(_position: Vector2, data) -> bool:
+	print(data)
 	data["to_item_slot"] = item_slot
 	return inventory.is_move_to_slot_allowed(data["from_item_slot"], item_slot)
 	
