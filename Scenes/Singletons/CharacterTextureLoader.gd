@@ -2,7 +2,6 @@ extends Node
 
 var dir : Directory = Directory.new()
 var item_id_to_asset : Dictionary = {}
-var item_textures : Dictionary 
 
 func _ready():
 	dir.open("res://Assets/Character/items/")
