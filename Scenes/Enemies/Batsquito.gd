@@ -8,6 +8,7 @@ var attacking : bool = false
 var type
 
 onready var sprite = $Sprite
+onready var shadow = $Shadow
 onready var animation_player = $AnimationPlayer
 
 func ready():
@@ -21,6 +22,10 @@ func MoveEnemy(new_position : Vector2):
 		return
 	
 	look_at(new_position)
+	if position == new_position:
+		animation_player.playback_speed = 0.5
+	else:
+		animation_player.playback_speed = 1.0
 	position = new_position
 	animation_player.play("idle")
 	
@@ -35,6 +40,7 @@ func HealthBarUpdate():
 func OnDeath():
 	dead = true
 	$HealthBar.visible = false
+	animation_player.playback_speed = 1.0
 	animation_player.play("death")
 
 func swing_at(victim_id : int):
@@ -43,14 +49,17 @@ func swing_at(victim_id : int):
 		look_at(player.position)
 		
 	attacking = true
+	animation_player.playback_speed = 1.0
 	animation_player.play("attack")
 
 func look_at(point):
 	var direction = point - position
 	if direction.x > 0:
 		sprite.scale.x = -2
+		shadow.scale.x = -2
 	elif direction.x < 0:
 		sprite.scale.x = 2
+		shadow.scale.x = 2
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "attack":
