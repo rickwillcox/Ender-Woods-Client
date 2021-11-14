@@ -5,9 +5,6 @@ var item_id_to_asset : Dictionary = {}
 var item_textures : Dictionary 
 
 func _ready():
-	for key in item_id_to_asset:
-		item_textures[key] = load(item_id_to_asset[key])
-	
 	dir.open("res://Assets/Character/items/")
 	dir.list_dir_begin(true, true)
 	#get all files that end in .png from the directory above
@@ -22,6 +19,6 @@ func _ready():
 
 	
 func get_item_texture(item_id):
-	if item_textures.has(item_id):
-		return item_textures[item_id]
+	if item_id_to_asset.has(item_id):
+		return item_id_to_asset[item_id]
 	return null

@@ -34,11 +34,9 @@ func _ready():
 			# First part of the file name is item_id
 			var id = int(file.split("_")[0])
 			item_textures[id] =  load("res://Assets/inventory/Items/" + file)
-	print(item_textures)
 	
 func RefreshInventory(inventory_data):
-	inventory.update(inventory_data)
-	print(inventory)
+	inventory.update(inventory_data) 
 	for slot in inventory.slots:
 		update_slot_display(slot)
 	var character_display_slots = [ItemDatabase.Slots.CHEST_SLOT,
