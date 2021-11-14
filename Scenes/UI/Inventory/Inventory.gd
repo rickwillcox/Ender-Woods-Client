@@ -22,6 +22,8 @@ func _ready():
 	inventory_character.travel("idle", true)
 	PacketHandler.connect("inventory_nok", self, "handle_inventory_nok")
 	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
+	PacketHandler.connect("item_craft_nok", self, "handle_item_craft_nok")
+	PacketHandler.connect("item_craft_ok", self, "handle_item_craft_ok")
 
 	dir.open("res://Assets/inventory/Items/")
 	dir.list_dir_begin(true, true)
@@ -111,3 +113,25 @@ func on_pickup(item_id, item_name):
 
 func set_player_character(player_character_node):
 	player_character = player_character_node
+
+
+func handle_item_craft_nok():
+	awaiting_response = false
+	
+func handle_item_craft_ok(slot, item_id):
+	var recipe = ItemDatabase.all_recipe_data[crating_recipe]
+	var materials = recipe["materials"]
+	inventory.remove_materials(materials)
+	inventory.add_item(recipe["result_item_id"], 1)
+	for slot in inventory.slots.keys():
+		update_slot_display(slot)
+	awaiting_response = false
+
+
+var crating_recipe = -1
+func _on_CraftingMenu_craft_recipe(recipe_id):
+	if awaiting_response:
+		return
+	awaiting_response = true
+	crating_recipe = recipe_id
+	Server.craft_recipe(recipe_id)

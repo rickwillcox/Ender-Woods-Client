@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://WorldMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Sounds/Menu Sounds/MenuSounds.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameJoyStick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/Inventory/CratingMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Props/Ore.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/LoginScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/PlayerStats.tscn" type="PackedScene" id=7]
@@ -66,8 +67,16 @@ margin_top = -361.0
 margin_right = 639.0
 margin_bottom = 359.0
 
+[node name="CraftingMenu" parent="GUI" instance=ExtResource( 4 )]
+margin_left = 565.705
+margin_top = 69.4499
+margin_right = 565.705
+margin_bottom = 69.4499
+
 [node name="MenuSounds" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundMusic" parent="." instance=ExtResource( 10 )]
+
+[connection signal="craft_recipe" from="GUI/CraftingMenu" to="GUI/Inventory" method="_on_CraftingMenu_craft_recipe"]
 
 [editable path="YSort/Ores/O1"]

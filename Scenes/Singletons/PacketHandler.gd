@@ -12,6 +12,8 @@ signal enemy_spawn(enemy_id, enemy_state, enemy_type, health, position)
 signal enemy_died(enemy_id)
 signal enemy_despawn(enemy_id)
 signal enemy_swing(enemy_id, player_id)
+signal item_craft_nok
+signal item_craft_ok(slot, item_id)
 
 var si = ServerInterface
 
@@ -64,6 +66,10 @@ func handle(packet):
 			emit_signal("enemy_died", packet["enemy_id"])
 		si.Opcodes.ENEMY_DESPAWN:
 			emit_signal("enemy_despawn", packet["enemy_id"])
+		si.Opcodes.ITEM_CRAFT_NOK:
+			emit_signal("item_craft_nok")
+		si.Opcodes.ITEM_CRAFT_OK:
+			emit_signal("item_craft_ok", packet["slot"], packet["item_id"])
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
 			assert(false)
