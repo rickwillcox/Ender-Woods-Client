@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/44_silver_axe.png-be627f7d566dcb50ce838b419ade35cf.stex"
+path="res://.import/63_silver_gloves_spritesheet.png-78453b58c1a8591a702b242bf94e279b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/44_silver_axe.png"
-dest_files=[ "res://.import/44_silver_axe.png-be627f7d566dcb50ce838b419ade35cf.stex" ]
+source_file="res://Assets/Character/items/63_silver_gloves_spritesheet.png"
+dest_files=[ "res://.import/63_silver_gloves_spritesheet.png-78453b58c1a8591a702b242bf94e279b.stex" ]
 
 [params]
 

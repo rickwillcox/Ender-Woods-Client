@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/39_silver_sword.png-3eea70c820e166758242932f52d66b72.stex"
+path="res://.import/2_copper_chest.png-0044cb662f7eea4808d0be05e0bc7a2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/39_silver_sword.png"
-dest_files=[ "res://.import/39_silver_sword.png-3eea70c820e166758242932f52d66b72.stex" ]
+source_file="res://Assets/inventory/Items/2_copper_chest.png"
+dest_files=[ "res://.import/2_copper_chest.png-0044cb662f7eea4808d0be05e0bc7a2a.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/12_no_item.png-276616d35aa4115036a32ae0bdb48efa.stex"
+path="res://.import/41_bronze_helmet.png-3725c52e6d8be40d63d04c4e5b70fdbc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/12_no_item.png"
-dest_files=[ "res://.import/12_no_item.png-276616d35aa4115036a32ae0bdb48efa.stex" ]
+source_file="res://Assets/inventory/Items/41_bronze_helmet.png"
+dest_files=[ "res://.import/41_bronze_helmet.png-3725c52e6d8be40d63d04c4e5b70fdbc.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/49_gold_boots.png-b02b3b74af15800e2acc904b34e5a18c.stex"
+path="res://.import/25_iron_boots.png-bb8b830ef9182922cad833b0087cf30d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/49_gold_boots.png"
-dest_files=[ "res://.import/49_gold_boots.png-b02b3b74af15800e2acc904b34e5a18c.stex" ]
+source_file="res://Assets/inventory/Items/25_iron_boots.png"
+dest_files=[ "res://.import/25_iron_boots.png-bb8b830ef9182922cad833b0087cf30d.stex" ]
 
 [params]
 

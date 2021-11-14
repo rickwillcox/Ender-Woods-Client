@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/35_silver_chest.png-c9582329e066bf7337a5d2c99581cd16.stex"
+path="res://.import/67_silver_shield.png-f3b5941f9c35ab2239d2d2c4d2fa6b78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/35_silver_chest.png"
-dest_files=[ "res://.import/35_silver_chest.png-c9582329e066bf7337a5d2c99581cd16.stex" ]
+source_file="res://Assets/inventory/Items/67_silver_shield.png"
+dest_files=[ "res://.import/67_silver_shield.png-f3b5941f9c35ab2239d2d2c4d2fa6b78.stex" ]
 
 [params]
 

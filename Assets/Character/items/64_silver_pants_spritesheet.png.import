@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/47_silver_leggings.png-8a6fab1988eafb329dd90faa48b47f37.stex"
+path="res://.import/64_silver_pants_spritesheet.png-e885399e6bab2f9dbeedd5325980eceb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/47_silver_leggings.png"
-dest_files=[ "res://.import/47_silver_leggings.png-8a6fab1988eafb329dd90faa48b47f37.stex" ]
+source_file="res://Assets/Character/items/64_silver_pants_spritesheet.png"
+dest_files=[ "res://.import/64_silver_pants_spritesheet.png-e885399e6bab2f9dbeedd5325980eceb.stex" ]
 
 [params]
 

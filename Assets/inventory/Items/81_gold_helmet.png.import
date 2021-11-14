@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/13_iron_chest.png-cb4fcd114ce01084b58020da8425a025.stex"
+path="res://.import/81_gold_helmet.png-444774dae2e9f97b17c3bea797c110dd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/13_iron_chest.png"
-dest_files=[ "res://.import/13_iron_chest.png-cb4fcd114ce01084b58020da8425a025.stex" ]
+source_file="res://Assets/inventory/Items/81_gold_helmet.png"
+dest_files=[ "res://.import/81_gold_helmet.png-444774dae2e9f97b17c3bea797c110dd.stex" ]
 
 [params]
 

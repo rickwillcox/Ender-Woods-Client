@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/53_gold_amulet.png-9fdaf457fccd4fec4cb1f82b88695968.stex"
+path="res://.import/84_gold_pants.png-d4bf5593d271dff08b8e61b8e039cbb8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/53_gold_amulet.png"
-dest_files=[ "res://.import/53_gold_amulet.png-9fdaf457fccd4fec4cb1f82b88695968.stex" ]
+source_file="res://Assets/inventory/Items/84_gold_pants.png"
+dest_files=[ "res://.import/84_gold_pants.png-d4bf5593d271dff08b8e61b8e039cbb8.stex" ]
 
 [params]
 

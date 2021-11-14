@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/14_iron_gloves.png-cf6772cc9d41efd0b78fea1bcd6edd04.stex"
+path="res://.import/21_iron_helmet.png-823ab5324ec3ef1b6412e36258128919.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/14_iron_gloves.png"
-dest_files=[ "res://.import/14_iron_gloves.png-cf6772cc9d41efd0b78fea1bcd6edd04.stex" ]
+source_file="res://Assets/inventory/Items/21_iron_helmet.png"
+dest_files=[ "res://.import/21_iron_helmet.png-823ab5324ec3ef1b6412e36258128919.stex" ]
 
 [params]
 

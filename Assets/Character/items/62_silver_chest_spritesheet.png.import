@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/silver_gloves_spritesheet.png-a3b5ce0a9a64a199f497f059e6df7340.stex"
+path="res://.import/62_silver_chest_spritesheet.png-a1187aa6bf6ac2c1bee88ddc60b63c79.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/items/silver_gloves_spritesheet.png"
-dest_files=[ "res://.import/silver_gloves_spritesheet.png-a3b5ce0a9a64a199f497f059e6df7340.stex" ]
+source_file="res://Assets/Character/items/62_silver_chest_spritesheet.png"
+dest_files=[ "res://.import/62_silver_chest_spritesheet.png-a1187aa6bf6ac2c1bee88ddc60b63c79.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

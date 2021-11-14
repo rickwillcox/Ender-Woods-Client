@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/silver_helmet_spritesheet.png-773592446ce4a4597f00329743b64741.stex"
+path="res://.import/66_silver_sword.png-60e21906c07abd097f306e27be340d89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/items/silver_helmet_spritesheet.png"
-dest_files=[ "res://.import/silver_helmet_spritesheet.png-773592446ce4a4597f00329743b64741.stex" ]
+source_file="res://Assets/inventory/Items/66_silver_sword.png"
+dest_files=[ "res://.import/66_silver_sword.png-60e21906c07abd097f306e27be340d89.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

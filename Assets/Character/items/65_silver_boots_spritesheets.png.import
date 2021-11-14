@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/silver_breastplate_spritesheet.png-179fb9602e63ebb69c315aee07103c73.stex"
+path="res://.import/65_silver_boots_spritesheets.png-55b3b64c94beca02ba3c012b09a2f5e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/items/silver_breastplate_spritesheet.png"
-dest_files=[ "res://.import/silver_breastplate_spritesheet.png-179fb9602e63ebb69c315aee07103c73.stex" ]
+source_file="res://Assets/Character/items/65_silver_boots_spritesheets.png"
+dest_files=[ "res://.import/65_silver_boots_spritesheets.png-55b3b64c94beca02ba3c012b09a2f5e2.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

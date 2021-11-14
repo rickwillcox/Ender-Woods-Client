@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/silver_pants_spritesheet.png-1f562d2740866c071cc4835392c0b969.stex"
+path="res://.import/44_bronze_pants.png-1f0850be25a610d8dac82c274089a8e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/items/silver_pants_spritesheet.png"
-dest_files=[ "res://.import/silver_pants_spritesheet.png-1f562d2740866c071cc4835392c0b969.stex" ]
+source_file="res://Assets/inventory/Items/44_bronze_pants.png"
+dest_files=[ "res://.import/44_bronze_pants.png-1f0850be25a610d8dac82c274089a8e3.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

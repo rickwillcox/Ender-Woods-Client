@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/52_gold_ring.png-05d7f51f8721b531c27de925953a2a9b.stex"
+path="res://.import/23_iron_gloves.png-499cf2b9795cc808b1ee145d824dd913.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/52_gold_ring.png"
-dest_files=[ "res://.import/52_gold_ring.png-05d7f51f8721b531c27de925953a2a9b.stex" ]
+source_file="res://Assets/inventory/Items/23_iron_gloves.png"
+dest_files=[ "res://.import/23_iron_gloves.png-499cf2b9795cc808b1ee145d824dd913.stex" ]
 
 [params]
 

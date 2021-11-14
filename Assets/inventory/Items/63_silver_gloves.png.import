@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/15_iron_pants.png-227cf1b2c31b62a87219a77be673425f.stex"
+path="res://.import/63_silver_gloves.png-2c6ac12eb7f44363317a8117d32113d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/15_iron_pants.png"
-dest_files=[ "res://.import/15_iron_pants.png-227cf1b2c31b62a87219a77be673425f.stex" ]
+source_file="res://Assets/inventory/Items/63_silver_gloves.png"
+dest_files=[ "res://.import/63_silver_gloves.png-2c6ac12eb7f44363317a8117d32113d9.stex" ]
 
 [params]
 

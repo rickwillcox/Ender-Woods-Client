@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/2_copper_breastplate.png-1c32868ebde1d38d156c3ca0c6b39357.stex"
+path="res://.import/89_gold_amulet.png-8c3c837d1f3efd837534876dd4228e51.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/2_copper_breastplate.png"
-dest_files=[ "res://.import/2_copper_breastplate.png-1c32868ebde1d38d156c3ca0c6b39357.stex" ]
+source_file="res://Assets/inventory/Items/89_gold_amulet.png"
+dest_files=[ "res://.import/89_gold_amulet.png-8c3c837d1f3efd837534876dd4228e51.stex" ]
 
 [params]
 
