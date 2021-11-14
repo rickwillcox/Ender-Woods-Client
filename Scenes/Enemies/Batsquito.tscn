@@ -8,8 +8,8 @@
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
-length = 0.7
-step = 0.05
+length = 0.75
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -25,6 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "death"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -40,8 +41,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle"
-length = 0.8
+length = 0.48
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -49,7 +51,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"times": PoolRealArray( 0, 0.12, 0.24, 0.36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
@@ -69,6 +71,7 @@ position = Vector2( -0.794586, -33.6311 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 16
+frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
