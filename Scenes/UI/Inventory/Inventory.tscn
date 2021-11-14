@@ -38,6 +38,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ItemDropZone" type="Control" parent="." groups=[
+"item_drop_zone",
+]]
+margin_left = -87.0
+margin_top = -69.0
+margin_right = 969.0
+margin_bottom = 526.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Background" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5

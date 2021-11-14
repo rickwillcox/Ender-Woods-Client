@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex"
+path="res://.import/61_silver_helmet_spritesheet.png-8058d986ead240da9a0968b01eb2e3e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/100000_copper_ore.png"
-dest_files=[ "res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex" ]
+source_file="res://Assets/Character/items/61_silver_helmet_spritesheet.png"
+dest_files=[ "res://.import/61_silver_helmet_spritesheet.png-8058d986ead240da9a0968b01eb2e3e1.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex"
+path="res://.import/64_silver_leggings.png-c1359badd17389f68ff3f8d6a087d4a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/100000_copper_ore.png"
-dest_files=[ "res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex" ]
+source_file="res://Assets/inventory/Items/64_silver_leggings.png"
+dest_files=[ "res://.import/64_silver_leggings.png-c1359badd17389f68ff3f8d6a087d4a2.stex" ]
 
 [params]
 

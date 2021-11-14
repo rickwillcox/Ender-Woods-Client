@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex"
+path="res://.import/2_copper_chest.png-0044cb662f7eea4808d0be05e0bc7a2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/100000_copper_ore.png"
-dest_files=[ "res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex" ]
+source_file="res://Assets/inventory/Items/2_copper_chest.png"
+dest_files=[ "res://.import/2_copper_chest.png-0044cb662f7eea4808d0be05e0bc7a2a.stex" ]
 
 [params]
 

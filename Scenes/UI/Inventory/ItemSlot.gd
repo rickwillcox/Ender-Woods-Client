@@ -1,5 +1,5 @@
 tool
-extends TextureRect
+extends Control
 class_name ItemSlot
 
 export var item_slot : int

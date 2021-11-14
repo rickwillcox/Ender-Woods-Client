@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex"
+path="res://.import/43_bronze_gloves.png-691b8f3b761b93c4a7eead7da9fb573f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/inventory/Items/100000_copper_ore.png"
-dest_files=[ "res://.import/100000_copper_ore.png-08f2bf7531a586982201a43d7eba4300.stex" ]
+source_file="res://Assets/inventory/Items/43_bronze_gloves.png"
+dest_files=[ "res://.import/43_bronze_gloves.png-691b8f3b761b93c4a7eead7da9fb573f.stex" ]
 
 [params]
 
