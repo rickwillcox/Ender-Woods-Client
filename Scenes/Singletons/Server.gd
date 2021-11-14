@@ -72,11 +72,13 @@ remote func fetch_token():
 	rpc_id(1, "return_token", token)
 	Logger.verbose("FetchToken done")
 	
-remote func return_token_verification_results(result, all_item_data):
+remote func return_token_verification_results(result, all_item_data, all_recipe_data):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
 		ItemDatabase.all_item_data = all_item_data
+		ItemDatabase.all_recipe_data = all_recipe_data
+		get_node("../SceneHandler/Map/GUI/CraftingMenu").prepare()
 #		get_node("../SceneHandler/Map/YSort/Player").set_physics_process(true)
 	else:
 		Logger.error("Login unsuccessful")
@@ -160,3 +162,6 @@ func send_player_chat(text : String):
 remote func receive_player_chat(player_id : int, username : String, text : String):
 	emit_signal("received_player_chat", player_id, username, text)
 	print("%s: %s" % [username, text])
+
+func craft_recipe(recipe_id : int):
+	rpc_id(1, "craft_recipe", recipe_id)
