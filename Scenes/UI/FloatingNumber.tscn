@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/UI/FloatingNumber.gd" type="Script" id=1]
+[ext_resource path="res://28brownoutline.tres" type="DynamicFont" id=2]
+
+[node name="FloatingNumber" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="DamageValue" type="Label" parent="."]
+modulate = Color( 0.823529, 0.811765, 0, 1 )
+margin_left = -27.8829
+margin_top = -14.414
+margin_right = 27.1171
+margin_bottom = 15.586
+custom_fonts/font = ExtResource( 2 )
+text = "2000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
