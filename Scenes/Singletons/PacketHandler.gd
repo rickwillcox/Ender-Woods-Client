@@ -1,6 +1,7 @@
 extends Node
 # this handles all packets from server
 signal take_damage(attacker, victim, damage)
+signal enemy_take_damage(enemy_id, damage)
 signal attack_swing(attacker, victim)
 signal inventory_ok
 signal inventory_nok
@@ -29,7 +30,10 @@ func handle(packet):
 		si.Opcodes.TAKE_DAMAGE:
 			Logger.info("Entity %d received %d damage from entity %d" 
 					% [packet["victim"], packet["damage"], packet["attacker"]])
-			emit_signal("take_damage", packet["victim"], packet["damage"], packet["attacker"])
+			if packet["victim"] < 0:
+				emit_signal("enemy_take_damage", -packet["victim"], packet["damage"])
+			else:
+				emit_signal("take_damage", packet["victim"], packet["damage"], packet["attacker"])
 		si.Opcodes.INVENTORY_OK:
 			emit_signal("inventory_ok")
 		si.Opcodes.INVENTORY_NOK:
