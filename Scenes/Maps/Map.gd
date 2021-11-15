@@ -40,7 +40,13 @@ func _unhandled_input(event):
 		if event.pressed and event.is_action_pressed("PreviousBackgroundMusic"):
 			previous_background_music_track()
 		if event.pressed and event.is_action_pressed("Inventory"):
-			$GUI/Inventory.visible = !$GUI/Inventory.visible
+			if $GUI/Inventory.visible == true:
+				$GUI/Inventory.visible = false
+				$GUI/Inventory.reset_inventory_layout()
+			else:
+				$GUI/Inventory.visible = true
+#			$GUI/Inventory.visible = !$GUI/Inventory.visible
+			
 
 func play_background_music():
 	background_music.stream = load("res://Assets/Sounds/Background Music/" + tracks[track_playing])

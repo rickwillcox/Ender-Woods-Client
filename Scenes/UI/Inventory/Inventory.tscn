@@ -275,10 +275,206 @@ margin_right = 325.0
 margin_bottom = 354.0
 rect_min_size = Vector2( 25, 0 )
 
+[node name="Stash" type="VBoxContainer" parent="Background/HBoxContainer"]
+visible = false
+margin_left = 329.0
+margin_right = 625.0
+margin_bottom = 2256.0
+rect_min_size = Vector2( 275, 0 )
+size_flags_vertical = 3
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleInventory" type="Label" parent="Background/HBoxContainer/Stash"]
+margin_right = 296.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Stash"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Background/HBoxContainer/Stash"]
+margin_top = 50.0
+margin_right = 296.0
+margin_bottom = 350.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 9
+columns = 5
+
+[node name="ItemSlot2" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_right = 52.0
+script = null
+
+[node name="ItemSlot3" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 61.0
+margin_right = 113.0
+script = null
+
+[node name="ItemSlot4" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 122.0
+margin_right = 174.0
+script = null
+
+[node name="ItemSlot5" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 183.0
+margin_right = 235.0
+script = null
+
+[node name="ItemSlot6" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 244.0
+margin_right = 296.0
+script = null
+
+[node name="ItemSlot7" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_top = 62.0
+margin_right = 52.0
+margin_bottom = 114.0
+script = null
+
+[node name="ItemSlot8" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 61.0
+margin_top = 62.0
+margin_right = 113.0
+margin_bottom = 114.0
+script = null
+
+[node name="ItemSlot9" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 122.0
+margin_top = 62.0
+margin_right = 174.0
+margin_bottom = 114.0
+script = null
+
+[node name="ItemSlot10" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 183.0
+margin_top = 62.0
+margin_right = 235.0
+margin_bottom = 114.0
+script = null
+
+[node name="ItemSlot11" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 244.0
+margin_top = 62.0
+margin_right = 296.0
+margin_bottom = 114.0
+script = null
+
+[node name="ItemSlot12" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_top = 124.0
+margin_right = 52.0
+margin_bottom = 176.0
+script = null
+
+[node name="ItemSlot13" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 61.0
+margin_top = 124.0
+margin_right = 113.0
+margin_bottom = 176.0
+script = null
+
+[node name="ItemSlot14" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 122.0
+margin_top = 124.0
+margin_right = 174.0
+margin_bottom = 176.0
+script = null
+
+[node name="ItemSlot15" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 183.0
+margin_top = 124.0
+margin_right = 235.0
+margin_bottom = 176.0
+script = null
+
+[node name="ItemSlot16" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 244.0
+margin_top = 124.0
+margin_right = 296.0
+margin_bottom = 176.0
+script = null
+
+[node name="ItemSlot17" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_top = 186.0
+margin_right = 52.0
+margin_bottom = 238.0
+script = null
+
+[node name="ItemSlot18" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 61.0
+margin_top = 186.0
+margin_right = 113.0
+margin_bottom = 238.0
+script = null
+
+[node name="ItemSlot19" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 122.0
+margin_top = 186.0
+margin_right = 174.0
+margin_bottom = 238.0
+script = null
+
+[node name="ItemSlot20" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 183.0
+margin_top = 186.0
+margin_right = 235.0
+margin_bottom = 238.0
+script = null
+
+[node name="ItemSlot21" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 244.0
+margin_top = 186.0
+margin_right = 296.0
+margin_bottom = 238.0
+script = null
+
+[node name="ItemSlot22" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_top = 248.0
+margin_right = 52.0
+margin_bottom = 300.0
+script = null
+
+[node name="ItemSlot23" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 61.0
+margin_top = 248.0
+margin_right = 113.0
+margin_bottom = 300.0
+script = null
+
+[node name="ItemSlot24" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 122.0
+margin_top = 248.0
+margin_right = 174.0
+margin_bottom = 300.0
+script = null
+
+[node name="ItemSlot25" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 183.0
+margin_top = 248.0
+margin_right = 235.0
+margin_bottom = 300.0
+script = null
+
+[node name="ItemSlot26" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 244.0
+margin_top = 248.0
+margin_right = 296.0
+margin_bottom = 300.0
+script = null
+
 [node name="Equipment" type="VBoxContainer" parent="Background/HBoxContainer"]
+visible = false
 margin_left = 329.0
 margin_right = 644.0
-margin_bottom = 354.0
+margin_bottom = 2256.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
@@ -486,7 +682,450 @@ base_texture = ExtResource( 13 )
 position = Vector2( 152.831, 145.786 )
 scale = Vector2( 5, 5 )
 
+[node name="Smelting" type="VBoxContainer" parent="Background/HBoxContainer"]
+margin_left = 329.0
+margin_right = 644.0
+margin_bottom = 354.0
+rect_min_size = Vector2( 315, 0 )
+size_flags_vertical = 3
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleEquipment" type="Label" parent="Background/HBoxContainer/Smelting"]
+margin_right = 315.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Smelting"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Background/HBoxContainer/Smelting"]
+margin_top = 50.0
+margin_right = 315.0
+margin_bottom = 302.0
+custom_constants/vseparation = 11
+custom_constants/hseparation = 11
+columns = 5
+
+[node name="Control2" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_right = 52.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 63.0
+margin_right = 115.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+
+[node name="Control14" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 126.0
+margin_right = 178.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+
+[node name="Control4" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 189.0
+margin_right = 241.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control3" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 252.0
+margin_right = 304.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+
+[node name="Control7" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_top = 63.0
+margin_right = 52.0
+margin_bottom = 115.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot2" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_left = 63.0
+margin_top = 63.0
+margin_right = 115.0
+margin_bottom = 115.0
+script = null
+
+[node name="ItemSlot3" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_top = 63.0
+margin_bottom = 115.0
+script = null
+
+[node name="ItemSlot4" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_left = 189.0
+margin_top = 63.0
+margin_right = 241.0
+margin_bottom = 115.0
+script = null
+
+[node name="Control6" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 252.0
+margin_top = 63.0
+margin_right = 304.0
+margin_bottom = 115.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control10" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_top = 126.0
+margin_right = 52.0
+margin_bottom = 178.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control5" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 63.0
+margin_top = 126.0
+margin_right = 115.0
+margin_bottom = 178.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot7" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_top = 126.0
+margin_bottom = 178.0
+script = null
+
+[node name="Control9" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 189.0
+margin_top = 126.0
+margin_right = 241.0
+margin_bottom = 178.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control8" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 252.0
+margin_top = 126.0
+margin_right = 304.0
+margin_bottom = 178.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control11" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_top = 189.0
+margin_right = 52.0
+margin_bottom = 241.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot6" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_left = 63.0
+margin_top = 189.0
+margin_right = 115.0
+margin_bottom = 241.0
+script = null
+
+[node name="ItemSlot5" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_top = 189.0
+margin_bottom = 241.0
+script = null
+
+[node name="ItemSlot8" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+margin_left = 189.0
+margin_top = 189.0
+margin_right = 241.0
+margin_bottom = 241.0
+script = null
+
+[node name="SmeltButton" type="Button" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 252.0
+margin_top = 189.0
+margin_right = 304.0
+margin_bottom = 241.0
+text = "Smelt"
+
+[node name="Control15" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_top = 252.0
+margin_right = 52.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control16" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 63.0
+margin_top = 252.0
+margin_right = 115.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control13" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
+margin_left = 126.0
+margin_top = 252.0
+margin_right = 178.0
+margin_bottom = 252.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blacksmithing" type="VBoxContainer" parent="Background/HBoxContainer"]
+visible = false
+margin_left = 329.0
+margin_right = 652.0
+margin_bottom = 354.0
+rect_min_size = Vector2( 315, 0 )
+size_flags_vertical = 3
+custom_constants/separation = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleEquipment" type="Label" parent="Background/HBoxContainer/Blacksmithing"]
+margin_right = 323.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "Blacksmithing"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Background/HBoxContainer/Blacksmithing"]
+margin_top = 50.0
+margin_right = 323.0
+margin_bottom = 354.0
+custom_constants/vseparation = 11
+custom_constants/hseparation = 11
+columns = 5
+
+[node name="Control2" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_right = 58.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 69.0
+margin_right = 121.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+
+[node name="Control14" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 132.0
+margin_right = 189.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+
+[node name="Control4" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 200.0
+margin_right = 252.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control3" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 263.0
+margin_right = 323.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+
+[node name="Control7" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_top = 63.0
+margin_right = 58.0
+margin_bottom = 115.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot2" parent="Background/HBoxContainer/Blacksmithing/GridContainer" instance=ExtResource( 8 )]
+margin_left = 69.0
+margin_top = 63.0
+margin_right = 121.0
+margin_bottom = 115.0
+script = null
+
+[node name="ItemSlot3" parent="Background/HBoxContainer/Blacksmithing/GridContainer" instance=ExtResource( 8 )]
+margin_left = 132.0
+margin_top = 63.0
+margin_right = 189.0
+margin_bottom = 115.0
+script = null
+
+[node name="ItemSlot4" parent="Background/HBoxContainer/Blacksmithing/GridContainer" instance=ExtResource( 8 )]
+margin_left = 200.0
+margin_top = 63.0
+margin_right = 252.0
+margin_bottom = 115.0
+script = null
+
+[node name="Control6" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 263.0
+margin_top = 63.0
+margin_right = 323.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control11" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_top = 126.0
+margin_right = 58.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot6" parent="Background/HBoxContainer/Blacksmithing/GridContainer" instance=ExtResource( 8 )]
+margin_left = 69.0
+margin_top = 126.0
+margin_right = 121.0
+margin_bottom = 178.0
+script = null
+
+[node name="ItemSlot5" parent="Background/HBoxContainer/Blacksmithing/GridContainer" instance=ExtResource( 8 )]
+margin_left = 132.0
+margin_top = 126.0
+margin_right = 189.0
+margin_bottom = 178.0
+script = null
+
+[node name="ItemSlot8" parent="Background/HBoxContainer/Blacksmithing/GridContainer" instance=ExtResource( 8 )]
+margin_left = 200.0
+margin_top = 126.0
+margin_right = 252.0
+margin_bottom = 178.0
+script = null
+
+[node name="Control10" type="Control" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 263.0
+margin_top = 126.0
+margin_right = 323.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 52, 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlackSmithHelmet" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_top = 189.0
+margin_right = 58.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 52, 52 )
+text = "helmet"
+
+[node name="BlackSmithChest" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 69.0
+margin_top = 189.0
+margin_right = 121.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 52, 52 )
+text = "chest"
+
+[node name="BlackSmithGloves" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 132.0
+margin_top = 189.0
+margin_right = 189.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 52, 52 )
+text = "gloves"
+
+[node name="BlackSmithPants" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 200.0
+margin_top = 189.0
+margin_right = 252.0
+margin_bottom = 241.0
+rect_min_size = Vector2( 52, 52 )
+text = "pants"
+
+[node name="BlackSmithBoots" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 263.0
+margin_top = 189.0
+margin_right = 323.0
+margin_bottom = 241.0
+text = "boots"
+
+[node name="BlackSmithSword" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_top = 252.0
+margin_right = 58.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 52, 52 )
+text = "sword"
+
+[node name="BlackSmithShield" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 69.0
+margin_top = 252.0
+margin_right = 121.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 52, 52 )
+text = "shield"
+
+[node name="BlackSmithAmulet" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 132.0
+margin_top = 252.0
+margin_right = 189.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 52, 52 )
+text = "amulet"
+
+[node name="BlackSmithRing" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 200.0
+margin_top = 252.0
+margin_right = 252.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 52, 52 )
+text = "ring"
+
+[node name="BlackSmithPickAxe" type="Button" parent="Background/HBoxContainer/Blacksmithing/GridContainer"]
+margin_left = 263.0
+margin_top = 252.0
+margin_right = 323.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 52, 52 )
+text = "Pickaxe"
+
 [node name="Border" type="Sprite" parent="."]
 position = Vector2( 431.755, 225.031 )
 scale = Vector2( 0.426102, 0.232 )
 texture = ExtResource( 2 )
+
+[node name="CloseInventoryButton" type="Button" parent="."]
+margin_left = 718.75
+margin_top = 57.5
+margin_right = 765.75
+margin_bottom = 77.5
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithHelmet" to="." method="_on_BlackSmithHelmet_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithChest" to="." method="_on_BlackSmithChest_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithGloves" to="." method="_on_BlackSmithGloves_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithPants" to="." method="_on_BlackSmithPants_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithBoots" to="." method="_on_BlackSmithBoots_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithSword" to="." method="_on_BlackSmithSword_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithShield" to="." method="_on_BlackSmithShield_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithAmulet" to="." method="_on_BlackSmithAmulet_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithRing" to="." method="_on_BlackSmithRing_pressed"]
+[connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithPickAxe" to="." method="_on_BlackSmithPickAxe_pressed"]
+[connection signal="pressed" from="CloseInventoryButton" to="." method="_on_CloseInventoryButton_pressed"]
