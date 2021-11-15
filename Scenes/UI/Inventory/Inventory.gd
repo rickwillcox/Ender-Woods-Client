@@ -1,9 +1,23 @@
 extends Control
 class_name InventoryScreen
 
+# Inventory Slots
+# 9   - 1-9     Equipment slots 
+# 25  - 10-34   Inventory
+# 5   - 35-39   Extra Inventory (maybe micro transaction) - Leave spare
+# 25  - 40-64   Stash
+# 12  - 65-76   Extra Stash (maybe micro transaction) - Leave spare
+# 7   - 77-83   Smelting (3 for ores, 1 for coal, 3 for bars as they get made)
+# 6   - 84-89   Blacksmith (6 for bars, made items should go to inventory)
+
+var player_character
 var inventory : Inventory = Inventory.new()
 onready var inventory_character = $Background/HBoxContainer/Equipment/GridContainer/CharacterBase
-var player_character
+onready var stash_container = $"Background/HBoxContainer/Stash"
+onready var equipment_container = $"Background/HBoxContainer/Equipment"
+onready var smelting_container = $"Background/HBoxContainer/Smelting"
+onready var blacksmithing_container = $"Background/HBoxContainer/Blacksmithing"
+
 #### Naming convention for items will always be item_id + "_name"
 #### with underscores used in palce of spaces
 #### eg : 1_silver_sword      983_gold_leaf
@@ -24,7 +38,9 @@ func _ready():
 	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
 	PacketHandler.connect("item_craft_nok", self, "handle_item_craft_nok")
 	PacketHandler.connect("item_craft_ok", self, "handle_item_craft_ok")
-
+	
+	reset_inventory_layout()
+	
 	dir.open("res://Assets/inventory/Items/")
 	dir.list_dir_begin(true, true)
 	#get all files that end in .png from the directory above
@@ -127,7 +143,6 @@ func handle_item_craft_ok(slot, item_id):
 		update_slot_display(slot)
 	awaiting_response = false
 
-
 var crating_recipe = -1
 func _on_CraftingMenu_craft_recipe(recipe_id):
 	if awaiting_response:
@@ -135,3 +150,43 @@ func _on_CraftingMenu_craft_recipe(recipe_id):
 	awaiting_response = true
 	crating_recipe = recipe_id
 	Server.craft_recipe(recipe_id)
+
+func _on_CloseInventoryButton_pressed() -> void:
+	self.hide()
+	reset_inventory_layout()
+	
+func reset_inventory_layout():
+	equipment_container.visible = true
+	stash_container.visible = false
+	smelting_container.visible = false
+	blacksmithing_container.visible = false
+
+func _on_BlackSmithHelmet_pressed() -> void:
+	Logger.info("Crafting : helmet")
+
+func _on_BlackSmithChest_pressed() -> void:
+	Logger.info("Crafting : chest")
+
+func _on_BlackSmithGloves_pressed() -> void:
+	Logger.info("Crafting : gloves")
+
+func _on_BlackSmithPants_pressed() -> void:
+	Logger.info("Crafting : pants")
+
+func _on_BlackSmithBoots_pressed() -> void:
+	Logger.info("Crafting : boots")
+
+func _on_BlackSmithSword_pressed() -> void:
+	Logger.info("Crafting : sword")
+
+func _on_BlackSmithShield_pressed() -> void:
+	Logger.info("Crafting : shield")
+
+func _on_BlackSmithAmulet_pressed() -> void:
+	Logger.info("Crafting : amulet")
+
+func _on_BlackSmithRing_pressed() -> void:
+	Logger.info("Crafting : ring")
+
+func _on_BlackSmithPickAxe_pressed() -> void:
+	Logger.info("Crafting : pickaxe")
