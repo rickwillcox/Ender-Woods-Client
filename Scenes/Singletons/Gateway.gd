@@ -3,8 +3,9 @@ extends Node
 var network : NetworkedMultiplayerENet = NetworkedMultiplayerENet.new()
 var gateway_api : MultiplayerAPI = MultiplayerAPI.new()
 var port : int = 1910
-#var ip : String = "45.58.43.202"
-var ip : String = "127.0.0.1"
+var dedicated_server_ip : String = "45.58.43.202"
+var local_ip : String = "127.0.0.1"
+var login_ip : String = "127.0.0.1"
 var connected : bool = false
 var username : String
 var password : String
@@ -31,7 +32,7 @@ func connect_to_server(_username : String, _password : String, _new_account : bo
 	username = _username
 	password = _password
 	new_account = _new_account
-	network.create_client(ip, port)
+	network.create_client(login_ip, port)
 	set_custom_multiplayer(gateway_api)
 	custom_multiplayer.set_root_node(self)
 	custom_multiplayer.set_network_peer(network)

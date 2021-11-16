@@ -40,13 +40,18 @@ func _unhandled_input(event):
 		if event.pressed and event.is_action_pressed("PreviousBackgroundMusic"):
 			previous_background_music_track()
 		if event.pressed and event.is_action_pressed("Inventory"):
-			if $GUI/Inventory.visible == true:
-				$GUI/Inventory.visible = false
-				$GUI/Inventory.reset_inventory_layout()
-			else:
-				$GUI/Inventory.visible = true
-#			$GUI/Inventory.visible = !$GUI/Inventory.visible
-			
+			open_close_inventory()
+
+		
+
+		
+
+func open_close_inventory():
+	if $GUI/Inventory.visible == true:
+		$GUI/Inventory.visible = false
+		$GUI/Inventory.reset_inventory_layout()
+	else:
+		$GUI/Inventory.visible = true			
 
 func play_background_music():
 	background_music.stream = load("res://Assets/Sounds/Background Music/" + tracks[track_playing])
@@ -192,3 +197,7 @@ func _physics_process(_delta):
 					var new_position : Vector2 = world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_LOCATION] + (position_delta * extrapolation_factor)
 					enemy.MoveEnemy(new_position)
 					enemy.Health(world_state_buffer[1][g.ENEMIES][enemy_id][g.ENEMY_CURRENT_HEALTH])
+
+func _on_InventoryButton_pressed() -> void:
+	open_close_inventory()
+	$GUI/InventoryButton.release_focus()

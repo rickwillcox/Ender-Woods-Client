@@ -11,7 +11,7 @@ func _on_SendButton_pressed() -> void:
 	if input.text != "":
 		Server.send_player_chat(input.text)
 		input.clear()
-		input.grab_focus()
+		input.release_focus()
 		
 
 func update_chat_log(player_id : int, username : String, text : String):

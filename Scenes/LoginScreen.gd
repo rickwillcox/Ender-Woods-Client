@@ -38,10 +38,15 @@ func _on_IPButton_pressed():
 	if local:
 		local = false
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
+		Server.login_ip = Server.dedicated_server_ip
+		Gateway.login_ip = Gateway.dedicated_server_ip
 	else:
 		local = true
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Local"
-	Gateway.SetIP(local)
+		Server.login_ip = Server.local_ip
+		Gateway.login_ip = Gateway.local_ip
+		
+	
 
 
 func _on_UsernameCheckBox_toggled(button_pressed):
