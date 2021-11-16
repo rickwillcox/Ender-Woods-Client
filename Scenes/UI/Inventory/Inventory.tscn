@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Assets/inventory/Items/boots_silo.png" type="Texture" id=13]
 [ext_resource path="res://Assets/inventory/Items/legs_silo.png" type="Texture" id=14]
 [ext_resource path="res://Assets/inventory/Items/ring_silo.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/UI/Inventory/StashContainer.gd" type="Script" id=16]
 [ext_resource path="res://Scenes/UI/Inventory/Inventory.gd" type="Script" id=17]
 
 [sub_resource type="DynamicFont" id=1]
@@ -77,7 +78,7 @@ __meta__ = {
 
 [node name="ItemSlots" type="VBoxContainer" parent="Background/HBoxContainer"]
 margin_right = 296.0
-margin_bottom = 354.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 275, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
@@ -272,14 +273,13 @@ item_slot = 34
 [node name="mc_middle" type="MarginContainer" parent="Background/HBoxContainer"]
 margin_left = 300.0
 margin_right = 325.0
-margin_bottom = 354.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="Stash" type="VBoxContainer" parent="Background/HBoxContainer"]
-visible = false
 margin_left = 329.0
 margin_right = 625.0
-margin_bottom = 2256.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 275, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
@@ -304,171 +304,172 @@ margin_bottom = 350.0
 custom_constants/vseparation = 10
 custom_constants/hseparation = 9
 columns = 5
+script = ExtResource( 16 )
+
+[node name="ItemSlot" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_right = 52.0
+item_slot = 40
 
 [node name="ItemSlot2" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 0.0
-margin_right = 52.0
-script = null
+margin_left = 61.0
+margin_right = 113.0
+item_slot = 41
 
 [node name="ItemSlot3" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 61.0
-margin_right = 113.0
-script = null
+margin_left = 122.0
+margin_right = 174.0
+item_slot = 42
 
 [node name="ItemSlot4" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 122.0
-margin_right = 174.0
-script = null
+margin_left = 183.0
+margin_right = 235.0
+item_slot = 43
 
 [node name="ItemSlot5" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 183.0
-margin_right = 235.0
-script = null
+margin_left = 244.0
+margin_right = 296.0
+item_slot = 44
 
 [node name="ItemSlot6" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 244.0
-margin_right = 296.0
-script = null
+margin_left = 0.0
+margin_top = 62.0
+margin_right = 52.0
+margin_bottom = 114.0
+item_slot = 45
 
 [node name="ItemSlot7" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 0.0
+margin_left = 61.0
 margin_top = 62.0
-margin_right = 52.0
+margin_right = 113.0
 margin_bottom = 114.0
-script = null
+item_slot = 46
 
 [node name="ItemSlot8" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 61.0
+margin_left = 122.0
 margin_top = 62.0
-margin_right = 113.0
+margin_right = 174.0
 margin_bottom = 114.0
-script = null
+item_slot = 47
 
 [node name="ItemSlot9" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 122.0
+margin_left = 183.0
 margin_top = 62.0
-margin_right = 174.0
+margin_right = 235.0
 margin_bottom = 114.0
-script = null
+item_slot = 48
 
 [node name="ItemSlot10" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 183.0
+margin_left = 244.0
 margin_top = 62.0
-margin_right = 235.0
+margin_right = 296.0
 margin_bottom = 114.0
-script = null
+item_slot = 49
 
 [node name="ItemSlot11" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 244.0
-margin_top = 62.0
-margin_right = 296.0
-margin_bottom = 114.0
-script = null
+margin_left = 0.0
+margin_top = 124.0
+margin_right = 52.0
+margin_bottom = 176.0
+item_slot = 50
 
 [node name="ItemSlot12" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 0.0
+margin_left = 61.0
 margin_top = 124.0
-margin_right = 52.0
+margin_right = 113.0
 margin_bottom = 176.0
-script = null
+item_slot = 51
 
 [node name="ItemSlot13" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 61.0
+margin_left = 122.0
 margin_top = 124.0
-margin_right = 113.0
+margin_right = 174.0
 margin_bottom = 176.0
-script = null
+item_slot = 52
 
 [node name="ItemSlot14" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 122.0
+margin_left = 183.0
 margin_top = 124.0
-margin_right = 174.0
+margin_right = 235.0
 margin_bottom = 176.0
-script = null
+item_slot = 53
 
 [node name="ItemSlot15" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 183.0
+margin_left = 244.0
 margin_top = 124.0
-margin_right = 235.0
+margin_right = 296.0
 margin_bottom = 176.0
-script = null
+item_slot = 54
 
 [node name="ItemSlot16" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 244.0
-margin_top = 124.0
-margin_right = 296.0
-margin_bottom = 176.0
-script = null
+margin_left = 0.0
+margin_top = 186.0
+margin_right = 52.0
+margin_bottom = 238.0
+item_slot = 55
 
 [node name="ItemSlot17" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 0.0
+margin_left = 61.0
 margin_top = 186.0
-margin_right = 52.0
+margin_right = 113.0
 margin_bottom = 238.0
-script = null
+item_slot = 56
 
 [node name="ItemSlot18" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
-margin_left = 61.0
-margin_top = 186.0
-margin_right = 113.0
-margin_bottom = 238.0
-script = null
-
-[node name="ItemSlot19" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 122.0
 margin_top = 186.0
 margin_right = 174.0
 margin_bottom = 238.0
-script = null
+item_slot = 57
 
-[node name="ItemSlot20" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot19" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 183.0
 margin_top = 186.0
 margin_right = 235.0
 margin_bottom = 238.0
-script = null
+item_slot = 58
 
-[node name="ItemSlot21" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot20" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 244.0
 margin_top = 186.0
 margin_right = 296.0
 margin_bottom = 238.0
-script = null
+item_slot = 59
 
-[node name="ItemSlot22" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot21" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 0.0
 margin_top = 248.0
 margin_right = 52.0
 margin_bottom = 300.0
-script = null
+item_slot = 60
 
-[node name="ItemSlot23" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot22" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 61.0
 margin_top = 248.0
 margin_right = 113.0
 margin_bottom = 300.0
-script = null
+item_slot = 61
 
-[node name="ItemSlot24" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot23" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 122.0
 margin_top = 248.0
 margin_right = 174.0
 margin_bottom = 300.0
-script = null
+item_slot = 62
 
-[node name="ItemSlot25" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot24" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 183.0
 margin_top = 248.0
 margin_right = 235.0
 margin_bottom = 300.0
-script = null
+item_slot = 63
 
-[node name="ItemSlot26" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot25" parent="Background/HBoxContainer/Stash/GridContainer" instance=ExtResource( 8 )]
 margin_left = 244.0
 margin_top = 248.0
 margin_right = 296.0
 margin_bottom = 300.0
-script = null
+item_slot = 64
 
 [node name="Equipment" type="VBoxContainer" parent="Background/HBoxContainer"]
 visible = false
@@ -683,9 +684,9 @@ position = Vector2( 152.831, 145.786 )
 scale = Vector2( 5, 5 )
 
 [node name="Smelting" type="VBoxContainer" parent="Background/HBoxContainer"]
-margin_left = 329.0
-margin_right = 644.0
-margin_bottom = 354.0
+margin_left = 629.0
+margin_right = 944.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
