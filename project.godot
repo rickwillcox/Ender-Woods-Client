@@ -46,7 +46,7 @@ _global_script_class_icons={
 
 config/name="Client"
 run/main_scene="res://Scenes/Main/SceneHandler.tscn"
-config/icon="res://Assets/icon.png"
+config/icon="res://Assets/enderwoodslogo.png"
 config/windows_native_icon="res://Assets/C.ico"
 
 [autoload]
