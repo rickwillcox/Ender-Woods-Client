@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://WorldMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Sounds/Menu Sounds/MenuSounds.tscn" type="PackedScene" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://Scenes/Props/SmeltingForge.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Props/BlackSmithAnvil.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/UI/InventoryButton.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/UI/PreviousTrackButton.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/UI/NextTrackButton.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenes/UI/VolumeSlider.tscn" type="PackedScene" id=19]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 9 )
@@ -90,11 +93,30 @@ margin_bottom = 311.0
 
 [node name="InventoryButton" parent="GUI" instance=ExtResource( 16 )]
 
+[node name="NextTrackButton" parent="GUI" instance=ExtResource( 18 )]
+margin_top = 47.0
+margin_bottom = 80.0
+
+[node name="PreviousTrackButton" parent="GUI" instance=ExtResource( 17 )]
+margin_top = 84.0
+margin_bottom = 117.0
+
+[node name="VolumeSlider" parent="GUI" instance=ExtResource( 19 )]
+margin_left = 738.0
+margin_top = 134.0
+margin_right = 816.0
+margin_bottom = 161.0
+
 [node name="MenuSounds" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundMusic" parent="." instance=ExtResource( 10 )]
+volume_db = 0.3
+bus = "Music"
 
 [connection signal="craft_recipe" from="GUI/CraftingMenu" to="GUI/Inventory" method="_on_CraftingMenu_craft_recipe"]
 [connection signal="pressed" from="GUI/InventoryButton" to="." method="_on_InventoryButton_pressed"]
+[connection signal="pressed" from="GUI/NextTrackButton" to="." method="_on_NextTrackButton_pressed"]
+[connection signal="pressed" from="GUI/PreviousTrackButton" to="." method="_on_PreviousTrackButton_pressed"]
+[connection signal="value_changed" from="GUI/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
 
 [editable path="YSort/Ores/O1"]

@@ -1,13 +1,26 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/UI/ChatBox/ChatBox.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/button_pressed.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Fonts/30.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Textures/button_normal.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 27
+outline_size = 2
+outline_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+extra_spacing_char = 4
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 27
+outline_size = 2
+outline_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+extra_spacing_char = 4
 font_data = ExtResource( 5 )
 
 [node name="ChatBox" type="Control"]
@@ -41,13 +54,14 @@ margin_right = 567.0
 margin_bottom = 150.0
 
 [node name="Global" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_right = 97.0
-margin_bottom = 33.0
-custom_fonts/font = ExtResource( 3 )
+margin_top = 2.0
+margin_right = 90.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
 text = "Global"
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_left = 101.0
+margin_left = 94.0
 margin_right = 435.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -65,11 +79,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -16.5
-margin_right = 31.0
-margin_bottom = 16.5
-custom_fonts/font = ExtResource( 3 )
+margin_left = -30.0
+margin_top = -15.5
+margin_right = 33.0
+margin_bottom = 17.5
+custom_fonts/font = SubResource( 3 )
 text = "Send"
 __meta__ = {
 "_edit_use_anchors_": false
