@@ -46,7 +46,7 @@ position = Vector2( 779.727, 488.088 )
 
 [node name="Stash" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 199, 122 )
-scale = Vector2( 1.80769, 1.80769 )
+scale = Vector2( 1, 1 )
 
 [node name="SmeltingForge" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 55, 260 )

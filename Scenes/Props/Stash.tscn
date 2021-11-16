@@ -9,15 +9,16 @@ radius = 11.0
 [node name="Stash" type="Sprite" groups=[
 "stash",
 ]]
+scale = Vector2( 0.653846, 0.653846 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="StashButton" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = -13.0
-margin_top = -11.0
-margin_right = 11.0
-margin_bottom = 9.0
+margin_left = -12.2353
+margin_top = -10.7059
+margin_right = 11.7647
+margin_bottom = 9.29412
 __meta__ = {
 "_edit_use_anchors_": false
 }
