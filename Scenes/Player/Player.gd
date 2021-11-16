@@ -5,8 +5,8 @@ enum {
 }
 
 var g = ServerInterface
-var max_speed : int = 200
-var speed : int = 180
+var max_speed : int = 100
+var speed : int = 100
 var destination : Vector2 = Vector2()
 var movement : Vector2 = Vector2()
 var moving : bool = false
