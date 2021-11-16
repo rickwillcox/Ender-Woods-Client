@@ -95,6 +95,7 @@ tracks/1/keys = {
 }
 
 [node name="Batsquito" type="KinematicBody2D"]
+scale = Vector2( 0.5, 1 )
 collision_layer = 4
 script = ExtResource( 2 )
 
@@ -107,7 +108,6 @@ shape = SubResource( 1 )
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 0.611765 )
 position = Vector2( 1.24627, -21.297 )
-scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 hframes = 16
 
