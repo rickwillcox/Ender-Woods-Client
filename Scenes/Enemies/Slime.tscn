@@ -135,7 +135,6 @@ tracks/0/keys = {
 }
 
 [node name="Slime" type="KinematicBody2D"]
-scale = Vector2( 3, 3 )
 collision_layer = 16
 script = ExtResource( 5 )
 

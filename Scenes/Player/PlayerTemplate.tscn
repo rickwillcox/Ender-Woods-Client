@@ -26,8 +26,7 @@ shader = SubResource( 2 )
 shader_param/color = Vector3( 1, 1, 1 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, -20.5 )
-scale = Vector2( 2, 2 )
+position = Vector2( 0, -14 )
 collision_layer = 2
 script = ExtResource( 1 )
 
