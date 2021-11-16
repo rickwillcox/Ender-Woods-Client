@@ -10,7 +10,7 @@ radius = 23.4526
 "stash",
 ]]
 position = Vector2( 4.76837e-07, 0 )
-scale = Vector2( 0.810145, 0.810145 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 1 )
 hframes = 2
 script = ExtResource( 2 )

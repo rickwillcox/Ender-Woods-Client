@@ -271,7 +271,6 @@ graph_offset = Vector2( 0, 46.178 )
 
 [node name="Mino" type="KinematicBody2D"]
 position = Vector2( 0, -30 )
-scale = Vector2( 2, 2 )
 collision_layer = 4
 script = ExtResource( 4 )
 
@@ -280,7 +279,7 @@ position = Vector2( 0, -5 )
 texture = ExtResource( 1 )
 hframes = 9
 vframes = 20
-frame = 175
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Attack Spin Left" = SubResource( 1 )

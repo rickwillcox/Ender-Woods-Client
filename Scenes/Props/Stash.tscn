@@ -9,7 +9,6 @@ radius = 11.0
 [node name="Stash" type="Sprite" groups=[
 "stash",
 ]]
-scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
