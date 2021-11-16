@@ -19,7 +19,6 @@ var latency : int = 0
 var delta_latency : int = 0
 var token : String
 
-
 func _physics_process(delta):
 	client_clock += int(delta*1000) + delta_latency
 	delta_latency -= delta_latency
