@@ -51,7 +51,10 @@ func _ready():
 		elif file.ends_with(".png"):
 			# First part of the file name is item_id
 			var id = int(file.split("_")[0])
-			item_textures[id] =  load("res://Assets/inventory/Items/" + file)
+			if id > 0:
+				item_textures[id] =  load("res://Assets/inventory/Items/" + file)
+	print(item_textures)
+
 	
 func RefreshInventory(inventory_data):
 	inventory.update(inventory_data) 
