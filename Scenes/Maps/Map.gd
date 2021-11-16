@@ -5,7 +5,7 @@ const interpolation_offset = 100
 var tracks : Array = []
 var track_playing : int = 0
 var dir : Directory = Directory.new()
-var turn_on_background_music : bool = false
+var turn_on_background_music : bool = true
 var g = ServerInterface
 var enemy_spawn
 var last_world_state = 0
@@ -20,6 +20,7 @@ var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 
 onready var background_music = get_node("BackgroundMusic")
 
+
 func _ready():
 	#get a list of the background tracks
 	dir.open("res://Assets/Sounds/Background Music/")
@@ -28,8 +29,8 @@ func _ready():
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif file.ends_with(".mp3"):
-			tracks.append(file)	
+		elif file.ends_with(".import"):
+			tracks.append(file.split(".import")[0])	
 	load_item_textures()
 	Enemies.register_map(self)
 
@@ -42,9 +43,6 @@ func _unhandled_input(event):
 		if event.pressed and event.is_action_pressed("Inventory"):
 			open_close_inventory()
 
-		
-
-		
 
 func open_close_inventory():
 	if $GUI/Inventory.visible == true:
@@ -125,9 +123,9 @@ func load_item_textures():
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif file.ends_with(".png") and file[0].to_int() != 0:
+		elif file.ends_with(".import") and file[0].to_int() != 0:
 			var id = file.to_int()
-			item_textures[id] =  load("res://Assets/inventory/Items/" + file)
+			item_textures[id] =  load("res://Assets/inventory/Items/" + file.split(".import")[0])
 	
 func _physics_process(_delta):
 	var render_time : float = Server.client_clock - interpolation_offset
@@ -201,3 +199,18 @@ func _physics_process(_delta):
 func _on_InventoryButton_pressed() -> void:
 	open_close_inventory()
 	$GUI/InventoryButton.release_focus()
+
+
+func _on_NextTrackButton_pressed() -> void:
+	next_background_music_track()
+	$GUI/NextTrackButton.release_focus()
+
+
+func _on_PreviousTrackButton_pressed() -> void:
+	previous_background_music_track()
+	$GUI/PreviousTrackButton.release_focus()
+
+
+func _on_VolumeSlider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(1, linear2db(value))
+

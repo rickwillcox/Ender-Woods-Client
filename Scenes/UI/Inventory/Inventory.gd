@@ -48,11 +48,11 @@ func _ready():
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif file.ends_with(".png"):
+		elif file.ends_with(".import"):
 			# First part of the file name is item_id
 			var id = int(file.split("_")[0])
 			if id > 0:
-				item_textures[id] =  load("res://Assets/inventory/Items/" + file)
+				item_textures[id] =  load("res://Assets/inventory/Items/" + file.split(".import")[0])
 	print(item_textures)
 
 	
