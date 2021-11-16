@@ -8,8 +8,9 @@ extends Node
 signal received_player_chat(player_id, username, text)
 
 var network = NetworkedMultiplayerENet.new()
-#var ip : String = "45.58.43.202"
-var ip : String = "127.0.0.1"
+var dedicated_server_ip : String = "45.58.43.202"
+var local_ip : String = "127.0.0.1"
+var login_ip : String = "127.0.0.1"
 var port : int = 1909
 var client_clock : int = 0
 var decimal_collector : float = 0
@@ -17,6 +18,7 @@ var latency_array : Array = []
 var latency : int = 0
 var delta_latency : int = 0
 var token : String
+
 
 func _physics_process(delta):
 	client_clock += int(delta*1000) + delta_latency
@@ -27,7 +29,7 @@ func _physics_process(delta):
 		decimal_collector -= 1.0
 
 func connect_to_server():
-	network.create_client(ip, port)
+	network.create_client(login_ip, port)
 	get_tree().set_network_peer(network)
 	
 	network.connect("connection_failed", self, "_on_connection_failed")
