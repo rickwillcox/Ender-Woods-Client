@@ -144,14 +144,14 @@ remote func handle_input_packets(packets):
 remote func handle_uncompressed_input_packets(bytes : PoolByteArray):
 	var packet_bundle = Serializer.PacketBundle.new()
 	packet_bundle.buffer = bytes
-	var packets = packet_bundle.deserialize_packets()
+	var packets = packet_bundle.deserialize_packets(Serializer.get_server_client_descriptor())
 	PacketHandler.handle_many(packets)
 	
 remote func handle_compressed_input_packets(bytes: PoolByteArray, size : int):
 	var packet_bundle = Serializer.PacketBundle.new()
 	packet_bundle.buffer = bytes
 	packet_bundle.decompress(size)
-	var packets = packet_bundle.deserialize_packets()
+	var packets = packet_bundle.deserialize_packets(Serializer.get_server_client_descriptor())
 	PacketHandler.handle_many(packets)
 
 func request_player_inventory(player_id : int):
