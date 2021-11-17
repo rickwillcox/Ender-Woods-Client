@@ -7,7 +7,9 @@ signal inventory_ok
 signal inventory_nok
 signal remove_item(item_name)
 signal update_inventory(player_id, slot, item_id)
-signal initialize_inventory(player_id, item_slot_array)
+signal initial_inventory(player_id, item_slot_array)
+signal player_spawn(player_id, position)
+signal player_despawn(player_id)
 signal enemy_spawn(enemy_id, enemy_state, enemy_type, health, position)
 signal enemy_died(enemy_id)
 signal enemy_despawn(enemy_id)
@@ -58,7 +60,11 @@ func handle(packet):
 				[ItemDatabase.Slots.LEGS_SLOT, packet["legs"]],
 				[ItemDatabase.Slots.FEET_SLOT, packet["feet"]],
 				[ItemDatabase.Slots.HANDS_SLOT, packet["hands"]]]
-			emit_signal("initialize_inventory", packet["player_id"], new_items_data)
+			emit_signal("initial_inventory", packet["player_id"], new_items_data)
+		si.Opcodes.PLAYER_SPAWN:
+			emit_signal("player_spawn", packet["player_id"], packet["position"])
+		si.Opcodes.PLAYER_DESPAWN:
+			emit_signal("player_despawn", packet["player_id"])
 		si.Opcodes.ENEMY_SPAWN:
 			emit_signal("enemy_spawn", packet["enemy_id"], packet["enemy_state"], packet["enemy_type"],
 						packet["health"], packet["position"])

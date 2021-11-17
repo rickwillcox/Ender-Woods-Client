@@ -93,12 +93,6 @@ func fetch_player_stats():
 remote func return_player_stats(stats):
 	pass
 #	get_node("../SceneHandler/Map/GUI/PlayerStats").load_player_stats(stats)
-	
-remote func spawn_new_player(player_id : int, spawn_position : Vector2):
-	get_node("../SceneHandler/Map").spawn_new_player(player_id, spawn_position)
-
-remote func despawn_player(player_id : int):
-	get_node("../SceneHandler/Map").despawn_player(player_id)
 
 func melee_attack(blend_position : Vector2):
 	rpc_id(1, "melee_attack", blend_position)
