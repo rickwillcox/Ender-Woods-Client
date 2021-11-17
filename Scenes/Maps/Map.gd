@@ -14,7 +14,6 @@ var item_textures : Dictionary = {}
 
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
-var player_spawn = preload("res://Scenes/Player/PlayerTemplate.tscn")
 var client_player = preload("res://Scenes/Player/Player.tscn")
 var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 
@@ -32,6 +31,7 @@ func _ready():
 			tracks.append(file.split(".import")[0])	
 	load_item_textures()
 	Enemies.register_map(self)
+	Players.register_map(self)
 
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -77,26 +77,11 @@ func SpawnSelf():
 	get_node("YSort").add_child(client_player_instance)
 	$GUI/Inventory.set_player_character(client_player_instance.get_character_base())
 
-func spawn_new_player(player_id : int, spawn_position : Vector2):
-	if get_tree().get_network_unique_id() == player_id:
-		pass
-	else:
-		if Players.has(player_id):
-			return
-		
-		var new_player = player_spawn.instance()
-		new_player.position = spawn_position
-		new_player.name = str(player_id)
-		Players.add_player_node(player_id, new_player)
-		get_node("YSort/OtherPlayers").add_child(new_player)
-
 func spawn_enemy(new_enemy):
 	get_node("YSort/Enemies/").add_child(new_enemy, true)
-
-func despawn_player(player_id : int):
-	yield(get_tree().create_timer(0.3), "timeout")
-	Logger.info("despawning", " ", player_id)
-	Players.erase(player_id)
+	
+func spawn_player(new_player):
+	get_node("YSort/OtherPlayers").add_child(new_player, true)
 
 func update_world_state(world_state : Dictionary):
 	if world_state[g.TIMESTAMP] > last_world_state:
@@ -147,9 +132,6 @@ func _physics_process(_delta):
 					var new_position : Vector2 = lerp(world_state_buffer[1][player][g.PLAYER_POSITION], world_state_buffer[2][player][g.PLAYER_POSITION], inperpolation_factor)
 					var animation_vector : Vector2 = world_state_buffer[2][player][g.PLAYER_ANIMATION_VECTOR]
 					Players.get_player_node(player).move_player(new_position, animation_vector)
-				else:
-					Logger.info("spawning other player")
-					spawn_new_player(player, world_state_buffer[2][player][g.PLAYER_POSITION])
 			for enemy_id in world_state_buffer[2][g.ENEMIES].keys(): 
 				if not world_state_buffer[1][g.ENEMIES].has(enemy_id): #if you find enemy in this world state but wasnt in previous world state (15ms before) do nothing #15 10:00
 					continue

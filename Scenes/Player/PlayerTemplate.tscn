@@ -37,9 +37,4 @@ shape = SubResource( 1 )
 [node name="CharacterBase" parent="." instance=ExtResource( 2 )]
 material = SubResource( 3 )
 
-[node name="InventoryRequestTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [connection signal="animation_finished" from="CharacterBase" to="." method="_on_CharacterBase_animation_finished"]
-[connection signal="timeout" from="InventoryRequestTimer" to="." method="_on_InventoryRequestTimer_timeout"]
