@@ -1,5 +1,6 @@
 tool
 extends GridContainer
+
 var start_item_slot = ItemDatabase.Slots.FIRST_BACKPACK_SLOT
 
 func add_child(node: Node, legible_unique_name: bool = false):

@@ -10,25 +10,24 @@ class_name InventoryScreen
 # 7   - 77-83   Smelting (3 for ores, 1 for coal, 3 for bars as they get made)
 # 6   - 84-89   Blacksmith (6 for bars, made items should go to inventory)
 
+#### Naming convention for items will always be item_id + "_name"
+#### with underscores used in palce of spaces
+#### eg : 1_silver_sword      983_gold_leaf
+
 var player_character
 var inventory : Inventory = Inventory.new()
+
 onready var inventory_character = $Background/HBoxContainer/Equipment/GridContainer/CharacterBase
 onready var stash_container = $"Background/HBoxContainer/Stash"
 onready var equipment_container = $"Background/HBoxContainer/Equipment"
 onready var smelting_container = $"Background/HBoxContainer/Smelting"
 onready var blacksmithing_container = $"Background/HBoxContainer/Blacksmithing"
 
-#### Naming convention for items will always be item_id + "_name"
-#### with underscores used in palce of spaces
-#### eg : 1_silver_sword      983_gold_leaf
-
-# This dictionary contains item slot nodes
+# This dictionary contains item slot nodes when loaded
 var item_slots : Dictionary = {}
-# This dictionary contains item textures
+# This dictionary contains item textures when loaded
 var item_textures : Dictionary = {}
-
 var awaiting_response : bool = false
-
 var dir = Directory.new()
 
 func _ready():
@@ -53,8 +52,6 @@ func _ready():
 			var id = int(file.split("_")[0])
 			if id > 0:
 				item_textures[id] =  load("res://Assets/inventory/Items/" + file.split(".import")[0])
-	print(item_textures)
-
 	
 func RefreshInventory(inventory_data):
 	inventory.update(inventory_data) 

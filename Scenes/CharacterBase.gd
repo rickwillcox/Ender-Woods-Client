@@ -7,6 +7,10 @@ var frame : int setget set_frame
 export var blend_position : Vector2 setget set_blend_position
 export var bake_animations = false setget bake_animations
 
+var current_animation_state : String = "idle"
+var current_blend_position : String = "down"
+var switch_blocked = false
+
 onready var base_sprite : Sprite = $Sprites/base
 onready var outfit : Node2D = $Sprites/outfit
 onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -24,9 +28,8 @@ onready var slot_to_outfit_sprite : Dictionary = {
 	ItemDatabase.Slots.LEGS_SLOT: pants
 }
 
-var current_animation_state : String = "idle"
-var current_blend_position : String = "down"
-var switch_blocked = false
+func _ready() -> void:
+	$AnimationPlayer.play("idle_down")
 
 func set_frame(new_frame):
 	if frame == new_frame or not is_inside_tree():
@@ -82,7 +85,7 @@ func bake_animations(_x):
 	for anim in $AnimationPlayer.get_animation_list():
 		var a : Animation = $AnimationPlayer.get_animation(anim)
 		if a.get_track_count() > 1:
-			print(a.track_get_path(1))
+			Logger.info(a.track_get_path(1))
 		$AnimationPlayer.remove_animation(anim)
 	var start_frame = 0
 	var frames_per_row = 6

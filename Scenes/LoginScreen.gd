@@ -14,7 +14,6 @@ onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSuc
 func _on_Login_pressed():
 	if username_input.text == "" or userpassword_input.text == "":
 		menu_failed_sound.play()
-		#popup and stop
 		Logger.warn("Please provide valid userID and password")
 	else:
 		_save_user_login()
@@ -30,8 +29,6 @@ func _on_create_account_pressed():
 	self.visible = false
 	create_account_screen.visible = true
 	menu_pressed_sound.play()
-
-
 
 func _on_IPButton_pressed():
 	menu_pressed_sound.play()

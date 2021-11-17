@@ -62,7 +62,6 @@ func attacking_action(_delta):
 	yield(get_tree().create_timer(0.2), "timeout")
 	Server.melee_attack(blend_position)
 	
-
 func get_blend_position():
 	if joystick.currentForce != Vector2.ZERO:
 		blend_position = joystick.currentForce
