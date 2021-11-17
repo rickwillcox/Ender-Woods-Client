@@ -42,10 +42,10 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="PlayerName" type="Label" parent="."]
-margin_left = -33.5749
-margin_top = -27.1575
-margin_right = 34.4251
-margin_bottom = -13.1575
+margin_left = -33.575
+margin_top = -32.0
+margin_right = 34.425
+margin_bottom = -18.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.87451, 1, 0, 1 )
 align = 1

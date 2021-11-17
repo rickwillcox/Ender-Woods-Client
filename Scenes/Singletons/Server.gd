@@ -1,8 +1,3 @@
-###############################################
-#        Client connect to World Server    
-#        port 1909                        
-###############################################
-
 extends Node
 
 signal received_player_chat(player_id, username, text)
@@ -162,7 +157,6 @@ func send_player_chat(text : String):
 
 remote func receive_player_chat(player_id : int, username : String, text : String):
 	emit_signal("received_player_chat", player_id, username, text)
-	print("%s: %s" % [username, text])
 
 func craft_recipe(recipe_id : int):
 	rpc_id(1, "craft_recipe", recipe_id)

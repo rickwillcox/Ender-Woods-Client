@@ -20,7 +20,6 @@ var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 
 onready var background_music = get_node("BackgroundMusic")
 
-
 func _ready():
 	#get a list of the background tracks
 	dir.open("res://Assets/Sounds/Background Music/")
@@ -42,7 +41,6 @@ func _unhandled_input(event):
 			previous_background_music_track()
 		if event.pressed and event.is_action_pressed("Inventory"):
 			open_close_inventory()
-
 
 func open_close_inventory():
 	if $GUI/Inventory.visible == true:
@@ -118,7 +116,6 @@ func drop_item(item_id : int, item_name : String, item_position : Vector2, tagge
 func load_item_textures():
 	dir.open("res://Assets/inventory/Items/")
 	dir.list_dir_begin(true, true)
-	#get all files that end in .png from the directory above
 	while true:
 		var file = dir.get_next()
 		if file == "":
@@ -200,16 +197,13 @@ func _on_InventoryButton_pressed() -> void:
 	open_close_inventory()
 	$GUI/InventoryButton.release_focus()
 
-
 func _on_NextTrackButton_pressed() -> void:
 	next_background_music_track()
 	$GUI/NextTrackButton.release_focus()
 
-
 func _on_PreviousTrackButton_pressed() -> void:
 	previous_background_music_track()
 	$GUI/PreviousTrackButton.release_focus()
-
 
 func _on_VolumeSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(1, linear2db(value))

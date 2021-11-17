@@ -1,8 +1,9 @@
 extends Node
+
 var storage = {}
 var si = ServerInterface
-var floating_number = preload("res://Scenes/UI/FloatingNumber.tscn")
 
+var floating_number = preload("res://Scenes/UI/FloatingNumber.tscn")
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
 var batsquito = preload("res://Scenes/Enemies/Batsquito.tscn")
