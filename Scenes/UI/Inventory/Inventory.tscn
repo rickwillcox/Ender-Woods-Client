@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Assets/inventory/Items/ring_silo.png" type="Texture" id=15]
 [ext_resource path="res://Scenes/UI/Inventory/StashContainer.gd" type="Script" id=16]
 [ext_resource path="res://Scenes/UI/Inventory/Inventory.gd" type="Script" id=17]
+[ext_resource path="res://Scenes/UI/Inventory/SmeltingContainer.gd" type="Script" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 41
@@ -277,8 +278,9 @@ margin_bottom = 350.0
 rect_min_size = Vector2( 25, 0 )
 
 [node name="Stash" type="VBoxContainer" parent="Background/HBoxContainer"]
-margin_left = 329.0
-margin_right = 625.0
+visible = false
+margin_left = 29.0
+margin_right = 325.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 275, 0 )
 size_flags_vertical = 3
@@ -684,8 +686,8 @@ position = Vector2( 152.831, 145.786 )
 scale = Vector2( 5, 5 )
 
 [node name="Smelting" type="VBoxContainer" parent="Background/HBoxContainer"]
-margin_left = 629.0
-margin_right = 944.0
+margin_left = 329.0
+margin_right = 644.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_vertical = 3
@@ -711,6 +713,7 @@ margin_bottom = 302.0
 custom_constants/vseparation = 11
 custom_constants/hseparation = 11
 columns = 5
+script = ExtResource( 18 )
 
 [node name="Control2" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
 margin_right = 52.0
@@ -755,24 +758,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemSlot2" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_left = 63.0
 margin_top = 63.0
 margin_right = 115.0
 margin_bottom = 115.0
-script = null
+item_slot = 77
 
-[node name="ItemSlot3" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot2" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_top = 63.0
 margin_bottom = 115.0
-script = null
+item_slot = 78
 
-[node name="ItemSlot4" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot9" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_left = 189.0
 margin_top = 63.0
 margin_right = 241.0
 margin_bottom = 115.0
-script = null
+item_slot = 79
 
 [node name="Control6" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
 margin_left = 252.0
@@ -800,10 +803,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemSlot7" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot3" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_top = 126.0
 margin_bottom = 178.0
-script = null
+item_slot = 80
 
 [node name="Control9" type="Control" parent="Background/HBoxContainer/Smelting/GridContainer"]
 margin_left = 189.0
@@ -831,24 +834,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemSlot6" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot10" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_left = 63.0
 margin_top = 189.0
 margin_right = 115.0
 margin_bottom = 241.0
-script = null
+item_slot = 81
 
-[node name="ItemSlot5" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot7" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_top = 189.0
 margin_bottom = 241.0
-script = null
+item_slot = 82
 
-[node name="ItemSlot8" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
+[node name="ItemSlot4" parent="Background/HBoxContainer/Smelting/GridContainer" instance=ExtResource( 8 )]
 margin_left = 189.0
 margin_top = 189.0
 margin_right = 241.0
 margin_bottom = 241.0
-script = null
+item_slot = 83
 
 [node name="SmeltButton" type="Button" parent="Background/HBoxContainer/Smelting/GridContainer"]
 margin_left = 252.0
