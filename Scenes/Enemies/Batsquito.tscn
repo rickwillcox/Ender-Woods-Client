@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/Enemy/sBat-Sheet_wDeath_shadows-export.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 3.45233
+height = 11.3306
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
@@ -95,24 +97,22 @@ tracks/1/keys = {
 }
 
 [node name="Batsquito" type="KinematicBody2D"]
-scale = Vector2( 0.5, 1 )
 collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -38 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 0.611765 )
-position = Vector2( 1.24627, -21.297 )
+position = Vector2( 3.62947, -11.2183 )
 texture = ExtResource( 4 )
 hframes = 16
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 3.13402, -32.5086 )
+position = Vector2( 2.33882, -12.8948 )
 texture = ExtResource( 1 )
 hframes = 16
 
@@ -122,10 +122,10 @@ anims/death = SubResource( 3 )
 anims/idle = SubResource( 4 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 3 )]
-margin_left = -26.3743
-margin_top = -82.7619
-margin_right = -5.37429
-margin_bottom = -78.7619
+margin_left = -25.3157
+margin_top = -46.0955
+margin_right = -4.31572
+margin_bottom = -42.0955
 rect_scale = Vector2( 2.52, 1 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
