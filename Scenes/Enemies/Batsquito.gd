@@ -55,11 +55,11 @@ func swing_at(victim_id : int):
 func look_at(point):
 	var direction = point - position
 	if direction.x > 0:
-		sprite.scale.x = -2
-		shadow.scale.x = -2
+		sprite.scale.x = -1
+		shadow.scale.x = -1
 	elif direction.x < 0:
-		sprite.scale.x = 2
-		shadow.scale.x = 2
+		sprite.scale.x = 1
+		shadow.scale.x = 1
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "attack":
