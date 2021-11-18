@@ -121,9 +121,6 @@ func remove_item_drop(item_name : int):
 	if get_node("../SceneHandler/Map/YSort/Items/").has_node(str(item_name)):
 		get_node("../SceneHandler/Map/YSort/Items/" + str(item_name)).remove_from_world()
 
-remote func store_player_id(player_id : int):
-	get_node("../SceneHandler/Map/YSort/Player").player_id = player_id
-	
 func add_item(action_id : String, item_slot : int):
 	rpc_id(1, "add_item", action_id, item_slot)
 	
