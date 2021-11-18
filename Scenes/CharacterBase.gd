@@ -2,6 +2,8 @@ tool
 extends Node2D
 
 signal animation_finished(animation_name)
+var base_texture = preload("res://Assets/Character/Base character/character_spritesheet.png")
+var base_texture_sword_shield = preload("res://Assets/Character/Base character/char_a_pONE3_0bas_humn_v01.png")
 
 var frame : int setget set_frame
 export var blend_position : Vector2 setget set_blend_position
@@ -11,7 +13,7 @@ var current_animation_state : String = "idle"
 var current_blend_position : String = "down"
 var switch_blocked = false
 
-onready var base_sprite : Sprite = $Sprites/base
+onready var base_sprite : Sprite = $Sprites/base/base
 onready var outfit : Node2D = $Sprites/outfit
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var boots : Sprite = $Sprites/outfit/boots
@@ -19,6 +21,10 @@ onready var pants : Sprite = $Sprites/outfit/pants
 onready var gloves : Sprite = $Sprites/outfit/gloves
 onready var breatplate : Sprite = $Sprites/outfit/breastplate
 onready var helmet : Sprite = $Sprites/outfit/helmet
+onready var tool_a : Sprite = $Sprites/in_front/tool_a
+onready var tool_b : Sprite = $Sprites/in_front/tool_b
+onready var in_front : Node2D = $Sprites/in_front
+onready var behind : Node2D = $Sprites/behind
 
 onready var slot_to_outfit_sprite : Dictionary = {
 	ItemDatabase.Slots.HEAD_SLOT: helmet,
@@ -27,6 +33,7 @@ onready var slot_to_outfit_sprite : Dictionary = {
 	ItemDatabase.Slots.FEET_SLOT: boots,
 	ItemDatabase.Slots.LEGS_SLOT: pants
 }
+
 
 func _ready() -> void:
 	$AnimationPlayer.play("idle_down")
@@ -39,8 +46,10 @@ func set_frame(new_frame):
 		base_sprite.frame = new_frame
 		for child in outfit.get_children():
 			(child as Sprite).frame = new_frame
+		tool_a.frame = new_frame
+		tool_b.frame = new_frame
 	else:
-		$Sprites/base.frame = new_frame
+		$Sprites/base/base.frame = new_frame
 		for child in $Sprites/outfit.get_children():
 			(child as Sprite).frame = new_frame
 
@@ -72,63 +81,106 @@ func update_animaton():
 	if switch_blocked:
 		return
 	animation_player.play(current_animation_state + "_" + current_blend_position)
-	if current_animation_state == "chop":
+	if current_animation_state == "chop" or current_animation_state == "slash_1":
 		switch_blocked = true
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if "chop" in anim_name:
+	if "chop" in anim_name or "slash" in anim_name:
 		switch_blocked = false
 		travel("idle")
 	emit_signal("animation_finished", anim_name)
 
 func bake_animations(_x):
+	if not Engine.editor_hint:
+		return
 	for anim in $AnimationPlayer.get_animation_list():
-		var a : Animation = $AnimationPlayer.get_animation(anim)
-		if a.get_track_count() > 1:
-			Logger.info(a.track_get_path(1))
 		$AnimationPlayer.remove_animation(anim)
-	var start_frame = 0
-	var frames_per_row = 6
-	var all_directions = ["right", "up", "left", "down"]
-	var base_setting = { "frames" : 6, "directions" : all_directions, "loop" : true }
+
 	var animations = [
-		{"idle" : base_setting},
-		{"walk" : base_setting},
-		{"run" : base_setting},
-		{"chop" :
-			{
-				"frames" : 4,
-				"directions" : all_directions
-			}
+		{ "name" : "idle_right", "start_frame": 0, "frames" : 6, "loop" : true},
+		{ "name" : "idle_up", "start_frame": 6, "frames" : 6, "loop" : true},
+		{ "name" : "idle_left", "start_frame": 12, "frames" : 6, "loop" : true},
+		{ "name" : "idle_down", "start_frame": 18, "frames" : 6, "loop" : true},
+		
+		{ "name" : "walk_right", "start_frame": 24, "frames" : 6, "loop" : true},
+		{ "name" : "walk_up", "start_frame": 30, "frames" : 6, "loop" : true},
+		{ "name" : "walk_left", "start_frame": 36, "frames" : 6, "loop" : true},
+		{ "name" : "walk_down", "start_frame": 42, "frames" : 6, "loop" : true},
+		
+		{ "name" : "run_right", "start_frame": 48, "frames" : 6, "loop" : true},
+		{ "name" : "run_up", "start_frame": 54, "frames" : 6, "loop" : true},
+		{ "name" : "run_left", "start_frame": 60, "frames" : 6, "loop" : true},
+		{ "name" : "run_down", "start_frame": 66, "frames" : 6, "loop" : true},
+		
+		{ "name" : "chop_right", "start_frame": 72, "frames" : 4},
+		{ "name" : "chop_up", "start_frame": 78, "frames" : 4},
+		{ "name" : "chop_left", "start_frame": 84, "frames" : 4},
+		{ "name" : "chop_down", "start_frame": 90, "frames" : 4},
+	]
+	
+	var sword_shield_animations = [
+		{ "name" : "slash_1_down", "start_frame": 0, "frames" : 4,
+			# Tool order determines layering order, this terminology is borrowed from the asset guide
+			# this actually describes both tools position
+			"tool_a_order": ["behind" ,"behind++", "behind++", "behind++"]
 		},
-		{"sow" :
-			{
-				"frames" : 2,
-				"directions" : all_directions
-			}
+		{ "name" : "slash_1_up", "start_frame": 8, "frames" : 4,
+			"tool_a_order": ["behind++" ,"behind++", "behind", "behind"],
 		},
-		{"smithing" :
-			{
-				"frames" : 5,
-				"directions" : ["right", "left"],
-				"loop" : true
-			}
-		}
-		]
-	for animation_description in animations:
-		var animation = (animation_description as Dictionary).keys()[0]
-		for direction in animation_description[animation]["directions"]:
-			var generated_animation : Animation = Animation.new()
-			var track_index = generated_animation.add_track(Animation.TYPE_VALUE)
-			generated_animation.track_set_path(track_index, ".:frame")
-			generated_animation.length = animation_description[animation]["frames"] * 0.2
-			if animation_description[animation].has("loop"):
-				generated_animation.loop = true
-			for i in range(animation_description[animation]["frames"]):
-				generated_animation.track_insert_key(track_index, 0.2 * i, i + start_frame)
-			generated_animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
-			$AnimationPlayer.add_animation(animation + "_" + direction, generated_animation)
-			start_frame += frames_per_row
+		{ "name" : "slash_1_right", "start_frame": 16, "frames" : 4,
+			"tool_a_order": ["behind++" ,"front", "behind++", "behind++"],
+		},
+		{ "name" : "slash_1_left", "start_frame": 24, "frames" : 4,
+			"tool_a_order": ["behind++" ,"front", "behind--", "behind--"],
+		},
+	]
+	
+	for animation in animations:
+		bake_animation(animation, "set_base")
+		
+	for animation in sword_shield_animations:
+		bake_animation(animation, "set_base_sword_shield")
+
+
+func bake_animation(animation_description : Dictionary, set_base_func : String):
+	var animation_name = animation_description["name"]
+	var frames = animation_description["frames"]
+	var start_frame = animation_description["start_frame"]
+	
+	
+	var generated_animation : Animation = Animation.new()
+	
+	# This generates the base animaton track for sprite frames
+	var track_index = generated_animation.add_track(Animation.TYPE_VALUE)
+	generated_animation.track_set_path(track_index, ".:frame")
+	generated_animation.length = frames * 0.15
+	if animation_description.has("loop"):
+		generated_animation.loop = true
+	for i in range(frames):
+		generated_animation.track_insert_key(track_index, 0.15 * i, i + start_frame)
+	generated_animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
+	
+	# This generates the track for base change func call in animation.
+	# Changing the base is required when character spritesheet is separated into
+	# several spritesheets	
+	track_index = generated_animation.add_track(Animation.TYPE_METHOD)
+	generated_animation.track_set_path(track_index, ".")
+	generated_animation.track_insert_key(track_index, 0.0, {"method":set_base_func, "args": []})
+	
+	# This generates the tool order track. It reorders tool sprites so they are 
+	# correctly rendered behind or in front of the character
+	if animation_description.has("tool_a_order"):
+		track_index = generated_animation.add_track(Animation.TYPE_METHOD)
+		generated_animation.track_set_path(track_index, ".")
+		var tool_a_order = animation_description["tool_a_order"]
+		for i in range(tool_a_order.size()):
+			if i > 0 and tool_a_order[i] == tool_a_order[i-1]:
+				# If the order is the same no need to add a key frame
+				continue
+			generated_animation.track_insert_key(track_index, i * 0.15,
+				{"method": "set_tool_order", "args": [tool_a_order[i]]})
+
+	$AnimationPlayer.add_animation(animation_name, generated_animation)
 
 
 func unequip_slot(slot : int):
@@ -138,3 +190,45 @@ func unequip_slot(slot : int):
 func equip_item(item_id, slot):
 	if slot_to_outfit_sprite.has(slot):
 		slot_to_outfit_sprite[slot].texture = CharacterTextureLoader.get_item_texture(item_id)
+
+
+# Functions below are called in the animationPlayer tracks to switch textures/order
+func set_base():
+	# This is the current character base with all the animations and outfits
+	base_sprite.texture = base_texture
+	base_sprite.hframes = 6
+	base_sprite.vframes = 22
+	tool_a.visible = false
+	tool_b.visible = false
+	outfit.visible = true
+
+func set_base_sword_shield():
+	# this is the character base from the asset pack with sword and shield
+	base_sprite.texture = base_texture_sword_shield
+	base_sprite.hframes = 8
+	base_sprite.vframes = 8
+	tool_a.visible = true
+	tool_b.visible = true
+	outfit.visible = false
+
+func set_tool_order(tool_order : String):
+	tool_a.get_parent().remove_child(tool_a)
+	tool_b.get_parent().remove_child(tool_b)
+	match tool_order:
+		# tool_a is in front, means tool b is behind
+		"front":
+			behind.add_child(tool_b)
+			in_front.add_child(tool_a)
+		# tool_a is in behind, means tool b is in front
+		"behind":
+			behind.add_child(tool_a)
+			in_front.add_child(tool_b)
+		# both tools are behind, but tool_a is in front of b
+		"behind++":
+			behind.add_child(tool_b)
+			behind.add_child(tool_a)
+		# both tools are behind, but tool_b is in front of a
+		"behind--":
+			behind.add_child(tool_a)
+			behind.add_child(tool_b)
+

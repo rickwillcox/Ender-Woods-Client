@@ -57,7 +57,7 @@ func moving_action(_delta):
 	movement = move_and_slide(movement)
 	
 func attacking_action(_delta):
-	character_base.travel("chop") 
+	character_base.travel("slash_1") 
 	player_action = IDLE
 	yield(get_tree().create_timer(0.2), "timeout")
 	Server.melee_attack(blend_position)
