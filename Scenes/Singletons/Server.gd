@@ -121,9 +121,9 @@ func remove_item_drop(item_name : int):
 	if get_node("../SceneHandler/Map/YSort/Items/").has_node(str(item_name)):
 		get_node("../SceneHandler/Map/YSort/Items/" + str(item_name)).remove_from_world()
 
-func add_item(action_id : String, item_slot : int):
-	rpc_id(1, "add_item", action_id, item_slot)
-	
+func pickup_item(item_drop_id : int, amount : int):
+	rpc_id(1, "pickup_item", item_drop_id, amount)
+
 remote func handle_input_packets(packets):
 	PacketHandler.handle_many(packets)
 

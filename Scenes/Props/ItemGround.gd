@@ -1,6 +1,6 @@
 extends Node2D
-
-signal pickup(item_id, item_name)
+class_name ItemGround
+signal pickup(node)
 
 var item_id : int 
 var item_texture : StreamTexture
@@ -25,12 +25,13 @@ func _on_PickupTimer_timeout() -> void:
 	$Sprite.modulate.a = 1
 
 func _on_Button_pressed():
-	var tween_position : Vector2 = get_node("../../Player").position + Vector2(386, 200)
 	if $Sprite.modulate.a == 1 and get_node("../../Player").position.distance_to(self.position) < pick_up_range:
-		emit_signal("pickup", item_id, name)
-		# TODO: maybe only cleanup the item if server okayed it
-		tween.interpolate_property(self, "position", position, tween_position, 1.0, Tween.TRANS_BACK, Tween.EASE_IN)
-		tween.start()
+		emit_signal("pickup", self)
+
+func start_tween():
+	var tween_position : Vector2 = get_node("../../Player").position + Vector2(386, 200)
+	tween.interpolate_property(self, "position", position, tween_position, 1.0, Tween.TRANS_BACK, Tween.EASE_IN)
+	tween.start()
 
 func _on_Tween_tween_all_completed() -> void:
 	queue_free()
