@@ -24,7 +24,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/Inventory.gd"
 }, {
-"base": "Control",
+"base": "Node2D",
+"class": "ItemGround",
+"language": "GDScript",
+"path": "res://Scenes/Props/ItemGround.gd"
+}, {
+"base": "TextureRect",
 "class": "ItemSlot",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/ItemSlot.gd"
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "GameSettings": "",
 "Inventory": "",
 "InventoryScreen": "",
+"ItemGround": "",
 "ItemSlot": "",
 "Serializer": ""
 }

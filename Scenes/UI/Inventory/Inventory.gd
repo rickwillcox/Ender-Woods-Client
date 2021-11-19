@@ -105,18 +105,30 @@ func move_items(from_item_slot, to_item_slot):
 	# update world server
 	Server.move_items(from_item_slot, to_item_slot)
 
-func add_item(action_id : String, item_id : int, amount : int = 1) -> bool:
+var item_to_cleanup_path : NodePath = NodePath("")
+func pickup_item(item_pickup : ItemGround):
+	if awaiting_response:
+		return
 	awaiting_response = true
-	var slot = inventory.add_item(item_id, amount)
-	if slot == -1:
+	var amount = 1
+	if inventory.fit_item(item_pickup.item_id, amount) != 0:
 		awaiting_response = false
-		return false
-	update_slot_display(slot)
-	Server.add_item(action_id, slot)
-	return true
+		return
+	var backpack = range(
+		ItemDatabase.Slots.FIRST_BACKPACK_SLOT,
+		ItemDatabase.Slots.LAST_BACKPACK_SLOT + 1)
+	var affected_slots = inventory.add_item(item_pickup.item_id, amount, backpack, true)
+	for slot in affected_slots:
+		update_slot_display(slot)
+	Server.pickup_item(int(item_pickup.name), amount)
+	item_to_cleanup_path = item_pickup.get_path()
 
 func handle_inventory_ok():
 	inventory.confirm_last_operation()
+	var node : ItemGround = get_node_or_null(item_to_cleanup_path)
+	if node != null:
+		node.start_tween()
+		item_to_cleanup_path = NodePath("")
 	awaiting_response = false
 
 func handle_inventory_nok():
@@ -124,12 +136,8 @@ func handle_inventory_nok():
 		update_slot_display(slot)
 	awaiting_response = false
 
-func on_pickup(item_id, item_name):
-	add_item(item_name, item_id)
-
 func set_player_character(player_character_node):
 	player_character = player_character_node
-
 
 func handle_item_craft_nok():
 	awaiting_response = false
