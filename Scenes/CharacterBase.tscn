@@ -686,7 +686,7 @@ use_parent_material = true
 texture = ExtResource( 3 )
 hframes = 6
 vframes = 22
-frame = 8
+frame = 11
 
 [node name="outfit" type="Node2D" parent="Sprites"]
 use_parent_material = true
@@ -695,31 +695,31 @@ use_parent_material = true
 use_parent_material = true
 hframes = 6
 vframes = 22
-frame = 8
+frame = 11
 
 [node name="pants" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 22
-frame = 8
+frame = 11
 
 [node name="gloves" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 22
-frame = 8
+frame = 11
 
 [node name="breastplate" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 22
-frame = 8
+frame = 11
 
 [node name="helmet" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 22
-frame = 8
+frame = 11
 
 [node name="in_front" type="Node2D" parent="Sprites"]
 
