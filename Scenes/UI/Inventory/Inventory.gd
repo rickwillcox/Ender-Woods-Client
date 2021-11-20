@@ -29,6 +29,7 @@ var item_slots : Dictionary = {}
 var item_textures : Dictionary = {}
 var awaiting_response : bool = false
 var dir = Directory.new()
+var smelt_button : Button
 
 func _ready():
 	inventory_character.blend_position = Vector2(0, 1)
@@ -37,6 +38,10 @@ func _ready():
 	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
 	PacketHandler.connect("item_craft_nok", self, "handle_item_craft_nok")
 	PacketHandler.connect("item_craft_ok", self, "handle_item_craft_ok")
+	PacketHandler.connect("inventory_slot_update", self, "handle_inventory_slot_update")
+	PacketHandler.connect("smelter_started", self, "handle_smelter_started")
+	PacketHandler.connect("smelter_stopped", self, "handle_smelter_stopped")
+	smelt_button = find_node("SmeltButton")
 	
 	reset_inventory_layout()
 	
@@ -163,6 +168,23 @@ func _on_CloseInventoryButton_pressed() -> void:
 	self.hide()
 	reset_inventory_layout()
 	
+func handle_inventory_slot_update(slot : int, item_id : int, amount : int):
+	if item_id == 0:
+		inventory.slots.erase(slot)
+	else:
+		inventory.slots[slot] = {"item_id" : item_id, "amount" : amount }
+	update_slot_display(slot)
+
+func handle_smelter_started():
+	inventory.smelter_started = true
+	awaiting_response = false
+	smelt_button.disabled = false
+	
+func handle_smelter_stopped():
+	inventory.smelter_started = false
+	awaiting_response = false
+	smelt_button.disabled = false
+	
 func reset_inventory_layout():
 	equipment_container.visible = true
 	stash_container.visible = false
@@ -198,3 +220,12 @@ func _on_BlackSmithRing_pressed() -> void:
 
 func _on_BlackSmithPickAxe_pressed() -> void:
 	Logger.info("Crafting : pickaxe")
+
+
+func _on_SmeltButton_pressed():
+	awaiting_response = true
+	smelt_button.disabled = true
+	if inventory.smelter_started:
+		Server.stop_smelter()
+	else:
+		Server.start_smelter()
