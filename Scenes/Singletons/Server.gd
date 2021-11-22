@@ -151,3 +151,9 @@ remote func receive_player_chat(player_id : int, username : String, text : Strin
 
 func craft_recipe(recipe_id : int):
 	rpc_id(1, "craft_recipe", recipe_id)
+
+func start_smelter():
+	rpc_id(1, "start_smelter")
+
+func stop_smelter():
+	rpc_id(1, "stop_smelter")

@@ -16,6 +16,9 @@ signal enemy_despawn(enemy_id)
 signal enemy_swing(enemy_id, player_id)
 signal item_craft_nok
 signal item_craft_ok(slot, item_id)
+signal smelter_started
+signal smelter_stopped
+signal inventory_slot_update(slot, item_id, amount)
 
 var si = ServerInterface
 
@@ -76,6 +79,12 @@ func handle(packet):
 			emit_signal("item_craft_nok")
 		si.Opcodes.ITEM_CRAFT_OK:
 			emit_signal("item_craft_ok", packet["slot"], packet["item_id"])
+		si.Opcodes.SMELTER_STARTED:
+			emit_signal("smelter_started")
+		si.Opcodes.SMELTER_STOPPED:
+			emit_signal("smelter_stopped")
+		si.Opcodes.INVENTORY_SLOT_UPDATE:
+			emit_signal("inventory_slot_update", packet["slot"], packet["item_id"], packet["amount"])
 		_:
 			Logger.error("Incorrect OPcode %d" % packet["op_code"])
 			assert(false)

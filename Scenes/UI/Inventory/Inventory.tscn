@@ -1122,6 +1122,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="Background/HBoxContainer/Smelting/GridContainer/SmeltButton" to="." method="_on_SmeltButton_pressed"]
 [connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithHelmet" to="." method="_on_BlackSmithHelmet_pressed"]
 [connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithChest" to="." method="_on_BlackSmithChest_pressed"]
 [connection signal="pressed" from="Background/HBoxContainer/Blacksmithing/GridContainer/BlackSmithGloves" to="." method="_on_BlackSmithGloves_pressed"]
