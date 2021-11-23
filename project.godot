@@ -29,10 +29,80 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Props/ItemGround.gd"
 }, {
-"base": "Control",
+"base": "TextureRect",
 "class": "ItemSlot",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/ItemSlot.gd"
+}, {
+"base": "Reference",
+"class": "NakamaAPI",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaAPI.gd"
+}, {
+"base": "Reference",
+"class": "NakamaAsyncResult",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaAsyncResult.gd"
+}, {
+"base": "Reference",
+"class": "NakamaClient",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/client/NakamaClient.gd"
+}, {
+"base": "Reference",
+"class": "NakamaException",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaException.gd"
+}, {
+"base": "Node",
+"class": "NakamaHTTPAdapter",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/client/NakamaHTTPAdapter.gd"
+}, {
+"base": "Reference",
+"class": "NakamaLogger",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaLogger.gd"
+}, {
+"base": "NakamaAsyncResult",
+"class": "NakamaRTAPI",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaRTAPI.gd"
+}, {
+"base": "Reference",
+"class": "NakamaRTMessage",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaRTMessage.gd"
+}, {
+"base": "Reference",
+"class": "NakamaSerializer",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/utils/NakamaSerializer.gd"
+}, {
+"base": "NakamaAsyncResult",
+"class": "NakamaSession",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaSession.gd"
+}, {
+"base": "Reference",
+"class": "NakamaSocket",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/socket/NakamaSocket.gd"
+}, {
+"base": "Node",
+"class": "NakamaSocketAdapter",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/socket/NakamaSocketAdapter.gd"
+}, {
+"base": "Reference",
+"class": "NakamaStorageObjectId",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaStorageObjectId.gd"
+}, {
+"base": "Reference",
+"class": "NakamaWriteStorageObject",
+"language": "GDScript",
+"path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
 }, {
 "base": "Node",
 "class": "Serializer",
@@ -45,6 +115,20 @@ _global_script_class_icons={
 "InventoryScreen": "",
 "ItemGround": "",
 "ItemSlot": "",
+"NakamaAPI": "",
+"NakamaAsyncResult": "",
+"NakamaClient": "",
+"NakamaException": "",
+"NakamaHTTPAdapter": "",
+"NakamaLogger": "",
+"NakamaRTAPI": "",
+"NakamaRTMessage": "",
+"NakamaSerializer": "",
+"NakamaSession": "",
+"NakamaSocket": "",
+"NakamaSocketAdapter": "",
+"NakamaStorageObjectId": "",
+"NakamaWriteStorageObject": "",
 "Serializer": ""
 }
 
@@ -59,6 +143,7 @@ config/windows_native_icon="res://Assets/C.ico"
 
 Logger="*res://common/logger/logger.gd"
 LoggerConfig="*res://Scenes/Singletons/LoggerConfig.gd"
+Utils="*res://common/Utils.gd"
 ServerInterface="*res://common/ServerInterface.gd"
 ItemDatabase="*res://common/ItemDatabase.gd"
 Server="*res://Scenes/Singletons/Server.gd"
@@ -68,6 +153,8 @@ PacketHandler="*res://Scenes/Singletons/PacketHandler.gd"
 CharacterTextureLoader="*res://Scenes/Singletons/CharacterTextureLoader.gd"
 Players="*res://Scenes/Singletons/Players.gd"
 Enemies="*res://Scenes/Singletons/Enemies.gd"
+Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+NakamaConnection="*res://Scenes/Singletons/NakamaConnection.gd"
 
 [debug]
 

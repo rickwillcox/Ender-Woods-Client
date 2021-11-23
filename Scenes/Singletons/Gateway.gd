@@ -75,6 +75,13 @@ remote func return_login_request(results : bool, token : String):
 	Logger.info("Login results received: Result: %s | Token: %s" % [results, token])
 	if results == true:
 		get_node("../SceneHandler/Map/MenuSounds/MenuLoginSucceededSound").play()
+		NakamaConnection.login(Globals.player_name)
+		yield(NakamaConnection, "logged_in")
+		NakamaConnection.get_item_database()
+		yield(NakamaConnection, "result_done")
+		NakamaConnection.get_recipe_database()
+		yield(NakamaConnection, "result_done")
+		get_node("../SceneHandler/Map/GUI/CraftingMenu").prepare()
 		Server.token = token
 		Server.connect_to_server()
 	else:
