@@ -11,6 +11,9 @@ onready var menu_pressed_sound = get_node("../../MenuSounds/MenuPressSound")
 onready var menu_failed_sound = get_node("../../MenuSounds/MenuFailedSound")
 onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSucceededSound")
 
+func _ready():
+	NakamaConnection.connect("logged_in", self, "handle_login_result")
+
 func _on_Login_pressed():
 	if username_input.text == "" or userpassword_input.text == "":
 		menu_failed_sound.play()
@@ -19,11 +22,11 @@ func _on_Login_pressed():
 		_save_user_login()
 		Globals.player_name = username_input.text
 		login_button.disabled = true
-		var username : String = username_input.get_text()
+		var email : String = username_input.get_text()
 		var password : String = userpassword_input.get_text()
 		Logger.info("Attempting to login")
-		Gateway.connect_to_server(username, password, false)
 		menu_pressed_sound.play()
+		NakamaConnection.login(email, password)
 
 func _on_create_account_pressed():
 	self.visible = false
@@ -36,12 +39,10 @@ func _on_IPButton_pressed():
 		local = false
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
 		Server.login_ip = Server.dedicated_server_ip
-		Gateway.login_ip = Gateway.dedicated_server_ip
 	else:
 		local = true
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Local"
 		Server.login_ip = Server.local_ip
-		Gateway.login_ip = Gateway.local_ip
 		
 	
 
@@ -84,3 +85,14 @@ func _auto_login():
 	yield(get_tree(), "idle_frame")
 	Logger.info("Auto Login")
 	_on_Login_pressed()
+
+
+func handle_login_result(result):
+	if result == true:
+		NakamaConnection.get_item_database()
+		yield(NakamaConnection, "result_done")
+		NakamaConnection.get_recipe_database()
+		yield(NakamaConnection, "result_done")
+		Server.connect_to_server()
+	else:
+		login_button.disabled = false

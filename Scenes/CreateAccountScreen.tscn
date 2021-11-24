@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Textures/button_normal.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=2]
@@ -9,17 +9,11 @@
 [ext_resource path="res://Scenes/CreateAccountScreen.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 41
-outline_size = 2
-outline_color = Color( 0.6, 0.0745098, 0.839216, 1 )
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 20
 extra_spacing_char = 4
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 25
 outline_size = 2
 outline_color = Color( 0.196078, 0.188235, 0.188235, 1 )
@@ -68,90 +62,98 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="Background/VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 44.0
-custom_fonts/font = SubResource( 1 )
-text = "Create Account"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MarginContainer4" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 48.0
 margin_right = 300.0
-margin_bottom = 55.0
+margin_bottom = 7.0
 rect_min_size = Vector2( 0, 7 )
 
-[node name="UsernameTitle" type="Label" parent="Background/VBoxContainer"]
-margin_top = 59.0
+[node name="UsernameTitle2" type="Label" parent="Background/VBoxContainer"]
+margin_top = 11.0
 margin_right = 300.0
-margin_bottom = 81.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "Email"
+
+[node name="Email" type="LineEdit" parent="Background/VBoxContainer"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 61.0
+text = "user@example.com"
+
+[node name="MarginContainer6" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 65.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="UsernameTitle" type="Label" parent="Background/VBoxContainer"]
+margin_top = 74.0
+margin_right = 300.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 1 )
 text = "Username"
 
 [node name="Username" type="LineEdit" parent="Background/VBoxContainer"]
-margin_top = 85.0
+margin_top = 100.0
 margin_right = 300.0
-margin_bottom = 109.0
-text = "22"
+margin_bottom = 124.0
+text = "Username"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 113.0
+margin_top = 128.0
 margin_right = 300.0
-margin_bottom = 118.0
+margin_bottom = 133.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="PasswordTitle" type="Label" parent="Background/VBoxContainer"]
-margin_top = 122.0
+margin_top = 137.0
 margin_right = 300.0
-margin_bottom = 144.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 159.0
+custom_fonts/font = SubResource( 1 )
 text = "Password"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Password" type="LineEdit" parent="Background/VBoxContainer"]
-margin_top = 148.0
+margin_top = 163.0
 margin_right = 300.0
-margin_bottom = 172.0
-text = "2"
+margin_bottom = 187.0
+text = "password"
 
 [node name="MarginContainer5" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 176.0
+margin_top = 191.0
 margin_right = 300.0
-margin_bottom = 181.0
+margin_bottom = 196.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="RepeatPasswordTitle" type="Label" parent="Background/VBoxContainer"]
-margin_top = 185.0
+margin_top = 200.0
 margin_right = 300.0
-margin_bottom = 207.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 222.0
+custom_fonts/font = SubResource( 1 )
 text = "Repeat Password"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RepeatPassword" type="LineEdit" parent="Background/VBoxContainer"]
-margin_top = 211.0
+margin_top = 226.0
 margin_right = 300.0
-margin_bottom = 235.0
-text = "2"
+margin_bottom = 250.0
+text = "password"
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 239.0
+margin_top = 254.0
 margin_right = 300.0
-margin_bottom = 254.0
+margin_bottom = 269.0
 rect_min_size = Vector2( 0, 15 )
 
 [node name="CreateAccountButton" type="TextureButton" parent="Background/VBoxContainer"]
 margin_left = 40.0
-margin_top = 258.0
+margin_top = 273.0
 margin_right = 260.0
-margin_bottom = 293.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 220, 35 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 1 )
@@ -168,16 +170,16 @@ margin_left = -92.0
 margin_top = -13.5
 margin_right = 92.0
 margin_bottom = 13.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Create Account"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="MarginContainer3" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 297.0
+margin_top = 312.0
 margin_right = 300.0
-margin_bottom = 302.0
+margin_bottom = 317.0
 rect_min_size = Vector2( 0, 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,9 +187,9 @@ __meta__ = {
 
 [node name="BackButton" type="TextureButton" parent="Background/VBoxContainer"]
 margin_left = 40.0
-margin_top = 306.0
+margin_top = 321.0
 margin_right = 260.0
-margin_bottom = 341.0
+margin_bottom = 356.0
 rect_min_size = Vector2( 220, 35 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 1 )
@@ -204,7 +206,7 @@ margin_left = -34.0
 margin_top = -13.5
 margin_right = 34.0
 margin_bottom = 13.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false

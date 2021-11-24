@@ -90,13 +90,13 @@ margin_top = 84.0
 margin_right = 301.0
 margin_bottom = 106.0
 custom_fonts/font = SubResource( 2 )
-text = "Username"
+text = "Email"
 
 [node name="Username" type="LineEdit" parent="Background/VBoxContainer"]
 margin_top = 110.0
 margin_right = 301.0
 margin_bottom = 134.0
-text = "shaka"
+text = "user@example.com"
 
 [node name="UsernameCheckBox" type="CheckBox" parent="Background/VBoxContainer/Username"]
 anchor_left = 0.5
@@ -131,7 +131,7 @@ __meta__ = {
 margin_top = 188.0
 margin_right = 301.0
 margin_bottom = 212.0
-text = "1"
+text = "password"
 
 [node name="PasswordCheckBox" type="CheckBox" parent="Background/VBoxContainer/Password"]
 anchor_left = 0.5

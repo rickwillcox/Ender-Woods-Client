@@ -23,6 +23,7 @@ func _physics_process(delta):
 		decimal_collector -= 1.0
 
 func connect_to_server():
+	Logger.info("Attempting to connect to server")
 	network.create_client(login_ip, port)
 	get_tree().set_network_peer(network)
 	
@@ -65,10 +66,10 @@ remote func return_latency(client_time):
 		latency_array.clear()
 	
 remote func fetch_token():
-	rpc_id(1, "return_token", token)
+	rpc_id(1, "return_token", NakamaConnection.session.token)
 	Logger.verbose("FetchToken done")
 	
-remote func return_token_verification_results(result, _all_item_data, _all_recipe_data):
+remote func return_token_verification_results(result):
 	if result == true:
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
 		get_node("../SceneHandler/Map").SpawnSelf()
@@ -76,7 +77,7 @@ remote func return_token_verification_results(result, _all_item_data, _all_recip
 	else:
 		Logger.error("Login unsuccessful")
 		get_node("../SceneHandler/Map/GUI/LoginScreen").login_button.disabled = false
-	Logger.verbose("return_token_verification_results done")
+	Logger.info("return_token_verification_results done")
 		
 func send_player_state(player_state : Dictionary):
 	rpc_unreliable_id(1, "receive_player_state", player_state)
