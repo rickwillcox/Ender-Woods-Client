@@ -17,8 +17,8 @@ onready var login_screen_panel = get_node_or_null("../../GUI/LoginScreen")
 onready var character_base = $CharacterBase
 
 func _ready():
-	if Globals.player_name != null:
-		get_node("PlayerName").text = Globals.player_name
+	if NakamaConnection.session != null:
+		get_node("PlayerName").text = NakamaConnection.session.username
 	else:
 		Logger.error("Player Name has not been set")
 
