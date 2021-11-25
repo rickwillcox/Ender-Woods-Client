@@ -11,9 +11,11 @@ onready var create_account_screen = self
 onready var menu_pressed_sound = get_node("../../MenuSounds/MenuPressSound")
 onready var menu_failed_sound = get_node("../../MenuSounds/MenuFailedSound")
 onready var menu_login_succeeded_sound = get_node("../../MenuSounds/MenuLoginSucceededSound")
+onready var email_input : LineEdit = $Background/VBoxContainer/Email
 
 func _ready():
 	self.visible = false
+	NakamaConnection.connect("registered", self, "handle_registration_result")
 
 func _on_CreateAccountButton_pressed():
 	if username_input.text == "" or userpassword_input.text == "" or userpasswordrepeat_input.text == "":
@@ -28,8 +30,9 @@ func _on_CreateAccountButton_pressed():
 		create_account_button.disabled = true
 		var username = username_input.get_text()
 		var password = userpassword_input.get_text()
+		var email = email_input.text
 		Logger.info("Attempting to Create Account")	
-		Gateway.connect_to_server(username, password, true)
+		NakamaConnection.register(email, username, password)
 
 func _on_Back_Button_pressed():
 	menu_pressed_sound.play()
@@ -38,3 +41,8 @@ func _on_Back_Button_pressed():
 	login_screen.visible = true
 
 	
+func handle_registration_result(result : bool):
+	back_button.disabled = false
+	create_account_button.disabled = false
+	if result:
+		_on_Back_Button_pressed()
