@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Props/ItemGround.gd"
 }, {
-"base": "TextureRect",
+"base": "Control",
 "class": "ItemSlot",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/ItemSlot.gd"
@@ -143,7 +143,6 @@ config/windows_native_icon="res://Assets/C.ico"
 
 Logger="*res://common/logger/logger.gd"
 LoggerConfig="*res://Scenes/Singletons/LoggerConfig.gd"
-Utils="*res://common/Utils.gd"
 ServerInterface="*res://common/ServerInterface.gd"
 ItemDatabase="*res://common/ItemDatabase.gd"
 Server="*res://Scenes/Singletons/Server.gd"
@@ -153,6 +152,7 @@ PacketHandler="*res://Scenes/Singletons/PacketHandler.gd"
 CharacterTextureLoader="*res://Scenes/Singletons/CharacterTextureLoader.gd"
 Players="*res://Scenes/Singletons/Players.gd"
 Enemies="*res://Scenes/Singletons/Enemies.gd"
+Utils="*res://common/Utils.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 NakamaConnection="*res://Scenes/Singletons/NakamaConnection.gd"
 
