@@ -20,7 +20,6 @@ func _on_Login_pressed():
 		Logger.warn("Please provide valid userID and password")
 	else:
 		_save_user_login()
-		Globals.player_name = username_input.text
 		login_button.disabled = true
 		var email : String = username_input.get_text()
 		var password : String = userpassword_input.get_text()
