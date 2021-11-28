@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Props/ItemGround.gd"
 }, {
-"base": "TextureRect",
+"base": "Control",
 "class": "ItemSlot",
 "language": "GDScript",
 "path": "res://Scenes/UI/Inventory/ItemSlot.gd"
@@ -153,6 +153,7 @@ Players="*res://Scenes/Singletons/Players.gd"
 Enemies="*res://Scenes/Singletons/Enemies.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 NakamaConnection="*res://Scenes/Singletons/NakamaConnection.gd"
+GooglePlayConnection="*res://Scenes/Singletons/GooglePlayConnection.gd"
 
 [debug]
 

@@ -5,7 +5,7 @@ signal received_player_chat(player_id, username, text)
 var network = NetworkedMultiplayerENet.new()
 var dedicated_server_ip : String = "45.58.43.202"
 var local_ip : String = "127.0.0.1"
-var login_ip : String = "127.0.0.1"
+var login_ip : String = "10.0.2.2"
 var port : int = 1909
 var client_clock : int = 0
 var decimal_collector : float = 0

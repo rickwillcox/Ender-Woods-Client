@@ -10,7 +10,7 @@
 [ext_resource path="res://Scenes/UI/GameSettings/SettingSaver.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 67
+size = 49
 outline_size = 2
 outline_color = Color( 0.6, 0.0745098, 0.839216, 1 )
 font_data = ExtResource( 5 )
@@ -21,8 +21,8 @@ extra_spacing_char = 4
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 25
-outline_size = 2
+size = 14
+outline_size = 1
 outline_color = Color( 0.196078, 0.188235, 0.188235, 1 )
 extra_spacing_char = 3
 font_data = ExtResource( 5 )
@@ -71,7 +71,7 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="Background/VBoxContainer"]
 margin_right = 301.0
-margin_bottom = 71.0
+margin_bottom = 52.0
 custom_fonts/font = SubResource( 1 )
 text = "RPG game"
 align = 1
@@ -80,25 +80,25 @@ __meta__ = {
 }
 
 [node name="MarginContainer4" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 75.0
+margin_top = 56.0
 margin_right = 301.0
-margin_bottom = 80.0
+margin_bottom = 61.0
 rect_min_size = Vector2( 0, 5 )
 
-[node name="UsernameTitle" type="Label" parent="Background/VBoxContainer"]
-margin_top = 84.0
+[node name="EmailTitle" type="Label" parent="Background/VBoxContainer"]
+margin_top = 65.0
 margin_right = 301.0
-margin_bottom = 106.0
+margin_bottom = 87.0
 custom_fonts/font = SubResource( 2 )
 text = "Email"
 
-[node name="Username" type="LineEdit" parent="Background/VBoxContainer"]
-margin_top = 110.0
+[node name="Email" type="LineEdit" parent="Background/VBoxContainer"]
+margin_top = 91.0
 margin_right = 301.0
-margin_bottom = 134.0
+margin_bottom = 115.0
 text = "user@example.com"
 
-[node name="UsernameCheckBox" type="CheckBox" parent="Background/VBoxContainer/Username"]
+[node name="EmailCheckBox" type="CheckBox" parent="Background/VBoxContainer/Email"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -111,16 +111,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 138.0
+[node name="UsernameTitle" type="Label" parent="Background/VBoxContainer"]
+margin_top = 119.0
 margin_right = 301.0
-margin_bottom = 158.0
-rect_min_size = Vector2( 0, 20 )
+margin_bottom = 141.0
+custom_fonts/font = SubResource( 2 )
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="Background/VBoxContainer"]
+margin_top = 145.0
+margin_right = 301.0
+margin_bottom = 169.0
+text = "user"
+
+[node name="UsernameCheckBox" type="CheckBox" parent="Background/VBoxContainer/Username"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.707
+margin_top = -11.5349
+margin_right = 147.707
+margin_bottom = 12.4651
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PasswordTitle" type="Label" parent="Background/VBoxContainer"]
-margin_top = 162.0
+margin_top = 173.0
 margin_right = 301.0
-margin_bottom = 184.0
+margin_bottom = 195.0
 custom_fonts/font = SubResource( 2 )
 text = "Password"
 __meta__ = {
@@ -128,9 +148,9 @@ __meta__ = {
 }
 
 [node name="Password" type="LineEdit" parent="Background/VBoxContainer"]
-margin_top = 188.0
+margin_top = 199.0
 margin_right = 301.0
-margin_bottom = 212.0
+margin_bottom = 223.0
 text = "password"
 
 [node name="PasswordCheckBox" type="CheckBox" parent="Background/VBoxContainer/Password"]
@@ -147,17 +167,17 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 216.0
+margin_top = 227.0
 margin_right = 301.0
-margin_bottom = 221.0
+margin_bottom = 232.0
 rect_min_size = Vector2( 0, 5 )
 
 [node name="Loginbutton" type="TextureButton" parent="Background/VBoxContainer"]
 margin_left = 40.0
-margin_top = 225.0
+margin_top = 236.0
 margin_right = 260.0
-margin_bottom = 260.0
-rect_min_size = Vector2( 220, 35 )
+margin_bottom = 256.0
+rect_min_size = Vector2( 220, 20 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 3 )
@@ -169,10 +189,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -33.0
-margin_top = -13.5
-margin_right = 33.0
-margin_bottom = 13.5
+margin_left = -21.1079
+margin_top = -7.55396
+margin_right = 44.8921
+margin_bottom = 19.446
 custom_fonts/font = SubResource( 3 )
 text = "Login"
 __meta__ = {
@@ -180,17 +200,53 @@ __meta__ = {
 }
 
 [node name="MarginContainer3" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 264.0
+margin_top = 260.0
 margin_right = 301.0
-margin_bottom = 269.0
-rect_min_size = Vector2( 0, 5 )
+margin_bottom = 261.0
+rect_min_size = Vector2( 0, 1 )
+
+[node name="LoginGooglePlay" type="TextureButton" parent="Background/VBoxContainer"]
+margin_left = 40.0
+margin_top = 265.0
+margin_right = 260.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 220, 20 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+expand = true
+
+[node name="LoginGooglePlay" type="Label" parent="Background/VBoxContainer/LoginGooglePlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.5605
+margin_top = -7.80396
+margin_right = 115.44
+margin_bottom = 19.196
+custom_fonts/font = SubResource( 3 )
+text = "Login Google Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer6" type="MarginContainer" parent="Background/VBoxContainer"]
+margin_top = 289.0
+margin_right = 301.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CreateAccount" type="TextureButton" parent="Background/VBoxContainer"]
 margin_left = 40.0
-margin_top = 273.0
+margin_top = 294.0
 margin_right = 260.0
-margin_bottom = 308.0
-rect_min_size = Vector2( 220, 35 )
+margin_bottom = 314.0
+rect_min_size = Vector2( 220, 20 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 3 )
@@ -202,10 +258,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -92.0
-margin_top = -13.5
-margin_right = 92.0
-margin_bottom = 13.5
+margin_left = -55.1346
+margin_top = -7.55396
+margin_right = 128.865
+margin_bottom = 19.446
 custom_fonts/font = SubResource( 3 )
 text = "Create Account"
 __meta__ = {
@@ -213,20 +269,20 @@ __meta__ = {
 }
 
 [node name="MarginContainer5" type="MarginContainer" parent="Background/VBoxContainer"]
-margin_top = 312.0
+margin_top = 318.0
 margin_right = 301.0
-margin_bottom = 317.0
-rect_min_size = Vector2( 0, 5 )
+margin_bottom = 319.0
+rect_min_size = Vector2( 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="IPButton" type="TextureButton" parent="Background/VBoxContainer"]
 margin_left = 40.0
-margin_top = 321.0
+margin_top = 323.0
 margin_right = 260.0
-margin_bottom = 356.0
-rect_min_size = Vector2( 220, 35 )
+margin_bottom = 343.0
+rect_min_size = Vector2( 220, 20 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 3 )
@@ -261,8 +317,10 @@ visible = false
 [node name="SettingSaver" type="Node" parent="."]
 script = ExtResource( 8 )
 
+[connection signal="toggled" from="Background/VBoxContainer/Email/EmailCheckBox" to="." method="_on_EmailCheckBox_toggled"]
 [connection signal="toggled" from="Background/VBoxContainer/Username/UsernameCheckBox" to="." method="_on_UsernameCheckBox_toggled"]
 [connection signal="toggled" from="Background/VBoxContainer/Password/PasswordCheckBox" to="." method="_on_PasswordCheckBox_toggled"]
 [connection signal="pressed" from="Background/VBoxContainer/Loginbutton" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/LoginGooglePlay" to="." method="_on_LoginGooglePlay_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/CreateAccount" to="." method="_on_create_account_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/IPButton" to="." method="_on_IPButton_pressed"]
