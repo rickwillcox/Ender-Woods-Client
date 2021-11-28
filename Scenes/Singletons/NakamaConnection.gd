@@ -1,9 +1,12 @@
 extends Node
-onready var client = Nakama.create_client("defaultkey", "45.58.43.202", 7350, "http")
+onready var client : NakamaClient
 var session : NakamaSession
 signal logged_in(success)
 signal registered(success)
 signal result_done
+
+func _ready():
+	Network.connect("config_changed", self, "update_client")
 
 func google_login(oauth_token : String, username : String):
 	session = yield(client.authenticate_custom_async(oauth_token, username, true, null), "completed")
@@ -59,3 +62,7 @@ func get_recipe_database():
 	Utils.convert_keys_to_int(ItemDatabase.all_recipe_data)
 	emit_signal("result_done")
 
+
+func update_client():
+	Logger.info("Will attempt to connect to nakama instance at %s:%d" % [Network.nakama_ip, Network.NAKAMA_PORT])
+	client = Nakama.create_client("defaultkey", Network.nakama_ip, Network.NAKAMA_PORT, "http")

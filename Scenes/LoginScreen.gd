@@ -38,6 +38,9 @@ func _ready():
 	if OS.get_name() in ["Windows", "X11", "OSX", "Server"]:
 		google_login_button.disabled = true
 	
+	Network.to_remote()
+	get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
+
 
 # GOOGLE LOGIN
 
@@ -112,14 +115,12 @@ func _on_create_account_pressed():
 
 func _on_IPButton_pressed():
 	menu_pressed_sound.play()
-	if local:
-		local = false
+	if Network.local:
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
-		Server.login_ip = Server.dedicated_server_ip
+		Network.to_remote()
 	else:
-		local = true
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Local"
-		Server.login_ip = Server.local_ip
+		Network.to_local()
 		
 func _on_EmailCheckBox_toggled(button_pressed):
 	_save_user_login()
@@ -171,16 +172,14 @@ func _auto_login():
 
 func handle_login_result(result):
 	if result == true:
+		Logger.info("Login step 1 - Authentication: successful")
 		NakamaConnection.get_item_database()
 		yield(NakamaConnection, "result_done")
+		Logger.info("Login step 2 - Get item database: successful")
 		NakamaConnection.get_recipe_database()
 		yield(NakamaConnection, "result_done")
+		Logger.info("Login step 3 - Get recipe database: successful")
 		Server.connect_to_server()
 	else:
+		Logger.info("Login step 1 - Authentication: failure")
 		login_button.disabled = false
-
-
-
-
-
-
