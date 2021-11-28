@@ -38,6 +38,9 @@ func _ready():
 	if OS.get_name() in ["Windows", "X11", "OSX", "Server"]:
 		google_login_button.disabled = true
 	
+	Network.to_remote()
+	get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
+
 
 # GOOGLE LOGIN
 
@@ -180,9 +183,3 @@ func handle_login_result(result):
 	else:
 		Logger.info("Login step 1 - Authentication: failure")
 		login_button.disabled = false
-
-
-
-
-
-
