@@ -112,14 +112,12 @@ func _on_create_account_pressed():
 
 func _on_IPButton_pressed():
 	menu_pressed_sound.play()
-	if local:
-		local = false
+	if Network.local:
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
-		Server.login_ip = Server.dedicated_server_ip
+		Network.to_remote()
 	else:
-		local = true
 		get_node("Background/VBoxContainer/IPButton/IPText").text = "Local"
-		Server.login_ip = Server.local_ip
+		Network.to_local()
 		
 func _on_EmailCheckBox_toggled(button_pressed):
 	_save_user_login()
