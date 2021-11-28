@@ -5,8 +5,8 @@ signal logged_in(success)
 signal registered(success)
 signal result_done
 
-func google_login(oauth_token : String):
-	session = yield(client.authenticate_custom_async(oauth_token, null, true, null), "completed")
+func google_login(oauth_token : String, username : String):
+	session = yield(client.authenticate_custom_async(oauth_token, username, true, null), "completed")
 	if session.is_exception():
 		Logger.info("An error occured: %s" % session)
 		emit_signal("logged_in", false)

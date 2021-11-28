@@ -2,6 +2,8 @@ extends Control
 
 var local : bool = true
 
+var google_login_token : String
+
 onready var username_input = get_node("Background/VBoxContainer/Username")
 onready var password_input = get_node("Background/VBoxContainer/Password")
 onready var email_input = get_node("Background/VBoxContainer/Email")
@@ -24,22 +26,32 @@ onready var email_check = get_node("Background/VBoxContainer/Email/EmailCheckBox
 
 func _ready():
 	NakamaConnection.connect("logged_in", self, "handle_login_result")
-	GooglePlayConnection.connect("sign_in_ok", self, "_on_google_sign_in_ok")
-	GooglePlayConnection.connect("sign_in_fail", self, "_on_google_sign_in_fail")
+	
+	GooglePlayConnection.play_game_services.connect("_on_sign_in_success", self, "_on_google_sign_in_ok")
+	GooglePlayConnection.play_game_services.connect("_on_sign_in_failed", self, "_on_google_sign_in_fail")
+	
+	GooglePlayConnection.play_game_services.connect("_on_game_saved_success", self, "_on_game_saved_success") # no params
+	GooglePlayConnection.play_game_services.connect("_on_game_saved_fail", self, "_on_game_saved_fail") # no params
+	
+	GooglePlayConnection.play_game_services.connect("_on_game_load_success", self, "_on_game_load_success") # data: String
+	GooglePlayConnection.play_game_services.connect("_on_game_load_fail", self, "_on_game_load_fail") # no params
 
 
-#do code here
+# GOOGLE LOGIN
 
 func _on_LoginGooglePlay_pressed() -> void:
 	google_login_button.disabled = true
 	login_button.disabled = true
 	
 	#Google Login
-	GooglePlayConnection.sign_in()
+	GooglePlayConnection.play_game_services.signIn()
+	
 
 func _on_google_sign_in_ok(google_oauth_token):
 	Logger.info("Google Sign in Succeeded - Oauth Token: ", str(google_oauth_token))
-	NakamaConnection.google_login(google_oauth_token)
+	google_login_token = google_oauth_token
+	Logger.info("Looking for Password")
+	GooglePlayConnection.play_game_services.loadSnapshot("user-password")
 	pass
 	
 func _on_google_sign_in_fail():
@@ -48,6 +60,34 @@ func _on_google_sign_in_fail():
 	google_login_button.disabled = false
 	login_button.disabled = false
 	pass
+
+func _on_game_saved_success():
+	print("Game Saved Success")
+	GooglePlayConnection.play_game_services.loadSnapshot("user-password")
+	
+func _on_game_saved_fail():
+	print("Game Saved Failed")
+	
+func _on_game_load_success(data):
+	if not data:
+		print("No Password Found, Creating One.")
+		# Need a way to update in nakama db as well in case a user deletes their data
+		randomize()
+		var password_dict: Dictionary = {
+		"password": str(OS.get_system_time_msecs() + randi() % 10000000).sha256_text()
+		}
+		GooglePlayConnection.play_game_services.saveSnapshot("user-password", to_json(password_dict), "password for logging in")
+		return
+	var game_data: Dictionary = parse_json(data)
+	var password = game_data["password"]
+	Logger.info("Google Password Found: ", password)
+	NakamaConnection.google_login((google_login_token + password).sha256_text(), username_lineedit.text)
+	
+func _on_game_load_fail():
+	# Try again or inform user?
+	print("Game Load Fail")
+
+# Normal Login
 
 func _on_Login_pressed():
 	if username_input.text == "" or password_input.text == "":
