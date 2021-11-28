@@ -1,5 +1,5 @@
 extends Node
-onready var client = Nakama.create_client("defaultkey", "10.0.2.2", 7350, "http")
+onready var client = Nakama.create_client("defaultkey", "45.58.43.202", 7350, "http")
 var session : NakamaSession
 signal logged_in(success)
 signal registered(success)
