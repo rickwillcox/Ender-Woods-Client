@@ -171,12 +171,16 @@ func _auto_login():
 
 func handle_login_result(result):
 	if result == true:
+		Logger.info("Login step 1 - Authentication: successful")
 		NakamaConnection.get_item_database()
 		yield(NakamaConnection, "result_done")
+		Logger.info("Login step 2 - Get item database: successful")
 		NakamaConnection.get_recipe_database()
 		yield(NakamaConnection, "result_done")
+		Logger.info("Login step 3 - Get recipe database: successful")
 		Server.connect_to_server()
 	else:
+		Logger.info("Login step 1 - Authentication: failure")
 		login_button.disabled = false
 
 
