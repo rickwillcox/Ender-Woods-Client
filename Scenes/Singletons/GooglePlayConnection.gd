@@ -3,8 +3,9 @@ extends Node
 var play_game_services
 
 func _ready() -> void:
-	init()
-	pass
+	if OS.get_name() == "Android":
+		init()
+	
 
 
 func init():

@@ -26,16 +26,18 @@ onready var email_check = get_node("Background/VBoxContainer/Email/EmailCheckBox
 
 func _ready():
 	NakamaConnection.connect("logged_in", self, "handle_login_result")
+	if OS.get_name() == "Android":
+		GooglePlayConnection.play_game_services.connect("_on_sign_in_success", self, "_on_google_sign_in_ok")
+		GooglePlayConnection.play_game_services.connect("_on_sign_in_failed", self, "_on_google_sign_in_fail")
+		
+		GooglePlayConnection.play_game_services.connect("_on_game_saved_success", self, "_on_game_saved_success") # no params
+		GooglePlayConnection.play_game_services.connect("_on_game_saved_fail", self, "_on_game_saved_fail") # no params
+		
+		GooglePlayConnection.play_game_services.connect("_on_game_load_success", self, "_on_game_load_success") # data: String
+		GooglePlayConnection.play_game_services.connect("_on_game_load_fail", self, "_on_game_load_fail") # no params
+	if OS.get_name() in ["Windows", "X11", "OSX", "Server"]:
+		google_login_button.disabled = true
 	
-	GooglePlayConnection.play_game_services.connect("_on_sign_in_success", self, "_on_google_sign_in_ok")
-	GooglePlayConnection.play_game_services.connect("_on_sign_in_failed", self, "_on_google_sign_in_fail")
-	
-	GooglePlayConnection.play_game_services.connect("_on_game_saved_success", self, "_on_game_saved_success") # no params
-	GooglePlayConnection.play_game_services.connect("_on_game_saved_fail", self, "_on_game_saved_fail") # no params
-	
-	GooglePlayConnection.play_game_services.connect("_on_game_load_success", self, "_on_game_load_success") # data: String
-	GooglePlayConnection.play_game_services.connect("_on_game_load_fail", self, "_on_game_load_fail") # no params
-
 
 # GOOGLE LOGIN
 
