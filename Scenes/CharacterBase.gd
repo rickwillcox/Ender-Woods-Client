@@ -2,8 +2,8 @@ tool
 extends Node2D
 
 signal animation_finished(animation_name)
-var base_texture = preload("res://Assets/Character/Base character/character_spritesheet.png")
-var base_texture_sword_shield = preload("res://Assets/Character/Base character/char_a_pONE3_0bas_humn_v01.png")
+var base_texture = preload("res://Assets/Character/Base character/player_spritesheet.png")
+#var base_texture_sword_shield = preload("res://Assets/Character/Base character/char_a_pONE3_0bas_humn_v01.png")
 
 var frame : int setget set_frame
 export var blend_position : Vector2 setget set_blend_position
@@ -113,33 +113,42 @@ func bake_animations(_x):
 		{ "name" : "run_down", "start_frame": 66, "frames" : 6, "loop" : true},
 		
 		{ "name" : "chop_right", "start_frame": 72, "frames" : 4},
-		{ "name" : "chop_up", "start_frame": 78, "frames" : 4},
-		{ "name" : "chop_left", "start_frame": 84, "frames" : 4},
-		{ "name" : "chop_down", "start_frame": 90, "frames" : 4},
+		{ "name" : "chop_up", "start_frame": 76, "frames" : 4},
+		{ "name" : "chop_left", "start_frame": 80, "frames" : 4},
+		{ "name" : "chop_down", "start_frame": 84, "frames" : 4},
+		
+		{"name" : "slash_1_down", "start_frame": 88, "frames" : 4,
+			"tool_a_order": ["behind" ,"behind++", "behind++", "behind++"]},
+		{"name" : "slash_1_up", "start_frame": 92, "frames" : 4,
+			"tool_a_order": ["behind++" ,"behind++", "behind", "behind"]},
+		{"name" : "slash_1_right", "start_frame": 96, "frames" : 4,
+			"tool_a_order": ["behind++" ,"front", "behind++", "behind++"]},
+		{"name" : "slash_1_left", "start_frame": 100, "frames" : 4,
+			"tool_a_order": ["behind++" ,"front", "behind--", "behind--"]}			
 	]
 	
-	var sword_shield_animations = [
-		{ "name" : "slash_1_down", "start_frame": 0, "frames" : 4,
-			# Tool order determines layering order, this terminology is borrowed from the asset guide
-			# this actually describes both tools position
-			"tool_a_order": ["behind" ,"behind++", "behind++", "behind++"]
-		},
-		{ "name" : "slash_1_up", "start_frame": 8, "frames" : 4,
-			"tool_a_order": ["behind++" ,"behind++", "behind", "behind"],
-		},
-		{ "name" : "slash_1_right", "start_frame": 16, "frames" : 4,
-			"tool_a_order": ["behind++" ,"front", "behind++", "behind++"],
-		},
-		{ "name" : "slash_1_left", "start_frame": 24, "frames" : 4,
-			"tool_a_order": ["behind++" ,"front", "behind--", "behind--"],
-		},
-	]
+#	var sword_shield_animations = [
+#		{ "name" : "slash_1_down", "start_frame": 2, "frames" : 4,
+#			# Tool order determines layering order, this terminology is borrowed from the asset guide
+#			# this actually describes both tools position
+#			"tool_a_order": ["behind" ,"behind++", "behind++", "behind++"]
+#		},
+#		{ "name" : "slash_1_up", "start_frame": 8, "frames" : 4,
+#			"tool_a_order": ["behind++" ,"behind++", "behind", "behind"],
+#		},
+#		{ "name" : "slash_1_right", "start_frame": 16, "frames" : 4,
+#			"tool_a_order": ["behind++" ,"front", "behind++", "behind++"],
+#		},
+#		{ "name" : "slash_1_left", "start_frame": 24, "frames" : 4,
+#			"tool_a_order": ["behind++" ,"front", "behind--", "behind--"],
+#		},
+#	]
 	
 	for animation in animations:
 		bake_animation(animation, "set_base")
 		
-	for animation in sword_shield_animations:
-		bake_animation(animation, "set_base_sword_shield")
+#	for animation in sword_shield_animations:
+#		bake_animation(animation, "set_base_sword_shield")
 
 
 func bake_animation(animation_description : Dictionary, set_base_func : String):
@@ -197,19 +206,19 @@ func set_base():
 	# This is the current character base with all the animations and outfits
 	base_sprite.texture = base_texture
 	base_sprite.hframes = 6
-	base_sprite.vframes = 22
+	base_sprite.vframes = 20
 	tool_a.visible = false
 	tool_b.visible = false
 	outfit.visible = true
 
-func set_base_sword_shield():
-	# this is the character base from the asset pack with sword and shield
-	base_sprite.texture = base_texture_sword_shield
-	base_sprite.hframes = 8
-	base_sprite.vframes = 8
-	tool_a.visible = true
-	tool_b.visible = true
-	outfit.visible = false
+#func set_base_sword_shield():
+#	# this is the character base from the asset pack with sword and shield
+#	base_sprite.texture = base_texture_sword_shield
+#	base_sprite.hframes = 8
+#	base_sprite.vframes = 8
+#	tool_a.visible = true
+#	tool_b.visible = true
+#	outfit.visible = false
 
 func set_tool_order(tool_order : String):
 	tool_a.get_parent().remove_child(tool_a)
