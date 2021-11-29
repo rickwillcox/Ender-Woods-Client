@@ -2,10 +2,10 @@ tool
 extends Node2D
 
 signal animation_finished(animation_name)
-var base_texture = preload("res://Assets/Character/Base character/character_spritesheet.png")
-var base_texture_sword_shield = preload("res://Assets/Character/Base character/char_a_pONE3_0bas_humn_v01.png")
 
 var frame : int setget set_frame
+var tools_frame : int setget set_tools_frame
+
 export var blend_position : Vector2 setget set_blend_position
 export var bake_animations = false setget bake_animations
 
@@ -46,12 +46,21 @@ func set_frame(new_frame):
 		base_sprite.frame = new_frame
 		for child in outfit.get_children():
 			(child as Sprite).frame = new_frame
-		tool_a.frame = new_frame
-		tool_b.frame = new_frame
 	else:
 		$Sprites/base/base.frame = new_frame
 		for child in $Sprites/outfit.get_children():
 			(child as Sprite).frame = new_frame
+			
+func set_tools_frame(new_frame):
+	if tools_frame == new_frame or not is_inside_tree():
+		return
+	frame = new_frame
+	if not Engine.editor_hint:
+		tool_a.frame = frame
+		tool_b.frame = frame
+	else:
+		$Sprites/in_front/tool_a.frame = frame
+		$Sprites/in_front/tool_b.frame = frame
 
 func set_blend_position(new_position : Vector2):
 	if not is_inside_tree() or switch_blocked:
@@ -116,33 +125,32 @@ func bake_animations(_x):
 		{ "name" : "chop_up", "start_frame": 78, "frames" : 4},
 		{ "name" : "chop_left", "start_frame": 84, "frames" : 4},
 		{ "name" : "chop_down", "start_frame": 90, "frames" : 4},
-	]
-	
-	var sword_shield_animations = [
-		{ "name" : "slash_1_down", "start_frame": 0, "frames" : 4,
+		
+		{ "name" : "slash_1_right", "start_frame": 96, "frames" : 4,
+			"tool_a_order": ["behind++" ,"front", "behind++", "behind++"],
+			"tools_start_frame": 16
+		},
+		{ "name" : "slash_1_up", "start_frame": 102, "frames" : 4,
+			"tool_a_order": ["behind++" ,"behind++", "behind", "behind"],
+			"tools_start_frame": 8
+		},
+		{ "name" : "slash_1_left", "start_frame": 108, "frames" : 4,
+			"tool_a_order": ["behind++" ,"front", "behind--", "behind--"],
+			"tools_start_frame": 24
+		},
+		{ "name" : "slash_1_down", "start_frame": 114, "frames" : 4,
 			# Tool order determines layering order, this terminology is borrowed from the asset guide
 			# this actually describes both tools position
-			"tool_a_order": ["behind" ,"behind++", "behind++", "behind++"]
-		},
-		{ "name" : "slash_1_up", "start_frame": 8, "frames" : 4,
-			"tool_a_order": ["behind++" ,"behind++", "behind", "behind"],
-		},
-		{ "name" : "slash_1_right", "start_frame": 16, "frames" : 4,
-			"tool_a_order": ["behind++" ,"front", "behind++", "behind++"],
-		},
-		{ "name" : "slash_1_left", "start_frame": 24, "frames" : 4,
-			"tool_a_order": ["behind++" ,"front", "behind--", "behind--"],
+			"tool_a_order": ["behind" ,"behind++", "behind++", "behind++"],
+			"tools_start_frame": 0
 		},
 	]
 	
 	for animation in animations:
-		bake_animation(animation, "set_base")
-		
-	for animation in sword_shield_animations:
-		bake_animation(animation, "set_base_sword_shield")
+		bake_animation(animation)
 
 
-func bake_animation(animation_description : Dictionary, set_base_func : String):
+func bake_animation(animation_description : Dictionary):
 	var animation_name = animation_description["name"]
 	var frames = animation_description["frames"]
 	var start_frame = animation_description["start_frame"]
@@ -160,12 +168,24 @@ func bake_animation(animation_description : Dictionary, set_base_func : String):
 		generated_animation.track_insert_key(track_index, 0.15 * i, i + start_frame)
 	generated_animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
 	
-	# This generates the track for base change func call in animation.
-	# Changing the base is required when character spritesheet is separated into
-	# several spritesheets	
+	# This generates the tool hide/show track
 	track_index = generated_animation.add_track(Animation.TYPE_METHOD)
 	generated_animation.track_set_path(track_index, ".")
-	generated_animation.track_insert_key(track_index, 0.0, {"method":set_base_func, "args": []})
+	if animation_description.has("tools_start_frame"):
+		generated_animation.track_insert_key(track_index, 0.0, {"method":"show_tools", "args": []})
+		
+		# create tool animation track
+		track_index = generated_animation.add_track(Animation.TYPE_VALUE)
+		generated_animation.track_set_path(track_index, ".:tools_frame")
+		generated_animation.length = frames * 0.15
+		start_frame = animation_description["tools_start_frame"]
+		for i in range(frames):
+			generated_animation.track_insert_key(track_index, 0.15 * i, i + start_frame)
+		generated_animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
+		
+	else:
+		generated_animation.track_insert_key(track_index, 0.0, {"method":"hide_tools", "args": []})
+	
 	
 	# This generates the tool order track. It reorders tool sprites so they are 
 	# correctly rendered behind or in front of the character
@@ -191,25 +211,13 @@ func equip_item(item_id, slot):
 	if slot_to_outfit_sprite.has(slot):
 		slot_to_outfit_sprite[slot].texture = CharacterTextureLoader.get_item_texture(item_id)
 
-
-# Functions below are called in the animationPlayer tracks to switch textures/order
-func set_base():
-	# This is the current character base with all the animations and outfits
-	base_sprite.texture = base_texture
-	base_sprite.hframes = 6
-	base_sprite.vframes = 22
-	tool_a.visible = false
-	tool_b.visible = false
-	outfit.visible = true
-
-func set_base_sword_shield():
-	# this is the character base from the asset pack with sword and shield
-	base_sprite.texture = base_texture_sword_shield
-	base_sprite.hframes = 8
-	base_sprite.vframes = 8
+func show_tools():
 	tool_a.visible = true
 	tool_b.visible = true
-	outfit.visible = false
+
+func hide_tools():
+	tool_a.visible = false
+	tool_b.visible = false
 
 func set_tool_order(tool_order : String):
 	tool_a.get_parent().remove_child(tool_a)

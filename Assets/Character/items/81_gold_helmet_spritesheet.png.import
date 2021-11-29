@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/62_silver_chest_spritesheet.png-a1187aa6bf6ac2c1bee88ddc60b63c79.stex"
+path="res://.import/81_gold_helmet_spritesheet.png-a76e32a0857efd37999b42a34ef442ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/items/62_silver_chest_spritesheet.png"
-dest_files=[ "res://.import/62_silver_chest_spritesheet.png-a1187aa6bf6ac2c1bee88ddc60b63c79.stex" ]
+source_file="res://Assets/Character/items/81_gold_helmet_spritesheet.png"
+dest_files=[ "res://.import/81_gold_helmet_spritesheet.png-a76e32a0857efd37999b42a34ef442ee.stex" ]
 
 [params]
 

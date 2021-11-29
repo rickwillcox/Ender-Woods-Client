@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/84gold_leggings_spritesheet.png-780ffc23d7bd2b13ddaa1357df3c269a.stex"
+path="res://.import/84_gold_leggings_spritesheet.png-626420bcb3e7898e265456d1d8fc623f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/items/84gold_leggings_spritesheet.png"
-dest_files=[ "res://.import/84gold_leggings_spritesheet.png-780ffc23d7bd2b13ddaa1357df3c269a.stex" ]
+source_file="res://Assets/Character/items/84_gold_leggings_spritesheet.png"
+dest_files=[ "res://.import/84_gold_leggings_spritesheet.png-626420bcb3e7898e265456d1d8fc623f.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false
