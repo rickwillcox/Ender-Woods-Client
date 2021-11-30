@@ -54,7 +54,7 @@ func _on_LoginGooglePlay_pressed() -> void:
 
 func _on_google_sign_in_ok(google_oauth_token):
 	Logger.info("Google Sign in Succeeded - Oauth Token: ", str(google_oauth_token))
-	google_login_token = google_oauth_token
+	google_login_token = parse_json(google_oauth_token)["id"]
 	Logger.info("Looking for Password")
 	GooglePlayConnection.play_game_services.loadSnapshot("user-password")
 	pass

@@ -9,8 +9,8 @@ enum ATTACK_TYPES {
 var velocity : Vector2 = Vector2.ZERO
 var blend_position : Vector2 = Vector2.ZERO
 var facing_blend_position : Vector2 = Vector2.ZERO
-var max_hp : int = 9000
-var current_hp : int = 9000
+var max_hp : int = 600
+var current_hp : int
 var dead : bool = false
 var type
 
@@ -22,7 +22,7 @@ onready var attack_timer = $AttackTimer
 
 func ready():
 	$HealthBar.max_value = max_hp
-	$HealthBar.value = current_hp
+	$HealthBar.value = max_hp
 
 func _physics_process(_delta):
 	blend_position()

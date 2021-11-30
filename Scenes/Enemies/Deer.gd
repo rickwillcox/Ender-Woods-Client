@@ -1,14 +1,13 @@
 extends KinematicBody2D
 
 var velocity : Vector2 = Vector2.ZERO
-var max_hp : int = 200
+var max_hp : int = 300
 var current_hp : int 
 var dead : bool = false
 var attacking : bool = false
 var type
 
 onready var sprite = $Sprite
-onready var shadow = $Shadow
 onready var animation_player = $AnimationPlayer
 
 func ready():
@@ -23,11 +22,13 @@ func MoveEnemy(new_position : Vector2):
 	
 	look_at(new_position)
 	if position == new_position:
-		animation_player.playback_speed = 0.5
+		animation_player.playback_speed = 0.3
 	else:
 		animation_player.playback_speed = 1.0
+		
 	position = new_position
-	animation_player.play("idle")
+	animation_player.play("run")	
+	
 	
 func Health(health : int):
 	if health != current_hp:
@@ -56,10 +57,8 @@ func look_at(point):
 	var direction = point - position
 	if direction.x > 0:
 		sprite.scale.x = -1
-		shadow.scale.x = -1
 	elif direction.x < 0:
 		sprite.scale.x = 1
-		shadow.scale.x = 1
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "attack":

@@ -1,16 +1,17 @@
 extends KinematicBody2D
 
-var max_hp : int = 9000
-var current_hp : int = 9000
+var max_hp : int 
+var current_hp : int
 var type
 var dead : bool = false
 
-func _ready():
-	$AnimationPlayer.play("slimeAnimation")
+func ready():
+	print(type)
+	print(max_hp)
+	print(current_hp)
 	$HealthBar.max_value = max_hp
-	$HealthBar.value = current_hp
-	$FloatAroundAnimation.play("Float")
-		
+	HealthBarUpdate()
+
 
 func _physics_process(_delta):
 	pass

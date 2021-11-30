@@ -7,6 +7,7 @@ var floating_number = preload("res://Scenes/UI/FloatingNumber.tscn")
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
 var batsquito = preload("res://Scenes/Enemies/Batsquito.tscn")
+var deer = preload("res://Scenes/Enemies/Deer.tscn")
 var map
 
 func _ready():
@@ -46,6 +47,8 @@ func instance_enemy(enemy_type):
 			result = slime.instance()
 		si.EnemyType.BATSQUITO:
 			result = batsquito.instance()
+		si.EnemyType.DEER:
+			result = deer.instance()
 		_:
 			# not implemented enemy type
 			assert(false)

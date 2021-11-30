@@ -18,5 +18,6 @@ func init():
 		var request_profile := true
 		var request_token := ""
 		
-		play_game_services.initWithSavedGames(show_popups, "password", request_email, request_profile, request_token)
+#		play_game_services.initWithSavedGames(show_popups, "password", request_email, request_profile, request_token)
 		
+		play_game_services.init(true, false, false, "")
