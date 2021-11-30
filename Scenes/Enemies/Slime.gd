@@ -5,7 +5,7 @@ var current_hp : int
 var type
 var dead : bool = false
 
-func ready():
+func _ready():
 	print(type)
 	print(max_hp)
 	print(current_hp)

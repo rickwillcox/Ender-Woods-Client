@@ -10,7 +10,7 @@ var type
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
 
-func ready():
+func _ready():
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = max_hp
 
@@ -36,7 +36,11 @@ func Health(health : int):
 		HealthBarUpdate()
 			
 func HealthBarUpdate(): 
+	print(current_hp)
+	print($HealthBar.value)
 	$HealthBar.value = current_hp
+	print(current_hp)
+	print($HealthBar.value)
 	
 func OnDeath():
 	dead = true

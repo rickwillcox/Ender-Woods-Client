@@ -21,8 +21,9 @@ var client_player = preload("res://Scenes/Player/Player.tscn")
 var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 
 onready var background_music = get_node("BackgroundMusic")
-
+#emit_signal("take_damage", packet["victim"], packet["damage"], packet["attacker"])
 func _ready():
+	PacketHandler.connect("take_damage", self, "issue_damage_to_player_id")
 	#get a list of the background tracks
 	dir.open("res://Assets/Sounds/Background Music/")
 	dir.list_dir_begin(true, true)
@@ -35,6 +36,16 @@ func _ready():
 	load_item_textures()
 	Enemies.register_map(self)
 	Players.register_map(self)
+
+func issue_damage_to_player_id(player_id : int, damage : int, attacker : int):
+	print("PlayerID: %d | Damage: %d | Attack %d" % [player_id, damage, attacker])
+	var player_receiving_damage = Players.get_player_node(player_id)
+	if (player_receiving_damage) != null:
+		player_receiving_damage.take_damage(damage, attacker)
+	# Damage is for main player (might have issue if someone hasnt spawned in)
+	else:
+		get_node("YSort/Player").take_damage(damage, attacker)
+	
 
 func _unhandled_input(event):
 	if event is InputEventKey:

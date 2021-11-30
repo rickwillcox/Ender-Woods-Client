@@ -20,7 +20,7 @@ onready var animation_tree = $AnimationTree
 onready var animation_state = $AnimationTree.get("parameters/playback")
 onready var attack_timer = $AttackTimer
 
-func ready():
+func _ready():
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = max_hp
 

@@ -11,7 +11,7 @@ onready var sprite = $Sprite
 onready var shadow = $Shadow
 onready var animation_player = $AnimationPlayer
 
-func ready():
+func _ready():
 	$HealthBar.max_value = max_hp
 	$HealthBar.value = max_hp
 

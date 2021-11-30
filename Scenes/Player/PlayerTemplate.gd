@@ -23,3 +23,6 @@ func _on_CharacterBase_animation_finished(animation_name):
 
 func get_character_base():
 	return $CharacterBase
+
+func take_damage(damage : int, _attacker : int):
+	print("Other Player took %d damage" % damage)

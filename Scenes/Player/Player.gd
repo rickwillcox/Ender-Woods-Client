@@ -11,12 +11,17 @@ var blend_position = Vector2.ZERO
 var player_id : int
 var velocity = Vector2.ZERO
 
+var max_hp : int = 30
+var current_hp : int = 30
+
 onready var joystick = get_node_or_null("../../GUI/Joystick")
 onready var player_stats_panel = get_node_or_null("../../GUI/PlayerStats")
 onready var login_screen_panel = get_node_or_null("../../GUI/LoginScreen")
 onready var character_base = $CharacterBase
 
 func _ready():
+	$HealthBar.max_value = max_hp
+	$HealthBar.value = current_hp
 	if NakamaConnection.session != null:
 		get_node("PlayerName").text = NakamaConnection.session.username
 	else:
@@ -78,6 +83,10 @@ func get_input_vector() -> Vector2:
 	if do_normalize:
 		return input_vector.normalized()
 	return input_vector
+
+func take_damage(damage : int, _attacker : int):
+	print("Self took %d damage" % damage)
+	$HealthBar.value -= damage
 
 
 func define_player_state():
