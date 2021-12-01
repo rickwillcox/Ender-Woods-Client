@@ -10,6 +10,8 @@ var state : int = State.NORMAL
 var blend_position = Vector2.ZERO
 var player_id : int
 var velocity = Vector2.ZERO
+var experience : int setget set_experience
+var current_health : float setget set_current_health
 
 onready var joystick = get_node_or_null("../../GUI/Joystick")
 onready var player_stats_panel = get_node_or_null("../../GUI/PlayerStats")
@@ -21,6 +23,14 @@ func _ready():
 		get_node("PlayerName").text = NakamaConnection.session.username
 	else:
 		Logger.error("Player Name has not been set")
+		
+func set_experience(_experience):
+	# TODO: update stat node here
+	experience = _experience
+
+func set_current_health(_current_health):
+	# TODO: Deal with player death
+	current_health = _current_health
 
 func _physics_process(delta):
 	if joystick == null:
