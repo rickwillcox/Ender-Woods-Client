@@ -15,10 +15,10 @@ func move_player(new_position, animation_vector):
 
 func perform_attack():
 	state = "Attack"
-	$CharacterBase.travel("chop")
+	$CharacterBase.travel("slash_1")
 
 func _on_CharacterBase_animation_finished(animation_name):
-	if "chop" in animation_name:
+	if "slash_1" in animation_name:
 		state = "Idle"
 
 func get_character_base():
