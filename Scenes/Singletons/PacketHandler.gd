@@ -10,6 +10,7 @@ signal update_inventory(player_id, slot, item_id)
 signal initial_inventory(player_id, item_slot_array)
 signal player_spawn(player_id, position)
 signal player_despawn(player_id)
+signal player_dead(player_id, player_position)
 signal enemy_spawn(enemy_id, enemy_state, enemy_type, health, position)
 signal enemy_died(enemy_id)
 signal enemy_despawn(enemy_id)
@@ -33,6 +34,8 @@ func handle_many(packets : Array):
 		handle(packet)
 
 func handle(packet):
+	Logger.info(packet)
+	Logger.info(packet["op_code"])
 	match packet["op_code"]:
 		si.Opcodes.TAKE_DAMAGE:
 			Logger.info("Entity %d received %d damage from entity %d" 
@@ -68,6 +71,8 @@ func handle(packet):
 			emit_signal("player_spawn", packet["player_id"], packet["position"])
 		si.Opcodes.PLAYER_DESPAWN:
 			emit_signal("player_despawn", packet["player_id"])
+		si.Opcode.PLAYER_DEAD:
+			emit_signal("player_dead", packet["player_id"], packet["player_position"])
 		si.Opcodes.ENEMY_SPAWN:
 			emit_signal("enemy_spawn", packet["enemy_id"], packet["enemy_state"], packet["enemy_type"],
 						packet["health"], packet["position"])

@@ -24,6 +24,7 @@ onready var background_music = get_node("BackgroundMusic")
 #emit_signal("take_damage", packet["victim"], packet["damage"], packet["attacker"])
 func _ready():
 	PacketHandler.connect("take_damage", self, "issue_damage_to_player_id")
+	PacketHandler.connect("player_dead", self, "kill_player")
 	#get a list of the background tracks
 	dir.open("res://Assets/Sounds/Background Music/")
 	dir.list_dir_begin(true, true)
@@ -38,14 +39,23 @@ func _ready():
 	Players.register_map(self)
 
 func issue_damage_to_player_id(player_id : int, damage : int, attacker : int):
-	print("PlayerID: %d | Damage: %d | Attack %d" % [player_id, damage, attacker])
+	Logger.info("PlayerID: %d | Damage: %d | Attack %d" % [player_id, damage, attacker])
 	var player_receiving_damage = Players.get_player_node(player_id)
 	if (player_receiving_damage) != null:
 		player_receiving_damage.take_damage(damage, attacker)
 	# Damage is for main player (might have issue if someone hasnt spawned in)
 	else:
 		get_node("YSort/Player").take_damage(damage, attacker)
-	
+
+func kill_player(player_id : int, player_position : Vector2):
+	Logger.info("Player Dead: PlayerID: %d" % [player_id])	
+	for player in world_state_buffer:
+		if player == player_id:
+			for i in range (world_state_buffer):
+				world_state_buffer[i][g.PLAYER_POSITION] == player_position
+				break
+			break
+
 
 func _unhandled_input(event):
 	if event is InputEventKey:
