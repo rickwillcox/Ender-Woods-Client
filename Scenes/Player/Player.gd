@@ -26,6 +26,8 @@ func _ready():
 		get_node("PlayerName").text = NakamaConnection.session.username
 	else:
 		Logger.error("Player Name has not been set")
+	PacketHandler.connect("own_player_take_damage", self, "take_damage")
+	PacketHandler.connect("own_player_dead", self, "_on_death")
 
 func _physics_process(delta):
 	if joystick == null:
@@ -84,7 +86,7 @@ func get_input_vector() -> Vector2:
 		return input_vector.normalized()
 	return input_vector
 
-func take_damage(damage : int, _attacker : int):
+func take_damage(_attacker : int, damage : int):
 	Logger.info("Self took %d damage" % damage)
 	$HealthBar.value -= damage
 
@@ -101,3 +103,7 @@ func get_character_base():
 func _on_CharacterBase_animation_finished(animation_name):
 	if state == State.ATTACKING:
 		enter_state(State.NORMAL)
+
+
+func _on_death(respawn_point):
+	position = respawn_point
