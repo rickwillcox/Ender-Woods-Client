@@ -66,11 +66,11 @@ remote func fetch_token():
 	rpc_id(1, "return_token", NakamaConnection.session.token)
 	Logger.verbose("FetchToken done")
 	
-remote func return_token_verification_results(result):
+remote func return_token_verification_results(result, experience : int, current_health : float):
 	if result == true:
 		Logger.info("Login step 5: Token verification success")
 		get_node("../SceneHandler/Map/GUI/LoginScreen").queue_free()
-		get_node("../SceneHandler/Map").SpawnSelf()
+		get_node("../SceneHandler/Map").spawn_self(experience, current_health)
 #		get_node("../SceneHandler/Map/YSort/Player").set_physics_process(true)
 	else:
 		Logger.error("Login step 5: Token verification failure")
