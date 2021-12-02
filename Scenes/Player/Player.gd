@@ -85,7 +85,7 @@ func get_input_vector() -> Vector2:
 	return input_vector
 
 func take_damage(damage : int, _attacker : int):
-	print("Self took %d damage" % damage)
+	Logger.info("Self took %d damage" % damage)
 	$HealthBar.value -= damage
 
 

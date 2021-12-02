@@ -21,7 +21,7 @@ var client_player = preload("res://Scenes/Player/Player.tscn")
 var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 
 onready var background_music = get_node("BackgroundMusic")
-#emit_signal("take_damage", packet["victim"], packet["damage"], packet["attacker"])
+
 func _ready():
 	PacketHandler.connect("take_damage", self, "issue_damage_to_player_id")
 	PacketHandler.connect("player_dead", self, "kill_player")

@@ -6,9 +6,6 @@ var type
 var dead : bool = false
 
 func _ready():
-	print(type)
-	print(max_hp)
-	print(current_hp)
 	$HealthBar.max_value = max_hp
 	HealthBarUpdate()
 

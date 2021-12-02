@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func init():
 	if Engine.has_singleton("GodotPlayGamesServices"):
-		print("Engine found GodotPlayGamesServices")
+		Logger.info("Engine found GodotPlayGamesServices")
 		play_game_services = Engine.get_singleton("GodotPlayGamesServices") 
 		
 		var show_popups := true

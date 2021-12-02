@@ -35,12 +35,8 @@ func Health(health : int):
 		current_hp = health
 		HealthBarUpdate()
 			
-func HealthBarUpdate(): 
-	print(current_hp)
-	print($HealthBar.value)
+func HealthBarUpdate():
 	$HealthBar.value = current_hp
-	print(current_hp)
-	print($HealthBar.value)
 	
 func OnDeath():
 	dead = true

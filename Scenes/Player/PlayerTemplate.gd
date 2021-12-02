@@ -25,4 +25,4 @@ func get_character_base():
 	return $CharacterBase
 
 func take_damage(damage : int, _attacker : int):
-	print("Other Player took %d damage" % damage)
+	Logger.info("Other Player took %d damage" % damage)
