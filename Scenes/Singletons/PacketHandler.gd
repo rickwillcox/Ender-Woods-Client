@@ -71,7 +71,7 @@ func handle(packet):
 			emit_signal("player_spawn", packet["player_id"], packet["position"])
 		si.Opcodes.PLAYER_DESPAWN:
 			emit_signal("player_despawn", packet["player_id"])
-		si.Opcode.PLAYER_DEAD:
+		si.Opcodes.PLAYER_DEAD:
 			emit_signal("player_dead", packet["player_id"], packet["player_position"])
 		si.Opcodes.ENEMY_SPAWN:
 			emit_signal("enemy_spawn", packet["enemy_id"], packet["enemy_state"], packet["enemy_type"],
