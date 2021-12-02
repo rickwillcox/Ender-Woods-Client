@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Textures/button_normal.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Textures/wood.jpg" type="Texture" id=2]
 [ext_resource path="res://Assets/Textures/button_pressed.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Textures/border1.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Scenes/AccountCreatedMessageScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/CreateAccountScreen.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
@@ -216,9 +215,6 @@ __meta__ = {
 position = Vector2( 640.846, 354.342 )
 scale = Vector2( 0.248, 0.232 )
 texture = ExtResource( 4 )
-
-[node name="AccountCreatedMessageScreen" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [connection signal="pressed" from="Background/VBoxContainer/CreateAccountButton" to="." method="_on_CreateAccountButton_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/BackButton" to="." method="_on_Back_Button_pressed"]

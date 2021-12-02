@@ -36,10 +36,14 @@ func login(email : String, password : String):
 	emit_signal("logged_in", true)
 	
 func register(email : String, username : String, password : String):
-	var temp_session = yield(client.authenticate_email_async(email, password, username, true), "completed")
+	var temp_session : NakamaSession = yield(client.authenticate_email_async(email, password, username, true), "completed")
 	if temp_session.is_exception():
+		emit_signal("registered", false, temp_session.exception.message)
 		Logger.info("An error occured: %s" % temp_session)
-		emit_signal("registered", false)
+		return
+	elif temp_session.created == false:
+		emit_signal("registered", false, "Account with those credentials already exists. It was not created.")
+		Logger.info("An error occured: %s" % temp_session)
 		return
 	Logger.info("Successfully registered: %s" % temp_session)
 	emit_signal("registered", true)
