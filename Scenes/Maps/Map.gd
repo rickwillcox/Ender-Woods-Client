@@ -69,13 +69,17 @@ func next_background_music_track():
 		track_playing += 1
 	play_background_music()
 
-func SpawnSelf():
+func spawn_self(experience : int, current_health : float) -> void:
 	#start background music
 	play_background_music()
 	var client_player_instance = client_player.instance()
 	client_player_instance.position = Vector2(250,250)
 	client_player_instance.player_id = get_tree().get_network_unique_id()
-	Logger.info("Spawned player with id = %d" % client_player_instance.player_id)
+	client_player_instance.experience = experience
+	client_player_instance.current_health = current_health
+	Logger.info(
+		"Spawned player with id = %d, health = %d, experience = %d" %
+		[client_player_instance.player_id, current_health, experience])
 	get_node("YSort").add_child(client_player_instance)
 	$GUI/Inventory.set_player_character(client_player_instance.get_character_base())
 
