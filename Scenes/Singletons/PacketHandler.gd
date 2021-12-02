@@ -1,7 +1,8 @@
 extends Node
 # this handles all packets from server
-signal take_damage(attacker, victim, damage)
+signal player_take_damage(attacker, victim, damage)
 signal enemy_take_damage(enemy_id, damage)
+signal own_player_take_damage(attacker, damage)
 signal attack_swing(attacker, victim)
 signal inventory_ok
 signal inventory_nok
@@ -10,6 +11,8 @@ signal update_inventory(player_id, slot, item_id)
 signal initial_inventory(player_id, item_slot_array)
 signal player_spawn(player_id, position)
 signal player_despawn(player_id)
+signal player_dead(player_id, player_position)
+signal own_player_dead(position)
 signal enemy_spawn(enemy_id, enemy_state, enemy_type, health, position)
 signal enemy_died(enemy_id)
 signal enemy_despawn(enemy_id)
@@ -22,6 +25,8 @@ signal inventory_slot_update(slot, item_id, amount)
 
 var si = ServerInterface
 
+var own_player_id = 0
+
 func handle_many(packets : Array):
 	var packet_list = "[ "
 	for packet in packets:
@@ -33,14 +38,17 @@ func handle_many(packets : Array):
 		handle(packet)
 
 func handle(packet):
+	Logger.info(packet)
 	match packet["op_code"]:
 		si.Opcodes.TAKE_DAMAGE:
 			Logger.info("Entity %d received %d damage from entity %d" 
 					% [packet["victim"], packet["damage"], packet["attacker"]])
 			if packet["victim"] < 0:
 				emit_signal("enemy_take_damage", -packet["victim"], packet["damage"])
+			elif packet["victim"] == own_player_id:
+				emit_signal("own_player_take_damage", packet["attacker"], packet["damage"])
 			else:
-				emit_signal("take_damage", packet["victim"], packet["damage"], packet["attacker"])
+				emit_signal("player_take_damage", packet["victim"], packet["damage"], packet["attacker"])
 		si.Opcodes.INVENTORY_OK:
 			emit_signal("inventory_ok")
 		si.Opcodes.INVENTORY_NOK:
@@ -68,6 +76,11 @@ func handle(packet):
 			emit_signal("player_spawn", packet["player_id"], packet["position"])
 		si.Opcodes.PLAYER_DESPAWN:
 			emit_signal("player_despawn", packet["player_id"])
+		si.Opcodes.PLAYER_DEAD:
+			if packet["player_id"] == own_player_id:
+				emit_signal("own_player_dead", packet["player_position"])
+			else:
+				emit_signal("player_dead", packet["player_id"], packet["player_position"])
 		si.Opcodes.ENEMY_SPAWN:
 			emit_signal("enemy_spawn", packet["enemy_id"], packet["enemy_state"], packet["enemy_type"],
 						packet["health"], packet["position"])

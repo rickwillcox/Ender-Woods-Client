@@ -12,8 +12,11 @@ var last_world_state = 0
 var world_state_buffer = []
 var item_textures : Dictionary = {}
 
+# MAYBE REMOVE NOT USED ANYMORE!
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 var client_player = preload("res://Scenes/Player/Player.tscn")
 var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 

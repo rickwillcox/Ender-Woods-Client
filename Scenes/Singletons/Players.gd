@@ -10,6 +10,8 @@ func _ready():
 	PacketHandler.connect("player_spawn", self, "handle_player_spawn")
 	PacketHandler.connect("player_despawn", self, "handle_player_despawn")
 	PacketHandler.connect("initial_inventory", self, "handle_initial_inventory")
+	PacketHandler.connect("player_take_damage", self, "handle_player_take_damage")
+	PacketHandler.connect("player_dead", self, "handle_player_died")
 	
 func register_map(new_map):
 	map = new_map
@@ -58,3 +60,17 @@ func handle_initial_inventory(player_id, item_slot_array):
 			player_character_base.unequip_slot(slot)
 		else:
 			player_character_base.equip_item(item_id, slot)
+
+
+func handle_player_take_damage(attacker : int, player_id :int, damage : int):
+	Logger.info("PlayerID: %d | Damage: %d | Attack %d" % [player_id, damage, attacker])
+	var player_receiving_damage = get_player_node(player_id)
+	if player_receiving_damage:
+		player_receiving_damage.take_damage(damage, attacker)
+
+
+func handle_player_died(player_id : int, respawn_point : Vector2):
+	Logger.info("Player died: player_id = %d", player_id)
+	var player = get_player_node(player_id)
+	if player:
+		player.on_death(respawn_point)

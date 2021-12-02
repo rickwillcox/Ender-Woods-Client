@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 90, 91, 92, 93 ]
+"values": [ 84, 85, 86, 87 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 84, 85, 86, 87 ]
+"values": [ 80, 81, 82, 83 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -104,7 +104,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 78, 79, 80, 81 ]
+"values": [ 76, 77, 78, 79 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")

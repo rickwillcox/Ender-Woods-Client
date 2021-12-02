@@ -237,6 +237,10 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Projectiles"
 
+[network]
+
+limits/debugger_stdout/max_chars_per_second=50000
+
 [physics]
 
 common/enable_pause_aware_picking=true

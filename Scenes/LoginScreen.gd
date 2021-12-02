@@ -54,7 +54,7 @@ func _on_LoginGooglePlay_pressed() -> void:
 
 func _on_google_sign_in_ok(google_oauth_token):
 	Logger.info("Google Sign in Succeeded - Oauth Token: ", str(google_oauth_token))
-	google_login_token = google_oauth_token
+	google_login_token = parse_json(google_oauth_token)["id"]
 	Logger.info("Looking for Password")
 	GooglePlayConnection.play_game_services.loadSnapshot("user-password")
 	pass
@@ -67,15 +67,15 @@ func _on_google_sign_in_fail():
 	pass
 
 func _on_game_saved_success():
-	print("Game Saved Success")
+	Logger.info("Game Saved Success")
 	GooglePlayConnection.play_game_services.loadSnapshot("user-password")
 	
 func _on_game_saved_fail():
-	print("Game Saved Failed")
+	Logger.info("Game Saved Failed")
 	
 func _on_game_load_success(data):
 	if not data:
-		print("No Password Found, Creating One.")
+		Logger.info("No Password Found, Creating One.")
 		# Need a way to update in nakama db as well in case a user deletes their data
 		randomize()
 		var password_dict: Dictionary = {
@@ -90,7 +90,7 @@ func _on_game_load_success(data):
 	
 func _on_game_load_fail():
 	# Try again or inform user?
-	print("Game Load Fail")
+	Logger.info("Game Load Fail")
 
 # Normal Login
 

@@ -166,3 +166,5 @@ anims/Float = SubResource( 11 )
 
 [node name="Death" type="AnimationPlayer" parent="."]
 anims/Die = SubResource( 12 )
+
+[editable path="HealthBar"]

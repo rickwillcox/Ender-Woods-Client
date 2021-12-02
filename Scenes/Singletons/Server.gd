@@ -38,6 +38,7 @@ func _on_connection_succeeded():
 	timer.autostart = true
 	timer.connect("timeout", self, "determine_latency")
 	self.add_child(timer)
+	PacketHandler.own_player_id = get_tree().get_network_unique_id()
 	
 remote func return_server_time(server_time : int, client_time : int):
 	latency = (OS.get_system_time_msecs() - client_time) / 2

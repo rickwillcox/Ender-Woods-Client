@@ -13,16 +13,24 @@ var velocity = Vector2.ZERO
 var experience : int setget set_experience
 var current_health : float setget set_current_health
 
+var max_hp : int = 30
+var current_hp : int = 30
+
 onready var joystick = get_node_or_null("../../GUI/Joystick")
 onready var player_stats_panel = get_node_or_null("../../GUI/PlayerStats")
 onready var login_screen_panel = get_node_or_null("../../GUI/LoginScreen")
 onready var character_base = $CharacterBase
 
 func _ready():
+	$HealthBar.max_value = max_hp
+	$HealthBar.value = current_hp
 	if NakamaConnection.session != null:
 		get_node("PlayerName").text = NakamaConnection.session.username
 	else:
 		Logger.error("Player Name has not been set")
+	PacketHandler.connect("own_player_take_damage", self, "take_damage")
+	PacketHandler.connect("own_player_dead", self, "_on_death")
+
 		
 func set_experience(_experience):
 	# TODO: update stat node here
@@ -31,6 +39,7 @@ func set_experience(_experience):
 func set_current_health(_current_health):
 	# TODO: Deal with player death
 	current_health = _current_health
+
 
 func _physics_process(delta):
 	if joystick == null:
@@ -89,6 +98,10 @@ func get_input_vector() -> Vector2:
 		return input_vector.normalized()
 	return input_vector
 
+func take_damage(_attacker : int, damage : int):
+	Logger.info("Self took %d damage" % damage)
+	$HealthBar.value -= damage
+
 
 func define_player_state():
 	var player_state = {g.PLAYER_TIMESTAMP: Server.client_clock, g.PLAYER_POSITION: get_global_position(), g.PLAYER_ANIMATION_VECTOR: blend_position}
@@ -102,3 +115,7 @@ func get_character_base():
 func _on_CharacterBase_animation_finished(animation_name):
 	if state == State.ATTACKING:
 		enter_state(State.NORMAL)
+
+
+func _on_death(respawn_point):
+	position = respawn_point
