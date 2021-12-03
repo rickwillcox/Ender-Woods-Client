@@ -204,7 +204,7 @@ func make_layer(layer, parent, root, data):
 	var cell_size = data.cell_size
 	var cell_offset = data.cell_offset
 	var options = data.options
-	var tileset = data.tileset
+	var tileset : TileSet = data.tileset
 	var source_path = data.source_path
 	var infinite = data.infinite
 
@@ -212,13 +212,29 @@ func make_layer(layer, parent, root, data):
 	var visible = bool(layer.visible) if "visible" in layer else true
 
 	if layer.type == "tilelayer":
-		return OK # Tilemap import is disabled
+		var layer_image = Image.new()
+		layer_image.create(cell_size.x * layer.width, cell_size.y * layer.height, false, Image.FORMAT_RGBA8)
+		
+		# Create a collison - only tilemap
+		var new_tileset : TileSet = TileSet.new()
+		new_tileset.create_tile(0) # A non-passable tile ( has collision shape)
+		new_tileset.tile_set_name(0, "collision")
+		var image = Image.new()
+		image.create(16, 16, false, Image.FORMAT_RGB8)
+		image.fill(Color.red)
+		var texture : ImageTexture = ImageTexture.new()
+		texture.create_from_image(image)
+		new_tileset.tile_set_texture(0, texture)
+		var rect : RectangleShape2D = RectangleShape2D.new()
+		rect.extents = cell_size
+		new_tileset.tile_add_shape(0, rect, Transform2D())
+		
 		var layer_size = Vector2(int(layer.width), int(layer.height))
 		var tilemap = TileMap.new()
-		tilemap.set_name(str(layer.name))
+		tilemap.set_name(str(layer.name) + "_collision")
 		tilemap.cell_size = cell_size
 		tilemap.modulate = Color(1.0, 1.0, 1.0, opacity);
-		tilemap.visible = visible
+		tilemap.visible = false
 		tilemap.mode = map_mode
 		tilemap.cell_half_offset = map_offset
 		tilemap.format = 1
@@ -234,7 +250,7 @@ func make_layer(layer, parent, root, data):
 			offset.y = int(layer.offsety)
 
 		tilemap.position = offset + map_pos_offset
-		tilemap.tile_set = tileset
+		tilemap.tile_set = new_tileset
 
 		var chunks = []
 
@@ -266,16 +282,19 @@ func make_layer(layer, parent, root, data):
 				if int_id == 0:
 					count += 1
 					continue
-
-				var flipped_h = bool(int_id & FLIPPED_HORIZONTALLY_FLAG)
-				var flipped_v = bool(int_id & FLIPPED_VERTICALLY_FLAG)
-				var flipped_d = bool(int_id & FLIPPED_DIAGONALLY_FLAG)
-
+				
 				var gid = int_id & ~(FLIPPED_HORIZONTALLY_FLAG | FLIPPED_VERTICALLY_FLAG | FLIPPED_DIAGONALLY_FLAG)
 
 				var cell_x = cell_offset.x + chunk.x + (count % int(chunk.width))
 				var cell_y = cell_offset.y + chunk.y + int(count / chunk.width)
-				tilemap.set_cell(cell_x, cell_y, gid, flipped_h, flipped_v, flipped_d)
+				
+				var tile_texture : Texture = tileset.tile_get_texture(gid)
+				var tile_image : Image = tile_texture.get_data()
+				var tile_rect : Rect2 = tileset.tile_get_region(gid)
+				layer_image.blit_rect(tile_image, tile_rect, Vector2(cell_x * cell_size.x, cell_y * cell_size.y))
+				if tileset.tile_get_shape_count(gid):
+					# add collision shape
+					tilemap.set_cell(cell_x, cell_y, 0)
 
 				count += 1
 
@@ -283,10 +302,23 @@ func make_layer(layer, parent, root, data):
 			set_tiled_properties_as_meta(tilemap, layer)
 		if options.custom_properties:
 			set_custom_properties(tilemap, layer)
+		
+		# Create ground texture
+		var sprite = Sprite.new()
+		sprite.centered = false
+		var layer_texture : ImageTexture = ImageTexture.new()
+		layer_texture.create_from_image(layer_image)
+		layer_texture.flags &= ~(Texture.FLAG_FILTER)
+		sprite.texture = layer_texture
+		sprite.set_name(str(layer.name) + "_image")
+		parent.add_child(sprite)
+		sprite.set_owner(root)
 
 		tilemap.set("editor/display_folded", true)
 		parent.add_child(tilemap)
 		tilemap.set_owner(root)
+		
+		
 	elif layer.type == "imagelayer":
 		var image = null
 		if layer.image != "":
@@ -323,7 +355,7 @@ func make_layer(layer, parent, root, data):
 		sprite.position = pos + offset
 		sprite.set_owner(root)
 	elif layer.type == "objectgroup":
-		var object_layer = Node2D.new()
+		var object_layer = YSort.new()
 		if options.save_tiled_properties:
 			set_tiled_properties_as_meta(object_layer, layer)
 		if options.custom_properties:
