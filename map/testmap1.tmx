@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="499" height="500" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="44">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="499" height="500" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="49">
  <tileset firstgid="1" source="beach/tropical shores prefabs &amp; samples.tsx"/>
  <tileset firstgid="741" source="beach/tropical shores, just trees.tsx"/>
  <tileset firstgid="753" source="beach/tropical shores.tsx"/>
@@ -519,5 +519,10 @@
   <object id="37" template="beach/beach_templates/tree_no_fruit.tx" x="342" y="536"/>
   <object id="38" template="beach/beach_templates/tree.tx" x="684" y="310"/>
   <object id="39" template="beach/beach_templates/palm2.tx" x="728" y="544"/>
+  <object id="44" template="beach/beach_templates/vine_sand.tx" x="4375" y="3758"/>
+  <object id="45" template="beach/beach_templates/vine_dirt.tx" x="4284" y="3621"/>
+  <object id="46" template="beach/beach_templates/smallpalm2.tx" x="285.333" y="294.667"/>
+  <object id="47" template="beach/beach_templates/tree_no_fruit.tx" x="199.333" y="372.667"/>
+  <object id="48" template="beach/beach_templates/smallpalm2.tx" x="228.667" y="240.667"/>
  </objectgroup>
 </map>
