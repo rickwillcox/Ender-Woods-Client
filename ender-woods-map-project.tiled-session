@@ -116,17 +116,26 @@
                 "y": 96.83333333333331
             }
         },
+        "Tiled-Map-Files/tilesets-tsx/auto-tole-tilesets/light-grass-deep-water.tsx": {
+            "scaleInEditor": 8
+        },
         "Tiled-Map-Files/tilesets-tsx/base_textures.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1.5
+        },
+        "Tiled-Map-Files/tilesets-tsx/cliffs.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
-    "last.imagePath": "/home/rick/Documents/Ender-Woods/client/Tiled-Map-Files/tilesets-png",
+    "last.imagePath": "/home/rick/Documents/Ender-Woods/client/Tiled-Map-Files/auto-tile",
     "openFiles": [
         "Tiled-Map-Files/ender-woods-map.tmx"
     ],
     "project": "",
     "recentFiles": [
+        "Tiled-Map-Files/tilesets-tsx/auto-tole-tilesets/light-grass-deep-water.tsx",
+        "Tiled-Map-Files/tilesets-tsx/cliffs.tsx",
         "Tiled-Map-Files/tilesets-tsx/base_textures.tsx",
         "Tiled-Map-Files/ender-woods-map.tmx",
         "/home/rick/Desktop/spritesheets_for_tiled/tilesets/summer_trees.tsx",
@@ -136,13 +145,11 @@
         "/home/rick/Desktop/tiled_testing/Forest/trees_test.tsx",
         "/home/rick/Documents/Ender-Woods/files/signposts.tsx",
         "/home/rick/Documents/Ender-Woods/files/newworldmap.tmx",
-        "/home/rick/Documents/Ender-Woods/files/trees.tsx",
-        "/home/rick/Documents/Ender-Woods/files/trees_test_object.tsx",
-        "/home/rick/Documents/Ender-Woods/files/012 basic monster set.tsx"
+        "/home/rick/Documents/Ender-Woods/files/trees.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 112,
-        "width": 80
+        "height": 16,
+        "width": 16
     }
 }
