@@ -6,6 +6,9 @@
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
+ <tile id="12" probability="0.01"/>
+ <tile id="13" probability="50"/>
+ <tile id="14" probability="0"/>
  <tile id="18">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="16" height="16"/>
@@ -16,22 +19,33 @@
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
+ <tile id="112" probability="0.01"/>
+ <tile id="113" probability="0.01"/>
+ <tile id="114" probability="0.01"/>
  <tile id="210">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
+ <tile id="212" probability="0.01"/>
+ <tile id="213" probability="0"/>
+ <tile id="214" probability="0"/>
  <tile id="310">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
+ <tile id="312" probability="0.01"/>
+ <tile id="313" probability="0"/>
+ <tile id="314" probability="0.01"/>
  <tile id="410">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="16" height="16"/>
    <object id="2" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
+ <tile id="412" probability="0.01"/>
+ <tile id="413" probability="0.01"/>
  <tile id="628">
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="16" height="16"/>
