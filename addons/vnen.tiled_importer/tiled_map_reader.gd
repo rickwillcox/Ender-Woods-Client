@@ -94,40 +94,8 @@ func build(source_path, options):
 	var cell_offset = Vector2()
 	if "orientation" in map:
 		match map.orientation:
-			"isometric":
-				map_mode = TileMap.MODE_ISOMETRIC
-			"staggered":
-				map_pos_offset.y -= cell_size.y / 2
-				match map.staggeraxis:
-					"x":
-						map_offset = TileMap.HALF_OFFSET_Y
-						cell_size.x /= 2.0
-						if map.staggerindex == "even":
-							cell_offset.x += 1
-							map_pos_offset.x -= cell_size.x
-					"y":
-						map_offset = TileMap.HALF_OFFSET_X
-						cell_size.y /= 2.0
-						if map.staggerindex == "even":
-							cell_offset.y += 1
-							map_pos_offset.y -= cell_size.y
-			"hexagonal":
-				# Godot maps are always odd and don't have an "even" setting. To
-				# imitate even staggering we simply start one row/column late and
-				# adjust the position of the whole map.
-				match map.staggeraxis:
-					"x":
-						map_offset = TileMap.HALF_OFFSET_Y
-						cell_size.x = int((cell_size.x + map.hexsidelength) / 2)
-						if map.staggerindex == "even":
-							cell_offset.x += 1
-							map_pos_offset.x -= cell_size.x
-					"y":
-						map_offset = TileMap.HALF_OFFSET_X
-						cell_size.y = int((cell_size.y + map.hexsidelength) / 2)
-						if map.staggerindex == "even":
-							cell_offset.y += 1
-							map_pos_offset.y -= cell_size.y
+			"isometric", "staggered", "hexagonal":
+				return ERR_METHOD_NOT_FOUND
 
 	var tileset = build_tileset_for_scene(map.tilesets, source_path, options)
 	if typeof(tileset) != TYPE_OBJECT:
@@ -519,7 +487,8 @@ func make_layer(layer, parent, root, data):
 
 				var is_tile_object = tileset.tile_get_region(tile_id).get_area() == 0
 				var collisions = tileset.tile_get_shape_count(tile_id)
-				var has_collisions = collisions > 0 && object.has("type") && object.type != "sprite"
+						
+				var has_collisions = collisions > 0
 				var sprite = Sprite.new()
 				var pos = Vector2()
 				var rot = 0
@@ -549,11 +518,14 @@ func make_layer(layer, parent, root, data):
 
 				var obj_root = sprite
 				if has_collisions:
-					match object.type:
-						"area": obj_root = Area2D.new()
-						"kinematic": obj_root = KinematicBody2D.new()
-						"rigid": obj_root = RigidBody2D.new()
-						_: obj_root = StaticBody2D.new()
+					if object.has("type"):
+						match object.type:
+							"area": obj_root = Area2D.new()
+							"kinematic": obj_root = KinematicBody2D.new()
+							"rigid": obj_root = RigidBody2D.new()
+							_: obj_root = StaticBody2D.new()
+					else:
+						obj_root = StaticBody2D.new()
 
 					object_layer.add_child(obj_root)
 					obj_root.owner = root

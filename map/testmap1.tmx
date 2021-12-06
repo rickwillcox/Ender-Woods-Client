@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="51">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="62">
  <tileset firstgid="1" source="beach/tropical shores prefabs &amp; samples.tsx"/>
  <tileset firstgid="741" source="beach/tropical shores, just trees.tsx"/>
  <tileset firstgid="753" source="beach/tropical shores.tsx"/>
@@ -59,5 +59,16 @@
  </layer>
  <objectgroup id="5" name="trees">
   <object id="50" gid="741" x="286" y="286" width="80" height="112"/>
+  <object id="51" gid="741" x="346" y="358" width="80" height="112"/>
+  <object id="52" gid="741" x="254.667" y="415.333" width="80" height="112"/>
+  <object id="53" gid="741" x="174.667" y="240" width="80" height="112"/>
+  <object id="54" gid="741" x="415.333" y="304.667" width="80" height="112"/>
+  <object id="55" gid="741" x="377.333" y="420.667" width="80" height="112"/>
+  <object id="56" gid="741" x="377.333" y="420.667" width="80" height="112"/>
+  <object id="57" gid="741" x="320" y="225.333" width="80" height="112"/>
+  <object id="58" gid="742" x="215.333" y="282.667" width="80" height="112"/>
+  <object id="59" gid="742" x="222" y="131.333" width="80" height="112"/>
+  <object id="60" gid="742" x="204.667" y="392" width="80" height="112"/>
+  <object id="61" gid="742" x="295.333" y="436" width="80" height="112"/>
  </objectgroup>
 </map>
