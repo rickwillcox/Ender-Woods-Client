@@ -7,7 +7,7 @@
   </objectgroup>
  </tile>
  <tile id="12" probability="0.01"/>
- <tile id="13" probability="50"/>
+ <tile id="13" probability="5"/>
  <tile id="14" probability="0"/>
  <tile id="18">
   <objectgroup draworder="index" id="2">
