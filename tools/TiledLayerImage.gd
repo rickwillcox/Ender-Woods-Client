@@ -1,15 +1,16 @@
 tool
-extends Node2D
+extends Sprite
 class_name TiledLayerImageImporter
 # Maps each tileset file used by the map to it's first gid; Used for template parsing
 
 export(String, FILE, "*.tmx") var from_map
-export(String) var layer_name
 export(TileSet) var tileset
 export(bool) var generate_image setget generate
 
 export(bool) var save_tiled_properties
 export(bool) var custom_properties
+export(String) var image_folder
+export(Array, String) var layers_to_import
 
 var image_path = ""
 var image : Image = Image.new()
@@ -45,14 +46,22 @@ const whitelist_properties = [
 	"width",
 ]
 
+func _ready():
+	var directory = Directory.new();
+	if directory.file_exists(get_png_file_path()):
+		texture = load(get_png_file_path())
+
+func get_png_file_path():
+	return "res://" + image_folder + "/" + name + ".png"
+
 func generate(x = false) -> void:
 	if x == false:
 		return
 	if from_map == "":
 		print_error("map not specified")
 		return
-	if layer_name == "":
-		print_error("layer not specified")
+	if image_folder == "":
+		print_error("Save folder not selected")
 		return
 	var parser = TiledParser.new()
 	var map = parser.read_tmx(from_map)
@@ -88,19 +97,30 @@ func generate(x = false) -> void:
 		"source_path": from_map,
 	}
 
-	var layer_found = false
 	var layer_names = []
 	for layer in map.layers:
 		layer_names.append(layer.name)
-		if layer.name == layer_name:
-			layer_found = true
-			err = make_image_from_layer(layer, map_data)
-			if err != OK:
-				return
-	if layer_found == false:
-		print_error("Selected layer " + layer_name +  " not present. Possible layers: " + str(layer_names))
 		
-	# dont know how to save the image
+	for layer_name in layers_to_import:
+		if not layer_name in layer_names:
+			print_error("Selected layer " + layer_name +  " not present. Possible layers: " + str(layer_names))
+			return
+			
+	image.create(cell_size.x * 1000, cell_size.y * 1000, false, Image.FORMAT_RGBA8)
+		
+	var layer_index = 1
+	for layer_name in layers_to_import:
+		print("Importing layer %d of %d" % [layer_index, layers_to_import.size()])
+		for layer in map.layers:
+			if layer.name == layer_name:
+				err = make_image_from_layer(layer, map_data)
+				if err != OK:
+					print_error("Error importing layer " + layer_name)
+					return
+
+	err = image.save_png(get_png_file_path())
+	if err != OK:
+		print_error("Error saving image: " + str(err))
 	
 func print_error(error):
 	print("Import Tiled layer as image error: " + error)
@@ -167,9 +187,6 @@ func make_image_from_layer(layer, data):
 	var cell_offset = data.cell_offset
 	var source_path = data.source_path
 	if layer.type == "tilelayer":
-		print([cell_size.x, layer.width, cell_size.y, layer.height])
-		image.create(cell_size.x * layer.width, cell_size.y * layer.height, false, Image.FORMAT_RGBA8)
-		
 		var layer_size = Vector2(int(layer.width), int(layer.height))
 		var offset = Vector2()
 		if "offsetx" in layer:
@@ -223,6 +240,7 @@ func make_image_from_layer(layer, data):
 			set_tiled_properties_as_meta(layer)
 		if custom_properties:
 			set_custom_properties(layer)
+	return OK
 
 # Get the custom properties as a dictionary
 # Useful for tile meta, which is not stored directly

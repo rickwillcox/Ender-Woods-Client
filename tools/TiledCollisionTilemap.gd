@@ -4,9 +4,8 @@ class_name TiledTileMap
 # Maps each tileset file used by the map to it's first gid; Used for template parsing
 
 export(String, FILE, "*.tmx") var from_map
-export(String) var layer_name
 export(TileSet) var tileset
-export(bool) var generate_image setget generate
+export(bool) var generate_collisions setget generate
 
 export(bool) var save_tiled_properties
 export(bool) var custom_properties
@@ -48,11 +47,11 @@ const whitelist_properties = [
 func generate(x = false) -> void:
 	if x == false:
 		return
+		
+	mode = TileMap.MODE_SQUARE
+	
 	if from_map == "":
 		print_error("map not specified")
-		return
-	if layer_name == "":
-		print_error("layer not specified")
 		return
 	var parser = TiledParser.new()
 	var map = parser.read_tmx(from_map)
@@ -105,19 +104,11 @@ func generate(x = false) -> void:
 		"source_path": from_map,
 	}
 
-	var layer_found = false
-	var layer_names = []
 	for layer in map.layers:
-		layer_names.append(layer.name)
-		if layer.name == layer_name:
-			layer_found = true
-			err = make_layer(layer, map_data)
-			if err != OK:
-				return
-	if layer_found == false:
-		print_error("Selected layer " + layer_name +  " not present. Possible layers: " + str(layer_names))
-		
-	# dont know how to save the image
+		err = update_collision_layer(layer, map_data)
+		if err != OK:
+			print_error("Error processing layer " + layer.name + str(err))
+			return
 	
 func print_error(error):
 	print("Import Tiled layer as image error: " + error)
@@ -172,7 +163,7 @@ func set_custom_properties(tiled_object):
 		set_meta(property, properties[property])
 
 
-func make_layer(layer, data):
+func update_collision_layer(layer, data):
 	var err = validate_layer(layer)
 	if err != OK:
 		return err
@@ -191,10 +182,6 @@ func make_layer(layer, data):
 	if layer.type == "tilelayer":
 
 		var layer_size = Vector2(int(layer.width), int(layer.height))
-		set_name(str(layer.name) + "_collision")
-		modulate = Color(1.0, 1.0, 1.0, opacity);
-		visible = false
-		mode = TileMap.MODE_SQUARE
 		cell_half_offset = map_offset
 		cell_y_sort = true
 		cell_tile_origin = TileMap.TILE_ORIGIN_BOTTOM_LEFT
@@ -211,7 +198,7 @@ func make_layer(layer, data):
 
 		var i = 0
 		for chunk in chunks:
-			print("Processing chunk %d. Total Chunks: %d" % [i, chunks.size()])
+			print("Processing chunk %d. Total Chunks: %d" % [i + 1, chunks.size()])
 			i += 1
 			err = validate_chunk(chunk)
 			if err != OK:
@@ -251,8 +238,7 @@ func make_layer(layer, data):
 			set_tiled_properties_as_meta(layer)
 		if custom_properties:
 			set_custom_properties(layer)
-	
-		set("editor/display_folded", true)
+	return OK
 
 # Get the custom properties as a dictionary
 # Useful for tile meta, which is not stored directly
