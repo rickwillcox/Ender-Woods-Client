@@ -1,5 +1,6 @@
 tool
 extends YSort
+class_name TiledObjectYSort
 
 export(String, FILE, "*.tmx") var from_map
 export(TileSet) var tileset
