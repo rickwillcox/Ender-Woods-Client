@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<template>
- <tileset firstgid="1" source="../tropical shores, just trees.tsx"/>
- <object name="palm2" gid="1" width="80" height="112">
-  <properties>
-   <property name="polygon" type="object" value="0"/>
-  </properties>
- </object>
-</template>

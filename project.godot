@@ -104,10 +104,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
 }, {
+"base": "Reference",
+"class": "PolygonSorter",
+"language": "GDScript",
+"path": "res://tools/polygon_sorter.gd"
+}, {
 "base": "Node",
 "class": "Serializer",
 "language": "GDScript",
 "path": "res://common/PacketSerializer.gd"
+}, {
+"base": "Reference",
+"class": "TiledParser",
+"language": "GDScript",
+"path": "res://tools/tiled_xml_to_dict.gd"
+}, {
+"base": "TileMap",
+"class": "TiledTileMap",
+"language": "GDScript",
+"path": "res://tools/TiledCollisionTilemap.gd"
+}, {
+"base": "TileSet",
+"class": "TiledTileSet",
+"language": "GDScript",
+"path": "res://tools/TiledTileset.gd"
 } ]
 _global_script_class_icons={
 "GameSettings": "",
@@ -129,7 +149,11 @@ _global_script_class_icons={
 "NakamaSocketAdapter": "",
 "NakamaStorageObjectId": "",
 "NakamaWriteStorageObject": "",
-"Serializer": ""
+"PolygonSorter": "",
+"Serializer": "",
+"TiledParser": "",
+"TiledTileMap": "",
+"TiledTileSet": ""
 }
 
 [application]
@@ -175,7 +199,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/multirun/plugin.cfg", "res://addons/port/plugin.cfg", "res://addons/vnen.tiled_importer/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/multirun/plugin.cfg", "res://addons/port/plugin.cfg" )
 
 [global]
 
