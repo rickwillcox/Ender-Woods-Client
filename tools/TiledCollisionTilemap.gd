@@ -104,7 +104,10 @@ func generate(x = false) -> void:
 		"source_path": from_map,
 	}
 
+	var layer_index = 1
 	for layer in map.layers:
+		print("Processing layer %s: %d of %d" % [layer.name, layer_index, map.layers.size()])
+		layer_index+=1
 		err = update_collision_layer(layer, map_data)
 		if err != OK:
 			print_error("Error processing layer " + layer.name + str(err))
