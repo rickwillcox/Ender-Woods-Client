@@ -27,10 +27,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "mb of", "chop_down" ],
+"args": [ "mb of" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mb ob", "chop_down" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -59,13 +59,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "chop_left" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mf ob", "chop_left" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mb ob", "chop_left" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -94,13 +94,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "chop_right" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mf ob", "chop_right" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mb ob", "chop_right" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -129,10 +129,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "chop_up" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mb of", "chop_up" ],
+"args": [ "mb of" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -162,7 +162,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf of", "idle_down" ],
+"args": [ "mf of" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -192,7 +192,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf ob", "idle_left" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -222,7 +222,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf ob", "idle_right" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -252,7 +252,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mb ob", "idle_up" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -282,7 +282,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf of", "run_down" ],
+"args": [ "mf of" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -312,7 +312,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf ob", "run_left" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -342,7 +342,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf ob", "run_right" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -372,10 +372,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.75 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "run_up" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mf ob", "run_up" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -404,7 +404,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf of", "slash_1_down" ],
+"args": [ "mf of" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -433,13 +433,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "slash_1_left" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mf ob", "slash_1_left" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mb ob", "slash_1_left" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -468,13 +468,13 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "slash_1_right" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mf ob", "slash_1_right" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mb ob", "slash_1_right" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -503,7 +503,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mb ob", "slash_1_up" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -533,7 +533,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf of", "walk_down" ],
+"args": [ "mf of" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -563,7 +563,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf ob", "walk_left" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -593,7 +593,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "mf ob", "walk_right" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -623,10 +623,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.75 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "mb ob", "walk_up" ],
+"args": [ "mb ob" ],
 "method": "set_hand_equipment_order"
 }, {
-"args": [ "mf ob", "walk_up" ],
+"args": [ "mf ob" ],
 "method": "set_hand_equipment_order"
 } ]
 }
@@ -636,10 +636,6 @@ script = ExtResource( 4 )
 
 [node name="Sprites" type="Node2D" parent="."]
 use_parent_material = true
-
-[node name="behind" type="Node2D" parent="Sprites"]
-
-[node name="base" type="Node2D" parent="Sprites"]
 
 [node name="outfit" type="Node2D" parent="Sprites"]
 use_parent_material = true
@@ -690,8 +686,6 @@ frame = 30
 hframes = 6
 vframes = 20
 frame = 30
-
-[node name="front" type="Node2D" parent="Sprites"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/chop_down = SubResource( 1 )

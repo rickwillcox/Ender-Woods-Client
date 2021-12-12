@@ -13,9 +13,8 @@ var current_blend_position : String = "down"
 var switch_blocked = false
 var previous_order : String = "mf of"
 
-onready var base_sprite : Sprite = $Sprites/outfit/base
 onready var outfit : Node2D = $Sprites/outfit
-onready var animation_player : AnimationPlayer = $AnimationPlayer
+onready var base_sprite : Sprite = $Sprites/outfit/base
 onready var boots : Sprite = $Sprites/outfit/boots
 onready var pants : Sprite = $Sprites/outfit/pants
 onready var gloves : Sprite = $Sprites/outfit/gloves
@@ -23,8 +22,6 @@ onready var breatplate : Sprite = $Sprites/outfit/breastplate
 onready var helmet : Sprite = $Sprites/outfit/helmet
 onready var main_hand : Sprite = $Sprites/outfit/main_hand
 onready var off_hand : Sprite = $Sprites/outfit/off_hand
-#onready var front : Node2D = $Sprites/front
-#onready var behind : Node2D = $Sprites/behind
 
 onready var slot_to_outfit_sprite : Dictionary = {
 	ItemDatabase.Slots.HEAD_SLOT: helmet,
@@ -36,6 +33,7 @@ onready var slot_to_outfit_sprite : Dictionary = {
 	ItemDatabase.Slots.OFF_HAND_SLOT: off_hand,
 }
 
+onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	$AnimationPlayer.play("idle_down")
@@ -45,20 +43,11 @@ func set_frame(new_frame):
 		return
 	frame = new_frame
 	if not Engine.editor_hint:
-#		base_sprite.frame = new_frame
 		for child in outfit.get_children():
 			(child as Sprite).frame = new_frame
-#		for child in behind.get_children():
-#			(child as Sprite).frame = new_frame
-#		for child in front.get_children():
-#			(child as Sprite).frame = new_frame
-	
 	else:
-#		$Sprites/base/base.frame = new_frame
 		for child in $Sprites/outfit.get_children():
 			(child as Sprite).frame = new_frame
-		$Sprites/outfit/main_hand.frame = new_frame
-		$Sprites/outfit/off_hand.frame = new_frame
 			
 func set_blend_position(new_position : Vector2):
 	if not is_inside_tree() or switch_blocked:
@@ -104,6 +93,7 @@ func bake_animations(_x):
 		$AnimationPlayer.remove_animation(anim)
 
 	var animations = [
+		# IDLE
 		{ "name" : "idle_right", "start_frame": 0, "frames" : 6, "loop" : true,
 			"hand_equipment_order": ["mf ob" ,"mf ob", "mf ob", "mf ob", "mf ob", "mf ob"]},
 		{ "name" : "idle_up", "start_frame": 6, "frames" : 6, "loop" : true,
@@ -113,6 +103,7 @@ func bake_animations(_x):
 		{ "name" : "idle_down", "start_frame": 18, "frames" : 6, "loop" : true,
 			"hand_equipment_order": ["mf of" ,"mf of", "mf of", "mf of", "mf of", "mf of"]},
 		
+		# WALK
 		{ "name" : "walk_right", "start_frame": 24, "frames" : 6, "loop" : true,
 			"hand_equipment_order": ["mf ob" ,"mf ob", "mf ob", "mf ob", "mf ob", "mf ob"]},
 		{ "name" : "walk_up", "start_frame": 30, "frames" : 6, "loop" : true,
@@ -122,6 +113,7 @@ func bake_animations(_x):
 		{ "name" : "walk_down", "start_frame": 42, "frames" : 6, "loop" : true,
 			"hand_equipment_order": ["mf of" ,"mf of", "mf of", "mf of", "mf of", "mf of"]},
 		
+		# RUN
 		{ "name" : "run_right", "start_frame": 48, "frames" : 6, "loop" : true,
 			"hand_equipment_order": ["mf ob" ,"mf ob", "mf ob", "mf ob", "mf ob", "mf ob"]},
 		{ "name" : "run_up", "start_frame": 54, "frames" : 6, "loop" : true,
@@ -131,6 +123,7 @@ func bake_animations(_x):
 		{ "name" : "run_down", "start_frame": 66, "frames" : 6, "loop" : true,
 			"hand_equipment_order": ["mf of" ,"mf of", "mf of", "mf of", "mf of", "mf of"]},
 		
+		# CHOP
 		{ "name" : "chop_right", "start_frame": 72, "frames" : 4,
 			"hand_equipment_order": ["mb ob" ,"mf ob", "mb ob", "mb ob"]
 		},
@@ -143,10 +136,8 @@ func bake_animations(_x):
 		{ "name" : "chop_down", "start_frame": 90, "frames" : 4,
 			"hand_equipment_order": ["mb of" ,"mb ob", "mb ob", "mb ob"]
 		},
-		
-		# Tool order determines layering order, this terminology is borrowed from the asset guide
-		# this actually describes both tools position
-		
+				
+		# ATTACK
 		{ "name" : "slash_1_right", "start_frame": 96, "frames" : 4,
 			"hand_equipment_order": ["mb ob" ,"mf ob", "mb ob", "mb ob"]
 		},
@@ -164,7 +155,6 @@ func bake_animations(_x):
 	for animation in animations:
 		bake_animation(animation)
 
-
 func bake_animation(animation_description : Dictionary):
 	var animation_name = animation_description["name"]
 	var frames = animation_description["frames"]
@@ -180,22 +170,19 @@ func bake_animation(animation_description : Dictionary):
 		generated_animation.track_insert_key(track_index, 0.15 * i, i + start_frame)
 	generated_animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)
 	
-
 	# This generates the tool order track. It reorders tool sprites so they are 
 	# correctly rendered behind or in front of the character
-	if animation_description.has("hand_equipment_order"):
-		track_index = generated_animation.add_track(Animation.TYPE_METHOD)
-		generated_animation.track_set_path(track_index, ".")
-		var hand_equipment_order : Array = animation_description["hand_equipment_order"]
-		for i in range(hand_equipment_order.size()):
-			if i > 0 and hand_equipment_order[i] == hand_equipment_order[i-1]:
-				# If the order is the same no need to add a key frame
-				continue
-			generated_animation.track_insert_key(track_index, i * 0.15,
-				{"method": "set_hand_equipment_order", "args": [hand_equipment_order[i], animation_name]})
+	track_index = generated_animation.add_track(Animation.TYPE_METHOD)
+	generated_animation.track_set_path(track_index, ".")
+	var hand_equipment_order : Array = animation_description["hand_equipment_order"]
+	for i in range(hand_equipment_order.size()):
+		if i > 0 and hand_equipment_order[i] == hand_equipment_order[i-1]:
+			# If the order is the same no need to add a key frame
+			continue
+		generated_animation.track_insert_key(track_index, i * 0.15,
+			{"method": "set_hand_equipment_order", "args": [hand_equipment_order[i]]})
 
 	$AnimationPlayer.add_animation(animation_name, generated_animation)
-
 
 func unequip_slot(slot : int):
 	if slot_to_outfit_sprite.has(slot):
@@ -205,8 +192,8 @@ func equip_item(item_id, slot):
 	if slot_to_outfit_sprite.has(slot):
 		slot_to_outfit_sprite[slot].texture = CharacterTextureLoader.get_item_texture(item_id)
 
-func set_hand_equipment_order(order : String, animation_name : String):
-	print(animation_name, " ",  order)
+func set_hand_equipment_order(order : String):
+	# mf/of = mainhand/offhand in front, mb/ob = mainhand/offhand in behind
 	var order_split : Array = order.split(" ")
 	if order_split[0] == "mf":
 		outfit.move_child(main_hand, outfit.get_child_count())
@@ -217,110 +204,3 @@ func set_hand_equipment_order(order : String, animation_name : String):
 		outfit.move_child(off_hand, outfit.get_child_count())
 	else:
 		outfit.move_child(off_hand, 0)
-	
-#	match previous_order:
-#		"mf of":
-#			if order_split[0] == "mf":
-#				pass
-#			if order_split[0] == "mb":
-#				#move mainhand behind
-#				outfit.move_child(main_hand, 0)
-#				pass
-#			if order_split[1] == "of":
-#				pass
-#			if order_split[1] == "ob":
-#				#move offhand behind
-#				outfit.move_child(off_hand, 0)
-#				pass
-#		"mb of":
-#			if order_split[0] == "mf":
-#				#move mainhand in front
-#				outfit.move_child(main_hand, outfit.get_child_count())
-#				pass
-#			if order_split[0] == "mb":
-#				pass
-#			if order_split[1] == "of":
-#				pass
-#			if order_split[1] == "ob":
-#				outfit.move_child(off_hand, 0)
-#				pass
-#		"mf ob":
-#			if order_split[0] == "mf":
-#				pass
-#			if order_split[0] == "mb":
-#				#move mainhand behind
-#				outfit.move_child(main_hand, 0)
-#				pass
-#			if order_split[1] == "of":
-#				#move offhand in front
-#				outfit.move_child(off_hand, outfit.get_child_count())
-#				pass
-#			if order_split[1] == "ob":
-#				pass
-#		"mb ob":
-#			if order_split[0] == "mf":
-#				#move mainhand in front
-#				outfit.move_child(main_hand, outfit.get_child_count())
-#				pass
-#			if order_split[0] == "mb":
-#				pass
-#			if order_split[1] == "of":
-#				#move offhand in front
-#				outfit.move_child(off_hand, outfit.get_child_count())
-#				pass
-#			if order_split[1] == "ob":
-#				pass
-#
-#	previous_order = order
-
-	# mf = main hand front
-	# of = off hand front
-	# mb = main hand beind
-	# ob = off hand behind
-	# each match will require both (mb or mf) AND (ob or of)
-
-#	match order:
-#		# both are in front, MH infront of OH
-#		"mf of":
-#			front.add_child(off_hand)
-#			front.add_child(main_hand)
-#			main_hand = $Sprites/outfit/main_hand
-#			off_hand = $Sprites/outfit/off_hand
-#		# offhand in front, main hand behind
-#		"mb of":
-#			behind.add_child(main_hand)
-#			front.add_child(off_hand)
-#			main_hand = $Sprites/behind/main_hand
-#			off_hand = $Sprites/outfit/off_hand
-#		# MH is in front, OH is behind
-#		"mf ob":
-#			behind.add_child(off_hand)
-#			front.add_child(main_hand)
-#			main_hand = $Sprites/outfit/main_hand
-#			off_hand = $Sprites/behind/off_hand
-#		# both are behind, but MH is in front of OH
-#		"mb ob":
-#			behind.add_child(off_hand)
-#			behind.add_child(main_hand)
-#			main_hand = $Sprites/behind/main_hand
-#			off_hand = $Sprites/behind/off_hand
-
-	
-
-
-
-
-#		# both are behind, but OH is in front of MH
-#		"mb ob":
-#			behind.add_child(main_hand)
-#			behind.add_child(off_hand)
-#			main_hand = $Sprites/behind/main_hand
-#			off_hand = $Sprites/behind/off_hand
-
-		#both are in front, OH infront of MH
-#		"mf of":
-#			front.add_child(main_hand)
-#			front.add_child(off_hand)
-#			main_hand = $Sprites/outfit/main_hand
-#			off_hand = $Sprites/outfit/off_hand
-		# MH is in behind, OH in front
