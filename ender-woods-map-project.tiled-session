@@ -206,10 +206,10 @@
         },
         "Tiled-Map-Files-New/ender-woods-map.tmx": {
             "scale": 0.33,
-            "selectedLayer": 2,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 7516.666666666667,
-                "y": 7968.181818181818
+                "x": 8818.181818181818,
+                "y": 7722.727272727272
             }
         },
         "Tiled-Map-Files-New/tilesets-tsx/Houses.tsx": {
@@ -219,7 +219,7 @@
             "scaleInDock": 1
         },
         "Tiled-Map-Files-New/tilesets-tsx/base_textures.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 2
         },
         "Tiled-Map-Files-New/tilesets-tsx/big_rocks.tsx": {
             "scaleInDock": 1

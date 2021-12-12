@@ -1,11 +1,41 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://Assets/Character/Base character/char_a_pONE3_7tlb_sh01_v01.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Character/Base character/char_a_pONE3_6tla_sw01_v01.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Character/Base character/player_spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/CharacterBase.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 90, 91, 92, 93 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "mb of", "chop_down" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mb ob", "chop_down" ],
+"method": "set_hand_equipment_order"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -26,40 +56,17 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
-} ]
-}
-
-[sub_resource type="Animation" id=2]
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 80, 81, 82, 83 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mb ob", "chop_left" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mf ob", "chop_left" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mb ob", "chop_left" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -84,11 +91,17 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mb ob", "chop_right" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mf ob", "chop_right" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mb ob", "chop_right" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -104,7 +117,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 76, 77, 78, 79 ]
+"values": [ 78, 79, 80, 81 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -113,11 +126,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mb ob", "chop_up" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mb of", "chop_up" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -146,8 +162,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf of", "idle_down" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -176,8 +192,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf ob", "idle_left" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -206,8 +222,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf ob", "idle_right" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -236,8 +252,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mb ob", "idle_up" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -266,8 +282,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf of", "run_down" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -296,8 +312,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf ob", "run_left" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -326,8 +342,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf ob", "run_right" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -353,11 +369,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mb ob", "run_up" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mf ob", "run_up" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -385,37 +404,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "show_tools"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:tools_frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.15 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "behind" ],
-"method": "set_tool_order"
-}, {
-"args": [ "behind++" ],
-"method": "set_tool_order"
+"args": [ "mf of", "slash_1_down" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -440,43 +430,17 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "show_tools"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:tools_frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 24, 25, 26, 27 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [ "behind++" ],
-"method": "set_tool_order"
+"args": [ "mb ob", "slash_1_left" ],
+"method": "set_hand_equipment_order"
 }, {
-"args": [ "front" ],
-"method": "set_tool_order"
+"args": [ "mf ob", "slash_1_left" ],
+"method": "set_hand_equipment_order"
 }, {
-"args": [ "behind--" ],
-"method": "set_tool_order"
+"args": [ "mb ob", "slash_1_left" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -501,43 +465,17 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "show_tools"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:tools_frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 16, 17, 18, 19 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
-"args": [ "behind++" ],
-"method": "set_tool_order"
+"args": [ "mb ob", "slash_1_right" ],
+"method": "set_hand_equipment_order"
 }, {
-"args": [ "front" ],
-"method": "set_tool_order"
+"args": [ "mf ob", "slash_1_right" ],
+"method": "set_hand_equipment_order"
 }, {
-"args": [ "behind++" ],
-"method": "set_tool_order"
+"args": [ "mb ob", "slash_1_right" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -565,37 +503,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "show_tools"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:tools_frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 8, 9, 10, 11 ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "behind++" ],
-"method": "set_tool_order"
-}, {
-"args": [ "behind" ],
-"method": "set_tool_order"
+"args": [ "mb ob", "slash_1_up" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -624,8 +533,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf of", "walk_down" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -654,8 +563,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf ob", "walk_left" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -684,8 +593,8 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mf ob", "walk_right" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -711,11 +620,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [  ],
-"method": "hide_tools"
+"args": [ "mb ob", "walk_up" ],
+"method": "set_hand_equipment_order"
+}, {
+"args": [ "mf ob", "walk_up" ],
+"method": "set_hand_equipment_order"
 } ]
 }
 
@@ -729,59 +641,57 @@ use_parent_material = true
 
 [node name="base" type="Node2D" parent="Sprites"]
 
-[node name="base" type="Sprite" parent="Sprites/base"]
+[node name="outfit" type="Node2D" parent="Sprites"]
+use_parent_material = true
+
+[node name="base" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 texture = ExtResource( 3 )
 hframes = 6
 vframes = 20
-frame = 105
-
-[node name="outfit" type="Node2D" parent="Sprites"]
-use_parent_material = true
+frame = 30
 
 [node name="boots" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 20
-frame = 105
+frame = 30
 
 [node name="pants" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 20
-frame = 105
+frame = 30
 
 [node name="gloves" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 20
-frame = 105
+frame = 30
 
 [node name="breastplate" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 20
-frame = 105
+frame = 30
 
 [node name="helmet" type="Sprite" parent="Sprites/outfit"]
 use_parent_material = true
 hframes = 6
 vframes = 20
-frame = 105
+frame = 30
 
-[node name="in_front" type="Node2D" parent="Sprites"]
+[node name="main_hand" type="Sprite" parent="Sprites/outfit"]
+hframes = 6
+vframes = 20
+frame = 30
 
-[node name="tool_a" type="Sprite" parent="Sprites/in_front"]
-texture = ExtResource( 2 )
-hframes = 8
-vframes = 8
-frame = 11
+[node name="off_hand" type="Sprite" parent="Sprites/outfit"]
+hframes = 6
+vframes = 20
+frame = 30
 
-[node name="tool_b" type="Sprite" parent="Sprites/in_front"]
-texture = ExtResource( 1 )
-hframes = 8
-vframes = 8
-frame = 11
+[node name="front" type="Node2D" parent="Sprites"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/chop_down = SubResource( 1 )
