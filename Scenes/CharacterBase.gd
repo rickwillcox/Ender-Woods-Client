@@ -211,10 +211,10 @@ func set_hand_equipment_order(order : String, animation_name : String):
 	if order_split[0] == "mf":
 		outfit.move_child(main_hand, outfit.get_child_count())
 	else:
-		outfit.move_child(off_hand, 0)
+		outfit.move_child(main_hand, 0)
 		
 	if order_split[1] == "of":
-		outfit.move_child(main_hand, outfit.get_child_count())
+		outfit.move_child(off_hand, outfit.get_child_count())
 	else:
 		outfit.move_child(off_hand, 0)
 	
