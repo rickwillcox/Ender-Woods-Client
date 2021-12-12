@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/auto-tile-setup.tsx-2233ea331cfdad7b5851c9a8ef71f3ae.res"
+
+[deps]
+
+source_file="res://Tiled-Map-Files/tilesets-tsx/auto-tole-tilesets/auto-tile-setup.tsx"
+dest_files=[ "res://.import/auto-tile-setup.tsx-2233ea331cfdad7b5851c9a8ef71f3ae.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""

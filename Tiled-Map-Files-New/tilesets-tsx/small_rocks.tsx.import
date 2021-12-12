@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/small_rocks.tsx-15df29811a8e7ac721682b3410c873e6.res"
+
+[deps]
+
+source_file="res://Tiled-Map-Files/tilesets-tsx/small_rocks.tsx"
+dest_files=[ "res://.import/small_rocks.tsx-15df29811a8e7ac721682b3410c873e6.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""
