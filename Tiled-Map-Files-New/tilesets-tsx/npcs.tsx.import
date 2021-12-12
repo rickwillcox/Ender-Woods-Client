@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/npcs.tsx-db15e30d3aa14e6a62a589ccda7e978b.res"
+
+[deps]
+
+source_file="res://Tiled-Map-Files/tilesets-tsx/npcs.tsx"
+dest_files=[ "res://.import/npcs.tsx-db15e30d3aa14e6a62a589ccda7e978b.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""
