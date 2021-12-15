@@ -48,8 +48,8 @@ func register(email : String, username : String, password : String):
 	Logger.info("Successfully registered: %s" % temp_session)
 	emit_signal("registered", true)
 
-func get_item_database():
-	var result = yield(client.rpc_async(session, "get_items"), "completed")
+func get_items_database():
+	var result = yield(client.rpc_async(session, "get_items_database"), "completed")
 	var data = JSON.parse(result["payload"]).result
 	assert(data["success"] == true)
 
@@ -57,8 +57,8 @@ func get_item_database():
 	Utils.convert_keys_to_int(ItemDatabase.all_item_data)
 	emit_signal("result_done")
 
-func get_recipe_database():
-	var result = yield(client.rpc_async(session, "get_recipes"), "completed")
+func get_crafting_recipes_database():
+	var result = yield(client.rpc_async(session, "get_crafting_recipes_database"), "completed")
 	var data = JSON.parse(result["payload"]).result
 	assert(data["success"] == true)
 	

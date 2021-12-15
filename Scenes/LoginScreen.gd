@@ -38,8 +38,8 @@ func _ready():
 	if OS.get_name() in ["Windows", "X11", "OSX", "Server"]:
 		google_login_button.disabled = true
 	
-	Network.to_remote()
-	get_node("Background/VBoxContainer/IPButton/IPText").text = "Online"
+	Network.to_local()
+	get_node("Background/VBoxContainer/IPButton/IPText").text = "Local"
 
 
 # GOOGLE LOGIN
@@ -173,10 +173,10 @@ func _auto_login():
 func handle_login_result(result):
 	if result == true:
 		Logger.info("Login step 1 - Authentication: successful")
-		NakamaConnection.get_item_database()
+		NakamaConnection.get_items_database()
 		yield(NakamaConnection, "result_done")
 		Logger.info("Login step 2 - Get item database: successful")
-		NakamaConnection.get_recipe_database()
+		NakamaConnection.get_crafting_recipes_database()
 		yield(NakamaConnection, "result_done")
 		Logger.info("Login step 3 - Get recipe database: successful")
 		Server.connect_to_server()
