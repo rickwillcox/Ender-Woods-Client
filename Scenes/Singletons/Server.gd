@@ -1,6 +1,7 @@
 extends Node
 
 signal received_player_chat(player_id, username, text)
+signal set_player_quests(player_quests)
 
 var network = NetworkedMultiplayerENet.new()
 var client_clock : int = 0
@@ -153,3 +154,7 @@ func start_smelter():
 
 func stop_smelter():
 	rpc_id(1, "stop_smelter")
+
+remote func set_player_quests_on_player(player_quests : Dictionary):
+	emit_signal("set_player_quests", player_quests)
+	
