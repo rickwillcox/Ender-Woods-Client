@@ -16,6 +16,9 @@ var current_health : float setget set_current_health
 var max_hp : int = 30
 var current_hp : int = 30
 
+var player_quests : PlayerQuests = PlayerQuests.new()
+
+
 onready var joystick = get_node_or_null("../../GUI/Joystick")
 onready var player_stats_panel = get_node_or_null("../../GUI/PlayerStats")
 onready var login_screen_panel = get_node_or_null("../../GUI/LoginScreen")
@@ -30,6 +33,7 @@ func _ready():
 		Logger.error("Player Name has not been set")
 	PacketHandler.connect("own_player_take_damage", self, "take_damage")
 	PacketHandler.connect("own_player_dead", self, "_on_death")
+	Server.connect("set_player_quests", self, "set_quests")
 
 		
 func set_experience(_experience):
@@ -119,3 +123,10 @@ func _on_CharacterBase_animation_finished(animation_name):
 
 func _on_death(respawn_point):
 	position = respawn_point
+
+func set_quests(updated_quests):
+	player_quests.set_player_quests(player_quests.get_player_quests(), updated_quests)
+	print(get_quests())
+	
+func get_quests():
+	return player_quests.get_player_quests()
