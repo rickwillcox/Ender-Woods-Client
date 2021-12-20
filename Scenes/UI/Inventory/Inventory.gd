@@ -115,7 +115,8 @@ func move_items(from_item_slot, to_item_slot):
 
 	update_slot_display(from_item_slot)
 	update_slot_display(to_item_slot)
-	if is_equipment_slot([from_item_slot,to_item_slot]):
+	if ItemDatabase.is_equipment_slot(from_item_slot) or \
+		ItemDatabase.is_equipment_slot(to_item_slot):
 		emit_signal("equipment_slot_updated")
 	# update world server
 	Server.move_items(from_item_slot, to_item_slot)
@@ -240,14 +241,8 @@ func _on_SmeltButton_pressed():
 	else:
 		Server.start_smelter()
 
-func is_equipment_slot(array: Array):
-	for element in array:
-		if element < 10 and element > 0:
-			return true
-	return false
-
 func get_item_stats(slot: int):
-	if slot > 9:
+	if slot > ItemDatabase.Slots.LAST_EQUIP_SLOT:
 		Logger.warn("Invalid slot number requested from Inventory.gd:get_item_stats")
 	else:
 		var item_id = inventory.slots[slot]["item_id"]
