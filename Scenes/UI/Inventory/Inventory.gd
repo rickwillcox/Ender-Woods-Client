@@ -31,15 +31,24 @@ var awaiting_response : bool = false
 var dir = Directory.new()
 var smelt_button : Button
 
+signal equipment_slot_updated
+
 func _ready():
 	inventory_character.blend_position = Vector2(0, 1)
 	inventory_character.travel("idle", true)
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("inventory_nok", self, "handle_inventory_nok")
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("inventory_ok", self, "handle_inventory_ok")
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("item_craft_nok", self, "handle_item_craft_nok")
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("item_craft_ok", self, "handle_item_craft_ok")
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("inventory_slot_update", self, "handle_inventory_slot_update")
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("smelter_started", self, "handle_smelter_started")
+# warning-ignore:return_value_discarded
 	PacketHandler.connect("smelter_stopped", self, "handle_smelter_stopped")
 	smelt_button = find_node("SmeltButton")
 	
@@ -106,7 +115,9 @@ func move_items(from_item_slot, to_item_slot):
 
 	update_slot_display(from_item_slot)
 	update_slot_display(to_item_slot)
-
+	if ItemDatabase.is_equipment_slot(from_item_slot) or \
+		ItemDatabase.is_equipment_slot(to_item_slot):
+		emit_signal("equipment_slot_updated")
 	# update world server
 	Server.move_items(from_item_slot, to_item_slot)
 
@@ -229,3 +240,12 @@ func _on_SmeltButton_pressed():
 		Server.stop_smelter()
 	else:
 		Server.start_smelter()
+
+func get_item_stats(slot: int):
+	if slot > ItemDatabase.Slots.LAST_EQUIP_SLOT:
+		Logger.warn("Invalid slot number requested from Inventory.gd:get_item_stats")
+	else:
+		var item_id = inventory.slots[slot]["item_id"]
+		print(item_id)
+		#Continue here item should has prefix and suffix as well to get stats
+

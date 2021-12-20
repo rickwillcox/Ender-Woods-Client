@@ -40,9 +40,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemDropZone" type="Control" parent="." groups=[
-"item_drop_zone",
-]]
+[node name="ItemDropZone" type="Control" parent="." groups=["item_drop_zone"]]
 margin_left = -87.0
 margin_top = -69.0
 margin_right = 969.0
@@ -279,8 +277,8 @@ rect_min_size = Vector2( 25, 0 )
 
 [node name="Stash" type="VBoxContainer" parent="Background/HBoxContainer"]
 visible = false
-margin_left = 29.0
-margin_right = 325.0
+margin_left = 329.0
+margin_right = 625.0
 margin_bottom = 350.0
 rect_min_size = Vector2( 275, 0 )
 size_flags_vertical = 3
@@ -477,7 +475,7 @@ item_slot = 64
 visible = false
 margin_left = 329.0
 margin_right = 644.0
-margin_bottom = 2256.0
+margin_bottom = 354.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_vertical = 3
 custom_constants/separation = 6
