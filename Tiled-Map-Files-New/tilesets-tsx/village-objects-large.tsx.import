@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/village-objects-large.tsx-01921a1b8a2af3e042e26eea13faf223.res"
+
+[deps]
+
+source_file="res://Tiled-Map-Files/tilesets-tsx/village-objects-large.tsx"
+dest_files=[ "res://.import/village-objects-large.tsx-01921a1b8a2af3e042e26eea13faf223.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+apply_offset=false
+post_import_script=""

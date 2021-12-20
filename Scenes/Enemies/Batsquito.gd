@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var velocity : Vector2 = Vector2.ZERO
-var max_hp : int = 9000
-var current_hp : int = 9000
+var max_hp : int = 200
+var current_hp : int 
 var dead : bool = false
 var attacking : bool = false
 var type
@@ -11,9 +11,9 @@ onready var sprite = $Sprite
 onready var shadow = $Shadow
 onready var animation_player = $AnimationPlayer
 
-func ready():
+func _ready():
 	$HealthBar.max_value = max_hp
-	$HealthBar.value = current_hp
+	$HealthBar.value = max_hp
 
 func MoveEnemy(new_position : Vector2):
 	if dead == true:

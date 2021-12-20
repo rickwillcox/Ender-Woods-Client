@@ -12,8 +12,11 @@ var last_world_state = 0
 var world_state_buffer = []
 var item_textures : Dictionary = {}
 
+# MAYBE REMOVE NOT USED ANYMORE!
 var slime = preload("res://Scenes/Enemies/Slime.tscn")
 var mino = preload("res://Scenes/Enemies/Mino.tscn")
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 var client_player = preload("res://Scenes/Player/Player.tscn")
 var item_drop = preload("res://Scenes/Props/ItemGround.tscn")
 
@@ -69,13 +72,17 @@ func next_background_music_track():
 		track_playing += 1
 	play_background_music()
 
-func SpawnSelf():
+func spawn_self(experience : int, current_health : float) -> void:
 	#start background music
 	play_background_music()
 	var client_player_instance = client_player.instance()
 	client_player_instance.position = Vector2(250,250)
 	client_player_instance.player_id = get_tree().get_network_unique_id()
-	Logger.info("Spawned player with id = %d" % client_player_instance.player_id)
+	client_player_instance.experience = experience
+	client_player_instance.current_health = current_health
+	Logger.info(
+		"Spawned player with id = %d, health = %d, experience = %d" %
+		[client_player_instance.player_id, current_health, experience])
 	get_node("YSort").add_child(client_player_instance)
 	$GUI/Inventory.set_player_character(client_player_instance.get_character_base())
 

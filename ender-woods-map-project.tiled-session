@@ -1,0 +1,352 @@
+{
+    "activeFile": "Tiled-Map-Files-New/ender-woods-map.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "/home/rick/Desktop/map": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 13636.333333333332,
+                "y": 27251.666666666664
+            }
+        },
+        "/home/rick/Desktop/spritesheets_for_tiled/tilesets/summer_trees.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/rick/Desktop/tiled_testing/Forest/Forest.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "/home/rick/Desktop/tiled_testing/Forest/trees_test.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/rick/Desktop/tiled_testing/map.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -0.6666666666666856,
+                "y": 0.3333333333333144
+            }
+        },
+        "/home/rick/Desktop/tiled_testing/testautotile": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -211.5,
+                "y": 206.75
+            }
+        },
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 2.0a/usage guide/_summer forest, usage guide.tmx": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 203.5,
+                "y": 457.8333333333333
+            }
+        },
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 2.0a/usage guide/summer forest, tree tops.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 2.0a/usage guide/summer forest.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 3.0b/usage guide/_summer forest, usage guide.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 309.25,
+                "y": 119.75
+            }
+        },
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 3.0b/usage guide/summer forest, tree tops.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 3.0b/usage guide/summer forest.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 3
+        },
+        "/home/rick/Documents/Ender-Woods/files/012 basic monster set.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/Forest.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/NPCSTOGETHER.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/ender-woods-map.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 7156.666666666666,
+                "y": 9259.333333333332
+            }
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/Houses.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/auto-tole-tilesets/auto-tile-setup.tsx": {
+            "scaleInDock": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/base_textures.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/big_rocks.tsx": {
+            "scaleInDock": 2
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/bridges & more v1.tsx": {
+            "scaleInDock": 2
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/cliffs.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/detail.tsx": {
+            "scaleInDock": 1.5
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/fences and walls 16x16 obj.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/fences and walls 4x4.tsx": {
+            "scaleInDock": 8,
+            "scaleInEditor": 1
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/fences and walls.tsx": {
+            "scaleInDock": 1.5
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/monsters.tsx": {
+            "scaleInDock": 2
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/npcs.tsx": {
+            "scaleInDock": 1.5
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/trees.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/village-objects-large.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/village-objects-small.tsx": {
+            "scaleInDock": 1.5
+        },
+        "/home/rick/Documents/Ender-Woods/files/character_spritesheet.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/farmhouse mockup.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/home exteriors, timber roof help.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/lotsofassets.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/newworldmap.tmx": {
+            "scale": 1,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 2891.5,
+                "y": -86.5
+            }
+        },
+        "/home/rick/Documents/Ender-Woods/files/sample map.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/signposts.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/traveler's camp, sorted 3.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/trees.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/trees_test_object.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/tropical shores.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/Ender-Woods/files/tropical shores4896.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "/home/rick/Documents/Ender-Woods/files/village accessories v4.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 4
+        },
+        "/home/rick/Documents/all manaseed assets/21.06 - Bridges & More/sample map/_bridges & more samples (OPEN THIS IN TILED).tmx": {
+            "scale": 4,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 305.375,
+                "y": 288.75
+            }
+        },
+        "/home/rick/Documents/all manaseed assets/21.06 - Bridges & More/sample map/bridges & more v1.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/ender-woods-map.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 8818.181818181818,
+                "y": 7722.727272727272
+            }
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/Houses.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/auto-tole-tilesets/auto-tile-setup.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/base_textures.tsx": {
+            "scaleInDock": 2
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/big_rocks.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/bridges & more v1.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/cliffs.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/detail.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/fences and walls 16x16 obj.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/fences and walls.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/monsters.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/npcs.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/trees.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/village-objects-large.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files-New/tilesets-tsx/village-objects-small.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiled-Map-Files/ender-woods-map.tmx": {
+            "scale": 2,
+            "selectedLayer": 11,
+            "viewCenter": {
+                "x": 7083.5,
+                "y": 9351
+            }
+        },
+        "Tiled-Map-Files/tilesets-tsx/Houses.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 0.5
+        },
+        "Tiled-Map-Files/tilesets-tsx/auto-tole-tilesets/auto-tile-setup.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/auto-tole-tilesets/light-grass-deep-water.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/base_textures.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/big_rocks.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/bridges & more v1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "Tiled-Map-Files/tilesets-tsx/cliffs.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 4
+        },
+        "Tiled-Map-Files/tilesets-tsx/detail.tsx": {
+            "scaleInDock": 5.5,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/fences and walls.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 5.5
+        },
+        "Tiled-Map-Files/tilesets-tsx/monsters.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Tiled-Map-Files/tilesets-tsx/npcs.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Tiled-Map-Files/tilesets-tsx/small_rocks.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/trees.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 8
+        },
+        "Tiled-Map-Files/tilesets-tsx/village-objects-large.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tiled-Map-Files/tilesets-tsx/village-objects-small.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "/home/rick/Documents/Ender-Woods/client/Tiled-Map-Files/tilesets-png",
+    "openFiles": [
+        "Tiled-Map-Files-New/ender-woods-map.tmx",
+        "Tiled-Map-Files-New/tilesets-tsx/trees.tsx"
+    ],
+    "project": "",
+    "recentFiles": [
+        "Tiled-Map-Files-New/tilesets-tsx/trees.tsx",
+        "Tiled-Map-Files-New/ender-woods-map.tmx",
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 2.0a/usage guide/_summer forest, usage guide.tmx",
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 3.0b/usage guide/summer forest.tsx",
+        "/home/rick/Documents/Ender-Woods/all manaseed assets/20.07 - Summer Forest 3.0b/usage guide/_summer forest, usage guide.tmx",
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/fences and walls 16x16 obj.tsx",
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/fences and walls 4x4.tsx",
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/tilesets-tsx/base_textures.tsx",
+        "/home/rick/Documents/Ender-Woods/files/Tiled-Map-Files/ender-woods-map.tmx",
+        "/home/rick/Documents/Ender-Woods/files/newworldmap.tmx",
+        "Tiled-Map-Files/tilesets-tsx/cliffs.tsx",
+        "Tiled-Map-Files/tilesets-tsx/npcs.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 50
+    }
+}

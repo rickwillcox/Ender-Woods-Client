@@ -1,0 +1,6 @@
+[gd_resource type="Image" load_steps=3 format=2]
+
+[ext_resource path="res://tools/TiledLayerImage.gd" type="Script" id=1]
+[ext_resource path="res://tools/test/new_tileset.tres" type="TileSet" id=2]
+
+[resource]

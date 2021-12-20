@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/CharacterBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Player/Stats.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/HealthBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.06179
@@ -42,10 +43,10 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="PlayerName" type="Label" parent="."]
-margin_left = -33.575
-margin_top = -32.0
-margin_right = 34.425
-margin_bottom = -18.0
+margin_left = -33.7623
+margin_top = -39.6788
+margin_right = 34.2377
+margin_bottom = -25.6788
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.87451, 1, 0, 1 )
 align = 1
@@ -59,5 +60,9 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Stats" parent="." instance=ExtResource( 4 )]
+
+[node name="HealthBar" parent="." instance=ExtResource( 5 )]
+margin_top = -25.3678
+margin_bottom = -21.3678
 
 [connection signal="animation_finished" from="CharacterBase" to="." method="_on_CharacterBase_animation_finished"]
