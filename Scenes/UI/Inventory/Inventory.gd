@@ -15,7 +15,8 @@ class_name InventoryScreen
 #### eg : 1_silver_sword      983_gold_leaf
 
 var player_character
-var inventory : Inventory = Inventory.new()
+#var inventory : Inventory = Inventory.new() 
+#USE PlayerInfo.inventory
 
 onready var inventory_character = $Background/HBoxContainer/Equipment/GridContainer/CharacterBase
 onready var stash_container = $"Background/HBoxContainer/Stash"
@@ -68,8 +69,8 @@ func _ready():
 				item_textures[id] =  load("res://Assets/inventory/Items/" + file.split(".import")[0])
 	
 func RefreshInventory(inventory_data):
-	inventory.update(inventory_data) 
-	for slot in inventory.slots:
+	PlayerInfo.inventory.update(inventory_data) 
+	for slot in PlayerInfo.inventory.slots:
 		update_slot_display(slot)
 	var character_display_slots = [ItemDatabase.Slots.CHEST_SLOT,
 									ItemDatabase.Slots.HEAD_SLOT,
@@ -85,9 +86,9 @@ func register_slot(node, item_slot):
 	item_slots[item_slot] = node
 
 func update_slot_display(item_slot):
-	if inventory.slots.has(item_slot):
-		var item_id = inventory.slots[item_slot]["item_id"]
-		var amount = inventory.slots[item_slot]["amount"]
+	if PlayerInfo.inventory.slots.has(item_slot):
+		var item_id = PlayerInfo.inventory.slots[item_slot]["item_id"]
+		var amount = PlayerInfo.inventory.slots[item_slot]["amount"]
 		item_slots[item_slot].set_display(item_textures[item_id], amount)
 		inventory_character.equip_item(item_id, item_slot)
 		player_character.equip_item(item_id, item_slot)
@@ -99,19 +100,19 @@ func update_slot_display(item_slot):
 func can_move(item_slot):
 	if awaiting_response:
 		return false
-	if inventory.slots.has(item_slot):
+	if PlayerInfo.inventory.slots.has(item_slot):
 		return true
 	return false
 
 func is_move_to_slot_allowed(from_item_slot, to_item_slot):
 	if awaiting_response:
 		return false
-	return inventory.is_move_to_slot_allowed(from_item_slot, to_item_slot)
+	return PlayerInfo.inventory.is_move_to_slot_allowed(from_item_slot, to_item_slot)
 
 func move_items(from_item_slot, to_item_slot):
 	awaiting_response = true
 
-	inventory.move_items(from_item_slot, to_item_slot)
+	PlayerInfo.inventory.move_items(from_item_slot, to_item_slot)
 
 	update_slot_display(from_item_slot)
 	update_slot_display(to_item_slot)
@@ -127,20 +128,20 @@ func pickup_item(item_pickup : ItemGround):
 		return
 	awaiting_response = true
 	var amount = 1
-	if inventory.fit_item(item_pickup.item_id, amount) != 0:
+	if PlayerInfo.inventory.fit_item(item_pickup.item_id, amount) != 0:
 		awaiting_response = false
 		return
 	var backpack = range(
 		ItemDatabase.Slots.FIRST_BACKPACK_SLOT,
 		ItemDatabase.Slots.LAST_BACKPACK_SLOT + 1)
-	var affected_slots = inventory.add_item(item_pickup.item_id, amount, backpack, true)
+	var affected_slots = PlayerInfo.inventory.add_item(item_pickup.item_id, amount, backpack, true)
 	for slot in affected_slots:
 		update_slot_display(slot)
 	Server.pickup_item(int(item_pickup.name), amount)
 	item_to_cleanup_path = item_pickup.get_path()
 
 func handle_inventory_ok():
-	inventory.confirm_last_operation()
+	PlayerInfo.inventory.confirm_last_operation()
 	var node : ItemGround = get_node_or_null(item_to_cleanup_path)
 	if node != null:
 		node.start_tween()
@@ -148,7 +149,7 @@ func handle_inventory_ok():
 	awaiting_response = false
 
 func handle_inventory_nok():
-	for slot in inventory.reverse_last_operation():
+	for slot in PlayerInfo.inventory.reverse_last_operation():
 		update_slot_display(slot)
 	awaiting_response = false
 
@@ -161,9 +162,9 @@ func handle_item_craft_nok():
 func handle_item_craft_ok(slot, item_id):
 	var recipe = ItemDatabase.all_recipe_data[crating_recipe]
 	var materials = recipe["materials"]
-	inventory.remove_materials(materials)
-	inventory.add_item(recipe["result_item_id"], 1)
-	for slot in inventory.slots.keys():
+	PlayerInfo.inventory.remove_materials(materials)
+	PlayerInfo.inventory.add_item(recipe["result_item_id"], 1)
+	for slot in PlayerInfo.inventory.slots.keys():
 		update_slot_display(slot)
 	awaiting_response = false
 
@@ -181,18 +182,18 @@ func _on_CloseInventoryButton_pressed() -> void:
 	
 func handle_inventory_slot_update(slot : int, item_id : int, amount : int):
 	if item_id == 0:
-		inventory.slots.erase(slot)
+		PlayerInfo.inventory.slots.erase(slot)
 	else:
-		inventory.slots[slot] = {"item_id" : item_id, "amount" : amount }
+		PlayerInfo.inventory.slots[slot] = {"item_id" : item_id, "amount" : amount }
 	update_slot_display(slot)
 
 func handle_smelter_started():
-	inventory.smelter_started = true
+	PlayerInfo.inventory.smelter_started = true
 	awaiting_response = false
 	smelt_button.disabled = false
 	
 func handle_smelter_stopped():
-	inventory.smelter_started = false
+	PlayerInfo.inventory.smelter_started = false
 	awaiting_response = false
 	smelt_button.disabled = false
 	
@@ -236,7 +237,7 @@ func _on_BlackSmithPickAxe_pressed() -> void:
 func _on_SmeltButton_pressed():
 	awaiting_response = true
 	smelt_button.disabled = true
-	if inventory.smelter_started:
+	if PlayerInfo.inventory.smelter_started:
 		Server.stop_smelter()
 	else:
 		Server.start_smelter()
@@ -245,6 +246,6 @@ func get_item_stats(slot: int):
 	if slot > ItemDatabase.Slots.LAST_EQUIP_SLOT:
 		Logger.warn("Invalid slot number requested from Inventory.gd:get_item_stats")
 	else:
-		var item_id = inventory.slots[slot]["item_id"]
+		var item_id = PlayerInfo.inventory.slots[slot]["item_id"]
 		print(item_id)
 		#Continue here item should have prefix and suffix as well to get stats
