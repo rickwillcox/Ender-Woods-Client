@@ -1,4 +1,5 @@
-extends Node
+extends Resource
+class_name Stats
 
 export var Experience : int setget Experience_set, Experience_get
 export var Level : int setget Level_set, Level_get

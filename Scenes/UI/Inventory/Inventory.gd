@@ -247,5 +247,4 @@ func get_item_stats(slot: int):
 	else:
 		var item_id = inventory.slots[slot]["item_id"]
 		print(item_id)
-		#Continue here item should has prefix and suffix as well to get stats
-
+		#Continue here item should have prefix and suffix as well to get stats
