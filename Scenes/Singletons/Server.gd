@@ -155,6 +155,6 @@ func start_smelter():
 func stop_smelter():
 	rpc_id(1, "stop_smelter")
 
-remote func set_player_quests_on_player(player_quests : Dictionary):
+remote func set_player_quests_on_client(player_quests : Dictionary):
 	emit_signal("set_player_quests", player_quests)
 	
