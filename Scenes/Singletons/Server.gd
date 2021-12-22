@@ -156,5 +156,14 @@ func stop_smelter():
 	rpc_id(1, "stop_smelter")
 
 remote func set_player_quests_on_client(player_quests : Dictionary):
+	if player_quests.has("INVALID-QUEST_STATE"):
+		Logger.warn("Player Quest State is invalid")
+		# TODO revert back to old quest state, 
+		# TODO keep history of latest quest state
+		pass
 	emit_signal("set_player_quests", player_quests)
+
+func send_player_quest_update_to_world_sever(player_quests : Dictionary):
+	# TODO keep history of Quest State
+	rpc_id(1, "receive_player_quest_update_from_client", player_quests)
 	
