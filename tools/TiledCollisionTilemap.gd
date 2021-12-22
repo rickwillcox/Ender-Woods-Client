@@ -197,7 +197,7 @@ func update_collision_layer(layer, data):
 
 		position = offset + map_pos_offset
 
-		var chunks = layer.chunks
+		var chunks = [layer]
 
 		var i = 0
 		for chunk in chunks:
