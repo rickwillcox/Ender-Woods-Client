@@ -34,6 +34,8 @@ func _ready():
 	PacketHandler.connect("own_player_take_damage", self, "take_damage")
 	PacketHandler.connect("own_player_dead", self, "_on_death")
 	Server.connect("set_player_quests", self, "set_quests")
+	# Connect to NPC signal
+	get_parent().get_node("NPCs/NPC").connect("change_quest_state", self, "set_quests")
 
 		
 func set_experience(_experience):
@@ -125,8 +127,13 @@ func _on_death(respawn_point):
 	position = respawn_point
 
 func set_quests(updated_quests):
-	player_quests.set_player_quests(player_quests.get_player_quests(), updated_quests)
-	print(get_quests())
+	#this checks if the quest state is the same or we get an infinite loop of death
+	if not updated_quests.hash() == player_quests.get_player_quests().hash():
+		player_quests.set_player_quests(player_quests.get_player_quests(), updated_quests)
+		print("setting quests: ", updated_quests)
+		Server.send_player_quest_update_to_world_sever(updated_quests)
+	else:
+		print("same quest state")
 	
 func get_quests():
 	return player_quests.get_player_quests()
