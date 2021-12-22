@@ -119,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://common/PacketSerializer.gd"
 }, {
+"base": "Resource",
+"class": "TiledObjectMap",
+"language": "GDScript",
+"path": "res://tools/TiledMap.gd"
+}, {
 "base": "YSort",
 "class": "TiledObjectYSort",
 "language": "GDScript",
@@ -162,6 +167,7 @@ _global_script_class_icons={
 "PlayerQuests": "",
 "PolygonSorter": "",
 "Serializer": "",
+"TiledObjectMap": "",
 "TiledObjectYSort": "",
 "TiledParser": "",
 "TiledTileMap": "",
