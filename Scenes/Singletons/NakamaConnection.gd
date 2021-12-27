@@ -52,7 +52,7 @@ func get_items_database():
 	var result = yield(client.rpc_async(session, "get_items_database"), "completed")
 	var data = JSON.parse(result["payload"]).result
 	assert(data["success"] == true)
-
+	
 	ItemDatabase.all_item_data = data["result"]
 	Utils.convert_keys_to_int(ItemDatabase.all_item_data)
 	emit_signal("result_done")

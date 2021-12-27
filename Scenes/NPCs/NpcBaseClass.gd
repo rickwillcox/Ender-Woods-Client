@@ -1,20 +1,31 @@
 extends Node2D
 
-var npc_name : String
-var npc_quests :Dictionary = {}
+export var npc_name : String
+var npc_quests_begins : Dictionary = {}
+var npc_quests_ends : Dictionary = {}
 
 # TODO make this open dialog instead of just emitting signal
 signal change_quest_state(player_quest_state) #this is just a testing function for now
 signal quest_completed()
 
 # If the npc is involved in the quest they will have that quest added to the dictionary.
-func set_npc_quests(quests : Dictionary):
+func set_npc_quests():
 	# TODO unfinished
-	for quest_id in quests:
-		if quest_id["npc_begins"] == npc_name or quest_id["npc_ends"] == npc_name:
-			npc_quests[quest_id] = quests[quest_id]
+	if AllQuests.all_quests.hash() == {}.hash():
+		# should fail something here
+		Logger.warn("No Quest database on client")
+		return
+	for quest_id in AllQuests.all_quests:
+		if AllQuests.all_quests[quest_id]["npc_begins"] == npc_name:
+			npc_quests_begins[quest_id] = AllQuests.all_quests[quest_id]
+		if AllQuests.all_quests[quest_id]["npc_ends"] == npc_name:
+			npc_quests_ends[quest_id] = AllQuests.all_quests[quest_id]
 
-func get_npc_quests():
+func get_npc_quests() -> Dictionary:
+	var npc_quests : Dictionary = {
+		"npc_quests_begins" : npc_quests_begins,
+		"npc_quests_ends" : npc_quests_ends
+	}
 	return npc_quests
 
 # shows or hides the exclamation mark / Finished quest symbol if we have one

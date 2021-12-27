@@ -1,15 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/NPCs/NPC.gd" type="Script" id=1]
-[ext_resource path="res://Assets/NPCS/placeholder_fisherman.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/NPCs/NpcBaseClass.gd" type="Script" id=1]
+[ext_resource path="res://Assets/NPCS/beach_chief_TEMP.jpeg" type="Texture" id=2]
 [ext_resource path="res://Assets/quest/quest_mark.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
-[node name="NPC" type="Node2D"]
+[node name="BeachChiefSam" type="Node2D"]
 script = ExtResource( 1 )
+npc_name = "beach_chief_sam"
 
 [node name="NPCSprite" type="Sprite" parent="."]
+position = Vector2( -6.18719, -0.930641 )
+scale = Vector2( 0.152512, 0.152512 )
 texture = ExtResource( 2 )
 
 [node name="QuestMarker" type="Sprite" parent="."]

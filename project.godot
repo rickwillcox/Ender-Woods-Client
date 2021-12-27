@@ -191,6 +191,8 @@ Enemies="*res://Scenes/Singletons/Enemies.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
 NakamaConnection="*res://Scenes/Singletons/NakamaConnection.gd"
 GooglePlayConnection="*res://Scenes/Singletons/GooglePlayConnection.gd"
+AllQuests="*res://common/AllQuests.gd"
+NpcLogic="*res://Scenes/Singletons/NpcLogic.gd"
 
 [debug]
 
