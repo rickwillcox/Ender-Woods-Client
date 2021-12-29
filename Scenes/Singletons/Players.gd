@@ -63,7 +63,6 @@ func handle_initial_inventory(player_id, item_slot_array):
 
 
 func handle_player_take_damage(attacker : int, player_id :int, damage : int):
-	Logger.info("PlayerID: %d | Damage: %d | Attack %d" % [player_id, damage, attacker])
 	var player_receiving_damage = get_player_node(player_id)
 	if player_receiving_damage:
 		player_receiving_damage.take_damage(damage, attacker)

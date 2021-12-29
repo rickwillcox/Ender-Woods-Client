@@ -169,4 +169,4 @@ func send_player_quest_update_to_world_sever(player_quests : Dictionary):
 	
 remote func receive_all_quests(all_quests):
 	AllQuests.set_all_quests(all_quests)
-	NpcLogic.set_npc_quests_start_end()
+	NpcLogic.set_npc_quests_start_end(get_parent().get_node("/root/SceneHandler/Map/YSort/NPCs"), all_quests)

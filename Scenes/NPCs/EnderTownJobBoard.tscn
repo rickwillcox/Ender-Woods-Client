@@ -5,8 +5,9 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 
-[node name="MinerGreg" type="Node2D"]
+[node name="EnderTownJobBoard" type="Node2D"]
 script = ExtResource( 1 )
+npc_name = "ender_town_job_board"
 
 [node name="NPCSprite" type="Sprite" parent="."]
 

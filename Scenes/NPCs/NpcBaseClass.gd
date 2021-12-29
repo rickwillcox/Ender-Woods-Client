@@ -1,7 +1,8 @@
 extends Node2D
+class_name NpcBaseClass
 
 export var npc_name : String
-var npc_quests_begins : Dictionary = {}
+var npc_quests_starts : Dictionary = {}
 var npc_quests_ends : Dictionary = {}
 
 # TODO make this open dialog instead of just emitting signal
@@ -9,21 +10,21 @@ signal change_quest_state(player_quest_state) #this is just a testing function f
 signal quest_completed()
 
 # If the npc is involved in the quest they will have that quest added to the dictionary.
-func set_npc_quests():
+func set_npc_quests(all_quests : Dictionary):
 	# TODO unfinished
-	if AllQuests.all_quests.hash() == {}.hash():
+	if all_quests.hash() == {}.hash():
 		# should fail something here
 		Logger.warn("No Quest database on client")
 		return
-	for quest_id in AllQuests.all_quests:
-		if AllQuests.all_quests[quest_id]["npc_begins"] == npc_name:
-			npc_quests_begins[quest_id] = AllQuests.all_quests[quest_id]
-		if AllQuests.all_quests[quest_id]["npc_ends"] == npc_name:
-			npc_quests_ends[quest_id] = AllQuests.all_quests[quest_id]
+	for quest_id in all_quests:
+		if all_quests[quest_id]["npc_starts"] == npc_name:
+			npc_quests_starts[quest_id] = all_quests[quest_id]
+		if all_quests[quest_id]["npc_ends"] == npc_name:
+			npc_quests_ends[quest_id] = all_quests[quest_id]
 
 func get_npc_quests() -> Dictionary:
 	var npc_quests : Dictionary = {
-		"npc_quests_begins" : npc_quests_begins,
+		"npc_quests_starts" : npc_quests_starts,
 		"npc_quests_ends" : npc_quests_ends
 	}
 	return npc_quests
@@ -53,6 +54,7 @@ func _on_NPCInteract_pressed() -> void:
 			TEST_completed: null
 		}
 	}
+	# TODO make this not gross
 	var player = get_parent().get_parent().get_node("Player")
 	
 	

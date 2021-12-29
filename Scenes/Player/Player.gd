@@ -135,7 +135,7 @@ func set_quests(updated_quests):
 	if not updated_quests.hash() == player_quests.get_player_quests().hash():
 		player_quests.set_player_quests(player_quests.get_player_quests(), updated_quests)
 		Server.send_player_quest_update_to_world_sever(updated_quests)
-		NpcLogic.update_npc_quests_based_on_player_quest_state(player_stats)
+		NpcLogic.update_npc_quests_based_on_player_quest_state(player_stats, get_node("/root/SceneHandler/Map/YSort/Player"))
 	else:
 		print("same quest state")
 	
