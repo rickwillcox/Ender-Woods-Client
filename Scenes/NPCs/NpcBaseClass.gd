@@ -44,7 +44,7 @@ func player_npc_quest_state(player_stats : Dictionary, player_quests : Dictionar
 	var quests_player_has_started = get_quests_player_has_started(player_quests)	
 	var quests_player_has_completed = get_quests_player_has_completed(player_quests)
 	
-	# TODO quests_ready_to_be_completed (milestones reached)
+	# TODO quests_ready_to_be_completed (tasks reached)
 	# npc_quest_state is specific to each npc, this will give us the varaibles needed to use in Dialogic
 	# quests_ready_to_complete is a quest that is ready to be turned in
 	var npc_quest_state : Dictionary = {
