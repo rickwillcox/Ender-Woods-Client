@@ -46,30 +46,35 @@ func player_npc_quest_state(player_stats : Dictionary, player_quests : Dictionar
 	
 	# TODO quests_ready_to_be_completed (milestones reached)
 	# npc_quest_state is specific to each npc, this will give us the varaibles needed to use in Dialogic
+	# quests_ready_to_complete is a quest that is ready to be turned in
 	var npc_quest_state : Dictionary = {
 		"quests_to_start" : {},
 		"quests_already_started" : {},
-		"quests_ready_to_be_completed" : {},
+		"quests_ready_to_complete" : {}, 
 		"quests_completed" : {}
 	}
 	
+	# Quests players can start at this npc
 	for quest in quests_player_can_start:
 		if quest in npc_quests_starts:
 			npc_quest_state["quests_to_start"][quest] = null
 	
+	# Quests that are started both tasks not finished and tasks finished
 	for quest in quests_player_has_started:
+		var player_finished_all_quest_tasks : bool = player_quests_instance.player_finished_all_tasks_for_quest(quest, player_quests)
 		if quest in npc_quests_starts:
-			npc_quest_state["quests_already_started"][quest] = null
-	
-	# This is for when player has finished the quest but not turned it in
-	for quest in quests_player_has_started:
-		#check tasks here
-		check_all_tasks_completed
-		if quest in npc_quests_starts and all_tasks_completed:
-			npc_quest_state["quests_ready_to_be_completed"][quest] = null
-	
-		
-	
+			if player_finished_all_quest_tasks:
+				# Quest is started, tasks are done and ready to be turned in
+				npc_quest_state["quests_ready_to_complete"][quest] = null
+			else:
+				# Quest is started, tasks are NOT done.
+				npc_quest_state["quests_already_started"][quest] = null
+			
+	# Quests that are already completed, may be used later for some dialog. Again specific to this npc.
+	for quest in quests_player_has_completed:
+		if quest in npc_quests_ends:
+			npc_quest_state["quests_completed"][quest] = null
+
 	return npc_quest_state
 	
 # TODO
