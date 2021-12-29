@@ -1,5 +1,8 @@
 extends "res://addons/gut/test.gd"
 
+# notes 
+# give player empty_player_quest_state initially in real game (maybe)
+
 # all_quests will need to be updated as we add new quests, just copy the exact json from the nakama storage object.
 var all_quests : Dictionary = {
   "1": {
@@ -320,6 +323,10 @@ var all_quests : Dictionary = {
 	}
   }
 }
+var empty_player_quest_state : Dictionary = {
+		"player_started_quests": {},
+		"player_completed_quest_ids": {}
+	}
 
 # all npcs stored under this node
 var NpcYsortNode
@@ -355,12 +362,42 @@ func before_all():
 	check_setup_travelling_vendor_robby()
 	check_setup_recruiter_billy()
 	check_setup_ender_town_job_board()
-	# Currently sets up a modified verson of the player but it should still work
-	# Uses the Player_TESTING.gd script as well as a new KineticBody2D node.
+
+func before_each():
 	setup_player()
 	check_setup_player()
+	assert_true(self.has_node("Player"))
 	
-func test
+func after_each():
+	player.free()
+	assert_false(self.has_node("Player"))
+	
+func test_set_get_player_quests():
+	var player_quest_state : Dictionary = {
+		"player_started_quests": {
+			"4": {}
+		},
+		"player_completed_quest_ids": {
+			"1" : null,
+			"2" : null,
+			"3": null
+		}
+	}
+	player.player_quests.set_player_quests(player.player_quests.get_player_quests(), player_quest_state)
+	#Check quests were updated
+	assert_eq_deep(player.player_quests.get_player_quests(), player_quest_state)
+	
+func test_fisherman_bob_player_quests():
+	var player_stats : Dictionary = {
+		"level" : 0
+	}
+
+	
+	
+	
+	
+	
+	
 
 
 
@@ -407,7 +444,6 @@ func check_setup_fisherman_bob():
 	assert_true(NpcYsortNode.has_node("FishermanBob"))
 	assert_has_method(fisherman_bob, "get_npc_quests")
 	assert_has_method(fisherman_bob, "set_npc_quests")
-	assert_has_method(fisherman_bob, "check_if_player_quests_changed")
 	assert_has_method(fisherman_bob, "_on_NPCInteract_pressed")
 	assert_true("npc_name" in fisherman_bob)
 	assert_true("npc_quests_starts" in fisherman_bob)
@@ -429,7 +465,6 @@ func check_setup_beach_chief_sam():
 	assert_true(NpcYsortNode.has_node("BeachChiefSam"))
 	assert_has_method(beach_chief_sam, "get_npc_quests")
 	assert_has_method(beach_chief_sam, "set_npc_quests")
-	assert_has_method(beach_chief_sam, "check_if_player_quests_changed")
 	assert_has_method(beach_chief_sam, "_on_NPCInteract_pressed")
 	assert_true("npc_name" in beach_chief_sam)
 	assert_true("npc_quests_starts" in beach_chief_sam)
@@ -457,7 +492,6 @@ func check_setup_miner_greg():
 	assert_true(NpcYsortNode.has_node("MinerGreg"))
 	assert_has_method(miner_greg, "get_npc_quests")
 	assert_has_method(miner_greg, "set_npc_quests")
-	assert_has_method(miner_greg, "check_if_player_quests_changed")
 	assert_has_method(miner_greg, "_on_NPCInteract_pressed")
 	assert_true("npc_name" in miner_greg)
 	assert_true("npc_quests_starts" in miner_greg)
@@ -487,7 +521,6 @@ func check_setup_travelling_vendor_robby():
 	assert_true(NpcYsortNode.has_node("TravellingVendorRobby"))
 	assert_has_method(travelling_vendor_robby, "get_npc_quests")
 	assert_has_method(travelling_vendor_robby, "set_npc_quests")
-	assert_has_method(travelling_vendor_robby, "check_if_player_quests_changed")
 	assert_has_method(travelling_vendor_robby, "_on_NPCInteract_pressed")
 	assert_true("npc_name" in travelling_vendor_robby)
 	assert_true("npc_quests_starts" in travelling_vendor_robby)
@@ -516,7 +549,6 @@ func check_setup_recruiter_billy():
 	assert_true(NpcYsortNode.has_node("RecruiterBilly"))
 	assert_has_method(recruiter_billy, "get_npc_quests")
 	assert_has_method(recruiter_billy, "set_npc_quests")
-	assert_has_method(recruiter_billy, "check_if_player_quests_changed")
 	assert_has_method(recruiter_billy, "_on_NPCInteract_pressed")
 	assert_true("npc_name" in recruiter_billy)
 	assert_true("npc_quests_starts" in recruiter_billy)
@@ -542,7 +574,6 @@ func check_setup_ender_town_job_board():
 	assert_true(NpcYsortNode.has_node("EnderTownJobBoard"))
 	assert_has_method(ender_town_job_board, "get_npc_quests")
 	assert_has_method(ender_town_job_board, "set_npc_quests")
-	assert_has_method(ender_town_job_board, "check_if_player_quests_changed")
 	assert_has_method(ender_town_job_board, "_on_NPCInteract_pressed")
 	assert_true("npc_name" in ender_town_job_board)
 	assert_true("npc_quests_starts" in ender_town_job_board)
@@ -577,6 +608,7 @@ func setup_player():
 	player.name = "Player"
 	player.script = load("res://Scenes/Player/Player_TESTING.gd") 
 	add_child(player)
+	player.player_quests.set_player_quests(player.player_quests.get_player_quests(), empty_player_quest_state)
 	
 func check_setup_player():
 	# checking player set up (only works for quests right now)
@@ -584,4 +616,6 @@ func check_setup_player():
 	assert_has_method(get_node("Player"), "get_quests")
 	assert_true("player_quests" in get_node("Player"))
 	assert_true("player_stats" in get_node("Player"))
+		#check initial quest state is empty
+	assert_eq_deep(player.player_quests.get_player_quests(), empty_player_quest_state)
 

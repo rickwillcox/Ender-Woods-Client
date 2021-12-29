@@ -4,6 +4,7 @@ class_name NpcBaseClass
 export var npc_name : String
 var npc_quests_starts : Dictionary = {}
 var npc_quests_ends : Dictionary = {}
+var player_quests_instance : PlayerQuests = PlayerQuests.new()
 
 # TODO make this open dialog instead of just emitting signal
 signal change_quest_state(player_quest_state) #this is just a testing function for now
@@ -29,14 +30,48 @@ func get_npc_quests() -> Dictionary:
 	}
 	return npc_quests
 
-# shows or hides the exclamation mark / Finished quest symbol if we have one
-func check_if_player_quests_changed(player_quests):
-	pass
+func get_quests_player_can_start(player_stats : Dictionary, player_quests : Dictionary, all_quests : Dictionary):
+	return player_quests_instance.check_all_quest_requirements_to_start(player_stats, player_quests, all_quests)
+	
+func get_quests_player_has_started(player_quests : Dictionary):
+	return player_quests_instance.get_player_started_quests(player_quests)
 
+func get_quests_player_has_completed(player_quests : Dictionary):
+	return player_quests_instance.get_player_completed_quests(player_quests)
 
-func _on_TouchScreenButton_pressed() -> void:
-	pass # Replace with function body.
-
+func player_npc_quest_state(player_stats : Dictionary, player_quests : Dictionary, all_quests : Dictionary) -> Dictionary:
+	var quests_player_can_start = get_quests_player_can_start(player_stats, player_quests, all_quests)
+	var quests_player_has_started = get_quests_player_has_started(player_quests)	
+	var quests_player_has_completed = get_quests_player_has_completed(player_quests)
+	
+	# TODO quests_ready_to_be_completed (milestones reached)
+	# npc_quest_state is specific to each npc, this will give us the varaibles needed to use in Dialogic
+	var npc_quest_state : Dictionary = {
+		"quests_to_start" : {},
+		"quests_already_started" : {},
+		"quests_ready_to_be_completed" : {},
+		"quests_completed" : {}
+	}
+	
+	for quest in quests_player_can_start:
+		if quest in npc_quests_starts:
+			npc_quest_state["quests_to_start"][quest] = null
+	
+	for quest in quests_player_has_started:
+		if quest in npc_quests_starts:
+			npc_quest_state["quests_already_started"][quest] = null
+	
+	# This is for when player has finished the quest but not turned it in
+	for quest in quests_player_has_started:
+		#check tasks here
+		check_all_tasks_completed
+		if quest in npc_quests_starts and all_tasks_completed:
+			npc_quest_state["quests_ready_to_be_completed"][quest] = null
+	
+		
+	
+	return npc_quest_state
+	
 # TODO
 func _on_NPCInteract_pressed() -> void:
 	# Testing function REMOVE LATER
