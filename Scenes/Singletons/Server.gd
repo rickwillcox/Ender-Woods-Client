@@ -167,3 +167,6 @@ func send_player_quest_update_to_world_sever(player_quests : Dictionary):
 	# TODO keep history of Quest State
 	rpc_id(1, "receive_player_quest_update_from_client", player_quests)
 	
+remote func receive_all_quests(all_quests):
+	AllQuests.set_all_quests(all_quests)
+	NpcLogic.set_npc_quests_start_end(get_parent().get_node("/root/SceneHandler/Map/YSort/NPCs"), all_quests)

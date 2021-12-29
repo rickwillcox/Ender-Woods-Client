@@ -18,6 +18,10 @@ var current_hp : int = 30
 
 var player_quests : PlayerQuests = PlayerQuests.new()
 
+var player_stats : Dictionary = {
+		"level" : 0
+	}
+
 
 onready var joystick = get_node_or_null("../../GUI/Joystick")
 onready var player_stats_panel = get_node_or_null("../../GUI/PlayerStats")
@@ -34,8 +38,8 @@ func _ready():
 	PacketHandler.connect("own_player_take_damage", self, "take_damage")
 	PacketHandler.connect("own_player_dead", self, "_on_death")
 	Server.connect("set_player_quests", self, "set_quests")
-	# Connect to NPC signal
-	get_parent().get_node("NPCs/NPC").connect("change_quest_state", self, "set_quests")
+	# Connect to NPC signal / TODO change the way this works, does this even need to exist? Do I need to exist?
+#	get_parent().get_node("NPCs/NPC").connect("change_quest_state", self, "set_quests")
 
 		
 func set_experience(_experience):
@@ -130,8 +134,8 @@ func set_quests(updated_quests):
 	#this checks if the quest state is the same or we get an infinite loop of death
 	if not updated_quests.hash() == player_quests.get_player_quests().hash():
 		player_quests.set_player_quests(player_quests.get_player_quests(), updated_quests)
-		print("setting quests: ", updated_quests)
 		Server.send_player_quest_update_to_world_sever(updated_quests)
+		NpcLogic.update_npc_quests_based_on_player_quest_state(player_stats, get_node("/root/SceneHandler/Map/YSort/Player"))
 	else:
 		print("same quest state")
 	

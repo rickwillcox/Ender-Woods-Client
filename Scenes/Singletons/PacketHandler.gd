@@ -33,16 +33,16 @@ func handle_many(packets : Array):
 		packet_list += si.Opcodes.keys()[packet["op_code"]] + ", "
 	packet_list += "]"
 		
-	Logger.info("Received %d packets: %s" % [packets.size(), packet_list])
+#	Logger.info("Received %d packets: %s" % [packets.size(), packet_list])
 	for packet in packets:
 		handle(packet)
 
 func handle(packet):
-	Logger.info(packet)
+#	Logger.info(packet)
 	match packet["op_code"]:
 		si.Opcodes.TAKE_DAMAGE:
-			Logger.info("Entity %d received %d damage from entity %d" 
-					% [packet["victim"], packet["damage"], packet["attacker"]])
+#			Logger.info("Entity %d received %d damage from entity %d" 
+#					% [packet["victim"], packet["damage"], packet["attacker"]])
 			if packet["victim"] < 0:
 				emit_signal("enemy_take_damage", -packet["victim"], packet["damage"])
 			elif packet["victim"] == own_player_id:
@@ -56,7 +56,7 @@ func handle(packet):
 		si.Opcodes.REMOVE_ITEM:
 			emit_signal("remove_item", packet["item_id"])
 		si.Opcodes.ATTACK_SWING:
-			Logger.info("Entity %d swings weapon at entity %d" % [packet["attacker"], packet["victim"]])
+#			Logger.info("Entity %d swings weapon at entity %d" % [packet["attacker"], packet["victim"]])
 			if packet["attacker"] < 0:
 				# its enemy swinging at player:
 				emit_signal("enemy_swing", -packet["attacker"], packet["victim"])

@@ -153,7 +153,6 @@ func Level_calc(EXP = Experience):
 	var index = 0
 	for level_req in Experience_Curve:
 		if EXP < level_req:
-			print(index)
 			return index
 		else:
 			index += 1

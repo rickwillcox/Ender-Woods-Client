@@ -246,6 +246,5 @@ func get_item_stats(slot: int):
 		Logger.warn("Invalid slot number requested from Inventory.gd:get_item_stats")
 	else:
 		var item_id = inventory.slots[slot]["item_id"]
-		print(item_id)
 		#Continue here item should has prefix and suffix as well to get stats
 
