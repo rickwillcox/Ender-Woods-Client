@@ -30,19 +30,11 @@ func get_npc_quests() -> Dictionary:
 	}
 	return npc_quests
 
-func get_quests_player_can_start(player_stats : Dictionary, player_quests : Dictionary, all_quests : Dictionary):
-	return player_quests_instance.check_all_quest_requirements_to_start(player_stats, player_quests, all_quests)
-	
-func get_quests_player_has_started(player_quests : Dictionary):
-	return player_quests_instance.get_player_started_quests(player_quests)
-
-func get_quests_player_has_completed(player_quests : Dictionary):
-	return player_quests_instance.get_player_completed_quests(player_quests)
 
 func player_npc_quest_state(player_stats : Dictionary, player_quests : Dictionary, all_quests : Dictionary) -> Dictionary:
-	var quests_player_can_start = get_quests_player_can_start(player_stats, player_quests, all_quests)
-	var quests_player_has_started = get_quests_player_has_started(player_quests)	
-	var quests_player_has_completed = get_quests_player_has_completed(player_quests)
+	var quests_player_can_start = player_quests_instance.check_all_quest_requirements_to_start(player_stats, player_quests, all_quests)
+	var quests_player_has_started = player_quests_instance.get_player_started_quests(player_quests)	
+	var quests_player_has_completed = player_quests_instance.get_player_completed_quests(player_quests)
 	
 	# TODO quests_ready_to_be_completed (tasks reached)
 	# npc_quest_state is specific to each npc, this will give us the varaibles needed to use in Dialogic
@@ -76,8 +68,16 @@ func player_npc_quest_state(player_stats : Dictionary, player_quests : Dictionar
 			npc_quest_state["quests_completed"][quest] = null
 
 	return npc_quest_state
+
+func set_player_quest_to_started(player : KinematicBody2D, player_stats : Dictionary, quest_id_to_start : String, all_quests : Dictionary) -> Array:
+	# [true/false : bool, "reason for succced or failure" : String]
+	return player.player_quests.set_quest_to_started(player_stats, quest_id_to_start, all_quests, npc_name)
 	
-# TODO
+# TODO add more anti cheat here later - change to array like set_player_quest_to_started
+func set_player_quest_to_completed(player : KinematicBody2D, quest_id_completed : String) -> bool:
+	return player.player_quests.set_quest_to_completed(quest_id_completed)
+	
+# TODO remove and fix this
 func _on_NPCInteract_pressed() -> void:
 	# Testing function REMOVE LATER
 	var TEST_completed : String = str(randi() % 50)
