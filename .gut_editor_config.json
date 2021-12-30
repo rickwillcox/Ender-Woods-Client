@@ -10,7 +10,7 @@
  "font_name": "CourierPrime",
  "font_size": 16,
  "hide_orphans": false,
- "ignore_pause": true,
+ "ignore_pause": false,
  "include_subdirs": false,
  "inner_class": null,
  "junit_xml_file": "",
