@@ -76,8 +76,16 @@ func player_npc_quest_state(player_stats : Dictionary, player_quests : Dictionar
 			npc_quest_state["quests_completed"][quest] = null
 
 	return npc_quest_state
+
+func set_player_quest_to_started(player : KinematicBody2D, player_stats : Dictionary, quest_id_to_start : String, all_quests : Dictionary) -> Array:
+	# [true/false : bool, "reason for succced or failure" : String]
+	return player.player_quests.set_quest_to_started(player_stats, quest_id_to_start, all_quests, npc_name)
 	
-# TODO
+# TODO add more anti cheat here later - change to array like set_player_quest_to_started
+func set_player_quest_to_completed(player : KinematicBody2D, quest_id_completed : String) -> bool:
+	return player.player_quests.set_quest_to_completed(quest_id_completed)
+	
+# TODO remove and fix this
 func _on_NPCInteract_pressed() -> void:
 	# Testing function REMOVE LATER
 	var TEST_completed : String = str(randi() % 50)

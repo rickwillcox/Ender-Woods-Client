@@ -402,16 +402,32 @@ func test_fisherman_bob_player_quests():
 	var npc_quest_state : Dictionary = fisherman_bob.player_npc_quest_state(player_stats, player.player_quests.get_player_quests(), all_quests)
 	assert_eq_deep(npc_quest_state, expected_npc_quest_state)
 	
-	# TODO: FINISH THIS NEXT
-#	assert_true(player.player_quests.get_player_quests()[])
-	player.player_quests.set_quest_to_completed("1")
-	
-	
-	var updated_quest_state
-	player.player_quests.set_player_quests()
 	
 	
 	
+#	var result = fisherman_bob.set_player_quest_to_completed(player, "1")
+	
+func test_npc_quest_state():
+	var player_stats : Dictionary = {
+		"level" : 0
+	}
+	var expected_npc_quest_state : Dictionary = {
+		"quests_to_start" : {
+			"1" : null
+		},
+		"quests_already_started" : {},
+		"quests_ready_to_complete" : {}, 
+		"quests_completed" : {}
+	}
+	var npc_quest_state : Dictionary = fisherman_bob.player_npc_quest_state(player_stats, player.player_quests.get_player_quests(), all_quests)
+	assert_eq_deep(npc_quest_state, expected_npc_quest_state)
+	
+func test_set_quest_to_started():
+	pass
+	
+func test_set_quest_to_completed():
+	
+	assert_eq_deep(npc_quest_state, expected_npc_quest_state)
 	
 	
 	
