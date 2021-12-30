@@ -423,11 +423,75 @@ func test_npc_quest_state():
 	assert_eq_deep(npc_quest_state, expected_npc_quest_state)
 	
 func test_set_quest_to_started():
-	pass
+	var player_stats : Dictionary = {
+		"level" : 0
+	}
+	var player_quest_state : Dictionary = {
+		"player_started_quests": {},
+		"player_completed_quest_ids": {}
+	}
+	# Check wrong npc cant start quest 1
+	assert_eq(travelling_vendor_robby.set_player_quest_to_started(player, player_stats, "1", all_quests), [false, "Player tried to start from incorrect npc"])
+	assert_false("1" in player.player_quests.get_player_quests()["player_started_quests"])
 	
+	# Check right npc can start quest 1
+	assert_eq(fisherman_bob.set_player_quest_to_started(player, player_stats, "1", all_quests), [true, "Player started quest"])
+	assert_true("1" in player.player_quests.get_player_quests()["player_started_quests"])
+	
+	# Check player cant start quest again
+	assert_eq(fisherman_bob.set_player_quest_to_started(player, player_stats, "1", all_quests), [false, "Player has already started this quest"])
+	
+	beach_chief_sam.set_player_quest_to_completed(player, "1")
+	assert_false("1" in player.player_quests.get_player_quests()["player_started_quests"])
+	assert_true("1" in player.player_quests.get_player_quests()["player_completed_quest_ids"])
+	
+	# Check player cant start quest they already completed
+	assert_eq(fisherman_bob.set_player_quest_to_started(player, player_stats, "1", all_quests), [false, "Player has completed this quest"])	
+	
+	# Check player cant start quest due to requirements (havent done previous quest) using miner greg as npc name is checked first, so another name would fail
+	assert_eq(miner_greg.set_player_quest_to_started(player, player_stats, "5", all_quests), [false, "Player did not meet Requirements"])	
+
+# needs to be changed later
 func test_set_quest_to_completed():
+	var player_stats : Dictionary = {
+		"level" : 0
+	}
+	var player_quest_state : Dictionary = {
+		"player_started_quests": {
+			"4": {}
+		},
+		"player_completed_quest_ids": {
+			"1" : null,
+			"2" : null,
+			"3": null
+		}
+	}
+	player.player_quests.set_player_quests(player.player_quests.get_player_quests(), player_quest_state)
+	#Check quests were updated
+	assert_eq_deep(player.player_quests.get_player_quests(), player_quest_state)
+	travelling_vendor_robby.set_player_quest_to_completed(player, "4")
+	player_quest_state = {
+		"player_started_quests": {		},
+		"player_completed_quest_ids": {
+			"1" : null,
+			"2" : null,
+			"3": null,
+			"4" : null
+		}
+	}
+	assert_eq_deep(player.player_quests.get_player_quests(), player_quest_state)
+	travelling_vendor_robby.set_player_quest_to_completed(player, "4")
+	#checking it doesnt try add it in twice ^ above is returning true will change when I change this on playerquests.gd
+	assert_eq_deep(player.player_quests.get_player_quests(), player_quest_state)
 	
-	assert_eq_deep(npc_quest_state, expected_npc_quest_state)
+	#check it cant complete a quest we havent started
+	assert_false(travelling_vendor_robby.set_player_quest_to_completed(player, "5"))
+	assert_eq_deep(player.player_quests.get_player_quests(), player_quest_state)
+	
+	# negative quests shouldnt work
+	assert_false(travelling_vendor_robby.set_player_quest_to_completed(player, "-3"))
+	assert_eq_deep(player.player_quests.get_player_quests(), player_quest_state)
+
 	
 	
 	
