@@ -1,5 +1,9 @@
 Ender Woods Client - Discontinued project
 
+You can view the other repos here
+[Ender Woods Nakama Auth Server](https://github.com/RickWillcox/Ender-Woods-Nakama-Server) Latest Auth server
+[Ender Woods Auth server (deprecated)](https://github.com/RickWillcox/Ender-Woods-Authentication-Server) The old Auth server all coded from scratch. A bad idea but great learning experience.
+[Ender Woods World Server](https://github.com/RickWillcox/Ender-Woods-World-Server) This was where all the server side calculations happened.
 
 https://user-images.githubusercontent.com/53924507/175443502-2f585274-dd9a-4a2f-aa1a-9c60feda32f1.mp4
 
